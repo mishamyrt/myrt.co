@@ -1,0 +1,68 @@
+.debugGrid {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 999999;
+    height: 1000vh;
+    display: none;
+    background-image: linear-gradient(180deg, rgba(255, 78, 78, 0.25) 1px, transparent 0);
+    background-size: 10px 10px;
+    pointer-events: none;
+}
+
+.debugGrid-cols {
+    position: absolute;
+    top: 0;
+    right: var(--contentPadding);
+    bottom: 0;
+    left: var(--contentPadding);
+    padding: 0 var(--gridGap);
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: var(--gridGap);
+}
+
+.debugGrid-cols > div {
+    flex: 1;
+    background: rgba(255,175,107, 0.2);
+}
+
+.debugGrid-controll {
+    position: fixed;
+    display: flex;
+    flex-direction: column-reverse;
+    pointer-events: all;
+    right: 0;
+    mix-blend-mode: hard-light;
+    top: 0;
+}
+
+.debugGrid-plus, .debugGrid-minus {
+    background-color: rgba(255, 255, 255, 0.25);
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.debugGrid-minus {
+    transform: rotate(180deg);
+}
+
+.debugGrid-plus {
+    border-bottom-left-radius: 4px;
+}
+
+@media ( max-width: 780px ) {
+
+    .debugGrid-cols {
+        left: 5vw;
+        right: 5vw;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+    }
+
+    .debugger-cols div:nth-child( -n+4 ) {
+        display: none;
+    }
+}

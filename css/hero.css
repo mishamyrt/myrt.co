@@ -1,0 +1,30 @@
+.hero {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-header {
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 69%;
+}
+
+.hero-heading {
+    font-size: 76px;
+    line-height: 80px;
+    margin: 0 0 2px;
+}
+
+.hero-avatar {
+    max-width: 155px;
+    border-radius: 50%;
+    max-height: 155px;
+}
+
+.hero-footer {
+    border-top: 1px solid var(--color-line);
+    padding-top: 29px;
+}
