@@ -8,13 +8,15 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
     .hero
       .hero-header
         h1.hero-heading Давайте делать крутые штуки
-        img.hero-avatar( src="/photo/avatar.jpg" alt="Фотография Миши Хрустика" itemprop="image")
+        picture.hero-avatar
+          source( srcset="/photo/avatar.webp" type="image/webp" )
+          img.hero-avatar( src="/photo/avatar.jpg" alt="Фотография Миши Хрустика" itemprop="image")
       .hero-content
         p
           | Привет, меня зовут
           | #[span( itemprop='givenName' ) Михаил]
           | #[span( itemprop='familyName' ) Хрустик],
-          | я разработчик и дизайнер в
+          | я фронтлид и дизайнер в
           | #[a( href='https://tektosoft.ru/' ) Тектософте].
           | Живу в Санкт–Петербурге.
         p
