@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "npx parcel build index.html",
-    "serve": "npx parcel serve index.html"
+    "start": "npm run serve",
+    "build": "node build.js",
+    "serve": "node build.js --serve"
   },
   "repository": {
     "type": "git",
