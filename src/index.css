@@ -1,6 +1,6 @@
-@import './fonts.css';
-@import './theme-light.css';
-@import './hero.css';
+@import './fonts/fonts.css';
+@import './colors/colors.css';
+@import './hero/hero.css';
 
 body {
     color: var(--color-text);

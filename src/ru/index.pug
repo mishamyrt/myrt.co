@@ -1,0 +1,54 @@
+doctype html
+html( lang="ru" itemtype="https://schema.org/Person" itemscope )
+  head
+    title Миша
+    meta( name="description" content="Контакты и проекты Миши Хрустика" )
+    include ../head.pug
+  body
+    .hero
+      .hero-header
+        h1.hero-heading Давайте делать крутые штуки
+        img.hero-avatar( src="/photo/avatar.jpg" alt="Фотография Миши Хрустика" itemprop="image")
+      .hero-content
+        p
+          | Привет, меня зовут
+          | #[span( itemprop='givenName' ) Михаил]
+          | #[span( itemprop='familyName' ) Хрустик],
+          | я разработчик и дизайнер в
+          | #[a( href='https://tektosoft.ru/' ) Тектософте].
+          | Живу в Санкт–Петербурге.
+        p
+          | До этого работал в #[a( href='https://belvg.com' ) БелВГ],
+          | #[a( href='https://cmtscience.ru/' ) CMT],
+          | #[a( href='https://cifra.in/' ) Цифре],
+          | #[a( href='https://efo.ru/' ) ЭФО].
+          | Занимался проектами для #[a( href='https://latona.pro/' ) Латоны],
+          | #[a( href='http://neochemicals.ru/' ) Неокемикалс]
+          | и #[a( href='https://chtk.ru/' ) ЧТК]
+        p
+          | Рисую дизайн, верстаю вёрстку, автоматизирую всё.
+          | Люблю браться за сложные задачи, от которых другие предпочтут отказаться.
+        p.hero-footer
+          | Больше информации в резюме. <br>
+          | Пишите предложения на почту:
+          | #[a( href='mailto:misha@myrt.co' itemprop='email' ) misha@myrt.co], <br>
+          | или в телеграм: #[a( href='https://t.me/mishamyrt' itemprop='sameAs' rel='me' ) @mishamyrt].
+        .hero-icons
+          a.hero-icon(href="https://www.instagram.com/mishamyrt/" itemprop="sameAs" rel="me")
+            | Инстаграм
+            include /hero/icons/instagram.svg
+          a.hero-icon(href="https://t.me/mishamyrt" itemprop="sameAs" rel="me")
+            | Телеграм
+            include /hero/icons/telegram.svg
+          a.hero-icon(href="https://gitlab.com/mishamyrt" itemprop="sameAs" rel="me")
+            | Гитлаб
+            include /hero/icons/gitlab.svg
+          a.hero-icon(href="https://github.com/mishamyrt" itemprop="sameAs" rel="me")
+            | Гитхаб
+            include /hero/icons/github.svg
+
+
+
+
+
+

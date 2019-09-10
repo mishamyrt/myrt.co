@@ -1,20 +1,25 @@
 {
-    "name": "mishamyrt.gitlab.io",
-    "version": "1.0.0",
-    "private": true,
-    "scripts": {
-      "build": "npx parcel build index.html",
-      "serve": "npx parcel serve index.html"
-    },
-    "repository": {
-      "type": "git",
-      "url": "git+ssh://git@gitlab.com/mishamyrt/mishamyrt.gitlab.io.git"
-    },
-    "author": "mishamyrt",
-    "license": "ISC",
-    "bugs": {
-      "url": "https://gitlab.com/mishamyrt/mishamyrt.gitlab.io/issues"
-    },
-    "homepage": "https://mishamyrt.gitlab.io"
+  "name": "mishamyrt.gitlab.io",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npx parcel build index.html",
+    "serve": "npx parcel serve index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/mishamyrt/mishamyrt.gitlab.io.git"
+  },
+  "author": "mishamyrt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/mishamyrt/mishamyrt.gitlab.io/issues"
+  },
+  "homepage": "https://mishamyrt.gitlab.io",
+  "dependencies": {
+    "parcel-bundler": "^1.12.3"
+  },
+  "devDependencies": {
+    "pug": "^2.0.4"
   }
-  
+}
