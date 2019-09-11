@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npm run serve",
     "build": "node build.js",
-    "serve": "node build.js --serve"
+    "serve": "npx parcel serve src/index.pug"
   },
   "repository": {
     "type": "git",
