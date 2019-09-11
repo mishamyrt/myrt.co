@@ -1,16 +1,25 @@
 image: node:lts-alpine
 
-stages:
-  - build
+variables:
+  DOCKER_DRIVER: overlay
 
-build image:
-  stage: build
-  services: ['docker:dind']
+stages:
+  - build site
+  - build image
+
+build site:
+  stage: build site
   script:
     - npm install
     - npm run build
+  only:
+    - master
+
+build docker image:
+  stage: build image
+  image: gitlab/dind
+  services: ['docker:dind']
+  script:
     - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
     - docker build -t ${CI_REGISTRY_IMAGE}
     - docker push ${CI_REGISTRY_IMAGE}
-  only:
-  - master
