@@ -49,9 +49,13 @@ function improveTypography (filePath) {
 
 bundler.on('bundled', (bundle) => {
   let files
+  const indexPath = join(outDir, 'index.html')
   readDir(join(outDir, 'ru'))
     .then((result) => (files = result))
-    .then(() => files.forEach((fileName) => fileName.includes('.html') ? improveTypography(join(outDir, 'ru', fileName)) : null))
+    .then(() => files.forEach((fileName) => fileName.includes('.html') ?
+      improveTypography(join(outDir, 'ru', fileName)) : null))
+  !serve && readFile(indexPath)
+    .then((html) => writeFile(indexPath, html.toString().replace(/index.html/g, '')))
 })
 
 rimram(outDir)
