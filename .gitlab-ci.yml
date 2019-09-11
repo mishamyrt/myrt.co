@@ -1,17 +1,16 @@
 image: node:lts-alpine
 
 stages:
-  - deploy
+  - build
 
-pages:
-  stage: deploy
+build image:
+  stage: build
+  services: ['docker:dind']
   script:
     - npm install
     - npm run build
-    - mkdir public
-    - mv dist/* public
-  artifacts:
-    paths:
-    - public
+    - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
+    - docker build -t ${CI_REGISTRY_IMAGE}
+    - docker push ${CI_REGISTRY_IMAGE}
   only:
   - master
