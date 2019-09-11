@@ -3,7 +3,6 @@ const fs = require('fs')
 const cheerio = require('cheerio')
 const { promisify } = require('util')
 const Bundler = require('parcel-bundler')
-const perenoska = require('mishamyrt-perenoska')
 const Typograf = require('typograf')
 
 const rimram = promisify(require('rimraf'))
@@ -34,8 +33,7 @@ function build () {
   return (serve ? bundler.serve() : bundler.bundle())
 }
 
-function improveTypography (fileName) {
-  const filePath = join(outDir, fileName)
+function improveTypography (filePath) {
   return readFile(filePath)
     .then((html) => {
       const $ = cheerio.load(html, { decodeEntities: false })
@@ -51,9 +49,9 @@ function improveTypography (fileName) {
 
 bundler.on('bundled', (bundle) => {
   let files
-  readDir(outDir)
+  readDir(join(outDir, 'ru'))
     .then((result) => (files = result))
-    .then(() => files.forEach((fileName) => fileName.includes('.html') ? improveTypography(fileName) : null))
+    .then(() => files.forEach((fileName) => fileName.includes('.html') ? improveTypography(join(outDir, 'ru', fileName)) : null))
 })
 
 rimram(outDir)
