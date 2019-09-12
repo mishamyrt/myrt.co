@@ -45,19 +45,25 @@ function improveTypography (filePath) {
 
 bundler.on('bundled', () => {
   let files
-  readFile(indexPath)
+  return readFile(indexPath)
     .then((html) => writeFile(join(outDir, 'ru', 'index.html'), html))
     .then(() => unlink(indexPath))
     .then(() => readDir(join(outDir, 'ru')))
     .then((result) => (files = result))
-    .then(() => files.forEach((fileName) => {
-      if (fileName.includes('.html')) {
-        improveTypography(join(outDir, 'ru', fileName))
+    .then(() => {
+      const stack = []
+      for (const file of files) {
+        if (file.includes('.html')) {
+          stack.push(
+            improveTypography(join(outDir, 'ru', file))
+          )
+        }
       }
-    }))
+      return Promise.all(stack)
+    })
+    .then(() => process.exit(0))
 })
 
 rimram(outDir)
   .then(() => bundler.bundle())
-  .then(() => process.exit(0))
 
