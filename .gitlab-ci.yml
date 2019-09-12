@@ -5,6 +5,10 @@ variables:
   IMAGE_VERSION: $CI_PIPELINE_ID
   HOST: "147.78.66.178"
 
+cache:
+  paths:
+    - node_modules/
+
 stages:
   - build site
   - quality assurance
@@ -15,8 +19,9 @@ build site:
   stage: build site
   variables:
     PARCEL_WORKERS: 1
-  script:
+  before_script:
     - npm install
+  script:
     - npm run build
   only:
     - master
@@ -24,19 +29,28 @@ build site:
     paths:
     - dist
 
-Spell check:
+spell check:
   stage: quality assurance
   before_script:
     - npm install
   script:
     - npm run spell-check
 
+check codestyle:
+  stage: quality assurance
+  before_script:
+    - npm install
+  script:
+    - npm run lint
+
 build docker image:
   image: docker:latest
   stage: build image
   services: ['docker:dind']
-  script:
+  cache: {}
+  before_script:
     - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
+  script:
     - docker build -t $CI_REGISTRY_IMAGE -f docker/Dockerfile .
     - docker push $CI_REGISTRY_IMAGE
 

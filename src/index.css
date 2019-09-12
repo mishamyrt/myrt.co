@@ -4,34 +4,36 @@
 @import './resume/resume.css';
 
 body {
-    color: var(--color-text);
-    -webkit-font-smoothing: antialiased;
-    min-height: calc(100vh - 74px);
-    margin: 0;
-    display: flex;
-    align-items: center;
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  min-height: calc(100vh - 74px);
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 p {
-    font-size: 19px;
-    line-height: 30px;
-    margin: 10px 0 30px;
-    font-family: var(--font-monospace);
+  font-size: 19px;
+  line-height: 30px;
+  margin: 10px 0 30px;
+  font-family: var(--font-monospace);
 }
 
-h1, h2, h3 {
-    font-family: var(--font-sans);
-    color: var(--color-heading);
+h1,
+h2,
+h3 {
+  font-family: var(--font-sans);
+  color: var(--color-heading);
 }
 
 a {
-    color: var(--color-link);
-    text-decoration: none;
-    transition: background-color .25s ease-out;
+  color: var(--color-link);
+  text-decoration: none;
+  transition: background-color 0.25s ease-out;
 }
 
 a:hover {
-    background-color: var(--color-link-background);
-    border-radius: 2px;
-    transition: background-color 0s;
+  background-color: var(--color-link-background);
+  border-radius: 2px;
+  transition: background-color 0s;
 }

@@ -1,18 +1,18 @@
 @font-face {
-    font-family: 'GraphikLCG';
-    font-weight: bold;
-    font-style: normal;
-    src: url("./GraphikLCG-Semibold.otf");
+  font-family: 'GraphikLCG';
+  font-weight: bold;
+  font-style: normal;
+  src: url("./GraphikLCG-Semibold.otf");
 }
 
 @font-face {
-    font-family: 'IBMPlexMono';
-    font-weight: normal;
-    font-style: normal;
-    src: url("./IBMPlexMono-Regular.ttf");
+  font-family: 'IBMPlexMono';
+  font-weight: normal;
+  font-style: normal;
+  src: url("./IBMPlexMono-Regular.ttf");
 }
 
 :root {
-    --font-monospace: 'IBMPlexMono';
-    --font-sans: 'GraphikLCG';
+  --font-monospace: 'IBMPlexMono';
+  --font-sans: 'GraphikLCG';
 }
