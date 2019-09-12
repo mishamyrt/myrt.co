@@ -40,7 +40,7 @@ function improveHtml (filePath) {
       })
       return $.html()
     })
-    .then((html) => (html = html.replace(/.html/g, '')))
+    .then((html) => (html = html.replace(/\.html/g, '')))
     .then((html) => writeFile(filePath, html))
 }
 
