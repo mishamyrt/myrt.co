@@ -2,14 +2,18 @@
   font-family: 'GraphikLCG';
   font-weight: bold;
   font-style: normal;
-  src: url("./GraphikLCG-Semibold.otf");
+  src:
+    url("./GraphikLCG-Semibold.woff2") format("woff2"),
+    url("./GraphikLCG-Semibold.woff") format("woff");
 }
 
 @font-face {
   font-family: 'IBMPlexMono';
   font-weight: normal;
   font-style: normal;
-  src: url("./IBMPlexMono-Regular.ttf");
+  src:
+    url("./IBMPlexMono-Regular.woff2") format("woff2"),
+    url("./IBMPlexMono-Regular.woff") format("woff");
 }
 
 :root {
