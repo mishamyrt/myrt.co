@@ -7,6 +7,7 @@ variables:
 
 stages:
   - build site
+  - qa
   - build image
   - deploy
 
@@ -22,6 +23,13 @@ build site:
   artifacts:
     paths:
     - dist
+
+Spell check:
+  stage: qa
+  before_script:
+    - npm install
+  script:
+    - npm run spell-check
 
 build docker image:
   image: docker:latest
