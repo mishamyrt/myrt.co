@@ -29,7 +29,7 @@ const bundler = new Bundler(join(__dirname, 'src', 'index.pug'), {
     outDir
 })
 
-function improveTypography (filePath) {
+function improveHtml (filePath) {
   return readFile(filePath)
     .then((html) => {
       const $ = cheerio.load(html, { decodeEntities: false })
@@ -40,6 +40,7 @@ function improveTypography (filePath) {
       })
       return $.html()
     })
+    .then((html) => (html = html.replace(/.html/g, '')))
     .then((html) => writeFile(filePath, html))
 }
 
@@ -55,7 +56,7 @@ bundler.on('bundled', () => {
       for (const file of files) {
         if (file.includes('.html')) {
           stack.push(
-            improveTypography(join(outDir, 'ru', file))
+            improveHtml(join(outDir, 'ru', file))
           )
         }
       }
