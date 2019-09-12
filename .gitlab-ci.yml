@@ -21,7 +21,7 @@ build site:
 
 build docker image:
   stage: build image
-  services: ['gitlab/dind']
+  services: ['docker:dind']
   script:
     - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
     - docker build -t ${CI_REGISTRY_IMAGE}
