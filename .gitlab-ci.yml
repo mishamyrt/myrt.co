@@ -20,6 +20,7 @@ build site:
 
 
 build docker image:
+  image: docker:latest
   stage: build image
   services: ['docker:dind']
   script:
