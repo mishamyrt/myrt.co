@@ -6,6 +6,7 @@ variables:
 stages:
   - build site
   - build image
+  - deploy
 
 build site:
   stage: build site
@@ -18,12 +19,11 @@ build site:
     paths:
     - dist
 
-
 build docker image:
   image: docker:latest
   stage: build image
   services: ['docker:dind']
   script:
     - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
-    - docker build -t ${CI_REGISTRY_IMAGE} .
-    - docker push ${CI_REGISTRY_IMAGE}
+    - docker build -t $CI_REGISTRY_IMAGE .
+    - docker push $CI_REGISTRY_IMAGE
