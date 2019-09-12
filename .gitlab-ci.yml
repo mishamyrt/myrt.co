@@ -12,6 +12,8 @@ stages:
 
 build site:
   stage: build site
+  variables:
+    PARCEL_WORKERS: 1
   script:
     - npm install
     - npm run build
