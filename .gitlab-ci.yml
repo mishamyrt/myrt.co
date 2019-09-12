@@ -4,6 +4,7 @@ variables:
   DOCKER_DRIVER: overlay
   IMAGE_VERSION: $CI_PIPELINE_ID
   HOST: "147.78.66.178"
+  DOMAIN: "https://myrt.co/ru/"
 
 cache:
   paths:
@@ -14,6 +15,7 @@ stages:
   - quality assurance
   - build image
   - deploy
+  - audit
 
 build site:
   stage: build site
@@ -27,7 +29,7 @@ build site:
     - master
   artifacts:
     paths:
-    - dist
+      - dist
 
 spell check:
   stage: quality assurance
@@ -46,7 +48,7 @@ check codestyle:
 build docker image:
   image: docker:latest
   stage: build image
-  services: ['docker:dind']
+  services: ["docker:dind"]
   cache: {}
   before_script:
     - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
@@ -54,9 +56,23 @@ build docker image:
     - docker build -t $CI_REGISTRY_IMAGE -f docker/Dockerfile .
     - docker push $CI_REGISTRY_IMAGE
 
+lighthouse:
+  image: markhobson/node-chrome
+  stage: audit
+  cache: {}
+  before_script:
+    - npm i -g lighthouse
+  script:
+    - lighthouse --chrome-flags="--headless --no-sandbox" $LIGHTHOUSE_TEST_URL --output html --output-path ./report.html
+  artifacts:
+    paths:
+      - ./report.html
+    expire_in: 1 week
+
 deploy:
   image: pwinik/ansible
   stage: deploy
+  cache: {}
   before_script:
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
@@ -65,7 +81,7 @@ deploy:
     - chmod 700 ~/.ssh
     - chmod 644 ~/.ssh/known_hosts
   script:
-     - >
+    - >
       ansible-playbook
       -i $HOST,
       docker/deploy.yaml
