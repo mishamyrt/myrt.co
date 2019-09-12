@@ -2,6 +2,8 @@ image: node:lts-alpine
 
 variables:
   DOCKER_DRIVER: overlay
+  IMAGE_VERSION: $CI_PIPELINE_ID
+  HOST: "94.250.254.108"
 
 stages:
   - build site
@@ -27,3 +29,18 @@ build docker image:
     - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
     - docker build -t $CI_REGISTRY_IMAGE -f docker/Dockerfile .
     - docker push $CI_REGISTRY_IMAGE
+
+deploy:
+  image: pwinik/ansible
+  stage: deploy
+  script:
+     - >
+      ansible-playbook
+      -i $HOST,
+      docker/deploy.yaml
+      -u root
+      -e REGISTRY_LOGIN="\"gitlab-ci-token\""
+      -e REGISTRY_PASSWORD="\"$CI_JOB_TOKEN\""
+      -e REGISTRY_URL="\"$CI_REGISTRY\""
+      -e IMAGE_NAME="\"$CI_REGISTRY_IMAGE\""
+      -e IMAGE_VERSION="\"$IMAGE_VERSION\""

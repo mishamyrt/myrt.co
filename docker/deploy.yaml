@@ -1,0 +1,20 @@
+---
+- hosts: "all"
+
+  tasks:
+    - name: "Log into private registry and force re-authorization"
+      docker_login:
+        registry: "{{ REGISTRY_URL }}"
+        username: "{{ REGISTRY_LOGIN }}"
+        password: "{{ REGISTRY_PASSWORD }}"
+        reauthorize: yes
+
+    - name: "Recreate Docker image"
+      docker_container:
+        name: "myrt-co"
+        image: "{{ IMAGE_NAME }}"
+        recreate: "yes"
+        restart_policy: "always"
+        pull: "yes"
+        ports:
+          - "8080:80"
