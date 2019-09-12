@@ -3,7 +3,7 @@ image: node:lts-alpine
 variables:
   DOCKER_DRIVER: overlay
   IMAGE_VERSION: $CI_PIPELINE_ID
-  HOST: "94.250.254.108"
+  HOST: "147.78.66.178"
 
 stages:
   - build site
@@ -34,7 +34,6 @@ deploy:
   image: pwinik/ansible
   stage: deploy
   before_script:
-    - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
