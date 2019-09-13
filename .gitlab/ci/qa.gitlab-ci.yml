@@ -1,0 +1,20 @@
+spell check:
+  stage: quality assurance
+  before_script:
+    - npm ci
+  script:
+    - npm run spell-check
+
+codestyle check:
+  stage: quality assurance
+  before_script:
+    - npm ci
+  script:
+    - npm run lint
+
+size check:
+  stage: quality assurance
+  before_script:
+    - npm ci
+  script:
+    - npm run size-check

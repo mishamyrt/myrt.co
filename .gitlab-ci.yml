@@ -3,108 +3,25 @@ image: node:lts-alpine
 variables:
   DOCKER_DRIVER: overlay
   IMAGE_VERSION: $CI_PIPELINE_ID
-  HOST: "147.78.66.178"
-  DOMAIN: "https://myrt.co/ru/"
+  DOMAIN: "myrt.co"
 
 cache:
+  key: $CI_COMMIT_REF_NAME
   paths:
     - node_modules/
 
 stages:
-  - build site
+  - build
   - quality assurance
-  - build image
+  - dockerize
   - deploy
-  - audit
-  - upload audit
+  - metrics
+  - upload metrics
 
-build site:
-  stage: build site
-  variables:
-    PARCEL_WORKERS: 1
-  before_script:
-    - npm install
-  script:
-    - npm run build
-  artifacts:
-    paths:
-      - dist
-
-spell check:
-  stage: quality assurance
-  before_script:
-    - npm install
-  script:
-    - npm run spell-check
-
-check codestyle:
-  stage: quality assurance
-  before_script:
-    - npm install
-  script:
-    - npm run lint
-
-build docker image:
-  image: docker:latest
-  only:
-    - master
-  stage: build image
-  services: ["docker:dind"]
-  cache: {}
-  before_script:
-    - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
-  script:
-    - docker build -t $CI_REGISTRY_IMAGE -f docker/Dockerfile .
-    - docker push $CI_REGISTRY_IMAGE
-
-lighthouse:
-  image: markhobson/node-chrome
-  stage: audit
-  only:
-    - master
-  cache: {}
-  before_script:
-    - npm i -g lighthouse
-  script:
-    - lighthouse --chrome-flags="--headless --no-sandbox" $DOMAIN --output html --output-path ./report.html
-  artifacts:
-    paths:
-      - ./report.html
-    expire_in: 1 week
-
-pages:
-  stage: upload audit
-  image: alpine:latest
-  script:
-    - mkdir public
-    - mv report.html public/
-  artifacts:
-    paths:
-      - public
-  only:
-    - master
-
-deploy:
-  only:
-    - master
-  image: pwinik/ansible
-  stage: deploy
-  cache: {}
-  before_script:
-    - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-    - mkdir -p ~/.ssh
-    - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-    - chmod 700 ~/.ssh
-    - chmod 644 ~/.ssh/known_hosts
-  script:
-    - >
-      ansible-playbook
-      -i $HOST,
-      docker/deploy.yaml
-      -u root
-      -e REGISTRY_LOGIN="\"gitlab-ci-token\""
-      -e REGISTRY_PASSWORD="\"$CI_JOB_TOKEN\""
-      -e REGISTRY_URL="\"$CI_REGISTRY\""
-      -e IMAGE_NAME="\"$CI_REGISTRY_IMAGE\""
-      -e IMAGE_VERSION="\"$IMAGE_VERSION\""
+include:
+  - local: ".gitlab/ci/build.gitlab-ci.yml"
+  - local: ".gitlab/ci/qa.gitlab-ci.yml"
+  - local: ".gitlab/ci/dockerize.gitlab-ci.yml"
+  - local: ".gitlab/ci/deploy.gitlab-ci.yml"
+  - local: ".gitlab/ci/metrics.gitlab-ci.yml"
+  - local: ".gitlab/ci/pages.gitlab-ci.yml"

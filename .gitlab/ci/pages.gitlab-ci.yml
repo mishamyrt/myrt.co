@@ -1,0 +1,14 @@
+pages:
+  stage: upload metrics
+  image: alpine:latest
+  cache: {}
+  script:
+    - mkdir public
+      # Google Lighthouse report
+    - mkdir public/lighthouse
+    - mv lighthouse-report.html public/lighthouse/index.html
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
