@@ -3,7 +3,9 @@ pages:
   image: alpine:latest
   script:
     - mkdir public
-    - mv report.html public/
+    # Google Lighthouse reports
+    - mkdir public/lighthouse
+    - mv lighthouse-report.html public/lighthouse/index.html
   artifacts:
     paths:
       - public
