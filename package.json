@@ -10,7 +10,8 @@
     "size-check": "npx size-limit",
     "spell-check": "npx yaspeller dist/**/*.html",
     "lint": "npx stylelint \"src/**/*.css\"",
-    "lint:fix": "npx stylelint \"src/**/*.css\" --fix"
+    "lint:fix": "npx stylelint \"src/**/*.css\" --fix",
+    "postinstall": "chmod +x .hooks/* && cp -r .hooks/ .git/hooks/"
   },
   "repository": {
     "type": "git",
