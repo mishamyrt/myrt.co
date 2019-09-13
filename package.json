@@ -18,6 +18,11 @@
     "url": "https://gitlab.com/mishamyrt/mishamyrt.gitlab.io/issues"
   },
   "homepage": "https://myrt.co",
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard"
+    ]
+  },
   "yaspeller": {
     "ignoreCapitalization": true,
     "dictionary": [
