@@ -85,7 +85,7 @@ a.hero-icon:hover {
   }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 460px) {
   .hero-heading {
     font-size: 35px;
     margin: 1px 0 10px;
