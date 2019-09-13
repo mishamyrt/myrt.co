@@ -4,6 +4,7 @@ generate static files:
     PARCEL_WORKERS: 1
     NODE_ENV: production
   script:
+    - rm -rf node_modules/
     - npm install
     - npm run build
   artifacts:
