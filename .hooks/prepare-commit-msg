@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+const fs = require('fs')
+const path = require('path')
+const { promisify } = require('util')
+
+const readFile = promisify(fs.readFile)
+const writeFile = promisify(fs.writeFile)
+
+const commitFile = path.join(__dirname, '..', 'COMMIT_EDITMSG')
+
+function checkBranchName (branchName) {
+  if (!branchName.includes('/')) return false
+  switch (branchName.split('/')[0]) {
+    case 'feature':
+    case 'hotfix':
+    case 'support':
+    case 'release':
+      return true
+    default:
+      return false
+  }
+}
+
+let branchName
+readFile(path.join(__dirname, '..', 'HEAD'))
+  .then(headContent => {
+    const pathItems = headContent.toString().split('/')
+    pathItems.shift()
+    pathItems.shift()
+    branchName = pathItems.join('/')
+    if (!checkBranchName(branchName)) {
+      console.error('Wrong branch name')
+      console.info('Branch should be in Git Flow format')
+      process.exit(0)
+    }
+  })
+  .then(() => readFile(commitFile))
+  .then(commitMsg => writeFile(
+    commitFile,
+    `${branchName.split('/')[1].trim()}: ${commitMsg.toString()}`
+  ))
+  .then(() => process.exit(1))
+
