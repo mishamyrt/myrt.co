@@ -1,10 +1,14 @@
 generate static files:
   stage: build
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
   variables:
     PARCEL_WORKERS: 1
     NODE_ENV: production
   before_script:
-    - npm ci
+    - npm install
   script:
     - npm run build
   artifacts:
