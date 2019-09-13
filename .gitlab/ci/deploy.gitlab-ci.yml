@@ -3,6 +3,7 @@ deploy to myrt.co:
     - master
   image: pwinik/ansible
   stage: deploy
+  cache: {}
   environment:
     name: Production
     url: "https://$DOMAIN"

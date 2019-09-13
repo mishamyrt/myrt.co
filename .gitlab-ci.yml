@@ -5,6 +5,11 @@ variables:
   IMAGE_VERSION: $CI_PIPELINE_ID
   DOMAIN: "myrt.co"
 
+cache:
+  key: $CI_COMMIT_REF_NAME
+  paths:
+    - node_modules/
+
 stages:
   - build
   - quality assurance

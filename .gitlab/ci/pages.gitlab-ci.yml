@@ -1,6 +1,7 @@
 pages:
   stage: upload metrics
   image: alpine:latest
+  cache: {}
   script:
     - mkdir public
       # Google Lighthouse report

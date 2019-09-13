@@ -1,5 +1,6 @@
 build docker image:
   image: docker:latest
+  cache: {}
   only:
     - master
   stage: dockerize

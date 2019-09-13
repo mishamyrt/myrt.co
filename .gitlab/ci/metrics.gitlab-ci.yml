@@ -1,5 +1,6 @@
 lighthouse:
   image: markhobson/node-chrome
+  cache: {}
   stage: metrics
   only:
     - master
