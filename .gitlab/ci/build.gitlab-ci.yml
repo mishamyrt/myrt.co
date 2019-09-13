@@ -2,6 +2,7 @@ generate static files:
   stage: build
   variables:
     PARCEL_WORKERS: 1
+    NODE_ENV: production
   before_script:
     - npm install
   script:
