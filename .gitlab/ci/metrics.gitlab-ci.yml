@@ -9,8 +9,8 @@ lighthouse:
   before_script:
     - npm i -g lighthouse
   script:
-    - lighthouse --chrome-flags="--headless --no-sandbox" $PAGE_URL --output html --output-path ./report.html
+    - lighthouse --chrome-flags="--headless --no-sandbox" $PAGE_URL --output html --output-path ./lighthouse-report.html
   artifacts:
     paths:
-      - ./report.html
+      - ./lighthouse-report.html
     expire_in: 1 week
