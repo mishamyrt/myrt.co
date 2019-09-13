@@ -54,3 +54,47 @@ a.hero-icon:hover {
   background-color: transparent;
   transition: opacity 0s;
 }
+
+@media screen and (max-width: 900px) {
+  .hero-heading {
+    font-size: calc(7vw + 14px);
+    line-height: calc(7.4vw + 14px);
+    margin: 0 0 calc(0.5vw + 14px);
+  }
+
+  .hero-content {
+    max-width: unset;
+  }
+
+  .hero-header {
+    flex-direction: column-reverse;
+  }
+
+  .hero-avatar {
+    max-width: 150px;
+    max-height: 150px;
+    margin: -4px 0 8px;
+  }
+}
+
+@media screen and (max-width: 521px) {
+  .hero-heading {
+    font-size: 55px;
+    margin: 1px 0 6px;
+    line-height: 60px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .hero-heading {
+    font-size: 35px;
+    margin: 1px 0 10px;
+    line-height: 41px;
+  }
+
+  .hero-avatar {
+    max-width: 100px;
+    max-height: 100px;
+    margin: -4px 0 13px;
+  }
+}
