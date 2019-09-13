@@ -67,6 +67,10 @@ a.resume-link:hover {
   margin: 0 4px 8px;
 }
 
+.resume-backLink:hover {
+  background-color: unset;
+}
+
 .resume-date {
   text-align: center;
   position: relative;
