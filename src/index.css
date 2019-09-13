@@ -4,6 +4,7 @@
 @import './resume/resume.css';
 
 body {
+  background-color: var(--color-background);
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
   min-height: calc(100vh - 74px);

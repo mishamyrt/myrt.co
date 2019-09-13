@@ -18,7 +18,7 @@
 .resume-position {
   font-size: 19px;
   line-height: 11px;
-  margin: 20px 0 60px;
+  margin: 20px 0 40px;
 }
 
 .resume-links {
@@ -58,8 +58,8 @@ a.resume-link:hover {
 
 .resume-technology {
   display: inline-block;
-  color: white;
-  background-color: var(--color-text);
+  color: var(--color-technology-fg);
+  background-color: var(--color-technology-bg);
   font-family: var(--font-monospace);
   font-size: 14px;
   padding: 2px;
