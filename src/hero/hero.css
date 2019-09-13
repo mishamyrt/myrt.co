@@ -35,7 +35,7 @@
 }
 
 .hero-icon {
-  fill: var(--color-heading);
+  fill: var(--color-icon);
   width: 20px;
   display: block;
   opacity: 0.33;
@@ -51,8 +51,11 @@
 
 a.hero-icon:hover {
   opacity: 1;
-  background-color: transparent;
   transition: opacity 0s;
+}
+
+a.hero-icon:hover::after {
+  background-color: transparent;
 }
 
 @media screen and (max-width: 900px) {

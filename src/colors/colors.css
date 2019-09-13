@@ -12,14 +12,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-link: white;
-    --color-heading: white;
-    --color-background: #282c2f;
-    --color-text: hsl(0, 0%, 58%);
-    --color-icon: hsl(0, 0%, 66%);
-    --color-line: hsl(0, 0%, 85%);
-    --color-link-background: hsl(0, 0%, 30%);
-    --color-technology-fg: var(--color-line);
-    --color-technology-bg: var(--color-link-background);
+    --color-link: rgba(255, 255, 255, 0.87);
+    --color-heading: rgba(255, 255, 255, 0.87);
+    --color-background: #121212;
+    --color-text: rgba(255, 255, 255, 0.5);
+    --color-icon: rgba(255, 255, 255, 0.5);
+    --color-line: rgba(255, 255, 255, 0.2);
+    --color-link-background: rgba(255, 255, 255, 0.15);
+    --color-technology-fg: rgba(255, 255, 255, 0.32);
+    --color-technology-bg: rgba(255, 255, 255, 0.09);
   }
 }

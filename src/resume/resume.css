@@ -30,7 +30,7 @@
 }
 
 .resume-link {
-  fill: var(--color-heading);
+  fill: var(--color-icon);
   width: 20px;
   display: block;
   opacity: 0.33;
@@ -42,8 +42,11 @@
 
 a.resume-link:hover {
   opacity: 1;
-  background-color: transparent;
   transition: opacity 0s;
+}
+
+a.resume-link:hover::after {
+  background-color: transparent;
 }
 
 .resume-link:last-child {
@@ -67,7 +70,7 @@ a.resume-link:hover {
   margin: 0 4px 8px;
 }
 
-.resume-backLink:hover {
+.resume-backLink:hover::after {
   background-color: unset;
 }
 
