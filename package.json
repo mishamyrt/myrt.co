@@ -124,8 +124,12 @@
     },
     {
       "name": "Full",
-      "path": "dist/*.*",
-      "limit": "280 KB"
+      "path": [
+        "dist/*.webp",
+        "dist/*.png",
+        "dist/*.woff2"
+      ],
+      "limit": "120 KB"
     }
   ]
 }
