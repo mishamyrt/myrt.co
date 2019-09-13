@@ -10,7 +10,7 @@ cache:
     - node_modules/
 
 stages:
-  - build site
+  - build
   - quality assurance
   - dockerize
   - deploy
