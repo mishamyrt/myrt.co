@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start": "npm run serve",
-    "build": "node build.js",
+    "build": "export NODE_ENV=production && node build.js",
     "serve": "npx parcel serve src/index.pug",
     "size-check": "npx size-limit",
     "spell-check": "npx yaspeller dist/**/*.html",
@@ -124,8 +124,12 @@
     },
     {
       "name": "Full",
-      "path": "dist/*.*",
-      "limit": "280 KB"
+      "path": [
+        "dist/*.webp",
+        "dist/*.png",
+        "dist/*.woff2"
+      ],
+      "limit": "120 KB"
     }
   ]
 }
