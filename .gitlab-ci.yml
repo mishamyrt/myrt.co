@@ -4,7 +4,7 @@ variables:
   DOCKER_DRIVER: overlay
   IMAGE_VERSION: $CI_PIPELINE_ID
   HOST: "147.78.66.178"
-  DOMAIN: "https://myrt.co/ru/"
+  DOMAIN: "myrt.co"
 
 cache:
   paths:
@@ -63,10 +63,12 @@ lighthouse:
   only:
     - master
   cache: {}
+  variables:
+    PAGE_URL: https://$DOMAIN/ru
   before_script:
     - npm i -g lighthouse
   script:
-    - lighthouse --chrome-flags="--headless --no-sandbox" $DOMAIN --output html --output-path ./report.html
+    - lighthouse --chrome-flags="--headless --no-sandbox" $PAGE_URL --output html --output-path ./report.html
   artifacts:
     paths:
       - ./report.html
@@ -90,6 +92,9 @@ deploy:
   image: pwinik/ansible
   stage: deploy
   cache: {}
+  environment:
+    name: Production
+    url: "https://$DOMAIN"
   before_script:
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
