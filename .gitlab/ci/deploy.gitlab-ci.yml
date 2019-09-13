@@ -18,7 +18,7 @@ deploy to myrt.co:
     - >
       ansible-playbook
       -i $DEPLOY_HOST,
-      docker/deploy.yaml
+      docker/deploy.yml
       -u root
       -e REGISTRY_LOGIN="\"gitlab-ci-token\""
       -e REGISTRY_PASSWORD="\"$CI_JOB_TOKEN\""
