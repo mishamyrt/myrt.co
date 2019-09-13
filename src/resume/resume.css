@@ -11,7 +11,7 @@
 .resume-header,
 .resume-job {
   display: grid;
-  grid-template-columns: 92px 5fr 2fr;
+  grid-template-columns: 92px 5fr minmax(190px, 2fr);
   grid-gap: 55px;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .resume-link {
-  fill: var(--color-heading);
+  fill: var(--color-icon);
   width: 20px;
   display: block;
   opacity: 0.33;
@@ -42,8 +42,11 @@
 
 a.resume-link:hover {
   opacity: 1;
-  background-color: transparent;
   transition: opacity 0s;
+}
+
+a.resume-link:hover::after {
+  background-color: transparent;
 }
 
 .resume-link:last-child {
@@ -65,6 +68,10 @@ a.resume-link:hover {
   padding: 2px;
   border-radius: 3px;
   margin: 0 4px 8px;
+}
+
+.resume-backLink:hover::after {
+  background-color: unset;
 }
 
 .resume-date {
@@ -94,8 +101,8 @@ a.resume-link:hover {
 
 .resume-heading {
   font-size: 57px;
-  line-height: 80px;
-  margin: 0;
+  line-height: 60px;
+  margin: 3px 0 15px;
 }
 
 .resume-subheading {
@@ -108,6 +115,12 @@ a.resume-link:hover {
   text-align: right;
   color: var(--color-text);
   margin: 17px 0 0;
+}
+
+@media screen and (max-width: 890px) {
+  .resume-heading {
+    margin: -6px 0 15px;
+  }
 }
 
 @media screen and (max-width: 750px) {
