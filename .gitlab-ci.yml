@@ -3,7 +3,6 @@ image: node:lts-alpine
 variables:
   DOCKER_DRIVER: overlay
   IMAGE_VERSION: $CI_PIPELINE_ID
-  HOST: "147.78.66.178"
   DOMAIN: "myrt.co"
 
 cache:
