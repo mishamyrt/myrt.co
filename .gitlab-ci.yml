@@ -104,7 +104,7 @@ deploy:
   script:
     - >
       ansible-playbook
-      -i $HOST,
+      -i $DEPLOY_HOST,
       docker/deploy.yaml
       -u root
       -e REGISTRY_LOGIN="\"gitlab-ci-token\""
