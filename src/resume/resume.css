@@ -18,7 +18,7 @@
 .resume-position {
   font-size: 19px;
   line-height: 11px;
-  margin: 20px 0 39px;
+  margin: 20px 0 60px;
 }
 
 .resume-links {
@@ -69,6 +69,16 @@ a.resume-link:hover {
 
 .resume-date {
   text-align: center;
+  position: relative;
+}
+
+.resume-date span {
+  display: block;
+}
+
+.resume-date span:first-child::after {
+  content: '|';
+  display: block;
 }
 
 .resume-jobs {
@@ -98,4 +108,69 @@ a.resume-link:hover {
   text-align: right;
   color: var(--color-text);
   margin: 17px 0 0;
+}
+
+@media screen and (max-width: 750px) {
+  .resume-header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .resume-heading {
+    font-size: 35px;
+    margin: 25px 0 10px;
+    line-height: 41px;
+  }
+
+  .resume-contacts {
+    text-align: left;
+    margin: 29px 0 0;
+  }
+
+  .resume-avatar {
+    align-self: center;
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  .resume {
+    margin: 15px auto 37px;
+  }
+
+  .resume-job {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .resume-jobs {
+    margin-top: 10px;
+  }
+
+  .resume-date {
+    position: absolute;
+    top: 30px;
+  }
+
+  .resume-links {
+    top: 0;
+    position: absolute;
+    right: 0;
+  }
+
+  .resume-date span {
+    display: inline;
+  }
+
+  .resume-date span:first-child::after {
+    content: ' — ';
+    display: inline;
+  }
+
+  .resume-stack {
+    text-align: left;
+    margin-top: 7px;
+    margin-left: -4px;
+    margin-bottom: 13px;
+  }
 }
