@@ -1,5 +1,9 @@
 generate static files:
   stage: build
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}-node
+    paths:
+      - node_modules/
   variables:
     PARCEL_WORKERS: 1
     NODE_ENV: production

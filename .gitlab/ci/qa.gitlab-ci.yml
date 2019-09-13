@@ -1,5 +1,9 @@
 spell check:
   stage: quality assurance
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}-node
+    paths:
+      - node_modules/
   before_script:
     - npm install
   script:
@@ -7,6 +11,10 @@ spell check:
 
 codestyle check:
   stage: quality assurance
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}-node
+    paths:
+      - node_modules/
   before_script:
     - npm install
   script:

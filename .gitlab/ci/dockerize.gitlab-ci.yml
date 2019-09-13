@@ -4,7 +4,6 @@ build docker image:
     - master
   stage: dockerize
   services: ["docker:dind"]
-  cache: {}
   before_script:
     - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
   script:

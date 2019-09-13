@@ -3,7 +3,6 @@ lighthouse:
   stage: metrics
   only:
     - master
-  cache: {}
   variables:
     PAGE_URL: https://$DOMAIN/ru
   before_script:
