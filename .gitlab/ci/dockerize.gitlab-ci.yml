@@ -1,0 +1,12 @@
+build docker image:
+  image: docker:latest
+  only:
+    - master
+  stage: dockerize
+  services: ["docker:dind"]
+  cache: {}
+  before_script:
+    - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE -f docker/Dockerfile .
+    - docker push $CI_REGISTRY_IMAGE

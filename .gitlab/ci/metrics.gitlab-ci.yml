@@ -1,0 +1,16 @@
+lighthouse:
+  image: markhobson/node-chrome
+  stage: metrics
+  only:
+    - master
+  cache: {}
+  variables:
+    PAGE_URL: https://$DOMAIN/ru
+  before_script:
+    - npm i -g lighthouse
+  script:
+    - lighthouse --chrome-flags="--headless --no-sandbox" $PAGE_URL --output html --output-path ./report.html
+  artifacts:
+    paths:
+      - ./report.html
+    expire_in: 1 week

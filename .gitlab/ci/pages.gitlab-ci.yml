@@ -1,0 +1,11 @@
+pages:
+  stage: upload metrics
+  image: alpine:latest
+  script:
+    - mkdir public
+    - mv report.html public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - master

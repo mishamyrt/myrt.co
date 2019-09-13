@@ -1,0 +1,13 @@
+spell check:
+  stage: quality assurance
+  before_script:
+    - npm install
+  script:
+    - npm run spell-check
+
+check codestyle:
+  stage: quality assurance
+  before_script:
+    - npm install
+  script:
+    - npm run lint
