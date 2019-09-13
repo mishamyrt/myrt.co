@@ -5,7 +5,7 @@ spell check:
     paths:
       - node_modules/
   before_script:
-    - npm install
+    - npm ci
   script:
     - npm run spell-check
 
@@ -16,7 +16,7 @@ codestyle check:
     paths:
       - node_modules/
   before_script:
-    - npm install
+    - npm ci
   script:
     - npm run lint
 
@@ -27,6 +27,6 @@ size check:
     paths:
       - node_modules/
   before_script:
-    - npm install
+    - npm ci
   script:
     - npm run size-check

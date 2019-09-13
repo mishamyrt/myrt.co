@@ -6,7 +6,7 @@ lighthouse:
   variables:
     PAGE_URL: https://$DOMAIN/ru
   before_script:
-    - npm i -g lighthouse
+    - npm install -g lighthouse
   script:
     - lighthouse --chrome-flags="--headless --no-sandbox" $PAGE_URL --output html --output-path ./lighthouse-report.html
   artifacts:
