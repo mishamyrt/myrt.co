@@ -39,5 +39,5 @@ readFile(path.join(__dirname, '..', 'HEAD'))
     commitFile,
     `${branchName.split('/')[1].trim()}: ${commitMsg.toString()}`
   ))
-  .then(() => process.exit(1))
+  .then(() => process.exit(0))
 
