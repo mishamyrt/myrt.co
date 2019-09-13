@@ -19,3 +19,14 @@ codestyle check:
     - npm install
   script:
     - npm run lint
+
+size check:
+  stage: quality assurance
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}-node
+    paths:
+      - node_modules/
+  before_script:
+    - npm install
+  script:
+    - npm run size-check

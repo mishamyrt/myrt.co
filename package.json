@@ -4,6 +4,7 @@
     "start": "npm run serve",
     "build": "node build.js",
     "serve": "npx parcel serve src/index.pug",
+    "size-check": "npx size-limit",
     "spell-check": "npx yaspeller dist/**/*.html",
     "lint": "npx stylelint \"src/**/*.css\"",
     "lint:fix": "npx stylelint \"src/**/*.css\" --fix"
@@ -101,13 +102,27 @@
     ]
   },
   "devDependencies": {
-    "pug": "^2.0.4",
-    "stylelint": "^10.1.0",
-    "stylelint-config-standard": "^18.3.0",
-    "yaspeller": "^6.0.0",
+    "@size-limit/preset-app": "^2.1.4",
     "cheerio": "^1.0.0-rc.3",
     "parcel-bundler": "^1.12.3",
+    "pug": "^2.0.4",
     "rimraf": "^3.0.0",
-    "typograf": "^6.8.2"
-  }
+    "size-limit": "^2.1.4",
+    "stylelint": "^10.1.0",
+    "stylelint-config-standard": "^18.3.0",
+    "typograf": "^6.8.2",
+    "yaspeller": "^6.0.0"
+  },
+  "size-limit": [
+    {
+      "name": "Critical",
+      "path": "dist/ru/index.html",
+      "limit": "4 KB"
+    },
+    {
+      "name": "Full",
+      "path": "dist/*.*",
+      "limit": "280 KB"
+    }
+  ]
 }
