@@ -26,6 +26,7 @@ const bundler = new Bundler(join(__dirname, 'src', 'index.pug'), {
     sourceMaps: false,
     watch: false,
     hmr: false,
+    logLevel: 3,
     detailedReport: true,
     outDir
 })
