@@ -16,6 +16,7 @@ stages:
   - build image
   - deploy
   - audit
+  - upload audit
 
 build site:
   stage: build site
@@ -70,6 +71,18 @@ lighthouse:
     paths:
       - ./report.html
     expire_in: 1 week
+
+pages:
+  stage: upload audit
+  image: alpine:latest
+  script:
+    - mkdir public
+    - mv report.html public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
 
 deploy:
   only:
