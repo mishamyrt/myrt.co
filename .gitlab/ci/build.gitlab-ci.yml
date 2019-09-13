@@ -1,7 +1,7 @@
 generate static files:
   stage: build
   cache:
-    key: ${CI_COMMIT_REF_SLUG}-node
+    key: ${CI_COMMIT_REF_SLUG}
     paths:
       - node_modules/
   variables:
