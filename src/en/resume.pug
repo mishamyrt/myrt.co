@@ -1,0 +1,175 @@
+doctype html
+html(lang='ru', itemtype='https://schema.org/Person', itemscope)
+  head
+    title Misha's Resume
+    meta(name='description', content='Resume of Mikahael Khrustik')
+    include ../head.pug
+  body
+    .resume
+      .resume-header
+        a.resume-backLink(href='./index.pug')
+          picture.resume-avatar
+          source(srcset='/photo/avatar.webp', type='image/webp')
+          img.resume-avatar(src='/photo/avatar.jpg', alt='Mikhael Khrustik photo', itemprop='image')
+        .resume-iam
+          a.resume-backLink(href='./index.pug')
+            h1.resume-heading Mikhael Khrustik
+          h2.resume-subheading Developer and designer
+        p.resume-contacts
+          | #[a(href='tel:+79992053133') +7 999 205–31–33] <br>
+          | #[a(href='mailto:misha@myrt.co') misha@myrt.co] <br>
+          | #[a(href='https://t.me/mishamyrt') @mishamyrt]
+      .resume-jobs
+        .resume-job
+          p.resume-date
+            span Feb 2019
+            span Today
+          .resume-content
+            h3.resume-position Frontlead at Tektosoft
+            p
+              | Supported and developed CRM-systems for cellular operator and railway company, HR-service for sailors, online coin shop and many other projects.
+            p
+              | Automated processes, prepared boilerplates for various stacks.
+            p
+              | Wrote Ansible playbook to automate deploying, covered the code with integration tests, taught the tester to write tests. Introduced quality checks of the frontend code in all the projects he participated in.
+            p
+              | Designed REST api and helped to make important technical decisions.
+            p
+              | Taught devops and developers how to work with GitLab CI.
+            p
+              | Conducting a code-review, explaining for the custom properties of CSS.
+            p
+              | Automated the work of Windows XP, which through RDP was connected to Windows 10, which through TeamViewer was connected to macOS.
+            p
+              | Made SSR for the Angular 8 app.
+          .resume-xtra
+            .resume-links
+              a.resume-link(href='https://tektosoft.ru/', itemprop='sameAs', rel='me') Tektosoft
+                include ../resume/icons/web.svg
+            .resume-stack
+              span.resume-technology Angular
+              span.resume-technology React
+              span.resume-technology Preact
+              span.resume-technology Docker
+              span.resume-technology Ansible
+              span.resume-technology GitLab CI
+              span.resume-technology Node.JS
+              span.resume-technology Vanilla ES6
+              span.resume-technology PHP
+              span.resume-technology Webpack
+              span.resume-technology Parcel
+              span.resume-technology Mocha
+              span.resume-technology Chai
+              span.resume-technology Puppeteer
+              span.resume-technology Jasmine
+              span.resume-technology Autohotkey
+        .resume-job
+          p.resume-date
+            span Jul 2018
+            span Feb 2019
+          .resume-content
+            h3.resume-position Frontend developer at BelVG
+            p
+              | Wrote backend parts for Magento 2 and Prestashop, made layout for different formats, languages, etc.
+            p
+              | Helped to update the client site with Prestashop 1.6 to 1.7 (basically rewriting 80% of the code), wrote a bank card configurator, fixed thousands of bugs on hundreds of sites.
+            p
+              | Didn't hesitate to offer solutions that didn't coincide with the company's usual stack.
+            p
+              | Written down the legacy stuff, introduced and optimized the collectors.
+          .resume-xtra
+            .resume-links
+              a.resume-link(href='http://belvg.com', itemprop='sameAs', rel='me') BelVG
+                include ../resume/icons/web.svg
+            .resume-stack
+              span.resume-technology PHP
+              span.resume-technology Twig
+              span.resume-technology Smarty
+              span.resume-technology Bootstrap
+              span.resume-technology Vanilla ES6
+              span.resume-technology Angular
+              span.resume-technology Node.JS
+              span.resume-technology jQuery
+              span.resume-technology Babel
+              span.resume-technology Gulp
+              span.resume-technology MySQL
+              span.resume-technology Webpack
+              span.resume-technology Knockout.JS
+        .resume-job
+          p.resume-date
+            span May 2017
+            span Mar 2018
+          .resume-content
+            h3.resume-position Teamlead and designer at Cifra
+            p
+              | Developed the logo, identity and website design.
+            p
+              | Runs an updated version of the site. The whole frontend was rewritten from scratch.
+            p
+              | Introduced automatic tests and deploy into the project.
+            p
+              | Supervised the work of the programmers and designers staff.
+            p
+              | Was engaged in architecture building, conducting reviews, writing code for the front and back parts.
+
+          .resume-xtra
+            .resume-links
+              a.resume-link(href='https://cifra.in', itemprop='sameAs', rel='me') Cifra
+                include ../resume/icons/web.svg
+            .resume-stack
+              span.resume-technology PHP
+              span.resume-technology Smarty
+              span.resume-technology Vanilla ES6
+              span.resume-technology Babel
+              span.resume-technology Rollup
+              span.resume-technology PostCSS
+              span.resume-technology Gulp
+        .resume-job
+          p.resume-date
+            span Sep 2016
+            span May 2017
+          .resume-content
+            h3.resume-position Developer, designer and techlead at CMT
+            p
+              | Designed, designed, and launched a new version of the site on a handwritten engine. Made a powerful dynamic admin, which allows you to conveniently write articles for editors
+            p
+              | Designed and built the microservice architecture. Conducted interviews, assembled the team.
+            p
+              | Wrote and executed publishing standards.
+          .resume-xtra
+            .resume-links
+              a.resume-link(href='https://cmtscience.ru', itemprop='sameAs', rel='me') CMT
+                include ../resume/icons/web.svg
+            .resume-stack
+              span.resume-technology PHP
+              span.resume-technology Twig
+              span.resume-technology Vanilla ES6
+              span.resume-technology Vue
+              span.resume-technology Node
+              span.resume-technology Express
+              span.resume-technology Rollup
+              span.resume-technology PostCSS
+              span.resume-technology Gulp
+        .resume-job
+          p.resume-date
+            span Jun 2016
+            span Aug 2016
+          .resume-content
+            h3.resume-position Fullstack developer at EFO
+            p
+              | Created internal project sites, automated routine tasks for managers, maintained and rewritten the old site.
+            p
+              | Designed, wrote and launched a complex, configurable search engine by company product.
+          .resume-xtra
+            .resume-links
+              a.resume-link(href='https://efo.ru/', itemprop='sameAs', rel='me') EFO
+                include ../resume/icons/web.svg
+            .resume-stack
+              span.resume-technology PHP
+              span.resume-technology Laravel
+              span.resume-technology Twig
+              span.resume-technology Smarty
+              span.resume-technology jQuery
+              span.resume-technology Perl
+              span.resume-technology Java
+              span.resume-technology Bootstrap
