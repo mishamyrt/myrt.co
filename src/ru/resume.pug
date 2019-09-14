@@ -7,11 +7,13 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
   body
     .resume
       .resume-header
-        picture.resume-avatar
+        a.resume-backLink(href="./index.pug")
+          picture.resume-avatar
           source( srcset="/photo/avatar.webp" type="image/webp" )
           img.resume-avatar( src="/photo/avatar.jpg" alt="Фотография Миши Хрустика" itemprop="image")
         .resume-iam
-          h1.resume-heading Михаил Хрустик
+          a.resume-backLink(href="./index.pug")
+            h1.resume-heading Михаил Хрустик
           h2.resume-subheading Веб–разработчик и дизайнер
         p.resume-contacts
           | #[a( href='tel:+79992053133' ) +7 999 205–31–33] <br>
