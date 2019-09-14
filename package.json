@@ -28,6 +28,9 @@
       "stylelint-config-standard"
     ]
   },
+  "pugLintConfig": {
+    "extends": "clock"
+  },
   "yaspeller": {
     "ignoreCapitalization": true,
     "dictionary": [
@@ -132,5 +135,9 @@
       ],
       "limit": "120 KB"
     }
-  ]
+  ],
+  "devDependencies": {
+    "pug-lint": "^2.6.0",
+    "pug-lint-config-clock": "^2.0.0"
+  }
 }
