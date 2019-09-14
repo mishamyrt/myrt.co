@@ -9,7 +9,7 @@
     "serve": "npx parcel serve src/index.pug",
     "size-check": "npx size-limit",
     "spell-check": "npx yaspeller dist/**/*.html",
-    "lint": "npx stylelint \"src/**/*.css\"",
+    "lint": "npx stylelint \"src/**/*.css\" && npx pug-lint src/",
     "lint:fix": "npx stylelint \"src/**/*.css\" --fix",
     "postinstall": "chmod +x .hooks/* && cp -r .hooks/ .git/hooks/"
   },
@@ -27,6 +27,9 @@
     "extends": [
       "stylelint-config-standard"
     ]
+  },
+  "pugLintConfig": {
+    "extends": "clock"
   },
   "yaspeller": {
     "ignoreCapitalization": true,
@@ -132,5 +135,9 @@
       ],
       "limit": "120 KB"
     }
-  ]
+  ],
+  "devDependencies": {
+    "pug-lint": "^2.6.0",
+    "pug-lint-config-clock": "^2.0.0"
+  }
 }
