@@ -1,24 +1,24 @@
 doctype html
-html( lang="ru" itemtype="https://schema.org/Person" itemscope )
+html(lang='ru', itemtype='https://schema.org/Person', itemscope)
   head
     title Резюме Миши
-    meta( name="description" content="Резюме Миши Хрустика" )
+    meta(name='description', content='Резюме Миши Хрустика')
     include ../head.pug
   body
     .resume
       .resume-header
-        a.resume-backLink(href="./index.pug")
+        a.resume-backLink(href='./index.pug')
           picture.resume-avatar
-          source( srcset="/photo/avatar.webp" type="image/webp" )
-          img.resume-avatar( src="/photo/avatar.jpg" alt="Фотография Миши Хрустика" itemprop="image")
+          source(srcset='/photo/avatar.webp', type='image/webp')
+          img.resume-avatar(src='/photo/avatar.jpg', alt='Фотография Миши Хрустика', itemprop='image')
         .resume-iam
-          a.resume-backLink(href="./index.pug")
+          a.resume-backLink(href='./index.pug')
             h1.resume-heading Михаил Хрустик
           h2.resume-subheading Веб–разработчик и дизайнер
         p.resume-contacts
-          | #[a( href='tel:+79992053133' ) +7 999 205–31–33] <br>
-          | #[a( href='mailto:misha@myrt.co' ) misha@myrt.co] <br>
-          | #[a( href='https://t.me/mishamyrt' ) @mishamyrt]
+          | #[a(href='tel:+79992053133') +7 999 205–31–33] <br>
+          | #[a(href='mailto:misha@myrt.co') misha@myrt.co] <br>
+          | #[a(href='https://t.me/mishamyrt') @mishamyrt]
       .resume-jobs
         .resume-job
           p.resume-date
@@ -44,7 +44,7 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
               | Делал SSR для сайта на Angular 8.
           .resume-xtra
             .resume-links
-              a.resume-link(href="https://tektosoft.ru/" itemprop="sameAs" rel="me") Тектософт
+              a.resume-link(href='https://tektosoft.ru/', itemprop='sameAs', rel='me') Тектософт
                 include ../resume/icons/web.svg
             .resume-stack
               span.resume-technology Angular
@@ -79,7 +79,7 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
               | Переписывал легаси, внедрял и оптимизировал сборщики.
           .resume-xtra
             .resume-links
-              a.resume-link(href="http://belvg.com" itemprop="sameAs" rel="me") БелВГ
+              a.resume-link(href='http://belvg.com', itemprop='sameAs', rel='me') БелВГ
                 include ../resume/icons/web.svg
             .resume-stack
               span.resume-technology PHP
@@ -114,7 +114,7 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
 
           .resume-xtra
             .resume-links
-              a.resume-link(href="https://cifra.in" itemprop="sameAs" rel="me") Цифра
+              a.resume-link(href='https://cifra.in', itemprop='sameAs', rel='me') Цифра
                 include ../resume/icons/web.svg
             .resume-stack
               span.resume-technology PHP
@@ -138,7 +138,7 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
               | Написал и оформил редполитику.
           .resume-xtra
             .resume-links
-              a.resume-link(href="https://cmtscience.ru" itemprop="sameAs" rel="me") CMT
+              a.resume-link(href='https://cmtscience.ru', itemprop='sameAs', rel='me') CMT
                 include ../resume/icons/web.svg
             .resume-stack
               span.resume-technology PHP
@@ -162,7 +162,7 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
               | Проектировал, писал и запускал сложный конфигурируемый поисковик по продуктам компании.
           .resume-xtra
             .resume-links
-              a.resume-link(href="https://efo.ru/" itemprop="sameAs" rel="me") ЭФО
+              a.resume-link(href='https://efo.ru/', itemprop='sameAs', rel='me') ЭФО
                 include ../resume/icons/web.svg
             .resume-stack
               span.resume-technology PHP
@@ -173,8 +173,3 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
               span.resume-technology Perl
               span.resume-technology Java
               span.resume-technology Bootstrap
-
-
-
-
-
