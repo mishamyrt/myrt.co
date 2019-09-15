@@ -1,19 +1,19 @@
 ### Added
 
-- Cool CI feature.
-- New page.
+-   Cool CI feature.
+-   New page.
 
 ### Changed
 
-- Better colours
+-   Better colours
 
 ### Fixed
 
-- Bug with links
+-   Bug with links
 
 ### Removed
 
-- Some crap
+-   Some crap
 
 /assign @mishamyrt
 /merge
