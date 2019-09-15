@@ -2,6 +2,8 @@
   image: docker:latest
   cache: {}
   stage: dockerize
+  tags:
+    - docker
   services: ["docker:dind"]
   before_script:
     - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
