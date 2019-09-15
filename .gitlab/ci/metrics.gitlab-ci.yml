@@ -2,9 +2,8 @@ lighthouse:
   image: markhobson/node-chrome
   cache: {}
   stage: metrics
-  # only:
-  #   - master
-  #   - tags
+  only:
+    - master
   variables:
     PAGE_URL: https://$DOMAIN/en/
   before_script:
@@ -19,9 +18,8 @@ lighthouse:
 sitespeed.io:
   image: docker:git
   cache: {}
-  # only:
-  #   - master
-  #   - tags
+  only:
+    - master
   stage: metrics
   variables:
     URL: https://$DOMAIN/en/
