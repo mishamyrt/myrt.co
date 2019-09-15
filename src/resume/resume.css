@@ -135,7 +135,7 @@ a.resume-link:hover::after {
 
   .resume-heading {
     font-size: 35px;
-    margin: 25px 0 10px;
+    margin: 14px 0 10px;
     line-height: 41px;
   }
 
@@ -148,6 +148,11 @@ a.resume-link:hover::after {
     align-self: center;
     max-width: 100px;
     max-height: 100px;
+  }
+
+  .resume-backLink {
+    align-self: center;
+    margin-top: 6px;
   }
 
   .resume {
