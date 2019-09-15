@@ -13,6 +13,7 @@
       docker_container:
         name: "myrt-co"
         image: "{{ IMAGE_NAME }}"
+        version: "{{ IMAGE_VERSION }}"
         recreate: "yes"
         restart_policy: "always"
         pull: "yes"
