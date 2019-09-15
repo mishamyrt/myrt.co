@@ -1,8 +1,6 @@
-build docker image:
+.build image:
   image: docker:latest
   cache: {}
-  only:
-    - master
   stage: dockerize
   services: ["docker:dind"]
   before_script:
@@ -10,3 +8,18 @@ build docker image:
   script:
     - docker build -t $CI_REGISTRY_IMAGE -f docker/Dockerfile .
     - docker push $CI_REGISTRY_IMAGE
+
+build docker image:
+  extends: .build image
+  only:
+    - master
+
+build backup docker image:
+  extends: .build image
+  variables:
+    BUILD_VERSION: $CI_COMMIT_REF_NAME
+  only:
+    - tags
+
+
+
