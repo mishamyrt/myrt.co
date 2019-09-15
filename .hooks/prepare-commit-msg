@@ -15,6 +15,8 @@ function checkBranchName (branchName) {
     case 'hotfix':
     case 'support':
     case 'release':
+    case 'develop':
+    case 'master':
       return true
     default:
       return false

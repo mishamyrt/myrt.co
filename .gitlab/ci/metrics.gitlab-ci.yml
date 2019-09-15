@@ -5,7 +5,7 @@ lighthouse:
   only:
     - master
   variables:
-    PAGE_URL: https://$DOMAIN/ru
+    PAGE_URL: https://$DOMAIN/ru/
   before_script:
     - npm install -g lighthouse
   script:

@@ -48,9 +48,7 @@ function improveHtml (filePath) {
 
 bundler.on('bundled', () => {
   let files
-  return readFile(indexPath)
-    .then((html) => writeFile(join(outDir, 'ru', 'index.html'), html))
-    .then(() => unlink(indexPath))
+  return unlink(indexPath)
     .then(() => readDir(join(outDir, 'ru')))
     .then((result) => (files = result))
     .then(() => {
