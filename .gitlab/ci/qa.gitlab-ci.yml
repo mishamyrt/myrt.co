@@ -13,6 +13,7 @@ codestyle check:
     - npm run lint
 
 size check:
+  image: buildkite/puppeteer
   stage: quality assurance
   before_script:
     - npm ci

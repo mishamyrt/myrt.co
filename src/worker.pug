@@ -1,0 +1,10 @@
+script.
+  if('serviceWorker' in navigator) {
+    navigator.serviceWorker
+            .register('/worker.js')
+  }
+  const colorTag = document.querySelector('meta[name="theme-color"]')
+  window.matchMedia('(prefers-color-scheme: dark)').addListener(event => {
+    if (event.matches) colorTag.content = '#121212'
+    else colorTag.content = '#fff'
+  })

@@ -1,16 +1,15 @@
 {
   "name": "myrt.co",
   "version": "1.0.0",
-  "main": "build.js",
   "private": true,
   "scripts": {
     "start": "npm run serve",
-    "build": "export NODE_ENV=production && node build.js",
+    "build": "rm -rf dist/ && export NODE_ENV=production && node build.js",
     "serve": "npx parcel serve src/index.pug",
     "size-check": "npx size-limit",
     "spell-check": "npx yaspeller dist/**/*.html",
-    "lint": "npx stylelint \"src/**/*.css\" && npx pug-lint src/",
-    "lint:fix": "npx stylelint \"src/**/*.css\" --fix",
+    "lint": "npx stylelint \"src/**/*.scss\" && npx pug-lint src/ && npx remark .gitlab/**/*.md && npx remark *.md",
+    "lint:fix": "npx stylelint \"src/**/*.scss\" --fix",
     "postinstall": "chmod +x .hooks/* && cp -r .hooks/ .git/hooks/"
   },
   "repository": {
@@ -129,12 +128,14 @@
     "cheerio": "^1.0.0-rc.3",
     "parcel-bundler": "^1.12.3",
     "pug": "^2.0.4",
-    "rimraf": "^3.0.0",
     "size-limit": "^2.1.4",
     "stylelint": "^10.1.0",
     "stylelint-config-standard": "^18.3.0",
     "typograf": "^6.8.2",
     "yaspeller": "^6.0.0"
+  },
+  "remarkConfig": {
+    "plugins": ["remark-preset-lint-recommended"]
   },
   "size-limit": [
     {
@@ -145,15 +146,21 @@
     {
       "name": "Full",
       "path": [
-        "dist/*.webp",
-        "dist/*.png",
-        "dist/*.woff2"
+        "dist/avatar.*.webp",
+        "dist/favicon-32*.png",
+        "dist/*.css",
+        "dist/*.woff2",
+        "dist/*.js"
       ],
       "limit": "120 KB"
     }
   ],
   "devDependencies": {
     "pug-lint": "^2.6.0",
-    "pug-lint-config-clock": "^2.0.0"
+    "pug-lint-config-clock": "^2.0.0",
+    "remark-cli": "^7.0.0",
+    "remark-lint": "^6.0.5",
+    "remark-preset-lint-recommended": "^3.0.3",
+    "sass": "^1.22.12"
   }
 }

@@ -1,12 +1,27 @@
-build docker image:
+.build image:
   image: docker:latest
   cache: {}
-  only:
-    - master
   stage: dockerize
+  tags:
+    - docker
   services: ["docker:dind"]
   before_script:
     - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
   script:
-    - docker build -t $CI_REGISTRY_IMAGE -f docker/Dockerfile .
+    - docker build -t $CI_REGISTRY_IMAGE:$BUILD_VERSION -f docker/Dockerfile .
     - docker push $CI_REGISTRY_IMAGE
+
+build docker image:
+  extends: .build image
+  only:
+    - master
+
+build backup docker image:
+  extends: .build image
+  variables:
+    BUILD_VERSION: $CI_COMMIT_REF_NAME
+  only:
+    - tags
+
+
+
