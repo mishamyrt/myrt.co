@@ -3,7 +3,7 @@ image: node:lts-alpine
 variables:
   DOCKER_DRIVER: overlay
   DOMAIN: "myrt.co"
-  BUILD_VERSION: $CI_PIPELINE_ID
+  BUILD_VERSION: latest
 
 cache:
   key: $CI_COMMIT_REF_NAME
