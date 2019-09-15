@@ -1,0 +1,70 @@
+@media print {
+  :root {
+    --color-gray: #808080;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 24px;
+    margin: 10px 0 16px;
+    color: black;
+  }
+
+  .resume {
+    max-width: unset;
+
+    &-position {
+      font-size: 14px;
+      margin: 7px 0 21px;
+    }
+
+    &-content,
+    &-xtra {
+      grid-column: 2/4;
+    }
+
+    &-links {
+      display: none;
+    }
+
+    &-technology {
+      font-size: 9px;
+      background-color: transparent;
+      color: var(--color-gray);
+    }
+
+    &-stack {
+      text-align: left;
+      margin: -13px 0 0 -4px;
+    }
+
+    &-job {
+      margin-top: 24px;
+    }
+
+    &-subheading {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    &-header,
+    &-job {
+      grid-gap: 15px;
+      grid-template-columns: 92px 5fr minmax(190px, 1fr);
+    }
+
+    &-heading {
+      font-size: 42px;
+      margin: 6px 0 -2px -1px;
+    }
+
+    &-jobs {
+      margin-top: 22px;
+    }
+
+    &-avatar {
+      max-width: 87px;
+      max-height: 87px;
+    }
+  }
+}
