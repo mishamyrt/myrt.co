@@ -1,7 +1,6 @@
 {
   "name": "myrt.co",
   "version": "1.0.0",
-  "main": "build.js",
   "private": true,
   "scripts": {
     "start": "npm run serve",
