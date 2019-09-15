@@ -1,0 +1,51 @@
+doctype html
+html(lang='ru', itemtype='https://schema.org/Person', itemscope)
+  head
+    title Misha
+    meta(name='description', content='Contacts and projects of Mikhael Khrustik')
+    include ../head.pug
+  body
+    .hero
+      .hero-header
+        h1.hero-heading Let's make<br> cool stuff
+        picture.hero-avatar
+          source(srcset='/photo/avatar@2x.webp 2x, /photo/avatar.webp', type='image/webp')
+          img.hero-avatar(src='/photo/avatar.jpg', srcset='/photo/avatar@2x.jpg 2x, /photo/avatar.jpg', alt='Mikhael Khrustik photo', itemprop='image')
+      .hero-content
+        p
+          | Hi, my name is
+          | #[span(itemprop='givenName') Mikhael]
+          | #[span(itemprop='familyName') Khrustik],
+          |  I'm a frontlead and developer at
+          | #[a(href='https://tektosoft.ru/') Tektosoft].
+          | I live in St. Petersburg.
+        p
+          | Before that, I worked at #[a(href='https://belvg.com') BelVG],
+          | #[a(href='https://cmtscience.ru/') CMT],
+          | #[a(href='https://cifra.in/') Cifra] and
+          | #[a(href='https://efo.ru/') EFO].
+          | Was in charge of projects for #[a(href='https://latona.pro/') Latona],
+          | #[a(href='http://neochemicals.ru/') Neochemicals]
+          | и #[a(href='https://chtk.ru/') CHTK]
+        p
+          | Drawing design, do layout, automating everything.
+          | I like to take on difficult tasks that others would prefer to abandon.
+        p.hero-footer
+          | More information in #[a(href='/en/resume.pug') resume]. <br>
+          | Write offers to the email:
+          | #[a(href='mailto:misha@myrt.co', itemprop='email') misha@myrt.co], <br>
+          | or Telegram: #[a(href='https://t.me/mishamyrt', itemprop='sameAs', rel='me') @mishamyrt]. <br>
+          | Ещё я говорю #[a(href='/ru/index.pug') на русском языке].
+        .hero-icons
+          a.hero-icon(href='https://www.instagram.com/mishamyrt/', itemprop='sameAs', rel='me')
+            | Instagram
+            include ../hero/icons/instagram.svg
+          a.hero-icon(href='https://t.me/mishamyrt', itemprop='sameAs', rel='me')
+            | Telegram
+            include ../hero/icons/telegram.svg
+          a.hero-icon(href='https://gitlab.com/mishamyrt', itemprop='sameAs', rel='me')
+            | GitLab
+            include ../hero/icons/gitlab.svg
+          a.hero-icon(href='https://github.com/mishamyrt', itemprop='sameAs', rel='me')
+            | GitHub
+            include ../hero/icons/github.svg
