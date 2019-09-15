@@ -2,6 +2,7 @@
   font-family: 'GraphikLCG';
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
   src:
     url("./GraphikLCG-Semibold.woff2") format("woff2"),
     url("./GraphikLCG-Semibold.woff") format("woff");
@@ -11,12 +12,13 @@
   font-family: 'IBMPlexMono';
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
   src:
     url("./IBMPlexMono-Regular.woff2") format("woff2"),
     url("./IBMPlexMono-Regular.woff") format("woff");
 }
 
 :root {
-  --font-monospace: 'IBMPlexMono';
-  --font-sans: 'GraphikLCG';
+  --font-monospace: 'IBMPlexMono', monospace;
+  --font-sans: 'GraphikLCG', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
