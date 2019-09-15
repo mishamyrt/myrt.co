@@ -8,15 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Build tagged commits
-- Service worker
-- Web Manifest
-- Font swap logic
-- Dynamic `theme-color`
+- Build tagged commits.
+- Service worker.
+- Web Manifest.
+- Font swap logic.
+- Dynamic `theme-color`.
 
 ### Changed
 
-- CSS transormed to SCSS
+- CSS transormed to SCSS.
 
 ## [1.1] — 2019-09-15
 
