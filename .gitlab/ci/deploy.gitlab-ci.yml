@@ -34,5 +34,5 @@ manual deploy to myrt.co:
     - tags
   when: "manual"
   variables:
-    IMAGE_VERSION: $CI_COMMIT_REF_NAME
+    BUILD_VERSION: $CI_COMMIT_REF_NAME
   extends: .deploy
