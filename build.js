@@ -5,7 +5,6 @@ const { promisify } = require('util')
 const Bundler = require('parcel-bundler')
 const Typograf = require('typograf')
 
-const rimram = promisify(require('rimraf'))
 const readDir = promisify(fs.readdir)
 const readFile = promisify(fs.readFile)
 const writeFile = promisify(fs.writeFile)
@@ -76,6 +75,5 @@ bundler.on('bundled', () => {
     .then(() => process.exit(0))
 })
 
-rimram(outDir)
-  .then(() => bundler.bundle())
+bundler.bundle()
 
