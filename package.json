@@ -8,7 +8,7 @@
     "serve": "npx parcel serve src/index.pug",
     "size-check": "npx size-limit",
     "spell-check": "npx yaspeller dist/**/*.html",
-    "lint": "npx stylelint \"src/**/*.scss\" && npx pug-lint src/",
+    "lint": "npx stylelint \"src/**/*.scss\" && npx pug-lint src/ && npx remark .gitlab/**/*.md && npx remark *.md",
     "lint:fix": "npx stylelint \"src/**/*.scss\" --fix",
     "postinstall": "chmod +x .hooks/* && cp -r .hooks/ .git/hooks/"
   },
