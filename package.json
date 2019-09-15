@@ -144,9 +144,11 @@
     {
       "name": "Full",
       "path": [
-        "dist/*.webp",
-        "dist/*.png",
-        "dist/*.woff2"
+        "dist/avatar.*.webp",
+        "dist/favicon-32*.png",
+        "dist/*.css",
+        "dist/*.woff2",
+        "dist/*.js"
       ],
       "limit": "120 KB"
     }
