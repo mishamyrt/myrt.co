@@ -16,7 +16,7 @@ lighthouse:
       - ./lighthouse-report.html
     expire_in: 1 week
 
-performance:
+sitespeed.io:
   image: docker:git
   cache: {}
   # only:
