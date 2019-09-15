@@ -21,7 +21,7 @@
 
 .resume-position {
   font-size: 19px;
-  line-height: 11px;
+  line-height: 30px;
   margin: 20px 0 40px;
 }
 
@@ -135,7 +135,7 @@ a.resume-link:hover::after {
 
   .resume-heading {
     font-size: 35px;
-    margin: 25px 0 10px;
+    margin: 14px 0 10px;
     line-height: 41px;
   }
 
@@ -150,11 +150,17 @@ a.resume-link:hover::after {
     max-height: 100px;
   }
 
+  .resume-backLink {
+    align-self: center;
+    margin-top: 6px;
+  }
+
   .resume {
     margin: 15px auto 37px;
   }
 
   .resume-job {
+    margin-top: 52px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -166,11 +172,16 @@ a.resume-link:hover::after {
 
   .resume-date {
     position: absolute;
-    top: 30px;
+    font-size: 14px;
+    top: -19px;
+  }
+
+  .resume-position {
+    margin: 20px 0 29px;
   }
 
   .resume-links {
-    top: 0;
+    top: -21px;
     position: absolute;
     right: 0;
   }
