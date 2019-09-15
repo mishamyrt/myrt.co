@@ -1,19 +1,20 @@
-const PRECACHE = 'precache-v1';
+const PRECACHE = 'precache-v2';
 const RUNTIME = 'runtime';
 
 const PRECACHE_URLS = [
-  '/ru/',
+  '/en/resume',
   '/ru/resume',
   '/en/',
-  '/ru/resume'
+  '/ru/'
 ];
 
-// The install handler takes care of precaching the resources we always need.
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(PRECACHE)
       .then(cache => cache.addAll(PRECACHE_URLS))
-      .then(self.skipWaiting())
+      .catch((err) => {
+        console.log(err)
+      })
   );
 });
 
