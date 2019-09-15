@@ -42,22 +42,33 @@ function improveHtml (filePath) {
       })
       return $.html()
     })
+    .then((html) => (html = html.replace(/index\.html/g, '')))
     .then((html) => (html = html.replace(/\.html/g, '')))
     .then((html) => writeFile(filePath, html))
+}
+
+function getHtmlFiles () {
+  return Promise.all([
+    readDir(join(outDir, 'ru')),
+    readDir(join(outDir, 'en')),
+  ]).then((files) => {
+    const filePaths = []
+    files[0].forEach((file) => filePaths.push(join(outDir, 'ru', file)))
+    files[1].forEach((file) => filePaths.push(join(outDir, 'en', file)))
+    return filePaths
+  })
 }
 
 bundler.on('bundled', () => {
   let files
   return unlink(indexPath)
-    .then(() => readDir(join(outDir, 'ru')))
+    .then(() => getHtmlFiles())
     .then((result) => (files = result))
     .then(() => {
       const stack = []
       for (const file of files) {
         if (file.includes('.html')) {
-          stack.push(
-            improveHtml(join(outDir, 'ru', file))
-          )
+          stack.push(improveHtml(file))
         }
       }
       return Promise.all(stack)
