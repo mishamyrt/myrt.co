@@ -4,6 +4,7 @@ lighthouse:
   stage: metrics
   only:
     - master
+    - tags
   variables:
     PAGE_URL: https://$DOMAIN/en/
   before_script:
