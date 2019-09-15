@@ -7,8 +7,9 @@ pages:
       # Google Lighthouse report
     - mkdir public/lighthouse
     - mv lighthouse-report.html public/lighthouse/index.html
+    - mv sitespeed-results/ public/sitespeed-results
   artifacts:
     paths:
       - public
-  only:
-    - master
+  # only:
+  #   - master
