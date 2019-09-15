@@ -17,7 +17,7 @@
   &-position {
     font-size: 19px;
     line-height: 30px;
-    margin: 20px 0 40px;
+    margin: 11px 0 29px;
   }
 
   &-links {
@@ -127,6 +127,10 @@
   .resume {
     margin: 15px auto 37px;
 
+    &-position {
+      margin: 20px 0 29px;
+    }
+
     &-header {
       display: flex;
       flex-direction: column;
@@ -178,10 +182,6 @@
           display: inline;
         }
       }
-    }
-
-    &-position {
-      margin: 20px 0 29px;
     }
 
     &-links {
