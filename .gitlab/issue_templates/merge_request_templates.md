@@ -16,3 +16,7 @@
 ### Removed
 
 - Some crap
+
+/assign @mishamyrt
+/merge
+/title <Release 1.0>
