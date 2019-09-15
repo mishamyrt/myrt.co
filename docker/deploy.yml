@@ -12,7 +12,8 @@
     - name: "Recreate Docker image"
       docker_container:
         name: "myrt-co"
-        image: "{{ IMAGE_NAME }}:{{ IMAGE_VERSION }}"
+        image: "{{ IMAGE_NAME }}"
+        tag: "{{ IMAGE_VERSION }}"
         recreate: "yes"
         restart_policy: "always"
         pull: "yes"
