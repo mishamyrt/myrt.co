@@ -1,5 +1,3 @@
-## 1.0 — Key feauture
-
 ### Added
 
 - Cool CI feature.
@@ -19,4 +17,4 @@
 
 /assign @mishamyrt
 /merge
-/title <Release 1.0>
+/title Release 1.0
