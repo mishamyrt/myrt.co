@@ -1,4 +1,4 @@
-lighthouse:
+censor:
   image: mishamyrt/censor
   cache: {}
   stage: review
