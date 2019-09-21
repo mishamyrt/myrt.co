@@ -1,0 +1,9 @@
+lighthouse:
+  image: mishamyrt/censor
+  cache: {}
+  stage: review
+  only:
+    - merge_requests
+  script:
+    - censor
+
