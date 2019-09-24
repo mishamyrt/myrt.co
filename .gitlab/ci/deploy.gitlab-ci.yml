@@ -1,5 +1,5 @@
 .deploy:
-  image: pwinik/ansible
+  image: tektosoft/ansible
   stage: deploy
   cache: {}
   environment:
