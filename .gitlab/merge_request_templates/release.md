@@ -16,5 +16,5 @@
 -   Some crap
 
 /assign @mishamyrt
-/merge
+/label ~release
 /title Release 1.0
