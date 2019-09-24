@@ -126,6 +126,7 @@
     ]
   },
   "dependencies": {
+    "@ibm/plex": "^2.0.0",
     "@size-limit/preset-app": "^2.1.4",
     "cheerio": "^1.0.0-rc.3",
     "parcel-bundler": "^1.12.3",
@@ -137,7 +138,9 @@
     "yaspeller": "^6.0.0"
   },
   "remarkConfig": {
-    "plugins": ["remark-preset-lint-recommended"]
+    "plugins": [
+      "remark-preset-lint-recommended"
+    ]
   },
   "size-limit": [
     {
