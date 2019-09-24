@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog][],
 and this project adheres to [Semantic Versioning][].
 
-## [1.2][] — 2019-09-15
+## [1.2.0][] — 2019-09-15
 
 ### Added
 
@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning][].
 
 -   CSS transormed to SCSS.
 
-## [1.1][] — 2019-09-15
+## [1.1.0][] — 2019-09-15
 
 ### Added
 
@@ -28,7 +28,7 @@ and this project adheres to [Semantic Versioning][].
 -   16×16 favicon.
 -   Nginx language redirect.
 
-## [1.0][] - 2019-09-14
+## [1.0.0][] - 2019-09-14
 
 ### Added
 
@@ -44,8 +44,8 @@ and this project adheres to [Semantic Versioning][].
 
 [semantic versioning]: https://semver.org/spec/v2.0.0.html
 
-[1.0]: https://gitlab.com/mishamyrt/myrt.co/tree/v1.1
+[1.0]: https://gitlab.com/mishamyrt/myrt.co/tree/v1.0.0
 
-[1.1]: https://gitlab.com/mishamyrt/myrt.co/tree/v1.0
+[1.1]: https://gitlab.com/mishamyrt/myrt.co/tree/v1.1.0
 
-[1.2]: https://gitlab.com/mishamyrt/myrt.co/tree/v1.2
+[1.2]: https://gitlab.com/mishamyrt/myrt.co/tree/v1.2.0
