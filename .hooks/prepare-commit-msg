@@ -8,20 +8,19 @@ const writeFile = promisify(fs.writeFile)
 
 const commitFile = path.join(__dirname, '..', 'COMMIT_EDITMSG')
 
+const allowedBranches = [
+  'feature',
+  'hotfix',
+  'support',
+  'release',
+  'bugfix',
+  'develop',
+  'master'
+]
+
 function checkBranchName (branchName) {
   if (!branchName.includes('/')) return false
-  switch (branchName.split('/')[0]) {
-    case 'feature':
-    case 'hotfix':
-    case 'support':
-    case 'release':
-    case 'bugfix':
-    case 'develop':
-    case 'master':
-      return true
-    default:
-      return false
-  }
+  return allowedBranches.includes(branchName.split('/')[0])
 }
 
 let branchName
