@@ -1,5 +1,5 @@
 censor:
-  image: mishamyrt/censor
+  image: tektosoft/censor
   cache: {}
   stage: review
   only:
