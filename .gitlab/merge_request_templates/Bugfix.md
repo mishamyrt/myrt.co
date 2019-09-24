@@ -10,5 +10,6 @@ Use cases for the feature.
 
 What was caused and what to do to prevent it from happening again.
 
+/assign @mishamyrt
 /title Bugfix: name
 /label ~bugfix
