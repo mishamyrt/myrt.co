@@ -1,4 +1,5 @@
 censor:
+  extends: .only_merge_request
   image: tektosoft/censor
   cache: {}
   stage: review

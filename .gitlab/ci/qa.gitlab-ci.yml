@@ -1,4 +1,5 @@
 spell check:
+  extends: .regular_job
   stage: quality assurance
   before_script:
     - npm ci
@@ -6,6 +7,7 @@ spell check:
     - npm run spell-check
 
 codestyle check:
+  extends: .regular_job
   stage: quality assurance
   before_script:
     - npm ci
@@ -13,6 +15,7 @@ codestyle check:
     - npm run lint
 
 size check:
+  extends: .regular_job
   image: buildkite/puppeteer
   stage: quality assurance
   before_script:
