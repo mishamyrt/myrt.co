@@ -1,5 +1,5 @@
 {
   "rules": {
-    "jira": false
+    "jira_task": false
   }
 }
