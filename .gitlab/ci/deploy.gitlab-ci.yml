@@ -38,7 +38,5 @@ manual deploy to myrt.co:
   extends: .deploy
 
 manual deploy to myrt.co:
-  only:
-    - develop
   when: "manual"
   extends: .deploy

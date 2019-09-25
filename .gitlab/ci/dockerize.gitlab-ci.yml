@@ -25,6 +25,4 @@ build backup docker image:
 
 build latest docker image:
   extends: .build image
-  only:
-    - develop
 
