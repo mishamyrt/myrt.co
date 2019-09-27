@@ -20,4 +20,4 @@
           - "443:443"
           - "80:80"
         volumes:
-          - "/etc/letsencrypt/live/myrt.co/:/etc/ssl"
+          - "/etc/letsencrypt/:/etc/letsencrypt/"
