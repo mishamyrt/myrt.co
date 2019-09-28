@@ -9,8 +9,11 @@ and this project adheres to [Semantic Versioning][].
 
 ### Added
 
+-   HTML minification.
+
+### Fixed
+
 -   HTTP2 push.
--   Added HTML minification.
 
 ## [1.3.0][] — 2019-09-24
 
