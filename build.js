@@ -1,4 +1,4 @@
-const { join } = require('path')
+const { join, extname } = require('path')
 const fs = require('fs')
 const cheerio = require('cheerio')
 const { promisify } = require('util')
@@ -65,6 +65,29 @@ function getHtmlFiles() {
   })
 }
 
+const buildNginxConfig = () => {
+  let cssName
+  let plexMonoName
+  let plexSansName
+  return readDir(join(__dirname, 'dist'))
+    .then((files) => {
+      files.forEach((file) => {
+        if (extname(file) === '.css') cssName = file
+        else if (/IBMPlexMono.*\.woff2/.test(file)) plexMonoName = file
+        else if (/IBMPlexSans.*\.woff2/.test(file)) plexSansName = file
+      })
+    })
+    .then(() => readFile(join(__dirname, 'docker', 'nginx.conf.dist')))
+    .then((config) => {
+      let configString = config.toString()
+      configString = configString.replace(/{{style}}/, cssName)
+      configString = configString.replace(/{{IBMPlexMono}}/, plexMonoName)
+      configString = configString.replace(/{{IBMPlexSans}}/, plexSansName)
+      return configString
+    })
+    .then((config) => writeFile(join(__dirname, 'docker', 'nginx.conf'), config))
+}
+
 bundler.on('bundled', () => {
   let files
   return unlink(indexPath)
@@ -79,6 +102,7 @@ bundler.on('bundled', () => {
       }
       return Promise.all(stack)
     })
+    .then(() => buildNginxConfig())
     .then(() => process.exit(0))
 })
 
