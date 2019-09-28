@@ -36,7 +36,3 @@ manual deploy to myrt.co:
   variables:
     BUILD_VERSION: $CI_COMMIT_REF_NAME
   extends: .deploy
-
-manual deploy to myrt.co:
-  when: "manual"
-  extends: .deploy

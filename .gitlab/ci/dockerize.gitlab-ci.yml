@@ -23,6 +23,3 @@ build backup docker image:
   only:
     - tags
 
-build latest docker image:
-  extends: .build image
-
