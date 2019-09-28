@@ -37,9 +37,14 @@ readFile(path.join(__dirname, '..', 'HEAD'))
     }
   })
   .then(() => readFile(commitFile))
-  .then(commitMsg => writeFile(
-    commitFile,
-    `${branchName.split('/')[1].trim()}: ${commitMsg.toString()}`
-  ))
+  .then(commitMsg => {
+    const prefix = branchName.split('/')[1].trim()
+    if (prefix) {
+      return writeFile(
+        commitFile,
+        `${branchName.split('/')[1].trim()}: ${commitMsg.toString()}`
+      )
+    }
+  })
   .then(() => process.exit(0))
 
