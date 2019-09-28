@@ -1,4 +1,4 @@
 node_modules
 .cache
 dist
-docker/nginx.conf
+nginx.conf

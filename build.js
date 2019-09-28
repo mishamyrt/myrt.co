@@ -85,7 +85,7 @@ const buildNginxConfig = () => {
       configString = configString.replace(/{{IBMPlexSans}}/, plexSansName)
       return configString
     })
-    .then((config) => writeFile(join(__dirname, 'docker', 'nginx.conf'), config))
+    .then((config) => writeFile(join(__dirname, 'nginx.conf'), config))
 }
 
 bundler.on('bundled', () => {
