@@ -72,9 +72,9 @@ http {
     }
 
     location ~ ^/(en|ru)/ {
-      http2_push {{style}};
-      http2_push {{IBMPlexMono}};
-      http2_push {{IBMPlexSans}};
+      http2_push /{{style}};
+      http2_push /{{IBMPlexMono}};
+      http2_push /{{IBMPlexSans}};
       http2_push /worker.js;
       http2_push /manifest.webmanifest;
     }
