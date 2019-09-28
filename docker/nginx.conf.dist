@@ -71,7 +71,7 @@ http {
       rewrite (.*) $scheme://$http_host/en$1 last;
     }
 
-    location ~ ^/(en|ru)/ {
+    location = ^/(en|ru)/ {
       http2_push /{{style}};
       http2_push /{{IBMPlexMono}};
       http2_push /{{IBMPlexSans}};
