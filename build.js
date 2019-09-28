@@ -4,6 +4,7 @@ const cheerio = require('cheerio')
 const { promisify } = require('util')
 const Bundler = require('parcel-bundler')
 const Typograf = require('typograf')
+const minify = require('html-minifier').minify
 
 const readDir = promisify(fs.readdir)
 const readFile = promisify(fs.readFile)
@@ -13,24 +14,29 @@ const unlink = promisify(fs.unlink)
 const tp = new Typograf({
   locale: ['ru', 'en-US'],
   htmlEntity: {
-      type: 'name',
-      onlyInvisible: true,
+    type: 'name',
+    onlyInvisible: true,
   },
 })
+
+const minifyOptions = {
+  collapseWhitespace: true,
+  removeComments: true,
+}
 
 const outDir = join(__dirname, 'dist')
 const indexPath = join(outDir, 'index.html')
 
 const bundler = new Bundler(join(__dirname, 'src', 'index.pug'), {
-    sourceMaps: false,
-    watch: false,
-    hmr: false,
-    logLevel: 3,
-    detailedReport: true,
-    outDir
+  sourceMaps: false,
+  watch: false,
+  hmr: false,
+  logLevel: 3,
+  detailedReport: true,
+  outDir
 })
 
-function improveHtml (filePath) {
+function improveHtml(filePath) {
   return readFile(filePath)
     .then((html) => {
       const $ = cheerio.load(html, { decodeEntities: false })
@@ -43,10 +49,11 @@ function improveHtml (filePath) {
     })
     .then((html) => (html = html.replace(/index\.html/g, '')))
     .then((html) => (html = html.replace(/\.html/g, '')))
+    .then((html) => (html = minify(html, minifyOptions)))
     .then((html) => writeFile(filePath, html))
 }
 
-function getHtmlFiles () {
+function getHtmlFiles() {
   return Promise.all([
     readDir(join(outDir, 'ru')),
     readDir(join(outDir, 'en')),
