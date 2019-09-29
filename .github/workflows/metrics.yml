@@ -17,6 +17,7 @@ jobs:
         path: './report'
 
   publish:
+    needs: lighthouse
     runs-on: ubuntu-latest
     steps:
     - name: Download lighthouse report
