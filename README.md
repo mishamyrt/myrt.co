@@ -39,7 +39,7 @@ You can start serving local site by running `npm run start`.
 
 Deploy occurs automatically when the code gets into the master branch.
 
-Deploy logic is implemented on ansible playbook.
+Deploy logic is implemented with ansible playbook.
 
 ## Built With
 
