@@ -10,10 +10,6 @@ jobs:
       uses: jakejarvis/lighthouse-action@master
       with:
         url: 'https://myrt.co/en/'
-    - name: Rename files
-      run: |
-        mv report/https___myrt_co_en_.report.html report/index.html
-        mv report/https___myrt_co_en_.report.json report/report.json
     - name: Upload results as an artifact
       uses: actions/upload-artifact@master
       with:
@@ -31,7 +27,9 @@ jobs:
     - name: Prepare deploy
       run: |
         mkdir public
-        mv lighthouse-report/ public/lighthouse-report/
+        mkdir public/lighthouse
+        mv lighthouse-report/https___myrt_co_en_.report.html public/lighthouse/index.html
+        mv lighthouse-report/https___myrt_co_en_.report.json public/lighthouse/report.json
     - name: Deploy
       uses: crazy-max/ghaction-github-pages@master
       with:
