@@ -1,4 +1,4 @@
-# Mikhael Khrustik's homepage
+# Mikhael Khrustik's homepage [![Quality%20assurance](https://github.com/mishamyrt/myrt.co/workflows/Quality%20assurance/badge.svg)][https://github.com/mishamyrt/myrt.co/actions?workflow=Quality+assurance]
 
 This project is made as an example of the capabilities of GitHub Actions and in order to teach best DevOps practices.
 
