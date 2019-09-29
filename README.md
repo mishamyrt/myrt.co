@@ -1,6 +1,6 @@
 # Mikhael Khrustik's homepage
 
-This project is made as an example of the capabilities of GitLab CI and in order to teach best DevOps practices.
+This project is made as an example of the capabilities of GitHub Actions and in order to teach best DevOps practices.
 
 ## Getting Started
 
@@ -35,7 +35,7 @@ Deploy logic is implemented on ansible playbook.
 
 ## Versioning
 
-I use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://gitlab.com/mishamyrt/myrt.co/-/tags).
+I use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/mishamyrt/myrt.co/tags).
 
 ## Authors
 

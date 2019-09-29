@@ -7,7 +7,7 @@
     "build": "rm -rf dist/ && export NODE_ENV=production && node build.js",
     "serve": "npx parcel serve src/index.pug",
     "size-check": "npx size-limit",
-    "spell-check": "npx yaspeller dist/**/*.html",
+    "spell-check": "npx yaspeller dist/static/**/*.html",
     "lint": "npx stylelint \"src/**/*.scss\" && npx pug-lint src/ && npx remark .gitlab/**/*.md && npx remark *.md",
     "lint:fix": "npx stylelint \"src/**/*.scss\" --fix",
     "postinstall": "chmod +x .hooks/* && cp -r .hooks/ .git/hooks/"
@@ -17,7 +17,7 @@
     "url": "git+ssh://git@gitlab.com/mishamyrt/mishamyrt.gitlab.io.git"
   },
   "author": "mishamyrt",
-  "license": "WTFPL",
+  "license": "MIT",
   "bugs": {
     "url": "https://gitlab.com/mishamyrt/mishamyrt.gitlab.io/issues"
   },
@@ -145,17 +145,17 @@
   "size-limit": [
     {
       "name": "Critical",
-      "path": "dist/ru/index.html",
+      "path": "dist/static/en/index.html",
       "limit": "4 KB"
     },
     {
       "name": "Full",
       "path": [
-        "dist/avatar.*.webp",
-        "dist/favicon-32*.png",
-        "dist/*.css",
-        "dist/*.woff2",
-        "dist/*.js"
+        "dist/static/avatar.*.webp",
+        "dist/static/favicon-32*.png",
+        "dist/static/*.css",
+        "dist/static/*.woff2",
+        "dist/static/*.js"
       ],
       "limit": "120 KB"
     }
