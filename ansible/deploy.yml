@@ -1,18 +1,20 @@
 ---
-- hosts: "all"
+- hosts: "myrt-co"
+  become: yes
+  become_user: root
+  become_method: sudo
 
   tasks:
     - name: "Log into private registry and force re-authorization"
       docker_login:
-        registry: "{{ REGISTRY_URL }}"
-        username: "{{ REGISTRY_LOGIN }}"
+        username: "mishamyrt"
         password: "{{ REGISTRY_PASSWORD }}"
         reauthorize: yes
 
     - name: "Recreate Docker image"
       docker_container:
         name: "myrt-co"
-        image: "{{ IMAGE_NAME }}:{{ IMAGE_VERSION }}"
+        image: "mishamyrt/myrt-co:{{ IMAGE_VERSION }}"
         recreate: "yes"
         restart_policy: "always"
         pull: "yes"
