@@ -1,6 +1,6 @@
 # Mikhael Khrustik's homepage
 
-This project is made as an example of the capabilities of GitLab CI and in order to teach best DevOps practices.
+This project is made as an example of the capabilities of GitHub Actions and in order to teach best DevOps practices.
 
 ## Getting Started
 
