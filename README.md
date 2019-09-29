@@ -1,10 +1,6 @@
 <h1 align="center">
-  Mikhael Khrustik's homepage
+  Misha's homepage
 </h1>
-
-<h4 align="center">
-  <a href="https://myrt.co">myrt.co</a>
-</h4>
 
 <p align="center">
   <a href="https://github.com/mishamyrt/myrt.co/actions?workflow=Quality+assurance">
@@ -14,8 +10,6 @@
     <img src="https://lighthouse-badge.appspot.com/?score=100">
   </a>
 </p>
-
-# Mikhael Khrustik's homepage [![Quality assurance]()][qa]
 
 This project is made as an example of the capabilities of GitHub Actions and in order to teach best DevOps practices.
 
