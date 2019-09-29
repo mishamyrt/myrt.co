@@ -1,0 +1,32 @@
+name: Quality assurance
+
+on: [push]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Audit live URL
+      uses: jakejarvis/lighthouse-action@master
+      with:
+        url: 'https://myrt.co/en/'
+    - name: Upload results as an artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: lighthouse-report
+        path: './report'
+
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download lighthouse report
+      uses: actions/download-artifact@v1
+      with:
+        name: lighthouse-report
+    - name: Deploy
+      uses: crazy-max/ghaction-github-pages@master
+      with:
+        target_branch: gh-pages
+        build_dir: public
+      env:
+        GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
