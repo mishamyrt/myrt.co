@@ -20,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Audit live URL
+      env:
+        URL: https://myrt.co/en/
       run: |
         mkdir gitlab-exporter
         wget -O ./gitlab-exporter/index.js https://gitlab.com/gitlab-org/gl-performance/raw/master/index.js
