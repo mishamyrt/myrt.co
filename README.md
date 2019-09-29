@@ -1,4 +1,21 @@
-# Mikhael Khrustik's homepage [![Quality assurance](https://github.com/mishamyrt/myrt.co/workflows/Quality%20assurance/badge.svg)][qa]
+<h1 align="center">
+  Mikhael Khrustik's homepage
+</h1>
+
+<h4 align="center">
+  <a href="https://myrt.co">myrt.co</a>
+</h4>
+
+<p align="center">
+  <a href="https://github.com/mishamyrt/myrt.co/actions?workflow=Quality+assurance">
+    <img src="https://github.com/mishamyrt/myrt.co/workflows/Quality%20assurance/badge.svg">
+  </a>
+  <a href="https://mishamyrt.github.io/myrt.co/lighthouse-report/">
+    <img src="https://lighthouse-badge.appspot.com/?score=100">
+  </a>
+</p>
+
+# Mikhael Khrustik's homepage [![Quality assurance]()][qa]
 
 This project is made as an example of the capabilities of GitHub Actions and in order to teach best DevOps practices.
 
@@ -45,4 +62,3 @@ I use [SemVer](http://semver.org/) for versioning. For the versions available, s
 
 This project is licensed under the WTFPL License - see the [LICENSE](LICENSE) file for details
 
-[qa]: https://github.com/mishamyrt/myrt.co/actions?workflow=Quality+assurance
