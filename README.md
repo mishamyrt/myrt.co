@@ -1,4 +1,4 @@
-# Mikhael Khrustik's homepage
+# Mikhael Khrustik's homepage [![Quality assurance](https://github.com/mishamyrt/myrt.co/workflows/Quality%20assurance/badge.svg)][qa]
 
 This project is made as an example of the capabilities of GitHub Actions and in order to teach best DevOps practices.
 
@@ -44,3 +44,5 @@ I use [SemVer](http://semver.org/) for versioning. For the versions available, s
 ## License
 
 This project is licensed under the WTFPL License - see the [LICENSE](LICENSE) file for details
+
+[qa]: https://github.com/mishamyrt/myrt.co/actions?workflow=Quality+assurance
