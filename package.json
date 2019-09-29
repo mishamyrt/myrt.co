@@ -127,15 +127,15 @@
   },
   "dependencies": {
     "@ibm/plex": "^2.0.0",
-    "@size-limit/preset-app": "^2.1.4",
+    "@size-limit/preset-app": "^2.1.6",
     "cheerio": "^1.0.0-rc.3",
     "parcel-bundler": "^1.12.3",
     "pug": "^2.0.4",
-    "size-limit": "^2.1.4",
+    "size-limit": "^2.1.6",
     "stylelint": "^10.1.0",
     "stylelint-config-standard": "^18.3.0",
     "typograf": "^6.8.2",
-    "yaspeller": "^6.0.0"
+    "yaspeller": "^6.0.1"
   },
   "remarkConfig": {
     "plugins": [
