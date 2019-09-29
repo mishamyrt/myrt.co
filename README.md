@@ -9,6 +9,9 @@
   <a href="https://mishamyrt.github.io/myrt.co/lighthouse/">
     <img src="https://lighthouse-badge.appspot.com/?score=100">
   </a>
+  <a href="https://mishamyrt.github.io/myrt.co/sitespeed/">
+    <img src="https://img.shields.io/badge/dynamic/json?color=0095d2&url=https://mishamyrt.github.io/myrt.co/sitespeed/data/performance.json&label=Sitespeed.io%20score&query=$[0].metrics[2].value&style=flat-square">
+  </a>
 </p>
 
 This project is made as an example of the capabilities of GitHub Actions and in order to teach best DevOps practices.
