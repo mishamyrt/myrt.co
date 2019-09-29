@@ -35,7 +35,7 @@ Deploy logic is implemented on ansible playbook.
 
 ## Versioning
 
-I use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://gitlab.com/mishamyrt/myrt.co/-/tags).
+I use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/mishamyrt/myrt.co/tags).
 
 ## Authors
 
