@@ -6,7 +6,7 @@
   <a href="https://github.com/mishamyrt/myrt.co/actions?workflow=Quality+assurance">
     <img src="https://github.com/mishamyrt/myrt.co/workflows/Quality%20assurance/badge.svg">
   </a>
-  <a href="https://mishamyrt.github.io/myrt.co/lighthouse-report/">
+  <a href="https://mishamyrt.github.io/myrt.co/lighthouse/">
     <img src="https://lighthouse-badge.appspot.com/?score=100">
   </a>
 </p>
