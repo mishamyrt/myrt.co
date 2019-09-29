@@ -198,3 +198,9 @@
     }
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .resume-avatar {
+    filter: brightness(0.9);
+  }
+}
