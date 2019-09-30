@@ -115,6 +115,40 @@
     color: var(--color-text);
     margin: 17px 0 0;
   }
+
+  &-skills {
+    margin-left: 147px;
+  }
+
+  &-skillsHeading {
+    font-size: 36px;
+    margin: 14px 0 31px;
+  }
+
+  &-skillTitle {
+    margin: 0;
+  }
+
+  &-skillsGroup {
+    padding: 0;
+    margin: 4px 0 32px;
+    list-style-type: none;
+  }
+
+  &-skill {
+    position: relative;
+    font-size: 19px;
+    line-height: 30px;
+    font-family: var(--font-monospace);
+  }
+
+  &-skill::before {
+    content: '–';
+    position: absolute;
+    left: -31px;
+    opacity: 0.33;
+    color: var(--color-icon);
+  }
 }
 
 @media screen and (max-width: 890px) {
