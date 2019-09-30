@@ -204,6 +204,15 @@
       margin-top: 10px;
     }
 
+    &-skills {
+      margin-left: 0;
+    }
+
+    &-skill::before {
+      content: "–";
+      left: -16px;
+    }
+
     &-date {
       position: absolute;
       font-size: 14px;
