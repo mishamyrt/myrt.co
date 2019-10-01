@@ -1,15 +1,14 @@
 const { join, extname } = require('path')
-const fs = require('fs')
 const cheerio = require('cheerio')
-const { promisify } = require('util')
 const Bundler = require('parcel-bundler')
 const Typograf = require('typograf')
 const minify = require('html-minifier').minify
-
-const readDir = promisify(fs.readdir)
-const readFile = promisify(fs.readFile)
-const writeFile = promisify(fs.writeFile)
-const unlink = promisify(fs.unlink)
+const {
+  readDir,
+  readFile,
+  writeFile,
+  unlink
+} = require('./fs-helpers')
 
 const tp = new Typograf({
   locale: ['ru', 'en-US'],
@@ -24,10 +23,10 @@ const minifyOptions = {
   removeComments: true,
 }
 
-const outDir = join(__dirname, 'dist', 'static')
+const outDir = join(__dirname, '..', 'dist', 'static')
 const indexPath = join(outDir, 'index.html')
 
-const bundler = new Bundler(join(__dirname, 'src', 'index.pug'), {
+const bundler = new Bundler(join(__dirname, '..', 'src', 'index.pug'), {
   sourceMaps: false,
   watch: false,
   hmr: false,
@@ -77,7 +76,7 @@ const buildNginxConfig = () => {
         else if (/IBMPlexSans.*\.woff2/.test(file)) plexSansName = file
       })
     })
-    .then(() => readFile(join(__dirname, 'docker', 'nginx.conf.dist')))
+    .then(() => readFile(join(__dirname, '..', 'docker', 'nginx.conf.dist')))
     .then((config) => {
       let configString = config.toString()
       configString = configString.replace(/{{style}}/, cssName)
@@ -85,7 +84,7 @@ const buildNginxConfig = () => {
       configString = configString.replace(/{{IBMPlexSans}}/, plexSansName)
       return configString
     })
-    .then((config) => writeFile(join(__dirname, 'dist', 'nginx.conf'), config))
+    .then((config) => writeFile(join(__dirname, '..', 'dist', 'nginx.conf'), config))
 }
 
 bundler.on('bundled', () => {
