@@ -14,6 +14,7 @@ const {
   typografOptions,
   minifyOptions
 } = require('./options')
+const { processHtml, prepareCss } = require('./html-processor')
 
 const tp = new Typograf(typografOptions)
 
@@ -52,21 +53,18 @@ function getHtmlFiles() {
 }
 
 const buildNginxConfig = () => {
-  let cssName
   let plexMonoName
   let plexSansName
   return readDir(outDir)
     .then((files) => {
       files.forEach((file) => {
-        if (extname(file) === '.css') cssName = file
-        else if (/IBMPlexMono.*\.woff2/.test(file)) plexMonoName = file
+        if (/IBMPlexMono.*\.woff2/.test(file)) plexMonoName = file
         else if (/IBMPlexSans.*\.woff2/.test(file)) plexSansName = file
       })
     })
     .then(() => readFile(join(__dirname, '..', 'docker', 'nginx.conf.dist')))
     .then((config) => {
       let configString = config.toString()
-      configString = configString.replace(/{{style}}/, cssName)
       configString = configString.replace(/{{IBMPlexMono}}/, plexMonoName)
       configString = configString.replace(/{{IBMPlexSans}}/, plexSansName)
       return configString
@@ -77,17 +75,15 @@ const buildNginxConfig = () => {
 bundler.on('bundled', () => {
   let files
   return unlink(indexPath)
-    .then(() => getHtmlFiles())
-    .then((result) => (files = result))
-    .then(() => {
-      const stack = []
-      for (const file of files) {
-        if (file.includes('.html')) {
-          stack.push(improveHtml(file))
-        }
-      }
-      return Promise.all(stack)
+    .then(() => readDir(outDir))
+    .then(result => (files = result))
+    .then(() => files.filter(file => file.endsWith('.css')))
+    .then(async cssFiles => {
+      await prepareCss(cssFiles)
+      cssFiles.forEach(file => unlink(`${outDir}/${file}`))
     })
+    .then(() => files.filter(file => file.endsWith('.html')))
+    .then(htmlFiles => htmlFiles.forEach(file => processHtml(file)))
     .then(() => buildNginxConfig())
     .then(() => process.exit(0))
 })
