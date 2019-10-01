@@ -1,3 +1,5 @@
+@import '/common.scss';
+
 .resume {
   max-width: 900px;
   margin: 37px auto 37px;
@@ -248,3 +250,5 @@
     filter: brightness(0.9);
   }
 }
+
+@import '../resume/print.scss';

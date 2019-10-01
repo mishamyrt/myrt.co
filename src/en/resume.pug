@@ -3,6 +3,7 @@ html(lang='ru', itemtype='https://schema.org/Person', itemscope)
   head
     title Misha's Resume
     meta(name='description', content='Resume of Mikahael Khrustik')
+    link(rel='stylesheet', href='/resume/resume.scss')
     include ../head.pug
   body
     include ../worker.pug
@@ -12,7 +13,7 @@ html(lang='ru', itemtype='https://schema.org/Person', itemscope)
           picture.resume-avatar
           source(srcset='/photo/avatar.webp', type='image/webp')
           img.resume-avatar(src='/photo/avatar.jpg', alt='Mikhael Khrustik photo', itemprop='image')
-        .resume-iam
+        div
           a.resume-backLink(href='./index.pug')
             h1.resume-heading Mikhael Khrustik
           h2.resume-subheading Developer and designer

@@ -4,12 +4,16 @@
   "private": true,
   "scripts": {
     "start": "npm run serve",
-    "build": "rm -rf dist/ && export NODE_ENV=production && node build.js",
+    "build": "rm -rf dist/ && node scripts/build.js",
     "serve": "npx parcel serve src/index.pug",
     "size-check": "npx size-limit",
     "spell-check": "npx yaspeller dist/static/**/*.html",
-    "lint": "npx stylelint \"src/**/*.scss\" && npx pug-lint src/ && npx remark .gitlab/**/*.md && npx remark *.md",
-    "lint:fix": "npx stylelint \"src/**/*.scss\" --fix",
+    "lint": "npm run lint:css && npm run lint:js && npm run lint:pug && npm run lint:md",
+    "lint:css": "npx stylelint \"src/**/*.scss\"",
+    "lint:pug": "npx pug-lint src/",
+    "lint:md": "npx remark .github/**/*.md && npx remark *.md",
+    "lint:js": "npx standardx \"**/*.js\"",
+    "lint:fix": "npx stylelint \"src/**/*.scss\" --fix && npx standardx \"**/*.js\" --fix",
     "postinstall": "chmod +x .hooks/* && cp -r .hooks/ .git/hooks/"
   },
   "repository": {
@@ -45,7 +49,6 @@
       "HTML5",
       "CSS3",
       "ES2015",
-
       "NgRx",
       "Redux",
       "npm",
@@ -186,22 +189,32 @@
       "limit": "120 KB"
     }
   ],
+  "standardx": {
+    "global": [
+      "self",
+      "fetch",
+      "caches"
+    ]
+  },
   "devDependencies": {
     "@size-limit/preset-app": "^2.1.6",
-    "cheerio": "^1.0.0-rc.3",
-    "parcel-bundler": "^1.12.3",
-    "pug": "^2.0.4",
-    "size-limit": "^2.1.6",
-    "stylelint": "^10.1.0",
-    "stylelint-config-standard": "^18.3.0",
-    "typograf": "^6.8.2",
-    "yaspeller": "^6.0.1",
+    "css-mqpacker": "^7.0.0",
     "html-minifier": "^4.0.0",
+    "parcel-bundler": "^1.12.3",
+    "postcss": "^7.0.18",
+    "posthtml": "^0.11.6",
+    "pug": "^2.0.4",
     "pug-lint": "^2.6.0",
     "pug-lint-config-clock": "^2.0.0",
     "remark-cli": "^7.0.0",
     "remark-lint": "^6.0.5",
     "remark-preset-lint-recommended": "^3.0.3",
-    "sass": "^1.22.12"
+    "sass": "^1.22.12",
+    "size-limit": "^2.1.6",
+    "standardx": "^5.0.0",
+    "stylelint": "^10.1.0",
+    "stylelint-config-standard": "^18.3.0",
+    "typograf": "^6.8.2",
+    "yaspeller": "^6.0.1"
   }
 }
