@@ -9,31 +9,18 @@ const {
   writeFile,
   unlink
 } = require('./fs-helpers')
+const {
+  parcelOptions,
+  typografOptions,
+  minifyOptions
+} = require('./options')
 
-const tp = new Typograf({
-  locale: ['ru', 'en-US'],
-  htmlEntity: {
-    type: 'name',
-    onlyInvisible: true,
-  },
-})
-
-const minifyOptions = {
-  collapseWhitespace: true,
-  removeComments: true,
-}
+const tp = new Typograf(typografOptions)
 
 const outDir = join(__dirname, '..', 'dist', 'static')
 const indexPath = join(outDir, 'index.html')
 
-const bundler = new Bundler(join(__dirname, '..', 'src', 'index.pug'), {
-  sourceMaps: false,
-  watch: false,
-  hmr: false,
-  logLevel: 3,
-  detailedReport: true,
-  outDir
-})
+const bundler = new Bundler(join(__dirname, '..', 'src', 'index.pug'), parcelOptions)
 
 function improveHtml(filePath) {
   return readFile(filePath)

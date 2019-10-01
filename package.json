@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "npm run serve",
-    "build": "rm -rf dist/ && export NODE_ENV=production && node scripts/build.js",
+    "build": "rm -rf dist/ && node scripts/build.js",
     "serve": "npx parcel serve src/index.pug",
     "size-check": "npx size-limit",
     "spell-check": "npx yaspeller dist/static/**/*.html",
