@@ -17,13 +17,13 @@ const typografOptions = {
   locale: ['ru', 'en-US'],
   htmlEntity: {
     type: 'name',
-    onlyInvisible: true,
-  },
+    onlyInvisible: true
+  }
 }
 
 const minifyOptions = {
   collapseWhitespace: true,
-  removeComments: true,
+  removeComments: true
 }
 
 module.exports = {

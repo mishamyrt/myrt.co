@@ -40,8 +40,7 @@ const processNginx = () => {
     .then((config) => writeFile(join(__dirname, '..', 'dist', 'nginx.conf'), config))
 }
 
-
-function htmlPlugin(tree) {
+function htmlPlugin (tree) {
   let fileName
   tree.match({ tag: 'link', attrs: { rel: 'stylesheet' } }, cssTag => {
     fileName = cssTag.attrs.href.substr(1)
@@ -97,13 +96,13 @@ const processHtmlFile = async (fileName) => {
 const A = 'a'.charCodeAt(0)
 let lastUsed = -1
 
-function cssPlugin(root) {
+function cssPlugin (root) {
   const filePath = root.source.input.file.split('/')
   const fileName = filePath[filePath.length - 1]
   if (!classes[fileName]) classes[fileName] = {}
   root.walkRules(rule => {
     rule.selector = rule.selector.replace(/\.[\w_-]+/g, str => {
-      let kls = str.substr(1)
+      const kls = str.substr(1)
       if (!classes[fileName][kls]) {
         lastUsed += 1
         if (lastUsed === 26) lastUsed -= 26 + 7 + 25
@@ -115,22 +114,21 @@ function cssPlugin(root) {
 }
 
 const processCssFile = (fileName) => {
-  return new Promise(async (resolve) => {
-    let cssFile = await readFile(fileName).then(bytes => bytes.toString())
-    cssFile = postcss([cssPlugin, mqpacker]).process(
-      cssFile,
-      { from: fileName }
-    ).css
-    const filePath = fileName.split('/')
-    css[filePath[filePath.length - 1]] = cssFile
-    lastUsed = -1
-    resolve()
-  })
+  return readFile(fileName).then(bytes => bytes.toString())
+    .then((cssFile) => {
+      cssFile = postcss([cssPlugin, mqpacker]).process(
+        cssFile,
+        { from: fileName }
+      ).css
+      const filePath = fileName.split('/')
+      css[filePath[filePath.length - 1]] = cssFile
+      lastUsed = -1
+    })
 }
 
 const processCss = (files) => {
   const tasks = []
-  for (file of files) {
+  for (const file of files) {
     tasks.push(processCssFile(file))
   }
   return Promise.all(tasks)
@@ -138,7 +136,7 @@ const processCss = (files) => {
 
 const processHtml = (files) => {
   const tasks = []
-  for (file of files) {
+  for (const file of files) {
     tasks.push(processHtmlFile(file))
   }
   return Promise.all(tasks)

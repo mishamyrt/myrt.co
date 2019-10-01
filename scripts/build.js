@@ -42,7 +42,7 @@ const getFiles = async () => {
 }
 
 bundler.on('bundled', async () => {
-  let files = await getFiles(outDir)
+  const files = await getFiles(outDir)
   return unlink(outIndexFile)
     .then(() => processCss(files.css))
     .then(() => processHtml(files.html))
@@ -50,4 +50,3 @@ bundler.on('bundled', async () => {
 })
 
 bundler.bundle()
-
