@@ -1,0 +1,17 @@
+name: Build fixed version tag image
+
+on:
+  push:
+    branches:
+      - feature/local-registry
+    tags:
+      - v*
+
+jobs:
+  build_static:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Test ref
+      run: echo $GITHUB_REF
