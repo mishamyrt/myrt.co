@@ -7,14 +7,15 @@
   tasks:
     - name: "Log into private registry and force re-authorization"
       docker_login:
-        username: "mishamyrt"
+        registry: "docker.pkg.github.com"
+        username: "{{ REGISTRY_USERNAME }}"
         password: "{{ REGISTRY_PASSWORD }}"
         reauthorize: yes
 
     - name: "Recreate Docker image"
       docker_container:
         name: "myrt-co"
-        image: "mishamyrt/myrt-co:{{ IMAGE_VERSION }}"
+        image: "{{ IMAGE_NAME }}"
         recreate: "yes"
         restart_policy: "always"
         pull: "yes"

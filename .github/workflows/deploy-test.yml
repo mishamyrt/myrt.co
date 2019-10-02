@@ -30,12 +30,12 @@ jobs:
         name: dist
     - name: Login to GitHub Docker registry
       env:
-        DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
-      run: echo -n $GITHUB_PAT | docker login docker.pkg.github.com -u mishamyrt --password-stdin
+        GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+      run: echo -n $GITHUB_PAT | docker login docker.pkg.github.com -u $GITHUB_ACTOR --password-stdin
     - name: Build image
-      run: docker build -t docker.pkg.github.com/mishamyrt/myrt.co/site:latest -f docker/Dockerfile .
+      run: docker build -t docker.pkg.github.com/$GITHUB_REPOSITORY/site:latest -f docker/Dockerfile .
     - name: Push image
-      run: docker push docker.pkg.github.com/mishamyrt/myrt.co/site
+      run: docker push docker.pkg.github.com/$GITHUB_REPOSITORY/site
 
 
   deploy_image:
@@ -47,7 +47,7 @@ jobs:
     - name: Deploy latest image to myrt.co
       env:
         SSH_PRIVATE_KEY_B64: ${{ secrets.SSH_PRIVATE_KEY_B64 }}
-        DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+        GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
       run: |
         eval $(ssh-agent -s)
         echo $SSH_PRIVATE_KEY_B64 | base64 -d | tr -d '\r' > private.key
@@ -60,8 +60,9 @@ jobs:
         chmod 644 ~/.ssh/known_hosts
         ssh-keyscan -t rsa myrt.co >> ~/.ssh/known_hosts
         ansible-playbook -i ansible/hosts ansible/deploy.yml \
-          -e REGISTRY_PASSWORD=$DOCKER_TOKEN \
-          -e IMAGE_VERSION=latest
+          -e REGISTRY_USERNAME=$GITHUB_ACTOR \
+          -e REGISTRY_PASSWORD=$GITHUB_PAT \
+          -e IMAGE_NAME=docker.pkg.github.com/$GITHUB_REPOSITORY/site:latest
 
   lighthouse:
     needs: deploy_image
