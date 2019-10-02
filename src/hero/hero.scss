@@ -1,3 +1,5 @@
+@import '/common.scss';
+
 .hero {
   max-width: 900px;
   margin: 37px auto 37px;
@@ -103,5 +105,11 @@
       max-height: 100px;
       margin: -4px 0 13px;
     }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero-avatar {
+    filter: brightness(0.9);
   }
 }

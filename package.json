@@ -4,12 +4,16 @@
   "private": true,
   "scripts": {
     "start": "npm run serve",
-    "build": "rm -rf dist/ && export NODE_ENV=production && node build.js",
+    "build": "rm -rf dist/ && node scripts/build.js",
     "serve": "npx parcel serve src/index.pug",
     "size-check": "npx size-limit",
-    "spell-check": "npx yaspeller dist/**/*.html",
-    "lint": "npx stylelint \"src/**/*.scss\" && npx pug-lint src/ && npx remark .gitlab/**/*.md && npx remark *.md",
-    "lint:fix": "npx stylelint \"src/**/*.scss\" --fix",
+    "spell-check": "npx yaspeller dist/static/**/*.html",
+    "lint": "npm run lint:css && npm run lint:js && npm run lint:pug && npm run lint:md",
+    "lint:css": "npx stylelint \"src/**/*.scss\"",
+    "lint:pug": "npx pug-lint src/",
+    "lint:md": "npx remark .github/**/*.md && npx remark *.md",
+    "lint:js": "npx standardx \"**/*.js\"",
+    "lint:fix": "npx stylelint \"src/**/*.scss\" --fix && npx standardx \"**/*.js\" --fix",
     "postinstall": "chmod +x .hooks/* && cp -r .hooks/ .git/hooks/"
   },
   "repository": {
@@ -17,7 +21,7 @@
     "url": "git+ssh://git@gitlab.com/mishamyrt/mishamyrt.gitlab.io.git"
   },
   "author": "mishamyrt",
-  "license": "WTFPL",
+  "license": "MIT",
   "bugs": {
     "url": "https://gitlab.com/mishamyrt/mishamyrt.gitlab.io/issues"
   },
@@ -35,6 +39,40 @@
     "dictionary": [
       "Mikhael",
       "Khrustik",
+      "InDesign",
+      "Figma",
+      "UI",
+      "UX",
+      "гайдлайны",
+      "Framer",
+      "контрибьютер",
+      "HTML5",
+      "CSS3",
+      "ES2015",
+      "NgRx",
+      "Redux",
+      "npm",
+      "транспилятора",
+      "TDD",
+      "JSX",
+      "PWA",
+      "Pagespeed",
+      "Sitespeed",
+      "io",
+      "Jenkins",
+      "Travis",
+      "Dockerfile",
+      "шаблонизаторах",
+      "nginx",
+      "rebase",
+      "ассайнить",
+      "Kanban",
+      "GPL",
+      "криптовалютных",
+      "linters",
+      "transpiler",
+      "BEM",
+      "cryptocurrency",
       "EFO",
       "Sep",
       "Cifra",
@@ -126,16 +164,7 @@
     ]
   },
   "dependencies": {
-    "@ibm/plex": "^2.0.0",
-    "@size-limit/preset-app": "^2.1.4",
-    "cheerio": "^1.0.0-rc.3",
-    "parcel-bundler": "^1.12.3",
-    "pug": "^2.0.4",
-    "size-limit": "^2.1.4",
-    "stylelint": "^10.1.0",
-    "stylelint-config-standard": "^18.3.0",
-    "typograf": "^6.8.2",
-    "yaspeller": "^6.0.0"
+    "@ibm/plex": "^2.0.0"
   },
   "remarkConfig": {
     "plugins": [
@@ -145,28 +174,48 @@
   "size-limit": [
     {
       "name": "Critical",
-      "path": "dist/ru/index.html",
+      "path": "dist/static/en/index.html",
       "limit": "4 KB"
     },
     {
       "name": "Full",
       "path": [
-        "dist/avatar.*.webp",
-        "dist/favicon-32*.png",
-        "dist/*.css",
-        "dist/*.woff2",
-        "dist/*.js"
+        "dist/static/avatar.*.webp",
+        "dist/static/favicon-32*.png",
+        "dist/static/*.css",
+        "dist/static/*.woff2",
+        "dist/static/*.js"
       ],
       "limit": "120 KB"
     }
   ],
+  "standardx": {
+    "global": [
+      "self",
+      "fetch",
+      "caches"
+    ]
+  },
   "devDependencies": {
+    "@size-limit/preset-app": "^2.1.6",
+    "cheerio": "^1.0.0-rc.3",
+    "css-mqpacker": "^7.0.0",
     "html-minifier": "^4.0.0",
+    "parcel-bundler": "^1.12.3",
+    "postcss": "^7.0.18",
+    "posthtml": "^0.11.6",
+    "pug": "^2.0.4",
     "pug-lint": "^2.6.0",
     "pug-lint-config-clock": "^2.0.0",
     "remark-cli": "^7.0.0",
     "remark-lint": "^6.0.5",
     "remark-preset-lint-recommended": "^3.0.3",
-    "sass": "^1.22.12"
+    "sass": "^1.22.12",
+    "size-limit": "^2.1.6",
+    "standardx": "^5.0.0",
+    "stylelint": "^10.1.0",
+    "stylelint-config-standard": "^18.3.0",
+    "typograf": "^6.8.2",
+    "yaspeller": "^6.0.1"
   }
 }

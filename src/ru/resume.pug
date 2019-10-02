@@ -3,6 +3,7 @@ html(lang='ru', itemtype='https://schema.org/Person', itemscope)
   head
     title Резюме Миши
     meta(name='description', content='Резюме Миши Хрустика')
+    link(rel='stylesheet', href='/resume/resume.scss')
     include ../head.pug
   body
     include ../worker.pug
@@ -12,13 +13,13 @@ html(lang='ru', itemtype='https://schema.org/Person', itemscope)
           picture.resume-avatar
           source(srcset='/photo/avatar.webp', type='image/webp')
           img.resume-avatar(src='/photo/avatar.jpg', alt='Фотография Миши Хрустика', itemprop='image')
-        .resume-iam
+        div
           a.resume-backLink(href='./index.pug')
             h1.resume-heading Михаил Хрустик
           h2.resume-subheading Веб–разработчик и дизайнер
         p.resume-contacts
-          | #[a(href='tel:+79992053133') +7 999 205–31–33] <br>
-          | #[a(href='mailto:misha@myrt.co') misha@myrt.co] <br>
+          | #[a(href='tel:+79992053133') +7 999 205–31–33]
+          | #[a(href='mailto:misha@myrt.co') misha@myrt.co]
           | #[a(href='https://t.me/mishamyrt') @mishamyrt]
       .resume-jobs
         .resume-job
@@ -176,3 +177,44 @@ html(lang='ru', itemtype='https://schema.org/Person', itemscope)
               span.resume-technology Perl
               span.resume-technology Java
               span.resume-technology Bootstrap
+      .resume-skills
+        h2.resume-skillsHeading Навыки
+        h3.resume-skillTitle Дизайн
+        ul.resume-skillsGroup
+          li.resume-skill Владею Photoshop, Illustrator, InDesign и Figma;
+          li.resume-skill Понимаю разницу между UI и UX;
+          li.resume-skill Читал гайдлайны по Material и Metro Design;
+          li.resume-skill Могу писать пером;
+          li.resume-skill Умею работать с покадровой, tween и spline–анимацией;
+          li.resume-skill Имею базовые навыки Principle, Framer и Sketch.
+        h3.resume-skillTitle Технологии
+        ul.resume-skillsGroup
+          li.resume-skill Активный контрибьютер в Open Source;
+          li.resume-skill Внимателен к мелочам, особенно в чужом коде;
+          li.resume-skill Называю функции и переменные понятными не только для себя именами;
+          li.resume-skill Знаю, что Java и JavaScript – это разные вещи;
+          li.resume-skill Применяю паттерны проектирования;
+          li.resume-skill Следую последним стандартам: HTML5, CSS3, ES2015+, ГОСТ;
+          li.resume-skill Использую тесты, линтеры и методы вербального убеждения;
+          li.resume-skill Работал с Angular 6, 7, 8, NgRx, Knockout.JS, React, Redux, Vue, Preact и Svelte;
+          li.resume-skill Способен настроить Webpack, Rollup, Gulp, Parcel и скрипты в npm;
+          li.resume-skill Могу отличить постпроцессор от транспилятора и OOP от TDD;
+          li.resume-skill Умею верстать без использования фреймворков; по БЭМ и без; на шаблонизаторах и JSX;
+          li.resume-skill Считаю что за PWA будущее приложений и не перестаю всех в этом убеждать;
+          li.resume-skill Верстал AMP–совместимые страницы, дотягивал Pagespeed и Sitespeed.io до 100;
+          li.resume-skill Знаю, что не все люди имеют равные возможности. Делаю доступные интерфейсы by default;
+          li.resume-skill Повелеваю GitLab CI, Jenkins и Travis.CI;
+          li.resume-skill Могу написать Dockerfile и docker-compose;
+          li.resume-skill Умею конфигурировать nginx и Apache;
+          li.resume-skill Знаю как собрать ядро Linux и как оптимизировать его под конкретную архитектуру;
+        h3.resume-skillTitle Процессы
+        ul.resume-skillsGroup
+          li.resume-skill Знаю, чем отличаются merge от rebase и stash от cherry pick;
+          li.resume-skill Много читаю, постоянно учусь сам и могу обучать других;
+          li.resume-skill Почти не боюсь публичных выступлений;
+          li.resume-skill Умею создавать таски в эпиках, ассайнить тестировщиков и перетаскивать карточки на Kanban–доске.
+        h3.resume-skillTitle Право
+        ul.resume-skillsGroup
+          li.resume-skill Знаю, что шрифты и изображения бывают не бесплатными и помогаю их правильно купить;
+          li.resume-skill Отличаю BSD от MIT и с опаской использую GPL–проекты;
+          li.resume-skill Знаю почему опасно использовать React при разработке криптовалютных сайтов.

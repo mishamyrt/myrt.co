@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog][],
 and this project adheres to [Semantic Versioning][].
 
+## [1.4.0][] — 2019-10-02
+
+### Added
+
+-   GitHub Actions.
+-   Skills block to resume.
+-   Link to Keybase.
+-   Class mangling.
+
+### Changed
+
+-   Moving to GitHub from GitLab.
+-   Carried the styles inside the HTML.
+
+### Fixed
+
+-   Icons hover on dark mode.
+
 ## [1.3.1][] — 2019-09-28
 
 ### Added
@@ -71,12 +89,14 @@ and this project adheres to [Semantic Versioning][].
 
 [semantic versioning]: https://semver.org/spec/v2.0.0.html
 
-[1.0.0]: https://gitlab.com/mishamyrt/myrt.co/tree/v1.0.0
+[1.0.0]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.0.0
 
-[1.1.0]: https://gitlab.com/mishamyrt/myrt.co/tree/v1.1.0
+[1.1.0]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.1.0
 
-[1.2.0]: https://gitlab.com/mishamyrt/myrt.co/tree/v1.2.0
+[1.2.0]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.2.0
 
-[1.3.0]: https://gitlab.com/mishamyrt/myrt.co/tree/v1.3.0
+[1.3.0]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.3.0
 
-[1.3.1]: https://gitlab.com/mishamyrt/myrt.co/tree/v1.3.1
+[1.3.1]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.3.1
+
+[1.4.0]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.4.0

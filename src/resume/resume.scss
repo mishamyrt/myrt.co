@@ -1,3 +1,5 @@
+@import '/common.scss';
+
 .resume {
   max-width: 900px;
   margin: 37px auto 37px;
@@ -115,6 +117,40 @@
     color: var(--color-text);
     margin: 17px 0 0;
   }
+
+  &-skills {
+    margin-left: 147px;
+  }
+
+  &-skillsHeading {
+    font-size: 36px;
+    margin: 14px 0 31px;
+  }
+
+  &-skillTitle {
+    margin: 0;
+  }
+
+  &-skillsGroup {
+    padding: 0;
+    margin: 4px 0 32px;
+    list-style-type: none;
+  }
+
+  &-skill {
+    position: relative;
+    font-size: 19px;
+    line-height: 30px;
+    font-family: var(--font-monospace);
+  }
+
+  &-skill::before {
+    content: '–';
+    position: absolute;
+    left: -31px;
+    opacity: 0.33;
+    color: var(--color-icon);
+  }
 }
 
 @media screen and (max-width: 890px) {
@@ -145,6 +181,7 @@
     &-contacts {
       text-align: left;
       margin: 29px 0 0;
+      width: 200px;
     }
 
     &-avatar {
@@ -167,6 +204,15 @@
 
     &-jobs {
       margin-top: 10px;
+    }
+
+    &-skills {
+      margin-left: 0;
+    }
+
+    &-skill::before {
+      content: "–";
+      left: -16px;
     }
 
     &-date {
@@ -198,3 +244,11 @@
     }
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .resume-avatar {
+    filter: brightness(0.9);
+  }
+}
+
+@import '../resume/print.scss';
