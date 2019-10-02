@@ -1,4 +1,4 @@
 FROM nginx:alpine
 RUN rm -R /etc/nginx/conf.d
-COPY ./dist/nginx.conf /etc/nginx/nginx.conf
-COPY ./dist/static/ /usr/share/nginx/html
+COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY ./static/ /usr/share/nginx/html

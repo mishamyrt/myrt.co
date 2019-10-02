@@ -36,6 +36,6 @@ jobs:
         GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
       run: echo -n $GITHUB_PAT | docker login docker.pkg.github.com -u $GITHUB_ACTOR --password-stdin
     - name: Build image
-      run: docker build -t docker.pkg.github.com/$GITHUB_REPOSITORY/site:dev -f docker/Dockerfile .
+      run: docker build -t docker.pkg.github.com/$GITHUB_REPOSITORY/site:dev -f docker/Dockerfile ./dist
     - name: Push image
       run: docker push docker.pkg.github.com/$GITHUB_REPOSITORY/site:dev

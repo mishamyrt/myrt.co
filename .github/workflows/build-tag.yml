@@ -38,6 +38,6 @@ jobs:
     - name: Build tagged image
       run: |
         export VERSION="${GITHUB_REF/refs\/tags\/v/}"
-        docker build -t docker.pkg.github.com/$GITHUB_REPOSITORY/site:$VERSION -f docker/Dockerfile .
+        docker build -t docker.pkg.github.com/$GITHUB_REPOSITORY/site:$VERSION -f docker/Dockerfile ./dist
         docker push docker.pkg.github.com/$GITHUB_REPOSITORY/site:$VERSION
 
