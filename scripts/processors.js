@@ -3,6 +3,7 @@ const postcss = require('postcss')
 const mqpacker = require('css-mqpacker')
 const minify = require('html-minifier').minify
 const Typograf = require('typograf')
+const cheerio = require('cheerio')
 const { join } = require('path')
 
 const {
@@ -46,13 +47,6 @@ function htmlPlugin (tree) {
     fileName = cssTag.attrs.href.substr(1)
     return { tag: 'style', content: css[fileName] }
   })
-  tree.match({ tag: 'p' }, i => {
-    return {
-      tag: 'p',
-      content: tp.execute(i.content),
-      ...i.attrs
-    }
-  })
   tree.match({ tag: 'a', attrs: { href: /^\/\w\w\/index.html$/ } }, i => {
     return {
       tag: 'a',
@@ -89,7 +83,13 @@ const processHtmlFile = async (fileName) => {
       sync: true,
       fileName
     }).html
-  html = minify(html, minifyOptions)
+  const $ = cheerio.load(html, { decodeEntities: false })
+  $('p').each((i, item) => {
+    let paragraphHtml = $(item).html()
+    paragraphHtml = tp.execute(paragraphHtml)
+    $(item).html(paragraphHtml)
+  })
+  html = minify($.html(), minifyOptions)
   return writeFile(fileName, html)
 }
 
