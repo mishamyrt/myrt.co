@@ -2,8 +2,6 @@ name: Build fixed version tag image
 
 on:
   push:
-    branches:
-      - feature/local-registry
     tags:
       - v*
 
@@ -13,5 +11,33 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: Test ref
-      run: echo $GITHUB_REF
+    - name: Install dependencies
+      run: npm ci
+    - name: Build static files
+      run: npm run build
+    - name: Upload results
+      uses: actions/upload-artifact@v1
+      with:
+        name: dist
+        path: dist/
+
+  build_image:
+    needs: build_static
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Download build results
+      uses: actions/download-artifact@v1
+      with:
+        name: dist
+    - name: Login to GitHub Docker registry
+      env:
+        GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+      run: echo -n $GITHUB_PAT | docker login docker.pkg.github.com -u $GITHUB_ACTOR --password-stdin
+    - name: Build tagged image
+      run: |
+        export VERSION="${GITHUB_REF/refs\/tags\/v/}"
+        docker build -t docker.pkg.github.com/$GITHUB_REPOSITORY/site:$VERSION -f docker/Dockerfile .
+        docker push docker.pkg.github.com/$GITHUB_REPOSITORY/site:$VERSION
+
