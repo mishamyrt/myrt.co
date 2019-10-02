@@ -38,7 +38,7 @@ jobs:
     - name: Build image
       run: docker build -t docker.pkg.github.com/$GITHUB_REPOSITORY/site:latest -f docker/Dockerfile .
     - name: Push image
-      run: docker push docker.pkg.github.com/$GITHUB_REPOSITORY/site
+      run: docker push docker.pkg.github.com/$GITHUB_REPOSITORY/site:latest
 
 
   deploy_image:
