@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog][],
 and this project adheres to [Semantic Versioning][].
 
+## [1.4.1][] — 2019-10-02
+
+### Fixed
+
+-   Replaced dead link with web archive.
+-   Fixed typo at english index.
+
 ## [1.4.0][] — 2019-10-02
 
 ### Added
