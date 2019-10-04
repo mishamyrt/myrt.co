@@ -142,8 +142,19 @@ const processHtml = (files) => {
   return Promise.all(tasks)
 }
 
+const getRandomKey = () => Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+
+const processServiceWorker = () => {
+  readFile(join(outDir, 'worker.js'))
+    .then(bytes => {
+      const string = bytes.toString()
+      writeFile(join(outDir, 'worker.js'), string.replace('CACHE_KEY_VALUE', getRandomKey()))
+    })
+}
+
 module.exports = {
   processHtml,
   processCss,
-  processNginx
+  processNginx,
+  processServiceWorker
 }

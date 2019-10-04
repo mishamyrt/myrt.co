@@ -11,6 +11,7 @@ http {
   access_log off;
   error_log /dev/null crit;
   server_tokens off;
+  add_header Cache-Control "no-transform";
 
   open_file_cache max=200000 inactive=20s;
   open_file_cache_valid 30s;
@@ -44,7 +45,7 @@ http {
 
     gzip on;
     gzip_disable "msie6";
-
+    gzip_static on;
     gzip_vary on;
     gzip_proxied any;
     gzip_comp_level 6;
@@ -80,6 +81,10 @@ http {
 
     location ~* \.(?:png|webp|svg|jpe?g|woff?2|css|webmanifest|js) {
       expires 365d;
+    }
+
+    location ~* \.(?:js) {
+      expires 2d;
     }
   }
 }

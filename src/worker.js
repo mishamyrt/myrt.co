@@ -1,5 +1,4 @@
-const PRECACHE = 'precache-v2'
-const RUNTIME = 'runtime'
+const CACHE_KEY = 'CACHE_KEY_VALUE'
 
 const PRECACHE_URLS = [
   '/en/resume',
@@ -10,7 +9,7 @@ const PRECACHE_URLS = [
 
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(PRECACHE)
+    caches.open(CACHE_KEY)
       .then(cache => cache.addAll(PRECACHE_URLS))
       .catch((err) => {
         console.log(err)
@@ -20,7 +19,7 @@ self.addEventListener('install', event => {
 
 // The activate handler takes care of cleaning up old caches.
 self.addEventListener('activate', event => {
-  const currentCaches = [PRECACHE, RUNTIME]
+  const currentCaches = [CACHE_KEY]
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return cacheNames.filter(cacheName => !currentCaches.includes(cacheName))
@@ -33,7 +32,7 @@ self.addEventListener('activate', event => {
 })
 
 // The fetch handler serves responses for same-origin resources from a cache.
-// If no response is found, it populates the runtime cache with the response
+// If no response is found, it populates the CACHE_KEY cache with the response
 // from the network before returning it to the page.
 self.addEventListener('fetch', event => {
   // Skip cross-origin requests, like those for Google Analytics.
@@ -44,9 +43,9 @@ self.addEventListener('fetch', event => {
           return cachedResponse
         }
 
-        return caches.open(RUNTIME).then(cache => {
+        return caches.open(CACHE_KEY).then(cache => {
           return fetch(event.request).then(response => {
-            // Put a copy of the response in the runtime cache.
+            // Put a copy of the response in the CACHE_KEY cache.
             return cache.put(event.request, response.clone()).then(() => {
               return response
             })
