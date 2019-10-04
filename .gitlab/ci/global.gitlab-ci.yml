@@ -1,9 +1,0 @@
-.regular_job:
-  only:
-    - branches
-    - tags
-    - merge_requests
-
-.only_merge_request:
-  only:
-    - merge_requests
