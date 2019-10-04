@@ -11,6 +11,7 @@ http {
   access_log off;
   error_log /dev/null crit;
   server_tokens off;
+  add_header Cache-Control "no-transform";
 
   open_file_cache max=200000 inactive=20s;
   open_file_cache_valid 30s;
