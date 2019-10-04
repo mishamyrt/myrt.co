@@ -1,3 +1,4 @@
+/* global self, caches, fetch */
 const CACHE_KEY = 'CACHE_KEY_VALUE'
 
 const PRECACHE_URLS = [
