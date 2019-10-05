@@ -3,6 +3,7 @@
 
 body {
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background-color: var(--color-background);
   color: var(--color-text);
   min-height: calc(100vh - 74px);
