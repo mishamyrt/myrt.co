@@ -30,6 +30,7 @@ a {
   color: var(--color-link);
   text-decoration: none;
   position: relative;
+  display: inline-block;
   transition: background-color 0.25s ease-out;
 
   &::after {
@@ -37,7 +38,7 @@ a {
     transform: translateZ(1px);
     z-index: 1;
     width: calc(100% + 8px);
-    height: calc(100% + 2px);
+    height: 100%;
     top: -1px;
     left: -4px;
     mix-blend-mode: darken;
