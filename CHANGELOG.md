@@ -107,3 +107,5 @@ and this project adheres to [Semantic Versioning][].
 [1.3.1]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.3.1
 
 [1.4.0]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.4.0
+
+[1.4.1]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.4.1
