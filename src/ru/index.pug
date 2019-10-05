@@ -39,15 +39,11 @@ html(lang='ru', itemtype='https://schema.org/Person', itemscope)
           | или в телеграм: #[a(href='https://t.me/mishamyrt', itemprop='sameAs', rel='me') @mishamyrt]. <br>
           | I also speak #[a(href='/en/index.pug') English].
         .hero-icons
-          a.hero-icon(href='https://www.instagram.com/mishamyrt/', itemprop='sameAs', rel='me')
-            | Инстаграм
+          a.hero-icon(href='https://www.instagram.com/mishamyrt/', itemprop='sameAs', rel='me', aria-label='Instagram')
             include ../hero/icons/instagram.svg
-          a.hero-icon(href='https://t.me/mishamyrt', itemprop='sameAs', rel='me')
-            | Телеграм
+          a.hero-icon(href='https://t.me/mishamyrt', itemprop='sameAs', rel='me', aria-label='Telegram')
             include ../hero/icons/telegram.svg
-          a.hero-icon(href='https://github.com/mishamyrt', itemprop='sameAs', rel='me')
-            | Гитхаб
+          a.hero-icon(href='https://github.com/mishamyrt', itemprop='sameAs', rel='me', aria-label='GitHub')
             include ../hero/icons/github.svg
-          a.hero-icon(href='https://keybase.io/mishamyrt', itemprop='sameAs', rel='me')
-            | Keybase
+          a.hero-icon(href='https://keybase.io/mishamyrt', itemprop='sameAs', rel='me', aria-label='Keybase')
             include ../hero/icons/keybase.svg
