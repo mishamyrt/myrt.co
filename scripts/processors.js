@@ -47,13 +47,15 @@ function htmlPlugin (tree) {
     fileName = cssTag.attrs.href.substr(1)
     return { tag: 'style', content: css[fileName] }
   })
-  tree.match({ tag: 'a', attrs: { href: /^\/\w\w\/index.html$/ } }, i => {
+  tree.match({ tag: 'a', attrs: { href: /^\/(.*)/ } }, i => {
     return {
       tag: 'a',
       content: i.content,
       attrs: {
         ...i.attrs,
-        href: i.attrs.href.replace('index.html', '')
+        href: i.attrs.href
+          .replace('index.html', '')
+          .replace('.html', '')
       }
     }
   })
