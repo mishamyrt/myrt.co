@@ -27,8 +27,8 @@ html(lang='ru', itemtype='https://schema.org/Person', itemscope)
           | #[a(href='https://cifra.in/') Цифре],
           | #[a(href='https://efo.ru/') ЭФО].
           | Занимался проектами для #[a(href='https://latona.pro/') Латоны],
-          | #[a(href='http://neochemicals.ru/') Неокемикалс]
-          | и #[a(href='https://chtk.ru/') ЧТК]
+          | #[a(href='https://web.archive.org/web/20180316073843/http://neochemicals.ru/') Неокемикалс]
+          | и #[a(href='https://chtk.ru/') ЧТК].
         p
           | Рисую дизайн, верстаю вёрстку, автоматизирую всё.
           | Люблю браться за сложные задачи, от которых другие предпочтут отказаться.
@@ -39,18 +39,11 @@ html(lang='ru', itemtype='https://schema.org/Person', itemscope)
           | или в телеграм: #[a(href='https://t.me/mishamyrt', itemprop='sameAs', rel='me') @mishamyrt]. <br>
           | I also speak #[a(href='/en/index.pug') English].
         .hero-icons
-          a.hero-icon(href='https://www.instagram.com/mishamyrt/', itemprop='sameAs', rel='me')
-            | Инстаграм
+          a.hero-icon(href='https://www.instagram.com/mishamyrt/', itemprop='sameAs', rel='me', aria-label='Instagram')
             include ../hero/icons/instagram.svg
-          a.hero-icon(href='https://t.me/mishamyrt', itemprop='sameAs', rel='me')
-            | Телеграм
+          a.hero-icon(href='https://t.me/mishamyrt', itemprop='sameAs', rel='me', aria-label='Telegram')
             include ../hero/icons/telegram.svg
-          a.hero-icon(href='https://gitlab.com/mishamyrt', itemprop='sameAs', rel='me')
-            | Гитлаб
-            include ../hero/icons/gitlab.svg
-          a.hero-icon(href='https://github.com/mishamyrt', itemprop='sameAs', rel='me')
-            | Гитхаб
+          a.hero-icon(href='https://github.com/mishamyrt', itemprop='sameAs', rel='me', aria-label='GitHub')
             include ../hero/icons/github.svg
-          a.hero-icon(href='https://keybase.io/mishamyrt', itemprop='sameAs', rel='me')
-            | Keybase
+          a.hero-icon(href='https://keybase.io/mishamyrt', itemprop='sameAs', rel='me', aria-label='Keybase')
             include ../hero/icons/keybase.svg

@@ -28,7 +28,7 @@ html(lang='ru', itemtype='https://schema.org/Person', itemscope)
           | #[a(href='https://efo.ru/') EFO].
           | Was in charge of projects for #[a(href='https://latona.pro/') Latona],
           | #[a(href='https://web.archive.org/web/20180316073843/http://neochemicals.ru/') Neochemicals]
-          | and #[a(href='https://chtk.ru/') CHTK]
+          | and #[a(href='https://chtk.ru/') CHTK].
         p
           | Drawing design, do layout, automating everything.
           | I like to take on difficult tasks that others would prefer to abandon.
@@ -39,18 +39,11 @@ html(lang='ru', itemtype='https://schema.org/Person', itemscope)
           | or Telegram: #[a(href='https://t.me/mishamyrt', itemprop='sameAs', rel='me') @mishamyrt]. <br>
           | Ещё я говорю #[a(href='/ru/index.pug') на русском языке].
         .hero-icons
-          a.hero-icon(href='https://www.instagram.com/mishamyrt/', itemprop='sameAs', rel='me')
-            | Instagram
+          a.hero-icon(href='https://www.instagram.com/mishamyrt/', itemprop='sameAs', rel='me', aria-label='Instagram')
             include ../hero/icons/instagram.svg
-          a.hero-icon(href='https://t.me/mishamyrt', itemprop='sameAs', rel='me')
-            | Telegram
+          a.hero-icon(href='https://t.me/mishamyrt', itemprop='sameAs', rel='me', aria-label='Telegram')
             include ../hero/icons/telegram.svg
-          a.hero-icon(href='https://gitlab.com/mishamyrt', itemprop='sameAs', rel='me')
-            | GitLab
-            include ../hero/icons/gitlab.svg
-          a.hero-icon(href='https://github.com/mishamyrt', itemprop='sameAs', rel='me')
-            | GitHub
+          a.hero-icon(href='https://github.com/mishamyrt', itemprop='sameAs', rel='me', aria-label='GitHub')
             include ../hero/icons/github.svg
-          a.hero-icon(href='https://keybase.io/mishamyrt', itemprop='sameAs', rel='me')
-            | Keybase
+          a.hero-icon(href='https://keybase.io/mishamyrt', itemprop='sameAs', rel='me', aria-label='Keybase')
             include ../hero/icons/keybase.svg

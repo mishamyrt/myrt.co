@@ -12,7 +12,8 @@ const {
 const {
   processHtml,
   processCss,
-  processNginx
+  processNginx,
+  processServiceWorker
 } = require('./processors')
 
 const langs = ['ru', 'en']
@@ -47,6 +48,7 @@ bundler.on('bundled', async () => {
     .then(() => processCss(files.css))
     .then(() => processHtml(files.html))
     .then(() => processNginx())
+    .then(() => processServiceWorker())
 })
 
 bundler.bundle()
