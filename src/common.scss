@@ -34,6 +34,10 @@ a {
   display: inline-block;
   transition: background-color 0.25s ease-out;
 
+  &:focus {
+    outline: none;
+  }
+
   &::after {
     content: '';
     transform: translateZ(1px);
@@ -49,7 +53,8 @@ a {
     transition: background-color 0.25s;
   }
 
-  &:hover::after {
+  &:hover::after,
+  &:focus::after {
     transition: background-color 0s;
     background-color: var(--color-link-background);
   }
