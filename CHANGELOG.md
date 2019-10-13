@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog][],
 and this project adheres to [Semantic Versioning][].
 
+## [1.5.0][] — 2019-10-13
+
+### Added
+
+-   GZip precompress.
+-   Standard codestyle config.
+-   Focus styles for links.
+
+### Changed
+
+-   Service worker cache logic. It should be more flexible.
+
+### Fixed
+
+-   Removed `.html` from local links.
+-   Neochemicals link in russian.
+-   Alisasing at Firefox.
+-   Vertical rhythm.
+
+### Removed
+
+-   GitLab link.
+
 ## [1.4.1][] — 2019-10-02
 
 ### Fixed
@@ -109,3 +132,5 @@ and this project adheres to [Semantic Versioning][].
 [1.4.0]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.4.0
 
 [1.4.1]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.4.1
+
+[1.5.0]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.5.0
