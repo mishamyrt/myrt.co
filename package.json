@@ -176,7 +176,7 @@
     {
       "name": "Critical",
       "path": "dist/static/en/index.html",
-      "limit": "4 KB"
+      "limit": "4.5 KB"
     },
     {
       "name": "Full",
