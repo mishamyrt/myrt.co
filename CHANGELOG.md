@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning][].
 
 ## [1.6.0][] — Unreleased
 
+### Removed
+
+-   Extra icons.
+
 ## [1.5.0][] — 2019-10-13
 
 ### Added
