@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog][],
 and this project adheres to [Semantic Versioning][].
 
+## [1.5.1][] — 2019-10-20
+
+### Added
+
+-   Custom properties uglify (reduced the size of html by 312 bytes).
+
+### Removed
+
+-   Extra icons.
+
 ## [1.5.0][] — 2019-10-13
 
 ### Added
@@ -134,3 +144,5 @@ and this project adheres to [Semantic Versioning][].
 [1.4.1]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.4.1
 
 [1.5.0]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.5.0
+
+[1.5.1]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.5.1

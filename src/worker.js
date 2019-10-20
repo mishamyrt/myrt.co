@@ -38,6 +38,8 @@ self.addEventListener('activate', event => {
   event.waitUntil(clearCache())
 })
 
-self.addEventListener('fetch', event => {
-  event.respondWith(getCache(event))
-})
+if (process.env.NODE_ENV === 'production') {
+  self.addEventListener('fetch', event => {
+    event.respondWith(getCache(event))
+  })
+}
