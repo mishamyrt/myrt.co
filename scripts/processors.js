@@ -19,6 +19,8 @@ const { outDir } = require('./paths')
 
 const tp = new Typograf(typografOptions)
 const classes = {}
+const properties = {}
+
 const css = {}
 
 const processNginx = () => {
@@ -96,19 +98,35 @@ const processHtmlFile = async (fileName) => {
 }
 
 const A = 'a'.charCodeAt(0)
-let lastUsed = -1
+let lastUsedClass = -1
+let lastUsedProperty = -1
 
 function cssPlugin (root) {
   const filePath = root.source.input.file.split('/')
   const fileName = filePath[filePath.length - 1]
   if (!classes[fileName]) classes[fileName] = {}
+  if (!properties[fileName]) properties[fileName] = {}
+  root.walkDecls(decl => {
+    if (decl.prop.startsWith('--')) {
+      if (!properties[fileName][decl.prop]) {
+        lastUsedProperty += 1
+        if (lastUsedProperty === 26) lastUsedProperty -= 26 + 7 + 25
+        properties[fileName][decl.prop] = `--${String.fromCharCode(A + lastUsedProperty)}`
+        decl.prop = properties[fileName][decl.prop]
+      }
+    }
+    if (decl.value.includes('var(--')) {
+      const property = decl.value.replace(/var\((.*)\)/, '$1')
+      decl.value = decl.value.replace(/--[\w_-]+/g, properties[fileName][property])
+    }
+  })
   root.walkRules(rule => {
     rule.selector = rule.selector.replace(/\.[\w_-]+/g, str => {
       const kls = str.substr(1)
       if (!classes[fileName][kls]) {
-        lastUsed += 1
-        if (lastUsed === 26) lastUsed -= 26 + 7 + 25
-        classes[fileName][kls] = String.fromCharCode(A + lastUsed)
+        lastUsedClass += 1
+        if (lastUsedClass === 26) lastUsedClass -= 26 + 7 + 25
+        classes[fileName][kls] = String.fromCharCode(A + lastUsedClass)
       }
       return '.' + classes[fileName][kls]
     })
@@ -124,7 +142,8 @@ const processCssFile = (fileName) => {
       ).css
       const filePath = fileName.split('/')
       css[filePath[filePath.length - 1]] = cssFile
-      lastUsed = -1
+      lastUsedClass = -1
+      lastUsedProperty = -1
     })
 }
 
