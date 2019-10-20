@@ -185,7 +185,8 @@
         "dist/static/favicon-32*.png",
         "dist/static/*.css",
         "dist/static/*.woff2",
-        "dist/static/*.js"
+        "dist/static/*.js",
+        "dist/static/en/index.html"
       ],
       "limit": "120 KB"
     }
