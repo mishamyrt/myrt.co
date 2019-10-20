@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning][].
 
 ## [1.6.0][] — Unreleased
 
+### Added
+
+-   Custom properties uglify (reduced the size of html by 312 bytes).
+
 ### Removed
 
 -   Extra icons.
