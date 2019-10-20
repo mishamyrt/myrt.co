@@ -176,7 +176,7 @@
     {
       "name": "Critical",
       "path": "dist/static/en/index.html",
-      "limit": "4 KB"
+      "limit": "4.5 KB"
     },
     {
       "name": "Full",
@@ -185,7 +185,8 @@
         "dist/static/favicon-32*.png",
         "dist/static/*.css",
         "dist/static/*.woff2",
-        "dist/static/*.js"
+        "dist/static/*.js",
+        "dist/static/en/index.html"
       ],
       "limit": "120 KB"
     }
@@ -212,7 +213,6 @@
     "remark-lint": "^6.0.5",
     "remark-preset-lint-recommended": "^3.0.3",
     "sass": "^1.22.12",
-    "size-limit": "^2.1.6",
     "standardx": "^5.0.0",
     "stylelint": "^10.1.0",
     "stylelint-config-standard": "^18.3.0",
