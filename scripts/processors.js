@@ -113,6 +113,8 @@ function cssPlugin (root) {
         if (lastUsedProperty === 26) lastUsedProperty -= 26 + 7 + 25
         properties[fileName][decl.prop] = `--${String.fromCharCode(A + lastUsedProperty)}`
         decl.prop = properties[fileName][decl.prop]
+      } else {
+        decl.prop = properties[fileName][decl.prop]
       }
     }
     if (decl.value.includes('var(--')) {
