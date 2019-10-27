@@ -8,10 +8,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+
     - name: Install dependencies
       run: npm ci
+
     - name: Build static files
       run: npm run build
+
     - name: Upload results
       uses: actions/upload-artifact@v1
       with:
@@ -23,8 +26,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+
     - name: Install dependencies
       run: npm ci
+
     - name: Codestyle check
       run: npm run lint
 
@@ -36,10 +41,13 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: dist
+
     - name: Checkout
       uses: actions/checkout@v1
+
     - name: Install dependencies
       run: npm ci
+
     - name: Spell check
       run: npm run spell-check
 
@@ -51,9 +59,11 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: dist
+
     - uses: actions/checkout@v1
     - name: Install dependencies
       run: npm ci
+
     - name: Size check
       run: npm run size-check
 
@@ -65,18 +75,33 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: dist
+
     - name: Install surge
       run: sudo npm install -g surge
+
     - name: Upload to surge
+      id: deployment
       env:
         SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         TEST_URL: "https://myrt-co-preview.surge.sh"
       run: |
         surge --project ./dist/static -d $TEST_URL --token $SURGE_TOKEN
-    - name: Add PR comment
-      if: github.event_name == 'pull_request'
-      uses: unsplash/comment-on-pr@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
+
+    - name: Update deployment status (success)
+      if: success()
+      uses: chrnorm/deployment-status@releases/v1
       with:
-        msg: "Site uploaded to https://myrt-co-preview.surge.sh/en/"
+        token: "${{ secrets.GITHUB_PAT }}"
+        target-url: https://myrt-co-preview.surge.sh
+        state: "success"
+        deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+
+    - name: Update deployment status (failure)
+      if: failure()
+      uses: chrnorm/deployment-status@releases/v1
+      with:
+        token: "${{ secrets.GITHUB_PAT }}"
+        target-url: https://myrt-co-preview.surge.sh
+        state: "failure"
+        deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+
