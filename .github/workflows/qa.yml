@@ -79,8 +79,15 @@ jobs:
     - name: Install surge
       run: sudo npm install -g surge
 
-    - name: Upload to surge
+    - name: Create GitHub deployment
+      uses: chrnorm/deployment-action@releases/v1
       id: deployment
+      with:
+        token: "${{ secrets.GITHUB_PAT }}"
+        target-url: https://myrt-co-preview.surge.sh
+        environment: test
+
+    - name: Upload to surge
       env:
         SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         TEST_URL: "https://myrt-co-preview.surge.sh"
