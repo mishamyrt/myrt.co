@@ -47,6 +47,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+
     - name: Deploy latest image to myrt.co
       env:
         SSH_PRIVATE_KEY_B64: ${{ secrets.SSH_PRIVATE_KEY_B64 }}
@@ -75,6 +76,7 @@ jobs:
       uses: jakejarvis/lighthouse-action@master
       with:
         url: 'https://myrt.co/en/'
+
     - name: Upload results as an artifact
       uses: actions/upload-artifact@master
       with:
@@ -93,6 +95,7 @@ jobs:
         wget -O ./gitlab-exporter/index.js https://gitlab.com/gitlab-org/gl-performance/raw/master/index.js
         mkdir sitespeed-results
         docker run --shm-size=1g --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io:6.3.1 --plugins.add ./gitlab-exporter --outputFolder sitespeed-results $URL
+
     - name: Upload results as an artifact
       uses: actions/upload-artifact@master
       with:
@@ -107,10 +110,12 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: lighthouse-report
+
     - name: Download sitespeed report
       uses: actions/download-artifact@v1
       with:
         name: sitespeed-report
+
     - name: Prepare deploy
       run: |
         mkdir public
@@ -118,6 +123,7 @@ jobs:
         mkdir public/lighthouse
         mv lighthouse-report/https___myrt_co_en_.report.html public/lighthouse/index.html
         mv lighthouse-report/https___myrt_co_en_.report.json public/lighthouse/report.json
+
     - name: Deploy
       uses: crazy-max/ghaction-github-pages@master
       with:

@@ -27,14 +27,17 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+
     - name: Download build results
       uses: actions/download-artifact@v1
       with:
         name: dist
+
     - name: Login to GitHub Docker registry
       env:
         GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
       run: echo -n $GITHUB_PAT | docker login docker.pkg.github.com -u $GITHUB_ACTOR --password-stdin
+
     - name: Build tagged image
       run: |
         export VERSION="${GITHUB_REF/refs\/tags\/v/}"
