@@ -73,3 +73,9 @@ jobs:
         TEST_URL: "https://myrt-co-preview.surge.sh"
       run: |
         surge --project ./dist/static -d $TEST_URL --token $SURGE_TOKEN
+    - name: Add PR comment
+      if: github.event_name == 'pull_request'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
+      with:
+        msg: "Site uploaded to https://myrt-co-preview.surge.sh/en/"
