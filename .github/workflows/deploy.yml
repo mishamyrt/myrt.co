@@ -48,6 +48,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
 
+    - name: Create GitHub deployment
+      uses: chrnorm/deployment-action@releases/v1
+      id: deployment
+      with:
+        token: "${{ secrets.GITHUB_PAT }}"
+        target-url: https://myrt.co
+        environment: production
+
     - name: Deploy latest image to myrt.co
       env:
         SSH_PRIVATE_KEY_B64: ${{ secrets.SSH_PRIVATE_KEY_B64 }}
@@ -67,6 +75,24 @@ jobs:
           -e REGISTRY_USERNAME=$GITHUB_ACTOR \
           -e REGISTRY_PASSWORD=$GITHUB_PAT \
           -e IMAGE_NAME=docker.pkg.github.com/$GITHUB_REPOSITORY/site:latest
+
+    - name: Update deployment status (success)
+      if: success()
+      uses: chrnorm/deployment-status@releases/v1
+      with:
+        token: "${{ secrets.GITHUB_PAT }}"
+        target-url: https://myrt.co
+        state: "success"
+        deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+
+    - name: Update deployment status (failure)
+      if: failure()
+      uses: chrnorm/deployment-status@releases/v1
+      with:
+        token: "${{ secrets.GITHUB_PAT }}"
+        target-url: https://myrt.co
+        state: "failure"
+        deployment_id: ${{ steps.deployment.outputs.deployment_id }}
 
   lighthouse:
     needs: deploy_image
