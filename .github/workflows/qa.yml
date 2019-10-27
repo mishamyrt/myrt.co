@@ -84,13 +84,13 @@ jobs:
       id: deployment
       with:
         token: "${{ secrets.GITHUB_PAT }}"
-        target_url: https://myrt-co-preview.surge.sh
+        target_url: https://myrt-co-test.surge.sh/en
         environment: test
 
     - name: Upload to surge
       env:
         SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-        TEST_URL: "https://myrt-co-preview.surge.sh"
+        TEST_URL: "https://myrt-co-test.surge.sh"
       run: |
         surge --project ./dist/static -d $TEST_URL --token $SURGE_TOKEN
 
@@ -99,7 +99,7 @@ jobs:
       uses: chrnorm/deployment-status@releases/v1
       with:
         token: "${{ secrets.GITHUB_PAT }}"
-        target_url: https://myrt-co-preview.surge.sh
+        target_url: https://myrt-co-test.surge.sh/en
         state: "success"
         deployment_id: ${{ steps.deployment.outputs.deployment_id }}
 
@@ -108,7 +108,7 @@ jobs:
       uses: chrnorm/deployment-status@releases/v1
       with:
         token: "${{ secrets.GITHUB_PAT }}"
-        target_url: https://myrt-co-preview.surge.sh
+        target_url: https://myrt-co-test.surge.sh/en
         state: "failure"
         deployment_id: ${{ steps.deployment.outputs.deployment_id }}
 
