@@ -66,7 +66,7 @@ jobs:
       with:
         name: dist
     - name: Install surge
-      run: npm install -g surge
+      run: sudo npm install -g surge
     - name: Upload to surge
       env:
         SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
