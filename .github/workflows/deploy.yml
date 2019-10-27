@@ -53,7 +53,7 @@ jobs:
       id: deployment
       with:
         token: "${{ secrets.GITHUB_PAT }}"
-        target-url: https://myrt.co
+        target_url: https://myrt.co
         environment: production
 
     - name: Deploy latest image to myrt.co
@@ -81,7 +81,7 @@ jobs:
       uses: chrnorm/deployment-status@releases/v1
       with:
         token: "${{ secrets.GITHUB_PAT }}"
-        target-url: https://myrt.co
+        target_url: https://myrt.co
         state: "success"
         deployment_id: ${{ steps.deployment.outputs.deployment_id }}
 
@@ -90,7 +90,7 @@ jobs:
       uses: chrnorm/deployment-status@releases/v1
       with:
         token: "${{ secrets.GITHUB_PAT }}"
-        target-url: https://myrt.co
+        target_url: https://myrt.co
         state: "failure"
         deployment_id: ${{ steps.deployment.outputs.deployment_id }}
 
