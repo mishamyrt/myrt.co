@@ -75,7 +75,6 @@ jobs:
         surge --project ./dist/static -d $TEST_URL --token $SURGE_TOKEN
     - name: Add PR comment
       uses: unsplash/comment-on-pr@master
-      if: github.event_name == 'pull_request'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
       with:
