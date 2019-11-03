@@ -104,7 +104,7 @@ jobs:
       with:
         args: -o mishamyrt -r myrt.co -s success -u $TEST_URL/en -f
 
-    - name: Update deployment status (success)
+    - name: Update deployment status (failure)
       uses: niklasmerz/github-deployment-action@master
       if: failure()
       env:
