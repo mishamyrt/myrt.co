@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning][].
 
 ## [1.5.3][] — Unreleased
 
+### Fixed
+
+-   Broken line color property.
+
 ### Changed
 
 -   Replaced dark colors with fixed.
