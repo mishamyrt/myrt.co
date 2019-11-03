@@ -82,13 +82,13 @@ jobs:
     - name: Install surge
       run: sudo npm install -g surge
 
-    - name: Create GitHub deployment
-      uses: chrnorm/deployment-action@v1.0.0
-      id: deployment
+    - name: Create deployment
+      uses: niklasmerz/github-deployment-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
+        REF: ${{ github.ref }}
       with:
-        token: "${{ secrets.GITHUB_PAT }}"
-        target_url: $TEST_URL/en
-        environment: test
+        args: -o mishamyrt -r myrt.co -c $REF -e test
 
     - name: Upload to surge
       env:
@@ -97,20 +97,19 @@ jobs:
         surge --project ./dist/static -d $TEST_URL --token $SURGE_TOKEN
 
     - name: Update deployment status (success)
+      uses: niklasmerz/github-deployment-action@master
       if: success()
-      uses: chrnorm/deployment-status@releases/v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
       with:
-        token: "${{ secrets.GITHUB_PAT }}"
-        target_url: "$TEST_URL/en"
-        state: "success"
-        deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+        args: -o mishamyrt -r myrt.co -s success -u $TEST_URL/en -f
 
-    - name: Update deployment status (failure)
+    - name: Update deployment status (success)
+      uses: niklasmerz/github-deployment-action@master
       if: failure()
-      uses: chrnorm/deployment-status@releases/v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
       with:
-        token: "${{ secrets.GITHUB_PAT }}"
-        target_url: "$TEST_URL/en"
-        state: "failure"
-        deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+        args: -o mishamyrt -r myrt.co -s failure -u $TEST_URL/en -f
+
 
