@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog][],
 and this project adheres to [Semantic Versioning][].
 
+## [1.5.3][] — Unreleased
+
 ## [1.5.2][] — 2019-10-24
 
 ### Fixed
@@ -154,3 +156,5 @@ and this project adheres to [Semantic Versioning][].
 [1.5.1]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.5.1
 
 [1.5.2]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.5.2
+
+[1.5.3]: https://github.com/mishamyrt/myrt.co/compare/v1.5.2...develop
