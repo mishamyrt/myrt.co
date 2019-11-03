@@ -3,8 +3,8 @@
 </h1>
 
 <p align="center">
-  <a href="https://github.com/mishamyrt/myrt.co/actions?workflow=Quality+assurance">
-    <img src="https://github.com/mishamyrt/myrt.co/workflows/Quality%20assurance/badge.svg">
+  <a href="https://github.com/mishamyrt/myrt.co/actions?workflow=Tests">
+    <img src="https://github.com/mishamyrt/myrt.co/workflows/Tests/badge.svg">
   </a>
   <a href="https://mishamyrt.github.io/myrt.co/lighthouse/">
     <img src="https://lighthouse-badge.appspot.com/?score=100">
