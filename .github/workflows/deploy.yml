@@ -54,13 +54,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
 
-    - name: Create GitHub deployment
-      uses: chrnorm/deployment-action@v1.0.0
-      id: deployment
+    - name: Create deployment
+      uses: niklasmerz/github-deployment-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
+        REF: ${{ github.ref }}
       with:
-        token: "${{ secrets.GITHUB_PAT }}"
-        target_url: $PRODUCTION_URL
-        environment: production
+        args: -o mishamyrt -r myrt.co -c $REF -e production
 
     - name: Deploy latest image
       env:
@@ -84,22 +84,20 @@ jobs:
           -e IMAGE_NAME=docker.pkg.github.com/$GITHUB_REPOSITORY/site:$VERSION
 
     - name: Update deployment status (success)
+      uses: niklasmerz/github-deployment-action@master
       if: success()
-      uses: chrnorm/deployment-status@releases/v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
       with:
-        token: "${{ secrets.GITHUB_PAT }}"
-        target_url: $PRODUCTION_URL
-        state: "success"
-        deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+        args: -o mishamyrt -r myrt.co -s success -u $TEST_URL/en -f
 
     - name: Update deployment status (failure)
+      uses: niklasmerz/github-deployment-action@master
       if: failure()
-      uses: chrnorm/deployment-status@releases/v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
       with:
-        token: "${{ secrets.GITHUB_PAT }}"
-        target_url: $PRODUCTION_URL
-        state: "failure"
-        deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+        args: -o mishamyrt -r myrt.co -s failure -u $TEST_URL/en -f
 
   lighthouse:
     needs: deploy_image
