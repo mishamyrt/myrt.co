@@ -13,15 +13,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-link: rgba(255, 255, 255, 0.87);
-    --color-heading: rgba(255, 255, 255, 0.87);
+    --color-link: #e0e0e0;
+    --color-heading: var(--color-link);
     --color-background: #121212;
-    --color-text: rgba(255, 255, 255, 0.5);
-    --color-icon: rgba(255, 255, 255, 0.5);
-    --color-icon-hover: rgba(255, 255, 255, 0.87);
-    --color-line: rgba(255, 255, 255, 0.2);
+    --color-text: #898989;
+    --color-icon: var(--color-text);
+    --color-icon-hover: var(--color-link);
+    --color-line: #414141;
     --color-link-background: rgba(255, 255, 255, 0.15);
-    --color-technology-fg: rgba(255, 255, 255, 0.32);
-    --color-technology-bg: rgba(255, 255, 255, 0.09);
+    --color-technology-fg: #6c6c6c;
+    --color-technology-bg: #272727;
   }
 }
