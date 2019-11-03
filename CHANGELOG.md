@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning][].
 
 ## [1.5.3][] — Unreleased
 
+### Changed
+
+-   Replaced dark colors with fixed.
+
 ## [1.5.2][] — 2019-10-24
 
 ### Fixed
