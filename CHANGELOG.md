@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning][].
 ### Changed
 
 -   Replaced dark colors with fixed.
+-   Splitted templates to mixins.
 
 ### Removed
 
