@@ -1,220 +1,214 @@
-doctype html
-html(lang='ru', itemtype='https://schema.org/Person', itemscope)
-  head
-    title Резюме Миши
-    meta(name='description', content='Резюме Миши Хрустика')
-    link(rel='stylesheet', href='/resume/resume.scss')
-    include ../head.pug
-  body
-    include ../worker.pug
-    .resume
-      .resume-header
-        a.resume-backLink(href='./index.pug')
-          picture.resume-avatar
-          source(srcset='/photo/avatar.webp', type='image/webp')
-          img.resume-avatar(src='/photo/avatar.jpg', alt='Фотография Миши Хрустика', itemprop='image')
-        div
-          a.resume-backLink(href='./index.pug')
-            h1.resume-heading Михаил Хрустик
-          h2.resume-subheading Веб–разработчик и дизайнер
-        p.resume-contacts
-          | #[a(href='tel:+79992053133') +7 999 205–31–33]
-          | #[a(href='mailto:misha@myrt.co') misha@myrt.co]
-          | #[a(href='https://t.me/mishamyrt') @mishamyrt]
-      .resume-jobs
-        .resume-job
-          p.resume-date
-            span Фев 2019
-            span Наши дни
-          .resume-content
-            h3.resume-position Фронтлид в Тектософт
-            p
-              | Поддерживал и развивал CRM–системы для сотового оператора и железнодорожников, HR-сервис для моряков, интернет-магазин монет и ещё множество проектов,
-            p
-              | Автоматизировал процессы, готовил бойлерплейты для различных стеков.
-            p
-              | Писал Ansible playbook для автоматизации деплоя, покрывал код интеграционными тестами, учил тестировщика писать тесты. Ввёл проверки качества фронтенд–кода во все проекты в которых участвовал.
-            p
-              | Проектировал REST api, помогал в принятии важных технических решений.
-            p
-              | Учил девопса и разработчиков работать с GitLab CI.
-            p
-              | Проводил код–ревью, пояснял за кастомные свойства CSS.
-            p
-              | Автоматизировал работу Windows XP, которая через RDP была подключена к Windows 10, которая через TeamViewer была подключена к macOS.
-            p
-              | Делал SSR для сайта на Angular 8. Поддерживал покрытие тестами на >90%.
-            p
-              | Внедрил в компании практику ведения опен–сурс проектов, написал бота для автоматизированного ревью. Помогал выбирать стек технологий на проекты.
-          .resume-xtra
-            .resume-links
-              a.resume-link(href='https://tektosoft.ru/', itemprop='sameAs', rel='me') Тектософт
-                include ../resume/icons/web.svg
-            .resume-stack
-              span.resume-technology Angular
-              span.resume-technology React
-              span.resume-technology Preact
-              span.resume-technology Docker
-              span.resume-technology Ansible
-              span.resume-technology GitLab CI
-              span.resume-technology Node.JS
-              span.resume-technology Vanilla ES6
-              span.resume-technology PHP
-              span.resume-technology Webpack
-              span.resume-technology Parcel
-              span.resume-technology Mocha
-              span.resume-technology Chai
-              span.resume-technology Puppeteer
-              span.resume-technology Jasmine
-              span.resume-technology Autohotkey
-        .resume-job
-          p.resume-date
-            span Июл 2018
-            span Фев 2019
-          .resume-content
-            h3.resume-position Фронтендер в БелВГ
-            p
-              | Писал бэкенд–части для Magento 2 и Prestashop, верстал под разные форматы, языки и прочее.
-            p
-              | Помог обновить клиентский сайт с Prestashop 1.6 до 1.7 (по сути переписывание 80% кода), написал банковский конфигуратор карт, исправил тысячи багов на сотнях сайтов.
-            p
-              | Не стеснялся предложить решения, которые не совпадают с привычным стеком компании.
-            p
-              | Переписывал легаси, внедрял и оптимизировал сборщики.
-          .resume-xtra
-            .resume-links
-              a.resume-link(href='http://belvg.com', itemprop='sameAs', rel='me') БелВГ
-                include ../resume/icons/web.svg
-            .resume-stack
-              span.resume-technology PHP
-              span.resume-technology Twig
-              span.resume-technology Smarty
-              span.resume-technology Bootstrap
-              span.resume-technology Vanilla ES6
-              span.resume-technology Angular
-              span.resume-technology Node.JS
-              span.resume-technology jQuery
-              span.resume-technology Babel
-              span.resume-technology Gulp
-              span.resume-technology MySQL
-              span.resume-technology Webpack
-              span.resume-technology Knockout.JS
-        .resume-job
-          p.resume-date
-            span Май 2017
-            span Мар 2018
-          .resume-content
-            h3.resume-position Тимлид и дизайнер в Цифре
-            p
-              | Разработал логотип, айдентику и дизайн сайта.
-            p
-              | Запустил обновленную версию сайта. Весь фронт был переписан с нуля.
-            p
-              | Ввёл на проект автоматические тесты и деплой.
-            p
-              | Контролировал работу штата программистов и проектировщиков.
-            p
-              | Занимался построением архитектуры, проводил ревью, писал код для фронт и бэк частей.
+include ../page.pug
 
-          .resume-xtra
-            .resume-links
-              a.resume-link(href='https://cifra.in', itemprop='sameAs', rel='me') Цифра
-                include ../resume/icons/web.svg
-            .resume-stack
-              span.resume-technology PHP
-              span.resume-technology Smarty
-              span.resume-technology Vanilla ES6
-              span.resume-technology Babel
-              span.resume-technology Rollup
-              span.resume-technology PostCSS
-              span.resume-technology Gulp
-        .resume-job
-          p.resume-date
-            span Сен 2016
-            span Май 2017
-          .resume-content
-            h3.resume-position Разработчик, дизайнер и техлид в CMT
-            p
-              | Спроектировал, задизайнил и запустил новую версию сайта на самописном движке. Сделал мощную динамическую админку, которая позволяет с удобством для редакторов писать статьи.
-            p
-              | Проектировал и выстраивал микросервисную архитектуру. Проводил собеседования, собирал команду.
-            p
-              | Написал и оформил редполитику.
-          .resume-xtra
-            .resume-links
-              a.resume-link(href='https://cmtscience.ru', itemprop='sameAs', rel='me') CMT
-                include ../resume/icons/web.svg
-            .resume-stack
-              span.resume-technology PHP
-              span.resume-technology Twig
-              span.resume-technology Vanilla ES6
-              span.resume-technology Vue
-              span.resume-technology Node
-              span.resume-technology Express
-              span.resume-technology Rollup
-              span.resume-technology PostCSS
-              span.resume-technology Gulp
-        .resume-job
-          p.resume-date
-            span Июн 2016
-            span Авг 2016
-          .resume-content
-            h3.resume-position Фуллстек в ЭФО
-            p
-              | Создавал сайты внутренних проектов, автоматизировал рутинные задачи для менеджеров, поддерживал и переписывал старый сайт.
-            p
-              | Проектировал, писал и запускал сложный конфигурируемый поисковик по продуктам компании.
-          .resume-xtra
-            .resume-links
-              a.resume-link(href='https://efo.ru/', itemprop='sameAs', rel='me') ЭФО
-                include ../resume/icons/web.svg
-            .resume-stack
-              span.resume-technology PHP
-              span.resume-technology Laravel
-              span.resume-technology Twig
-              span.resume-technology Smarty
-              span.resume-technology jQuery
-              span.resume-technology Perl
-              span.resume-technology Java
-              span.resume-technology Bootstrap
-      .resume-skills
-        h2.resume-skillsHeading Навыки
-        h3.resume-skillTitle Дизайн
-        ul.resume-skillsGroup
-          li.resume-skill Владею Photoshop, Illustrator, InDesign и Figma;
-          li.resume-skill Понимаю разницу между UI и UX;
-          li.resume-skill Читал гайдлайны по Material и Metro Design;
-          li.resume-skill Могу писать пером;
-          li.resume-skill Умею работать с покадровой, tween и spline–анимацией;
-          li.resume-skill Имею базовые навыки Principle, Framer и Sketch.
-        h3.resume-skillTitle Технологии
-        ul.resume-skillsGroup
-          li.resume-skill Активный контрибьютер в Open Source;
-          li.resume-skill Внимателен к мелочам, особенно в чужом коде;
-          li.resume-skill Называю функции и переменные понятными не только для себя именами;
-          li.resume-skill Знаю, что Java и JavaScript – это разные вещи;
-          li.resume-skill Применяю паттерны проектирования;
-          li.resume-skill Следую последним стандартам: HTML5, CSS3, ES2015+, ГОСТ;
-          li.resume-skill Использую тесты, линтеры и методы вербального убеждения;
-          li.resume-skill Работал с Angular 6, 7, 8, NgRx, Knockout.JS, React, Redux, Vue, Preact и Svelte;
-          li.resume-skill Способен настроить Webpack, Rollup, Gulp, Parcel и скрипты в npm;
-          li.resume-skill Могу отличить постпроцессор от транспилятора и OOP от TDD;
-          li.resume-skill Умею верстать без использования фреймворков; по БЭМ и без; на шаблонизаторах и JSX;
-          li.resume-skill Считаю что за PWA будущее приложений и не перестаю всех в этом убеждать;
-          li.resume-skill Верстал AMP–совместимые страницы, дотягивал Pagespeed и Sitespeed.io до 100;
-          li.resume-skill Знаю, что не все люди имеют равные возможности. Делаю доступные интерфейсы by default;
-          li.resume-skill Повелеваю GitLab CI, Jenkins и Travis.CI;
-          li.resume-skill Могу написать Dockerfile и docker-compose;
-          li.resume-skill Умею конфигурировать nginx и Apache;
-          li.resume-skill Знаю как собрать ядро Linux и как оптимизировать его под конкретную архитектуру.
-        h3.resume-skillTitle Процессы
-        ul.resume-skillsGroup
-          li.resume-skill Знаю, чем отличаются merge от rebase и stash от cherry pick;
-          li.resume-skill Много читаю, постоянно учусь сам и могу обучать других;
-          li.resume-skill Почти не боюсь публичных выступлений;
-          li.resume-skill Умею создавать таски в эпиках, ассайнить тестировщиков и перетаскивать карточки на Kanban–доске.
-        h3.resume-skillTitle Право
-        ul.resume-skillsGroup
-          li.resume-skill Знаю, что шрифты и изображения бывают не бесплатными и помогаю их правильно купить;
-          li.resume-skill Отличаю BSD от MIT и с опаской использую GPL–проекты;
-          li.resume-skill Знаю почему опасно использовать React при разработке криптовалютных сайтов.
++page('Резюме Миши', 'Резюме Миши Хрустика', 'resume')
+  .resume
+    .resume-header
+      a.resume-backLink(href='./index.pug')
+        picture.resume-avatar
+        source(srcset='/photo/avatar.webp', type='image/webp')
+        img.resume-avatar(src='/photo/avatar.jpg', alt='Фотография Миши Хрустика', itemprop='image')
+      div
+        a.resume-backLink(href='./index.pug')
+          h1.resume-heading Михаил Хрустик
+        h2.resume-subheading Веб–разработчик и дизайнер
+      p.resume-contacts
+        | #[a(href='tel:+79992053133') +7 999 205–31–33]
+        | #[a(href='mailto:misha@myrt.co') misha@myrt.co]
+        | #[a(href='https://t.me/mishamyrt') @mishamyrt]
+    .resume-jobs
+      .resume-job
+        p.resume-date
+          span Фев 2019
+          span Наши дни
+        .resume-content
+          h3.resume-position Фронтлид в Тектософт
+          p
+            | Поддерживал и развивал CRM–системы для сотового оператора и железнодорожников, HR-сервис для моряков, интернет-магазин монет и ещё множество проектов,
+          p
+            | Автоматизировал процессы, готовил бойлерплейты для различных стеков.
+          p
+            | Писал Ansible playbook для автоматизации деплоя, покрывал код интеграционными тестами, учил тестировщика писать тесты. Ввёл проверки качества фронтенд–кода во все проекты в которых участвовал.
+          p
+            | Проектировал REST api, помогал в принятии важных технических решений.
+          p
+            | Учил девопса и разработчиков работать с GitLab CI.
+          p
+            | Проводил код–ревью, пояснял за кастомные свойства CSS.
+          p
+            | Автоматизировал работу Windows XP, которая через RDP была подключена к Windows 10, которая через TeamViewer была подключена к macOS.
+          p
+            | Делал SSR для сайта на Angular 8. Поддерживал покрытие тестами на >90%.
+          p
+            | Внедрил в компании практику ведения опен–сурс проектов, написал бота для автоматизированного ревью. Помогал выбирать стек технологий на проекты.
+        .resume-xtra
+          .resume-links
+            a.resume-link(href='https://tektosoft.ru/', itemprop='sameAs', rel='me') Тектософт
+              include ../resume/icons/web.svg
+          .resume-stack
+            span.resume-technology Angular
+            span.resume-technology React
+            span.resume-technology Preact
+            span.resume-technology Docker
+            span.resume-technology Ansible
+            span.resume-technology GitLab CI
+            span.resume-technology Node.JS
+            span.resume-technology Vanilla ES6
+            span.resume-technology PHP
+            span.resume-technology Webpack
+            span.resume-technology Parcel
+            span.resume-technology Mocha
+            span.resume-technology Chai
+            span.resume-technology Puppeteer
+            span.resume-technology Jasmine
+            span.resume-technology Autohotkey
+      .resume-job
+        p.resume-date
+          span Июл 2018
+          span Фев 2019
+        .resume-content
+          h3.resume-position Фронтендер в БелВГ
+          p
+            | Писал бэкенд–части для Magento 2 и Prestashop, верстал под разные форматы, языки и прочее.
+          p
+            | Помог обновить клиентский сайт с Prestashop 1.6 до 1.7 (по сути переписывание 80% кода), написал банковский конфигуратор карт, исправил тысячи багов на сотнях сайтов.
+          p
+            | Не стеснялся предложить решения, которые не совпадают с привычным стеком компании.
+          p
+            | Переписывал легаси, внедрял и оптимизировал сборщики.
+        .resume-xtra
+          .resume-links
+            a.resume-link(href='http://belvg.com', itemprop='sameAs', rel='me') БелВГ
+              include ../resume/icons/web.svg
+          .resume-stack
+            span.resume-technology PHP
+            span.resume-technology Twig
+            span.resume-technology Smarty
+            span.resume-technology Bootstrap
+            span.resume-technology Vanilla ES6
+            span.resume-technology Angular
+            span.resume-technology Node.JS
+            span.resume-technology jQuery
+            span.resume-technology Babel
+            span.resume-technology Gulp
+            span.resume-technology MySQL
+            span.resume-technology Webpack
+            span.resume-technology Knockout.JS
+      .resume-job
+        p.resume-date
+          span Май 2017
+          span Мар 2018
+        .resume-content
+          h3.resume-position Тимлид и дизайнер в Цифре
+          p
+            | Разработал логотип, айдентику и дизайн сайта.
+          p
+            | Запустил обновленную версию сайта. Весь фронт был переписан с нуля.
+          p
+            | Ввёл на проект автоматические тесты и деплой.
+          p
+            | Контролировал работу штата программистов и проектировщиков.
+          p
+            | Занимался построением архитектуры, проводил ревью, писал код для фронт и бэк частей.
+
+        .resume-xtra
+          .resume-links
+            a.resume-link(href='https://cifra.in', itemprop='sameAs', rel='me') Цифра
+              include ../resume/icons/web.svg
+          .resume-stack
+            span.resume-technology PHP
+            span.resume-technology Smarty
+            span.resume-technology Vanilla ES6
+            span.resume-technology Babel
+            span.resume-technology Rollup
+            span.resume-technology PostCSS
+            span.resume-technology Gulp
+      .resume-job
+        p.resume-date
+          span Сен 2016
+          span Май 2017
+        .resume-content
+          h3.resume-position Разработчик, дизайнер и техлид в CMT
+          p
+            | Спроектировал, задизайнил и запустил новую версию сайта на самописном движке. Сделал мощную динамическую админку, которая позволяет с удобством для редакторов писать статьи.
+          p
+            | Проектировал и выстраивал микросервисную архитектуру. Проводил собеседования, собирал команду.
+          p
+            | Написал и оформил редполитику.
+        .resume-xtra
+          .resume-links
+            a.resume-link(href='https://cmtscience.ru', itemprop='sameAs', rel='me') CMT
+              include ../resume/icons/web.svg
+          .resume-stack
+            span.resume-technology PHP
+            span.resume-technology Twig
+            span.resume-technology Vanilla ES6
+            span.resume-technology Vue
+            span.resume-technology Node
+            span.resume-technology Express
+            span.resume-technology Rollup
+            span.resume-technology PostCSS
+            span.resume-technology Gulp
+      .resume-job
+        p.resume-date
+          span Июн 2016
+          span Авг 2016
+        .resume-content
+          h3.resume-position Фуллстек в ЭФО
+          p
+            | Создавал сайты внутренних проектов, автоматизировал рутинные задачи для менеджеров, поддерживал и переписывал старый сайт.
+          p
+            | Проектировал, писал и запускал сложный конфигурируемый поисковик по продуктам компании.
+        .resume-xtra
+          .resume-links
+            a.resume-link(href='https://efo.ru/', itemprop='sameAs', rel='me') ЭФО
+              include ../resume/icons/web.svg
+          .resume-stack
+            span.resume-technology PHP
+            span.resume-technology Laravel
+            span.resume-technology Twig
+            span.resume-technology Smarty
+            span.resume-technology jQuery
+            span.resume-technology Perl
+            span.resume-technology Java
+            span.resume-technology Bootstrap
+    .resume-skills
+      h2.resume-skillsHeading Навыки
+      h3.resume-skillTitle Дизайн
+      ul.resume-skillsGroup
+        li.resume-skill Владею Photoshop, Illustrator, InDesign и Figma;
+        li.resume-skill Понимаю разницу между UI и UX;
+        li.resume-skill Читал гайдлайны по Material и Metro Design;
+        li.resume-skill Могу писать пером;
+        li.resume-skill Умею работать с покадровой, tween и spline–анимацией;
+        li.resume-skill Имею базовые навыки Principle, Framer и Sketch.
+      h3.resume-skillTitle Технологии
+      ul.resume-skillsGroup
+        li.resume-skill Активный контрибьютер в Open Source;
+        li.resume-skill Внимателен к мелочам, особенно в чужом коде;
+        li.resume-skill Называю функции и переменные понятными не только для себя именами;
+        li.resume-skill Знаю, что Java и JavaScript – это разные вещи;
+        li.resume-skill Применяю паттерны проектирования;
+        li.resume-skill Следую последним стандартам: HTML5, CSS3, ES2015+, ГОСТ;
+        li.resume-skill Использую тесты, линтеры и методы вербального убеждения;
+        li.resume-skill Работал с Angular 6, 7, 8, NgRx, Knockout.JS, React, Redux, Vue, Preact и Svelte;
+        li.resume-skill Способен настроить Webpack, Rollup, Gulp, Parcel и скрипты в npm;
+        li.resume-skill Могу отличить постпроцессор от транспилятора и OOP от TDD;
+        li.resume-skill Умею верстать без использования фреймворков; по БЭМ и без; на шаблонизаторах и JSX;
+        li.resume-skill Считаю что за PWA будущее приложений и не перестаю всех в этом убеждать;
+        li.resume-skill Верстал AMP–совместимые страницы, дотягивал Pagespeed и Sitespeed.io до 100;
+        li.resume-skill Знаю, что не все люди имеют равные возможности. Делаю доступные интерфейсы by default;
+        li.resume-skill Повелеваю GitLab CI, Jenkins и Travis.CI;
+        li.resume-skill Могу написать Dockerfile и docker-compose;
+        li.resume-skill Умею конфигурировать nginx и Apache;
+        li.resume-skill Знаю как собрать ядро Linux и как оптимизировать его под конкретную архитектуру.
+      h3.resume-skillTitle Процессы
+      ul.resume-skillsGroup
+        li.resume-skill Знаю, чем отличаются merge от rebase и stash от cherry pick;
+        li.resume-skill Много читаю, постоянно учусь сам и могу обучать других;
+        li.resume-skill Почти не боюсь публичных выступлений;
+        li.resume-skill Умею создавать таски в эпиках, ассайнить тестировщиков и перетаскивать карточки на Kanban–доске.
+      h3.resume-skillTitle Право
+      ul.resume-skillsGroup
+        li.resume-skill Знаю, что шрифты и изображения бывают не бесплатными и помогаю их правильно купить;
+        li.resume-skill Отличаю BSD от MIT и с опаской использую GPL–проекты;
+        li.resume-skill Знаю почему опасно использовать React при разработке криптовалютных сайтов.
