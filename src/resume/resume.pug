@@ -1,0 +1,40 @@
+mixin resumeHeader(heading, subheading, photoAlt)
+  .resume-header
+    a.resume-backLink(href='./index.pug')
+      picture.resume-avatar
+      source(srcset='/photo/avatar.webp', type='image/webp')
+      img.resume-avatar(src='/photo/avatar.jpg', alt= photoAlt, itemprop='image')
+    div
+      a.resume-backLink(href='./index.pug')
+        h1.resume-heading #{heading}
+      h2.resume-subheading #{subheading}
+    p.resume-contacts
+      | #[a(href='tel:+79992053133') +7 999 205–31–33]
+      | #[a(href='mailto:misha@myrt.co') misha@myrt.co]
+      | #[a(href='https://t.me/mishamyrt') @mishamyrt]
+
+mixin resumeJob(position, dates, link, technologies)
+  .resume-job
+    p.resume-date
+      span #{dates.from}
+      span #{dates.to}
+    .resume-content
+      h3.resume-position #{position}
+      block
+    .resume-xtra
+      .resume-links
+        a.resume-link(href= link.url, itemprop='sameAs', rel='me') #{link.title}
+          include ../resume/icons/web.svg
+      .resume-stack
+        each technology in technologies
+          span.resume-technology #{technology}
+
+mixin resumeSkill(title, skills)
+  h3.resume-skillTitle #{title}
+  ul.resume-skillsGroup
+    each skill, index in skills
+      if index === skills.length - 1
+        -  var ending = '.';
+      else
+        -  var ending = ';';
+      li.resume-skill #{skill}#{ending}
