@@ -1,0 +1,20 @@
+mixin page(title, description, styleset)
+  doctype html
+  html(lang='ru', itemtype='https://schema.org/Person', itemscope)
+    head
+      meta(charset='UTF-8')
+      meta(name='viewport', content='width=device-width')
+      link(itemprop='sameAs', href='https://vk.com/mishamyrt')
+      meta(itemprop='gender', content='male')
+      link(itemprop='url', href='https://myrt.co')
+      link(rel='icon', type='image/png', sizes='32x32', href='/favicon-32.png')
+      link(rel='icon', type='image/png', sizes='16x16', href='/favicon-16.png')
+      link(rel='manifest', href='/manifest.webmanifest')
+      link(rel='apple-touch-icon', href='/photo/icon-192x192.png')
+      meta(name='theme-color', content='#ffffff')
+      title= title
+      meta(name='description', content= description)
+      link(rel='stylesheet', href='/' + styleset + '/' + styleset + '.scss')
+    body
+      include ./worker.pug
+      block

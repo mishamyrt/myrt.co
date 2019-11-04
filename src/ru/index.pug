@@ -1,49 +1,35 @@
-doctype html
-html(lang='ru', itemtype='https://schema.org/Person', itemscope)
-  head
-    title Миша
-    meta(name='description', content='Контакты и проекты Миши Хрустика')
-    link(rel='stylesheet', href='/hero/hero.scss')
-    include ../head.pug
-  body
-    include ../worker.pug
-    .hero
-      .hero-header
-        h1.hero-heading Давайте делать крутые штуки
-        picture.hero-avatar(width='155px', height='155px')
-          source(srcset='/photo/avatar@2x.webp 2x, /photo/avatar.webp', type='image/webp')
-          img.hero-avatar(src='/photo/avatar.jpg', srcset='/photo/avatar@2x.jpg 2x, /photo/avatar.jpg', alt='Фотография Миши Хрустика', itemprop='image')
-      .hero-content
-        p
-          | Привет, меня зовут
-          | #[span(itemprop='givenName') Михаил]
-          | #[span(itemprop='familyName') Хрустик],
-          | я фронтлид и дизайнер в
-          | #[a(href='https://tektosoft.ru/') Тектософте].
-          | Живу в Санкт–Петербурге.
-        p
-          | До этого работал в #[a(href='https://belvg.com') БелВГ],
-          | #[a(href='https://cmtscience.ru/') CMT],
-          | #[a(href='https://cifra.in/') Цифре],
-          | #[a(href='https://efo.ru/') ЭФО].
-          | Занимался проектами для #[a(href='https://latona.pro/') Латоны],
-          | #[a(href='https://web.archive.org/web/20180316073843/http://neochemicals.ru/') Неокемикалс]
-          | и #[a(href='https://chtk.ru/') ЧТК].
-        p
-          | Рисую дизайн, верстаю вёрстку, автоматизирую всё.
-          | Люблю браться за сложные задачи, от которых другие предпочтут отказаться.
-        p.hero-footer
-          | Больше информации в #[a(href='/ru/resume.pug') резюме]. <br>
-          | Пишите предложения на почту:
-          | #[a(href='mailto:misha@myrt.co', itemprop='email') misha@myrt.co], <br>
-          | или в телеграм: #[a(href='https://t.me/mishamyrt', itemprop='sameAs', rel='me') @mishamyrt]. <br>
-          | I also speak #[a(href='/en/index.pug') English].
-        .hero-icons
-          a.hero-icon(href='https://www.instagram.com/mishamyrt/', itemprop='sameAs', rel='me', aria-label='Instagram')
-            include ../hero/icons/instagram.svg
-          a.hero-icon(href='https://t.me/mishamyrt', itemprop='sameAs', rel='me', aria-label='Telegram')
-            include ../hero/icons/telegram.svg
-          a.hero-icon(href='https://github.com/mishamyrt', itemprop='sameAs', rel='me', aria-label='GitHub')
-            include ../hero/icons/github.svg
-          a.hero-icon(href='https://keybase.io/mishamyrt', itemprop='sameAs', rel='me', aria-label='Keybase')
-            include ../hero/icons/keybase.svg
+include ../page.pug
+include ../hero/hero.pug
+
++page('Миша', 'Контакты и проекты Миши Хрустика', 'hero')
+  .hero
+    +heroHeader(
+      'Давайте делать крутые штуки',
+      'Фотография Миши Хрустика'
+    )
+    .hero-content
+      p
+        | Привет, меня зовут
+        | #[span(itemprop='givenName') Михаил]
+        | #[span(itemprop='familyName') Хрустик],
+        | я фронтлид и дизайнер в
+        | #[a(href='https://tektosoft.ru/') Тектософте].
+        | Живу в Санкт–Петербурге.
+      p
+        | До этого работал в #[a(href='https://belvg.com') БелВГ],
+        | #[a(href='https://cmtscience.ru/') CMT],
+        | #[a(href='https://cifra.in/') Цифре],
+        | #[a(href='https://efo.ru/') ЭФО].
+        | Занимался проектами для #[a(href='https://latona.pro/') Латоны],
+        | #[a(href='https://web.archive.org/web/20180316073843/http://neochemicals.ru/') Неокемикалс]
+        | и #[a(href='https://chtk.ru/') ЧТК].
+      p
+        | Рисую дизайн, верстаю вёрстку, автоматизирую всё.
+        | Люблю браться за сложные задачи, от которых другие предпочтут отказаться.
+      p.hero-footer
+        | Больше информации в #[a(href='/ru/resume.pug') резюме]. <br>
+        | Пишите предложения на почту:
+        | #[a(href='mailto:misha@myrt.co', itemprop='email') misha@myrt.co], <br>
+        | или в телеграм: #[a(href='https://t.me/mishamyrt', itemprop='sameAs', rel='me') @mishamyrt]. <br>
+        | I also speak #[a(href='/en/index.pug') English].
+      +heroIcons
