@@ -1,12 +1,12 @@
 include ../page.pug
+include ../hero/hero.pug
 
 +page('Миша', 'Контакты и проекты Миши Хрустика', 'hero')
   .hero
-    .hero-header
-      h1.hero-heading Давайте делать крутые штуки
-      picture.hero-avatar(width='155px', height='155px')
-        source(srcset='/photo/avatar@2x.webp 2x, /photo/avatar.webp', type='image/webp')
-        img.hero-avatar(src='/photo/avatar.jpg', srcset='/photo/avatar@2x.jpg 2x, /photo/avatar.jpg', alt='Фотография Миши Хрустика', itemprop='image')
+    +heroHeader(
+      'Давайте делать крутые штуки',
+      'Фотография Миши Хрустика'
+    )
     .hero-content
       p
         | Привет, меня зовут
@@ -32,4 +32,4 @@ include ../page.pug
         | #[a(href='mailto:misha@myrt.co', itemprop='email') misha@myrt.co], <br>
         | или в телеграм: #[a(href='https://t.me/mishamyrt', itemprop='sameAs', rel='me') @mishamyrt]. <br>
         | I also speak #[a(href='/en/index.pug') English].
-      include ../hero/icons.pug
+      +heroIcons
