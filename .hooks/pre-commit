@@ -1,6 +1,6 @@
 #!/bin/bash
 get_staged () {
-  git diff --name-only --cached | grep .$1
+  git diff --name-only --cached | grep .$1 | grep -v '.json'
 }
 
 lint () {
