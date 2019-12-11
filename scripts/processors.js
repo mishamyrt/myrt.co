@@ -118,7 +118,7 @@ function cssPlugin (root) {
       }
     }
     if (decl.value.includes('var(--')) {
-      const property = decl.value.replace(/var\((.*)\)/, '$1')
+      const property = decl.value.match(/var\((.*)\)/, '$1')[1]
       decl.value = decl.value.replace(/--[\w_-]+/g, properties[fileName][property])
     }
   })

@@ -1,9 +1,12 @@
-name: Deploy
+name: Build fixed version tag image
 
 on:
   push:
-    branches:
-      - master
+    tags:
+      - v*
+
+env:
+  PRODUCTION_URL: https://myrt.co
 
 jobs:
   build_static:
@@ -27,19 +30,22 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+
     - name: Download build results
       uses: actions/download-artifact@v1
       with:
         name: dist
+
     - name: Login to GitHub Docker registry
       env:
         GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
       run: echo -n $GITHUB_PAT | docker login docker.pkg.github.com -u $GITHUB_ACTOR --password-stdin
-    - name: Build image
-      run: docker build -t docker.pkg.github.com/$GITHUB_REPOSITORY/site:latest -f docker/Dockerfile ./dist
-    - name: Push image
-      run: docker push docker.pkg.github.com/$GITHUB_REPOSITORY/site:latest
 
+    - name: Build tagged image
+      run: |
+        export VERSION="${GITHUB_REF/refs\/tags\/v/}"
+        docker build -t docker.pkg.github.com/$GITHUB_REPOSITORY/site:$VERSION -f docker/Dockerfile ./dist
+        docker push docker.pkg.github.com/$GITHUB_REPOSITORY/site:$VERSION
 
   deploy_image:
     needs: build_image
@@ -47,11 +53,21 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: Deploy latest image to myrt.co
+
+    - name: Create deployment
+      uses: niklasmerz/github-deployment-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
+        REF: ${{ github.ref }}
+      with:
+        args: -o mishamyrt -r myrt.co -c $REF -e production
+
+    - name: Deploy latest image
       env:
         SSH_PRIVATE_KEY_B64: ${{ secrets.SSH_PRIVATE_KEY_B64 }}
         GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
       run: |
+        export VERSION="${GITHUB_REF/refs\/tags\/v/}"
         eval $(ssh-agent -s)
         echo $SSH_PRIVATE_KEY_B64 | base64 -d | tr -d '\r' > private.key
         echo >> private.key
@@ -65,7 +81,23 @@ jobs:
         ansible-playbook -i ansible/hosts ansible/deploy.yml \
           -e REGISTRY_USERNAME=$GITHUB_ACTOR \
           -e REGISTRY_PASSWORD=$GITHUB_PAT \
-          -e IMAGE_NAME=docker.pkg.github.com/$GITHUB_REPOSITORY/site:latest
+          -e IMAGE_NAME=docker.pkg.github.com/$GITHUB_REPOSITORY/site:$VERSION
+
+    - name: Update deployment status (success)
+      uses: niklasmerz/github-deployment-action@master
+      if: success()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
+      with:
+        args: -o mishamyrt -r myrt.co -s success -u $TEST_URL/en -f
+
+    - name: Update deployment status (failure)
+      uses: niklasmerz/github-deployment-action@master
+      if: failure()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
+      with:
+        args: -o mishamyrt -r myrt.co -s failure -u $TEST_URL/en -f
 
   lighthouse:
     needs: deploy_image
@@ -74,7 +106,8 @@ jobs:
     - name: Audit live URL
       uses: jakejarvis/lighthouse-action@master
       with:
-        url: 'https://myrt.co/en/'
+        url: "$PRODUCTION_URL/en/"
+
     - name: Upload results as an artifact
       uses: actions/upload-artifact@master
       with:
@@ -87,12 +120,13 @@ jobs:
     steps:
     - name: Audit live URL
       env:
-        URL: https://myrt.co/en/
+        URL: "$PRODUCTION_URL/en/"
       run: |
         mkdir gitlab-exporter
         wget -O ./gitlab-exporter/index.js https://gitlab.com/gitlab-org/gl-performance/raw/master/index.js
         mkdir sitespeed-results
         docker run --shm-size=1g --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io:6.3.1 --plugins.add ./gitlab-exporter --outputFolder sitespeed-results $URL
+
     - name: Upload results as an artifact
       uses: actions/upload-artifact@master
       with:
@@ -107,10 +141,12 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: lighthouse-report
+
     - name: Download sitespeed report
       uses: actions/download-artifact@v1
       with:
         name: sitespeed-report
+
     - name: Prepare deploy
       run: |
         mkdir public
@@ -118,6 +154,7 @@ jobs:
         mkdir public/lighthouse
         mv lighthouse-report/https___myrt_co_en_.report.html public/lighthouse/index.html
         mv lighthouse-report/https___myrt_co_en_.report.json public/lighthouse/report.json
+
     - name: Deploy
       uses: crazy-max/ghaction-github-pages@master
       with:
@@ -125,3 +162,4 @@ jobs:
         build_dir: public
       env:
         GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+

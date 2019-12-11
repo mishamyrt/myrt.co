@@ -1,49 +1,35 @@
-doctype html
-html(lang='ru', itemtype='https://schema.org/Person', itemscope)
-  head
-    title Misha
-    meta(name='description', content='Contacts and projects of Mikhael Khrustik')
-    link(rel='stylesheet', href='/hero/hero.scss')
-    include ../head.pug
-  body
-    include ../worker.pug
-    .hero
-      .hero-header
-        h1.hero-heading Let's make<br> cool stuff
-        picture.hero-avatar(width='155px', height='155px')
-          source(srcset='/photo/avatar@2x.webp 2x, /photo/avatar.webp', type='image/webp')
-          img.hero-avatar(src='/photo/avatar.jpg', srcset='/photo/avatar@2x.jpg 2x, /photo/avatar.jpg', alt='Mikhael Khrustik photo', itemprop='image')
-      .hero-content
-        p
-          | Hi, my name is
-          | #[span(itemprop='givenName') Mikhael]
-          | #[span(itemprop='familyName') Khrustik],
-          |  I'm a front lead and developer at
-          | #[a(href='https://tektosoft.ru/') Tektosoft].
-          | I live in St. Petersburg.
-        p
-          | Before that, I worked at #[a(href='https://belvg.com') BelVG],
-          | #[a(href='https://cmtscience.ru/') CMT],
-          | #[a(href='https://cifra.in/') Cifra] and
-          | #[a(href='https://efo.ru/') EFO].
-          | Was in charge of projects for #[a(href='https://latona.pro/') Latona],
-          | #[a(href='https://web.archive.org/web/20180316073843/http://neochemicals.ru/') Neochemicals]
-          | and #[a(href='https://chtk.ru/') CHTK].
-        p
-          | Drawing design, do layout, automating everything.
-          | I like to take on difficult tasks that others would prefer to abandon.
-        p.hero-footer
-          | More information in #[a(href='/en/resume.pug') resume]. <br>
-          | Write offers to the email:
-          | #[a(href='mailto:misha@myrt.co', itemprop='email') misha@myrt.co], <br>
-          | or Telegram: #[a(href='https://t.me/mishamyrt', itemprop='sameAs', rel='me') @mishamyrt]. <br>
-          | Ещё я говорю #[a(href='/ru/index.pug') на русском языке].
-        .hero-icons
-          a.hero-icon(href='https://www.instagram.com/mishamyrt/', itemprop='sameAs', rel='me', aria-label='Instagram')
-            include ../hero/icons/instagram.svg
-          a.hero-icon(href='https://t.me/mishamyrt', itemprop='sameAs', rel='me', aria-label='Telegram')
-            include ../hero/icons/telegram.svg
-          a.hero-icon(href='https://github.com/mishamyrt', itemprop='sameAs', rel='me', aria-label='GitHub')
-            include ../hero/icons/github.svg
-          a.hero-icon(href='https://keybase.io/mishamyrt', itemprop='sameAs', rel='me', aria-label='Keybase')
-            include ../hero/icons/keybase.svg
+include ../page.pug
+include ../hero/hero.pug
+
++page('Миша', 'Контакты и проекты Миши Хрустика', 'hero')
+  .hero
+    +heroHeader(
+      'Let\'s make <br /> cool stuff',
+      'Mikhael Khrustik photo'
+    )
+    .hero-content
+      p
+        | Hi, my name is
+        | #[span(itemprop='givenName') Mikhael]
+        | #[span(itemprop='familyName') Khrustik],
+        |  I'm a front lead and developer at
+        | #[a(href='https://tektosoft.ru/') Tektosoft].
+        | I live in St. Petersburg.
+      p
+        | Before that, I worked at #[a(href='https://belvg.com') BelVG],
+        | #[a(href='https://cmtscience.ru/') CMT],
+        | #[a(href='https://cifra.in/') Cifra] and
+        | #[a(href='https://efo.ru/') EFO].
+        | Was in charge of projects for #[a(href='https://latona.pro/') Latona],
+        | #[a(href='https://web.archive.org/web/20180316073843/http://neochemicals.ru/') Neochemicals]
+        | and #[a(href='https://chtk.ru/') CHTK].
+      p
+        | Drawing design, do layout, automating everything.
+        | I like to take on difficult tasks that others would prefer to abandon.
+      p.hero-footer
+        | More information in #[a(href='/en/resume.pug') resume]. <br>
+        | Write offers to the email:
+        | #[a(href='mailto:misha@myrt.co', itemprop='email') misha@myrt.co], <br>
+        | or Telegram: #[a(href='https://t.me/mishamyrt', itemprop='sameAs', rel='me') @mishamyrt]. <br>
+        | Ещё я говорю #[a(href='/ru/index.pug') на русском языке].
+      +heroIcons

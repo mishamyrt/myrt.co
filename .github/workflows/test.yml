@@ -1,0 +1,115 @@
+name: Tests
+
+on: [push]
+
+env:
+  TEST_URL: https://myrt-co-test.surge.sh
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build static files
+      run: npm run build
+
+    - name: Upload results
+      uses: actions/upload-artifact@v1
+      with:
+        name: dist
+        path: dist/
+
+  codestyle-check:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Codestyle check
+      run: npm run lint
+
+  spell-check:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Download build results
+      uses: actions/download-artifact@v1
+      with:
+        name: dist
+
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Spell check
+      run: npm run spell-check
+
+  size-check:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Download build results
+      uses: actions/download-artifact@v1
+      with:
+        name: dist
+
+    - uses: actions/checkout@v1
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Size check
+      run: npm run size-check
+
+  upload_test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Download build results
+      uses: actions/download-artifact@v1
+      with:
+        name: dist
+
+    - name: Install surge
+      run: sudo npm install -g surge
+
+    - name: Create deployment
+      uses: niklasmerz/github-deployment-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
+        REF: ${{ github.ref }}
+      with:
+        args: -o mishamyrt -r myrt.co -c $REF -e test
+
+    - name: Upload to surge
+      env:
+        SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+      run: |
+        surge --project ./dist/static -d $TEST_URL --token $SURGE_TOKEN
+
+    - name: Update deployment status (success)
+      uses: niklasmerz/github-deployment-action@master
+      if: success()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
+      with:
+        args: -o mishamyrt -r myrt.co -s success -u $TEST_URL/en -f
+
+    - name: Update deployment status (failure)
+      uses: niklasmerz/github-deployment-action@master
+      if: failure()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
+      with:
+        args: -o mishamyrt -r myrt.co -s failure -u $TEST_URL/en -f
+
+

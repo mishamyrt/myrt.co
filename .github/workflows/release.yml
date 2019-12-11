@@ -1,0 +1,28 @@
+name: Release new version
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Create release
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
+      run: |
+        export VERSION=$(node scripts/release.js)
+        git config --global user.email "misha@myrt.co"
+        git config --global user.name "mishamyrt"
+        git checkout master
+        git tag v$VERSION master
+        git commit -am "Release $VERSION"
+        git remote add authed-origin https://mishamyrt:$GITHUB_TOKEN@github.com/mishamyrt/myrt.co.git
+        git push authed-origin master
+        git push authed-origin --tags
+
