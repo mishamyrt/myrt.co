@@ -29,6 +29,7 @@ const addChangelogEntry = async () => {
     `${tagLink.split(' ')[0]} ${tagLinkBase}${version}`
   )
   await writeFile('CHANGELOG.md', changelog)
+  console.log(version)
 }
 
 addChangelogEntry()
