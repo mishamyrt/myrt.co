@@ -21,7 +21,8 @@ jobs:
         git config --global user.name "mishamyrt"
         git checkout master
         git tag v$VERSION master
-        git add CHANGELOG.md
+        git commit -am "Release $VERSION"
         git remote add authed-origin https://mishamyrt:$GITHUB_TOKEN@github.com/mishamyrt/myrt.co.git
+        git push authed-origin master
         git push authed-origin --tags
 
