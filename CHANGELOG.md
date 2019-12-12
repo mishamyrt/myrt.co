@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning][].
 
 -   Possible vulnerabilities.
 -   Dirty code.
+-   Release recreation with error.
+-   `develop` sync.
 
 ## [1.5.3][] — 2019-11-11
 
