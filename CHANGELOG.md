@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning][].
 ### Fixed
 
 -   Possible vulnerabilities.
+-   Dirty code.
 
 ## [1.5.3][] — 2019-11-11
 
