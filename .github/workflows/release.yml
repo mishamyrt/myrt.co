@@ -17,7 +17,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
       run: |
         export VERSION=$(node scripts/release.js)
-        [ -z "git rev-list v$VERSION" ] && exit 0
+        git rev-list v$VERSION && exit 0
         git config --global user.email "misha@myrt.co"
         git config --global user.name "mishamyrt"
         git checkout master
