@@ -1,0 +1,32 @@
+.hero {
+  margin: 30px auto 0;
+
+  &-photo {
+    width: 143px;
+    filter: grayscale(1);
+    height: 143px;
+  }
+
+  &-link {
+    color: var(--color-text);
+  }
+
+  &-text {
+    display: grid;
+    grid-template-columns: 1fr 298px;
+    grid-gap: var(--column-gap);
+  }
+
+  &-links {
+    font-size: 14px;
+    line-height: 18px;
+    color: hsla(0, 0%, 50%, 1);
+  }
+
+  &-name {
+    font-size: 69px;
+    line-height: 72px;
+    font-weight: bold;
+    margin-left: -5px;
+  }
+}

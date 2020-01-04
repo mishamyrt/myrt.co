@@ -1,0 +1,22 @@
+@import '/styles/common.scss';
+
+.blog {
+  margin-top: 61px;
+
+  &-group {
+    margin-bottom: 80px;
+  }
+
+  &-year {
+    font-size: 39px;
+    line-height: 37px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  &-date {
+    font-size: 14px;
+    margin-left: 18px;
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,24 @@
+.menu {
+  &-itemContent {
+    margin: 0 15px 0 0;
+    opacity: 0.5;
+
+    &.link {
+      text-decoration: none;
+    }
+
+    &.__current {
+      color: var(--color-text);
+      opacity: 1;
+      text-decoration: underline;
+
+      --color-underline: var(--color-text);
+    }
+  }
+
+  &-list {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+  }
+}

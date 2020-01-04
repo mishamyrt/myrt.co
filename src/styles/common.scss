@@ -1,0 +1,65 @@
+@import './fonts.scss';
+@import './colors.scss';
+@import './columns.scss';
+@import '../blocks/menu/menu.scss';
+@import '../blocks/hero/hero.scss';
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-background);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 27px;
+  color: var(--color-text);
+  min-height: calc(100vh - 74px);
+  margin: 0;
+  padding: 0 20px;
+}
+
+p {
+  font-size: 17px;
+  line-height: 27px;
+  margin: 9px 0 18px;
+}
+
+h1 {
+  font-size: 69px;
+  line-height: 72px;
+}
+
+h2 {
+  font-size: 39px;
+  line-height: 42px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-heading);
+  margin: 0;
+}
+
+.link {
+  text-decoration: underline;
+  text-decoration-color: var(--color-underline, var(--color-text));
+  color: var(--color-text);
+}
+
+.h4 {
+  font-size: 17px;
+  line-height: 27px;
+}
+
+.h2 {
+  font-size: 39px;
+  line-height: 45px;
+}
+
+.content {
+  max-width: 836px;
+  margin: 0 auto;
+  position: relative;
+  left: -122.5px;
+}
