@@ -1,0 +1,9 @@
+mixin projects()
+  .projects
+    each project in projects
+      .projects-item
+        .projects-heading.columns
+          a.h2.columns-main.projects-title #{project.title}
+        .projects-content.columns
+          .columns-main
+            | !{project.content}
