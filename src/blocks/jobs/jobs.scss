@@ -1,0 +1,35 @@
+.jobs {
+  &-to {
+    display: block;
+  }
+
+  &-date {
+    margin-top: 7px;
+    opacity: 0.5;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  &-title {
+    margin-bottom: 9px;
+  }
+
+  &-item {
+    margin-bottom: 30px;
+  }
+
+  &-technologies {
+    padding-top: 9px;
+  }
+
+  &-technology {
+    color: #4b4b4b;
+    background-color: #ebebeb;
+    margin: 3px 0 0 3px;
+    border-radius: 5px;
+    padding: 0 8px;
+    font-size: 14px;
+    display: inline-block;
+    line-height: 26px;
+  }
+}

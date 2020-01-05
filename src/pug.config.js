@@ -1,3 +1,5 @@
+const content = require('../content/content.json')
+
 const keyToUrl = key => `/pages/${key}/${key}.pug`
 
 module.exports = {
@@ -12,11 +14,7 @@ module.exports = {
         item.url = keyToUrl(item.key)
         return item
       })
-    }
+    },
+    ...content
   }
 }
-
-// ('blog/article', 'blog') => true, true
-// ('blog/', 'blog') => true, false
-// ('blog/', 'resume') => false, false
-// ('blog/', 'resume') => false, false

@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npm run serve",
     "build": "rm -rf dist/ && node scripts/build.js",
-    "serve": "npx parcel serve src/index.pug",
+    "serve": "npx parcel serve src/contexts/development/index.pug",
     "size-check": "npx size-limit",
     "spell-check": "npx yaspeller dist/static/**/*.html",
     "lint": "npm run lint:css && npm run lint:js && npm run lint:pug",
@@ -197,6 +197,7 @@
     "cheerio": "^1.0.0-rc.3",
     "css-mqpacker": "^7.0.0",
     "html-minifier": "^4.0.0",
+    "marked": "^0.8.0",
     "parcel-bundler": "^1.12.4",
     "postcss": "^7.0.24",
     "posthtml": "^0.11.6",

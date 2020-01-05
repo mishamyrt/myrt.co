@@ -7,6 +7,10 @@
     height: 143px;
   }
 
+  &-information {
+    padding-top: 7px;
+  }
+
   &-link {
     color: var(--color-text);
   }
@@ -21,6 +25,7 @@
     font-size: 14px;
     line-height: 18px;
     color: hsla(0, 0%, 50%, 1);
+    padding-top: 3px;
   }
 
   &-name {

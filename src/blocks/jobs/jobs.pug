@@ -1,0 +1,16 @@
+mixin jobs()
+  .jobs
+    each job in jobs
+      .jobs-item
+        .jobs-heading.columns
+          h3.h2.columns-main.jobs-title #{job.title}
+          .columns-aside
+            .jobs-date
+              span.jobs-from #{job.from}
+              span.jobs-to #{job.to}
+        .jobs-content.columns
+          .columns-aside.jobs-technologies
+            each technology in job.technologies
+              span.jobs-technology #{technology}
+          .columns-main
+            | !{job.content}
