@@ -8,6 +8,23 @@ const { postsDir } = require('../paths.js')
 const dateRegexp = /^Date: (.*)/gm
 const titleRegexp = /^# (.*)/gm
 
+const renderer = new marked.Renderer()
+
+renderer.paragraph = function (text) {
+  if (text.startsWith('<img') && text.endsWith('">')) {
+    return `
+<figure class="blogPost-imageContainer">
+    ${text}
+</figure>`
+  }
+  return `<p>${text}</p>`
+}
+
+// renderer.image = (href, title) =>
+// `<p class="blogPost-imageContainer">
+//   <img src="${href}" alt="${title}">
+// </p>`
+
 const readPost = async key => {
   const content = await readFile(join(postsDir, key, 'post.md'))
   return content.toString()
@@ -23,7 +40,7 @@ const relativeImage = (key, src) =>
   join('..', '..', 'content', 'posts', key, src)
 
 const renderMarkdown = markdown =>
-  minify(marked(markdown), { collapseWhitespace: true })
+  minify(marked(markdown, { renderer }), { collapseWhitespace: true })
 
 const relinkImages = (html, key) => {
   const $ = cheerio.load(html, { decodeEntities: false })

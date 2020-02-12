@@ -1,4 +1,3 @@
-@import './fonts.scss';
 @import './colors.scss';
 @import './columns.scss';
 @import '../blocks/menu/menu.scss';
@@ -8,9 +7,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--color-background);
-  font-family: var(--font-sans);
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif;
   font-size: 17px;
-  line-height: 27px;
+  line-height: 25px;
   color: var(--color-text);
   min-height: calc(100vh - 74px);
   margin: 0;
@@ -29,7 +39,7 @@ h1 {
 }
 
 h2 {
-  font-size: 39px;
+  font-size: 40px;
   line-height: 42px;
 }
 
@@ -42,9 +52,19 @@ h4 {
 }
 
 .link {
+  color: var(--color-link);
   text-decoration: underline;
-  text-decoration-color: var(--color-underline, var(--color-text));
-  color: var(--color-text);
+  text-decoration-color: var(--color-background);
+  transition:
+    color 0.25s ease-out,
+    text-decoration-color 0.25s ease-out;
+
+  &:hover {
+    transition:
+      color 0s,
+      text-decoration-color 0s;
+    text-decoration-color: var(--color-link);
+  }
 }
 
 .h4 {
@@ -53,7 +73,7 @@ h4 {
 }
 
 .h2 {
-  font-size: 39px;
+  font-size: 40px;
   line-height: 45px;
   font-weight: bold;
 }

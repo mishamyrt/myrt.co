@@ -3,16 +3,11 @@
 
   &-photo {
     width: 143px;
-    filter: grayscale(1);
     height: 143px;
   }
 
   &-information {
     padding-top: 7px;
-  }
-
-  &-link {
-    color: var(--color-text);
   }
 
   &-text {
@@ -24,8 +19,12 @@
   &-links {
     font-size: 14px;
     line-height: 18px;
-    color: hsla(0, 0%, 50%, 1);
+    color: #d6d6d6;
     padding-top: 3px;
+  }
+
+  &-link.link {
+    color: #666;
   }
 
   &-name {

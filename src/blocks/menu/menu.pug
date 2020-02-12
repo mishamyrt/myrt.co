@@ -1,7 +1,7 @@
 mixin menuItem(item, url)
   if menuContext.isActive(item.key, url)
     if menuContext.isChild(url)
-      a.menu-itemContent.__current.__child (href=item.url) #{item.title} sub
+      a.menu-itemContent.__current.__child(href=item.url) #{item.title}
     else
       span.link.menu-itemContent.__current #{item.title}
   else

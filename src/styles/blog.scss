@@ -1,0 +1,35 @@
+@import '/styles/common.scss';
+
+.blog {
+  margin-top: 36px;
+
+  &-group {
+    margin-bottom: 40px;
+  }
+
+  &-article {
+    margin-bottom: 8px;
+    display: grid;
+    grid-template-columns: 1fr 298px;
+    grid-gap: var(--column-gap);
+  }
+
+  &-month {
+    font-size: 14px;
+    color: #666;
+    margin-top: -2px;
+  }
+
+  &-year {
+    font-size: 40px;
+    line-height: 37px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  &-date {
+    font-size: 14px;
+    margin-left: 18px;
+    opacity: 0.5;
+  }
+}

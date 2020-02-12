@@ -1,13 +1,11 @@
 :root {
   --color-background: white;
   --color-accent: #ff9a00;
-  --color-link: black;
-  --color-link-background: rgba(0, 0, 0, 0.15);
-  --color-heading: black;
-  --color-text: black;
+  --color-link: #06c;
+  --color-heading: #333;
+  --color-text: #333;
   --color-icon: #949494;
   --color-icon-hover: #525252;
-  --color-line: var(--color-link-background);
   --color-technology-bg: var(--color-icon);
   --color-technology-fg: var(--color-background);
 }

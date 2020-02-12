@@ -22,5 +22,9 @@
   &-main {
     grid-column: 2;
     grid-row: 1;
+
+    p {
+      letter-spacing: -0.15px;
+    }
   }
 }

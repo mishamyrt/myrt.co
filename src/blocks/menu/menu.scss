@@ -1,18 +1,17 @@
 .menu {
   &-itemContent {
     margin: 0 15px 0 0;
-    opacity: 0.5;
+    color: #595959;
 
     &.link {
       text-decoration: none;
+      color: #595959;
     }
 
     &.__current {
       color: var(--color-text);
+      font-weight: bold;
       opacity: 1;
-      text-decoration: underline;
-
-      --color-underline: var(--color-text);
     }
   }
 

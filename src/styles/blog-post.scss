@@ -1,0 +1,43 @@
+@import '/styles/common.scss';
+
+.blogPost {
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  ul,
+  ol {
+    margin-left: calc(var(--side-column-width) + var(--column-gap));
+  }
+
+  &-imageContainer {
+    max-width: 610px;
+    text-align: center;
+    margin: 20px 0 20px calc(var(--side-column-width) + var(--column-gap) - 50px);
+
+    img {
+      max-width: 100%;
+      margin: 0 auto;
+      border-radius: 4px;
+    }
+  }
+
+  p {
+    max-width: 510px;
+    letter-spacing: -0.15px;
+  }
+
+  h1 {
+    font-size: 40px;
+    line-height: 1.05;
+    font-weight: 500;
+    margin-bottom: 32px;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 13px;
+  }
+}
