@@ -3,3 +3,4 @@ node_modules
 dist
 nginx.conf
 content/content.json
+src/articles

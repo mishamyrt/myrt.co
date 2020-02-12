@@ -8,11 +8,12 @@ const contentDir = fromRoot('content')
 
 module.exports = {
   outIndexFile: join(outDir, 'index.html'),
-  indexFile: join(src, 'index.pug'),
+  indexFile: join(src, 'blog.pug'),
   nginxTemplate: fromRoot('docker/nginx.conf.dist'),
   nginxConfig: fromRoot('dist/nginx.conf'),
   serviceWorkerFile: join(outDir, 'worker.js'),
   jobsDir: join(contentDir, 'jobs'),
+  postsDir: join(contentDir, 'posts'),
   contentFile: join(contentDir, 'content.json'),
   contentDir,
   outDir,
