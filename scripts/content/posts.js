@@ -20,10 +20,17 @@ renderer.paragraph = function (text) {
   return `<p>${text}</p>`
 }
 
-// renderer.image = (href, title) =>
-// `<p class="blogPost-imageContainer">
-//   <img src="${href}" alt="${title}">
-// </p>`
+renderer.code = function (code, infostring, scaped) {
+  const formattedCode = code
+    .split('\n')
+    .map(line => '      | ' + line)
+    .join('\n')
+  return `  <!-- htmlmin:ignore -->
+  pre
+    code
+${formattedCode}
+  <!-- htmlmin:ignore -->`
+}
 
 const readPost = async key => {
   const content = await readFile(join(postsDir, key, 'post.md'))
@@ -40,7 +47,10 @@ const relativeImage = (key, src) =>
   join('..', '..', 'content', 'posts', key, src)
 
 const renderMarkdown = markdown =>
-  minify(marked(markdown, { renderer }), { collapseWhitespace: true })
+  minify(marked(markdown, { renderer }), {
+    collapseWhitespace: true,
+    removeComments: true
+  })
 
 const relinkImages = (html, key) => {
   const $ = cheerio.load(html, { decodeEntities: false })
