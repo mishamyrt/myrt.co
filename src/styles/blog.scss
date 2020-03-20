@@ -9,6 +9,7 @@
 
   &-article {
     margin-bottom: 8px;
+    margin-top: 5px;
     display: grid;
     grid-template-columns: 1fr 298px;
     grid-gap: var(--column-gap);
@@ -21,9 +22,9 @@
   }
 
   &-year {
-    font-size: 40px;
+    font-size: 30px;
     line-height: 37px;
-    font-weight: bold;
+    font-weight: 700;
     margin: 0;
   }
 
