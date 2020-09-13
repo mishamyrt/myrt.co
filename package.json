@@ -8,6 +8,8 @@
     "sass": "^1.26.10"
   },
   "scripts": {
+    "build": "npx parcel build src/index.pug",
+    "start": "npx parcel src/index.pug",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
