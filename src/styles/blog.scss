@@ -8,16 +8,29 @@
   }
 
   &-article {
+    padding: 8px 14px;
     margin-bottom: 8px;
-    margin-top: 5px;
+    margin-left: -14px;
+    border-radius: 5px;
+    margin-top: -3px;
+    text-decoration: none;
     display: grid;
-    grid-template-columns: 1fr 298px;
+    grid-template-columns: 249px 120px;
     grid-gap: var(--column-gap);
+
+    &:hover {
+      background-color: #eee;
+    }
+  }
+
+  &-title {
+    color: var(--color-text);
   }
 
   &-month {
     font-size: 14px;
     color: #666;
+    margin-left: 14px;
     margin-top: -2px;
   }
 

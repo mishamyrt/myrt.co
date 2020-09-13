@@ -10,6 +10,6 @@ include ./blocks/_blocks.pug
           h2.blog-year #{postsYear.year}
         .columns-main
           each post in postsYear.posts
-            .blog-article
-              | #[a.link(href='./articles/' + post.key + '.pug') #{post.title}]
+            a.blog-article(href='./articles/' + post.key + '.pug')
+              span.blog-title #{post.title}
               span.blog-month #{post.month}
