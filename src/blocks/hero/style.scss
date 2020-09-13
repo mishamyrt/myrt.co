@@ -1,0 +1,17 @@
+.hero {
+  margin-top: 145px;
+
+  &-h1 {
+    font-size: 4.2vw;
+    font-weight: var(--width-title);
+    letter-spacing: -0.93px;
+  }
+
+  &-h2 {
+    width: var(--width-third);
+    color: var(--color-grey);
+    font-size: 20px;
+    letter-spacing: -0.93px;
+    line-height: 152.7%;
+  }
+}

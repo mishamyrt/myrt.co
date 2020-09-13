@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@import 'blocks/avatar/style.scss';
+@import 'blocks/hero/style.scss';
+@import 'blocks/hireMe/style.scss';
+@import 'blocks/hero/style.scss';
+@import 'blocks/case/style.scss';
+
+:root {
+  --width-title: 600;
+  --gutter: 30px;
+
+  --width-third: calc(100% * 0.666 - (var(--gutter) / 2));
+  --width-quarter: calc(100% * 0.75 - (var(--gutter) / 2));
+
+  --color-deep-black: #171D29;
+  --color-blue: #0072FF;
+  --color-orange: #e87200;
+  --color-grey: #81858B;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.15px;
+  margin: 0 150px;
+  color: var(--color-deep-black);
+}
+
+.link {
+  color: var(--color-blue);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-orange);
+  }
+}
+
+.experience {
+  margin-top: 70px;
+}

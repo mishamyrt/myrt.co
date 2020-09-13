@@ -5,7 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog][],
 and this project adheres to [Semantic Versioning][].
 
-## [1.5.4][] — Unreleased
+## [2.0.0][] — Unreleased
+
+### Added
+
+-  Totally new design.
+
+### Fixed
+
+-   Possible vulnerabilities.
+-   Dirty code.
+-   Release recreation with error.
+-   `develop` sync.
+
+## 1.5.4 — Unreleased
 
 ### Fixed
 
@@ -185,4 +198,4 @@ and this project adheres to [Semantic Versioning][].
 
 [1.5.3]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.5.3
 
-[1.5.4]: https://github.com/mishamyrt/myrt.co/compare/v1.5.3...develop
+[2.0.0]: https://github.com/mishamyrt/myrt.co/compare/v1.5.3...develop

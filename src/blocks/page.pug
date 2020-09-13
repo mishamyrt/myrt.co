@@ -1,0 +1,14 @@
+mixin page(title, description)
+  doctype html
+  html(lang='ru', itemtype='https://schema.org/Person', itemscope)
+    head
+      meta(charset='UTF-8')
+      meta(name='viewport', content='width=device-width')
+      link(rel='stylesheet', href='./style.scss')
+      link(itemprop='url', href='https://myrt.co')
+      title= title
+      meta(name='theme-color', content='#ffffff')
+      meta(itemprop='gender', content='male')
+      meta(name='description', content= description)
+    body
+      block

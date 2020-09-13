@@ -1,0 +1,56 @@
+.case {
+  margin-top: 100px;
+
+  &-title {
+    font-size: 45px;
+    letter-spacing: -0.93px;
+    margin: 12px 0 11px 0;
+  }
+
+  &-when {
+    color: var(--color-grey);
+  }
+
+  &-description {
+    width: var(--width-third);
+    margin: 0;
+    line-height: 152.7%;
+    font-size: 24px;
+  }
+
+  &-facts {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(var(--columns-count), 1fr);
+
+    &.__three {
+      --columns-count: 3;
+
+      & .case-factText {
+        width: var(--width-third);
+      }
+    }
+
+    &.__four {
+      --columns-count: 4;
+    }
+  }
+
+  &-factTitle {
+    font-size: 24px;
+  }
+
+  &-fact {
+    margin-top: 23px;
+  }
+
+  &-factText {
+    font-size: 16px;
+    line-height: 150%;
+    margin-top: 24px;
+  }
+
+  &-factImg {
+    width: 100%;
+  }
+}

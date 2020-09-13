@@ -1,0 +1,28 @@
+extends /blocks/case/index.pug
+
+block when
+  span с 2018
+
+block title
+  span Разрботчик прошивок Android
+
+block content
+  p.case-description
+    | Собираю PixelExperience для Xiaomi Mi 9T, провожу замеры и улучшаю производительность,
+    | калибрую экран, доводя уровень ощущений до Google Pixel.
+    | Помимо самой прошивки, отдельно распространяю и поддерживаю кастомные сборки ядра Linux 4.14 под названиями Pancake и Milk.
+  .case-facts.__three
+    div.case-fact
+      img.case-factImg(src="./assets/pixel@2x.jpg", aria-hidden="true")
+      p.case-factText
+        | Сборка даёт максимальную схожесть по ощущениям от Pixel 4a.
+    div.case-fact
+      img.case-factImg(src="./assets/rating@2x.png", aria-hidden="true")
+      p.case-factText
+        | Pancake занимает 1 место по популярности среди ядер для Mi 9T
+        | у пользователей форума 4PDA.
+    div.case-fact
+      img.case-factImg(src="./assets/scripts@2x.png", aria-hidden="true")
+      p.case-factText
+        | Процесс cборки и релиза автоматизирован набором скриптов.
+
