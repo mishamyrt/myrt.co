@@ -48,7 +48,7 @@ jobs:
       env:
         SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
       run: |
-        surge --project ./dist/static -d $TEST_URL --token $SURGE_TOKEN
+        surge --project ./dist -d $TEST_URL --token $SURGE_TOKEN
 
     - name: Update deployment status (success)
       uses: niklasmerz/github-deployment-action@master
