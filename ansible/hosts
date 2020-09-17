@@ -3,3 +3,4 @@ myrt-co ansible_host=myrt.co
 
 [myrt:vars]
 ansible_python_interpreter=/usr/bin/python3
+ansible_user=misha
