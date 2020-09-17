@@ -1,0 +1,23 @@
+name: Deploy to test environment
+
+on: [push]
+
+jobs:
+  qa:
+    name: Quality assurance
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build check
+      run: npm run build
+
+    - name: Codestyle check
+      run: npm run lint
+
+    - name: Spell check
+      run: npm run spellcheck
