@@ -5,12 +5,16 @@
   "devDependencies": {
     "parcel": "^1.12.4",
     "pug": "^3.0.0",
-    "sass": "^1.26.10"
+    "sass": "^1.26.10",
+    "stylelint": "^13.7.1",
+    "stylelint-config-standard": "^20.0.0"
   },
   "scripts": {
     "build": "npx parcel build src/index.pug",
     "start": "npx parcel src/index.pug",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npm run lint:css",
+    "lint:css": "npx stylelint src/"
   },
   "repository": {
     "type": "git",
