@@ -39,13 +39,13 @@ jobs:
     - name: Install surge
       run: sudo npm install -g surge
 
-    - uses: chrnorm/deployment-action@releases/v1
+    - uses: chrnorm/deployment-action@v1.2.0
       name: Create GitHub deployment
       id: deployment
       with:
         token: ${{ secrets.GITHUB_PAT }}
         target_url: $TEST_URL
-        environment: surge
+        environment: test
 
     - name: Upload to surge
       env:
@@ -54,7 +54,7 @@ jobs:
 
     - name: Update deployment status (success)
       if: success()
-      uses: chrnorm/deployment-status@releases/v1
+      uses: chrnorm/deployment-status@v1.0.0
       with:
         token: ${{ secrets.GITHUB_PAT }}
         target_url: $TEST_URL
@@ -63,7 +63,7 @@ jobs:
 
     - name: Update deployment status (failure)
       if: failure()
-      uses: chrnorm/deployment-status@releases/v1
+      uses: chrnorm/deployment-status@v1.0.0
       with:
         token: ${{ secrets.GITHUB_PAT }}
         target_url: $TEST_URL
