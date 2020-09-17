@@ -1,5 +1,5 @@
 ---
-- hosts: "myrt.co"
+- hosts: "myrt-co"
   become: yes
   become_user: root
   become_method: sudo
