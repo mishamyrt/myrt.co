@@ -42,6 +42,11 @@
     grid-gap: 30px;
     grid-template-columns: repeat(var(--columns-count), 1fr);
 
+    @media (max-width: 600px) {
+      grid-gap: 15px;
+      margin-top: 25px;
+    }
+
     &.__three {
       --columns-count: 3;
 
@@ -81,6 +86,10 @@
 
   &-fact {
     margin-top: 23px;
+
+    @media (max-width: 600px) {
+      margin-top: 0;
+    }
   }
 
   &-factImg {
