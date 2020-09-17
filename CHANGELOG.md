@@ -11,13 +11,6 @@ and this project adheres to [Semantic Versioning][].
 
 -  Totally new design.
 
-### Fixed
-
--   Possible vulnerabilities.
--   Dirty code.
--   Release recreation with error.
--   `develop` sync.
-
 ## 1.5.4 — Unreleased
 
 ### Fixed
