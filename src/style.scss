@@ -2,20 +2,17 @@
 @import 'blocks/avatar/style.scss';
 @import 'blocks/hero/style.scss';
 @import 'blocks/hireMe/style.scss';
-@import 'blocks/hero/style.scss';
 @import 'blocks/case/style.scss';
 
 :root {
   --font-width-title: 600;
-
   --gutter: 30px;
   --width-third: calc(100% * 0.666 - (var(--gutter) / 2));
   --width-quarter: calc(100% * 0.75 - (var(--gutter) / 2));
-
-  --color-deep-black: #171D29;
-  --color-blue: #0072FF;
+  --color-deep-black: #171d29;
+  --color-blue: #0072ff;
   --color-orange: #e87200;
-  --color-grey: #81858B;
+  --color-grey: #81858b;
 
   @media (max-width: 700px) {
     --gutter: 20px;
