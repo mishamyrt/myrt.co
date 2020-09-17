@@ -3,7 +3,7 @@ name: Tests
 on: [push]
 
 env:
-  TEST_URL: https://myrt-co-test.surge.sh
+  TEST_URL: myrt-co-test.surge.sh
 
 jobs:
   build:
@@ -42,13 +42,13 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
         REF: ${{ github.ref }}
       with:
-        args: -o mishamyrt -r myrt.co -c $REF -e test
+        args: -o mishamyrt -r "$TEST_URL" -c $REF -e test
 
     - name: Upload to surge
       env:
         SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
       run: |
-        surge --project ./dist -d $TEST_URL --token $SURGE_TOKEN
+        surge --project ./dist -d "$TEST_URL" --token $SURGE_TOKEN
 
     - name: Update deployment status (success)
       uses: niklasmerz/github-deployment-action@master
@@ -56,7 +56,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
       with:
-        args: -o mishamyrt -r myrt.co -s success -u $TEST_URL -f
+        args: -o mishamyrt -r "$TEST_URL" -s success -u $TEST_URL -f
 
     - name: Update deployment status (failure)
       uses: niklasmerz/github-deployment-action@master
@@ -64,6 +64,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
       with:
-        args: -o mishamyrt -r myrt.co -s failure -u $TEST_URL -f
+        args: -o mishamyrt -r "$TEST_URL" -s failure -u $TEST_URL -f
 
 
