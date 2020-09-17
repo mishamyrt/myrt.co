@@ -3,18 +3,22 @@
   "private": true,
   "dependencies": {},
   "devDependencies": {
+    "@arkweid/lefthook": "^0.7.2",
     "parcel": "^1.12.4",
     "pug": "^3.0.0",
     "sass": "^1.26.10",
     "stylelint": "^13.7.1",
-    "stylelint-config-standard": "^20.0.0"
+    "stylelint-config-standard": "^20.0.0",
+    "yaspeller": "^7.0.0"
   },
   "scripts": {
     "build": "npx parcel build src/index.pug",
+    "build:dev": "npx parcel build src/index.pug --no-source-maps --no-minify --log-level 0",
     "start": "npx parcel src/index.pug",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npm run lint:css",
-    "lint:css": "npx stylelint \"src/**/*.scss\""
+    "lint:css": "npx stylelint \"src/**/*.scss\"",
+    "spellcheck": "npm run build:dev && npx yaspeller dist/index.html"
   },
   "repository": {
     "type": "git",
@@ -24,6 +28,42 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mishamyrt/myrt.co/issues"
+  },
+  "yaspeller": {
+    "ignoreCapitalization": true,
+    "dictionary": [
+      "4PDA",
+      "4a",
+      "9T",
+      "BelVG",
+      "CI",
+      "CMT",
+      "Jitsi",
+      "Mattermost",
+      "Mi 9T",
+      "PixelExperience",
+      "Prestashop",
+      "Xiaomi",
+      "Тектософте",
+      "Тимлид",
+      "Фронтендер",
+      "Фронтендеры",
+      "Фронтлид",
+      "Фуллстек",
+      "Хрустик",
+      "ЭФО",
+      "админку",
+      "багов",
+      "бандла",
+      "бэкенд",
+      "деплой",
+      "задизайнил",
+      "кастомные",
+      "ревью",
+      "самописном",
+      "фронтендеров",
+      "Magento"
+    ]
   },
   "homepage": "https://github.com/mishamyrt/myrt.co#readme"
 }

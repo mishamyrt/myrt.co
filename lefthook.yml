@@ -1,0 +1,12 @@
+pre-commit:
+  parallel: true
+  commands:
+    lint-css:
+      files: git diff --name-only @{push}
+      glob: "*.css"
+      run: "npx stylelint {staged_files}"
+    spellcheck:
+      files: git diff --name-only @{push}
+      glob: "*.pug"
+      run: "npm run spellcheck"
+
