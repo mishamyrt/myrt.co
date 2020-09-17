@@ -14,7 +14,7 @@
     "start": "npx parcel src/index.pug",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npm run lint:css",
-    "lint:css": "npx stylelint src/"
+    "lint:css": "npx stylelint \"src/**/*.scss\""
   },
   "repository": {
     "type": "git",
