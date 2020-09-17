@@ -74,9 +74,6 @@ http {
 
     location / {
       try_files $uri $uri.html $uri/ = 404;
-      http2_push /{{IBMPlexMono}};
-      http2_push /{{IBMPlexSans}};
-      http2_push /manifest.webmanifest;
     }
 
     location ~* \.(?:png|webp|svg|jpe?g|woff?2|css|webmanifest|js) {
