@@ -3,8 +3,7 @@ name: Quality assurance
 on: [push]
 
 jobs:
-  qa:
-    name: Test
+  test:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
