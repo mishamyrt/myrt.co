@@ -1,10 +1,10 @@
-name: Deploy to test environment
+name: Quality assurance
 
 on: [push]
 
 jobs:
   qa:
-    name: Quality assurance
+    name: Test
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
