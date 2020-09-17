@@ -21,3 +21,6 @@ jobs:
 
     - name: Spell check
       run: npm run spellcheck
+
+    - name: Docker build check
+      run: docker build -f docker/Dockerfile ./dist
