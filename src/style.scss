@@ -3,14 +3,17 @@
 @import 'blocks/hero/style.scss';
 @import 'blocks/hireMe/style.scss';
 @import 'blocks/case/style.scss';
+@import 'blocks/footer/style.scss';
 
 :root {
+  --letter-spacing-title: -0.93px;
+  --letter-spacing-text: -0.15px;
   --font-width-title: 600;
   --gutter: 30px;
   --width-third: calc(100% * 0.666 - (var(--gutter) / 2));
   --width-quarter: calc(100% * 0.75 - (var(--gutter) / 2));
-  --color-deep-black: #171d29;
-  --color-blue: #0072ff;
+  --color-deep-black: #1d1d1f;
+  --color-blue: #06c;
   --color-orange: #e87200;
   --color-grey: #81858b;
 
@@ -21,8 +24,10 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  letter-spacing: -0.15px;
   margin: 0 150px;
+  letter-spacing: var(--letter-spacing-text);
+  font-size: 21px;
+  line-height: 146%;
   color: var(--color-deep-black);
 
   @media (max-width: 950px) {
@@ -30,7 +35,7 @@ body {
   }
 }
 
-.link {
+a {
   color: var(--color-blue);
   text-decoration: none;
 

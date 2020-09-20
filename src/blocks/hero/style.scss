@@ -8,8 +8,8 @@
   &-h1 {
     font-size: 4.2vw;
     font-weight: var(--font-width-title);
-    letter-spacing: -0.93px;
-    line-height: 136.7%;
+    letter-spacing: var(--letter-spacing-title);
+    line-height: 130%;
 
     @media (max-width: 600px) {
       font-size: 32px;
@@ -19,9 +19,6 @@
   &-h2 {
     width: var(--width-third);
     color: var(--color-grey);
-    font-size: 20px;
-    letter-spacing: -0.93px;
-    line-height: 152.7%;
 
     @media (max-width: 600px) {
       width: 100%;
