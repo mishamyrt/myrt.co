@@ -3,7 +3,7 @@ name: Deploy to staging environment
 on:
   push:
     branches:
-      - develop
+      - master
 
 env:
   STAGING_DOMAIN: "myrt-staging.surge.sh"

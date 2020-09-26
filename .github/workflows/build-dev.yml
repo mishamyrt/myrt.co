@@ -3,7 +3,7 @@ name: Build `dev` image
 on:
   push:
     branches:
-      - develop
+      - master
 
 env:
   registry: docker.pkg.github.com
