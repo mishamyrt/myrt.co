@@ -1,0 +1,54 @@
+name: Build `latest` image
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build_static:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build static files
+      run: npm run build
+
+    - name: Upload results
+      uses: actions/upload-artifact@v2
+      with:
+        name: dist
+        path: dist/
+
+  build_image:
+    needs: build_static
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Download build results
+      uses: actions/download-artifact@v2
+      with:
+        name: dist
+        path: dist/
+
+    - name: Login to GitHub Packages Docker Registry
+      uses: docker/login-action@v1
+      with:
+        registry: docker.pkg.github.com
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.API_TOKEN }}
+
+    - name: Build and push
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: ./docker/Dockerfile
+        push: true
+        tags: mishamyrt/site:latest
+
