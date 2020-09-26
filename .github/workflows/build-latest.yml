@@ -1,4 +1,4 @@
-name: Build `latest` image
+name: Build `dev` image
 
 on:
   push:
@@ -57,7 +57,7 @@ jobs:
         context: .
         push: true
         file: ./docker/Dockerfile
-        tags: docker.pkg.github.com/mishamyrt/myrt.co/site:latest
+        tags: docker.pkg.github.com/mishamyrt/myrt.co/site:dev
 
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
