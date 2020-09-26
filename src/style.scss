@@ -12,10 +12,11 @@
   --gutter: 30px;
   --width-third: calc(100% * 0.666 - (var(--gutter) / 2));
   --width-quarter: calc(100% * 0.75 - (var(--gutter) / 2));
-  --color-deep-black: #1d1d1f;
-  --color-blue: #06c;
-  --color-orange: #e87200;
-  --color-grey: #81858b;
+  --color-background: white;
+  --color-text: #1d1d1f;
+  --color-link: #007aff;
+  --color-link-hover: #ff3c2f;
+  --color-caption: #81858b;
 
   @media (max-width: 700px) {
     --gutter: 20px;
@@ -28,7 +29,8 @@ body {
   letter-spacing: var(--letter-spacing-text);
   font-size: 21px;
   line-height: 146%;
-  color: var(--color-deep-black);
+  color: var(--color-text);
+  background-color: var(--color-background);
 
   @media (max-width: 950px) {
     margin: 0 20px;
@@ -36,11 +38,11 @@ body {
 }
 
 a {
-  color: var(--color-blue);
+  color: var(--color-link);
   text-decoration: none;
 
   &:hover {
-    color: var(--color-orange);
+    color: var(--color-link-hover);
   }
 }
 
