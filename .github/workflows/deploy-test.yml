@@ -43,7 +43,7 @@ jobs:
         name: Create GitHub deployment
         id: deployment
         with:
-          token: ${{ secrets.GITHUB_PAT }}
+          token: ${{ secrets.API_TOKEN }}
           target_url: "$TEST_URL"
           environment: staging
 
@@ -56,7 +56,7 @@ jobs:
         if: success()
         uses: chrnorm/deployment-status@v1.0.0
         with:
-          token: ${{ secrets.GITHUB_PAT }}
+          token: ${{ secrets.API_TOKEN }}
           target_url: "$TEST_URL"
           state: "success"
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
@@ -65,7 +65,7 @@ jobs:
         if: failure()
         uses: chrnorm/deployment-status@v1.0.0
         with:
-          token: ${{ secrets.GITHUB_PAT }}
+          token: ${{ secrets.API_TOKEN }}
           target_url: $TEST_URL
           state: "failure"
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
