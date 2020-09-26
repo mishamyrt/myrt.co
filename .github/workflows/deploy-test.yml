@@ -3,7 +3,7 @@ name: Deploy to test environment
 on: [push]
 
 env:
-  TEST_DOMAIN: "myrt-co-test.surge.sh"
+  TEST_DOMAIN: "myrt-staging.surge.sh"
 
 jobs:
   build:
@@ -43,7 +43,7 @@ jobs:
         id: deployment
         with:
           token: ${{ secrets.API_TOKEN }}
-          target_url: https://myrt-test.surge.sh
+          target_url: https://myrt-staging.surge.sh
           environment: staging
 
       - name: Upload to surge
