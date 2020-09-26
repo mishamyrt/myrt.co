@@ -56,6 +56,7 @@ jobs:
         uses: chrnorm/deployment-status@v1.0.0
         with:
           token: ${{ secrets.API_TOKEN }}
+          target_url: https://myrt-staging.surge.sh
           state: "success"
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
 
