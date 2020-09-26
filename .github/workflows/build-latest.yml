@@ -56,7 +56,6 @@ jobs:
       with:
         context: .
         push: true
-        pull: true
         file: ./docker/Dockerfile
         tags: docker.pkg.github.com/mishamyrt/myrt.co/site:latest
 
