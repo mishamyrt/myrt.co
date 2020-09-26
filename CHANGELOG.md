@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning][].
 
 -  Totally new design.
 
+### Removed (for now)
+
+-   Dark theme.
+-   Engilsh version
+
 ## 1.5.4 — Unreleased
 
 ### Fixed
