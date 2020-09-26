@@ -42,7 +42,6 @@ jobs:
     - uses: chrnorm/deployment-action@v1.2.0
       name: Create GitHub deployment
       id: deployment
-      continue-on-error: true
       with:
         token: ${{ secrets.GITHUB_PAT }}
         target_url: $TEST_URL
