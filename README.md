@@ -3,14 +3,8 @@
 </h1>
 
 <p align="center">
-  <a href="https://github.com/mishamyrt/myrt.co/actions?workflow=Tests">
-    <img src="https://github.com/mishamyrt/myrt.co/workflows/Tests/badge.svg">
-  </a>
-  <a href="https://mishamyrt.github.io/myrt.co/lighthouse/">
-    <img src="https://lighthouse-badge.appspot.com/?score=100">
-  </a>
-  <a href="https://mishamyrt.github.io/myrt.co/sitespeed/">
-    <img src="https://img.shields.io/badge/dynamic/json?color=0095d2&url=https://mishamyrt.github.io/myrt.co/sitespeed/data/performance.json&label=Sitespeed.io%20score&query=$[0].metrics[2].value&style=flat-square">
+  <a href="https://github.com/mishamyrt/myrt.co/actions?workflow=Quality%20assurance">
+    <img src="https://github.com/mishamyrt/myrt.co/workflows/Quality%20assurance/badge.svg">
   </a>
 </p>
 
