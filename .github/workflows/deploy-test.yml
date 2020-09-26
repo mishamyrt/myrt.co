@@ -45,7 +45,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_PAT }}
           target_url: "$TEST_URL"
-          environment: test
+          environment: staging
 
       - name: Upload to surge
         env:
