@@ -58,7 +58,7 @@ jobs:
         push: true
         pull: true
         file: ./docker/Dockerfile
-        tags: mishamyrt/site:latest
+        tags: mishamyrt/myrt.co/site:latest
 
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
