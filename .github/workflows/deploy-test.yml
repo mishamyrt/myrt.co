@@ -44,7 +44,7 @@ jobs:
       id: deployment
       with:
         token: ${{ secrets.GITHUB_PAT }}
-        environment_url: $TEST_URL
+        target_url: $TEST_URL
         environment: test
 
     - name: Upload to surge
