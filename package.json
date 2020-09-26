@@ -1,12 +1,13 @@
 {
   "name": "myrt.co",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "parcel": "^1.12.4",
+    "sass": "^1.26.10",
+    "pug": "^3.0.0"
+  },
   "devDependencies": {
     "@arkweid/lefthook": "^0.7.2",
-    "parcel": "^1.12.4",
-    "pug": "^3.0.0",
-    "sass": "^1.26.10",
     "stylelint": "^13.7.1",
     "stylelint-config-standard": "^20.0.0",
     "yaspeller": "^7.0.0"
