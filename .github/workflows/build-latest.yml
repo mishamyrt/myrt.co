@@ -47,7 +47,7 @@ jobs:
       run: docker login $registry -u $username -p $password
 
     - name: Build image
-      run: docker build -t $registry/$GITHUB_REPOSITORY/site:dev -f docker/Dockerfile ./dist
+      run: docker build -t $registry/$GITHUB_REPOSITORY/site:dev -f docker/Dockerfile .
 
     - name: Push image
       run: docker push $registry/$GITHUB_REPOSITORY/site:dev
