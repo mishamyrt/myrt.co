@@ -44,7 +44,7 @@ jobs:
         id: deployment
         with:
           token: ${{ secrets.API_TOKEN }}
-          target_url: "$TEST_URL"
+          target_url: https://myrt-test.surge.sh
           environment: staging
 
       - name: Upload to surge
