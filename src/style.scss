@@ -40,8 +40,12 @@ body {
 a {
   color: var(--color-link);
   text-decoration: none;
+  transition-property: color;
+  transition-timing-function: ease-out;
+  transition-duration: 0.3s;
 
   &:hover {
+    transition-duration: 0s;
     color: var(--color-link-hover);
   }
 }
