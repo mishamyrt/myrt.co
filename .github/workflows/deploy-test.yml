@@ -4,7 +4,6 @@ on: [push]
 
 env:
   TEST_DOMAIN: "myrt-co-test.surge.sh"
-  TEST_URL: "https://myrt-test.surge.sh"
 
 jobs:
   build:
@@ -57,7 +56,6 @@ jobs:
         uses: chrnorm/deployment-status@v1.0.0
         with:
           token: ${{ secrets.API_TOKEN }}
-          target_url: "$TEST_URL"
           state: "success"
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
 
@@ -66,6 +64,5 @@ jobs:
         uses: chrnorm/deployment-status@v1.0.0
         with:
           token: ${{ secrets.API_TOKEN }}
-          target_url: $TEST_URL
           state: "failure"
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
