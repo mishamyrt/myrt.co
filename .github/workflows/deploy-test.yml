@@ -4,7 +4,7 @@ on: [push]
 
 env:
   TEST_DOMAIN: myrt-co-test.surge.sh
-  TEST_URL: https://myrt-co-test.surge.sh
+  TEST_URL: https://myrt-test.surge.sh
 
 jobs:
   build:
