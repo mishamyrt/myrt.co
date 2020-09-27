@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog][],
 and this project adheres to [Semantic Versioning][].
 
-## [2.0.0][] — Unreleased
+## [2.0.0][] — 2020-09-27
 
 ### Added
 
@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning][].
 ### Removed (for now)
 
 -   Dark theme.
--   Engilsh version
+-   Engilsh version.
 
 ## 1.5.4 — Unreleased
 
@@ -196,4 +196,4 @@ and this project adheres to [Semantic Versioning][].
 
 [1.5.3]: https://github.com/mishamyrt/myrt.co/releases/tag/v1.5.3
 
-[2.0.0]: https://github.com/mishamyrt/myrt.co/compare/v1.5.3...develop
+[2.0.0]: https://github.com/mishamyrt/myrt.co/releases/tag/v2.0.0
