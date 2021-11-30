@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "astro": "^0.21.5",
+    "postcss-scss": "^4.0.2",
     "stylelint": "^14.1.0",
     "stylelint-config-standard": "^24.0.0",
     "yaspeller": "^8.0.0"
