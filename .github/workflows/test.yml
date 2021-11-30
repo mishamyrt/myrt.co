@@ -19,7 +19,7 @@ jobs:
       run: npm run lint
 
     - name: Spell check
-      run: npm run spellcheck
+      run: npm run spell-check
 
     - name: Docker build check
       run: docker build -f docker/Dockerfile .

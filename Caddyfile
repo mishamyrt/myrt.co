@@ -1,0 +1,8 @@
+{
+        email misha@myrt.co
+}
+
+myrt.co {
+        root * /data
+        file_server browse
+}

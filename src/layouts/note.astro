@@ -1,0 +1,25 @@
+---
+import MainHead from '../components/MainHead.astro';
+
+export let content: any;
+---
+<html>
+  <head>
+    <MainHead title={content.title} />
+  </head>
+  <body>
+    <div id="root">
+        <div class="content">
+            <div class="content-wrapper">
+                <a class="__hidden" href="/">
+                    <img class="hero-avatar" src="/assets/avatar@2x.png" />
+                </a>
+                <h1 class="blog-title">{content.title}</h1>
+                <content>
+                    <slot></slot>
+                </content>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

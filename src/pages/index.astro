@@ -1,0 +1,42 @@
+---
+import MainHead from '../components/Head/MainHead.astro';
+// import { NoteList, mapNotes } from '../components/NoteList.tsx';
+import { Experience } from '../components/Experience/index.tsx';
+
+// let notes = Astro.fetchContent('./note/*.md');
+// notes = mapNotes(notes)
+---
+
+<html>
+  <head>
+    <MainHead />
+  </head>
+  <body>
+    <div id="root">
+        <div class="content">
+            <div class="content-wrapper">
+                <img class="hero-avatar" src="/assets/avatar@2x.png" />
+                <h1>Привет! Приятно познакомиться. Меня зовут Миша Хрустик, я — программист и дизайнер из
+                    Санкт–Петербурга.
+                </h1>
+                <p>Самоучка с восьмилетним опытом. Помог большому количеству компаний с разработкой, рекламой и
+                    дизайном.
+                    Cоздаю
+                    крутые штуки в вебе и на мобильных устройствах.</p>
+                <p>Специализируюсь на разработке понятных и интуитивных интерфейсов, оптимизации производительности
+                    приложений и
+                    автоматизации процессов.</p>
+                <p>В данный момент работаю в <a href="https://otr.ru/">ОТР</a> тимлидом фронтенд–команды.</p>
+                <div class="links">
+                    <a href="https://t.me/mishamyrt">Телеграм</a>
+                    <a href="mailto:misha@myrt.co">Почта</a>
+                </div>
+                <h2>Опыт</h2>
+                <Experience />
+        <!--    <h2>Заметки</h2>
+                <NoteList notes={notes} /> -->
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

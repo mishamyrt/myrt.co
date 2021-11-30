@@ -27,7 +27,7 @@ To run the site locally, you should have Node.JS older than version 10 installed
 
 ### Serve
 
-You can start serving local site by running `npm run start`.
+You can start serving local site by running `npm start`.
 
 ## Deployment
 
@@ -37,17 +37,11 @@ Deploy logic is implemented with ansible playbook.
 
 ## Built With
 
--   [Parcel](https://parceljs.org/) — Incredible bundler
--   [Pug](https://pugjs.org/) — Template engine
--   [Docker](https://www.docker.com/) — Container engine
+[Astro](https://astro.build/) — Incredible builder
 
 ## Versioning
 
-I use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/mishamyrt/myrt.co/tags).
-
-## Authors
-
--   **Mikhael Khrustik** — _Initial work_
+From version 3 onwards, the project has moved to a rolling release model. I used to use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/mishamyrt/myrt.co/tags).
 
 ## License
 
