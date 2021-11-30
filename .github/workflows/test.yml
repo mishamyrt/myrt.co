@@ -18,8 +18,5 @@ jobs:
     - name: Codestyle check
       run: npm run lint
 
-    - name: Spell check
-      run: npm run spell-check
-
     - name: Docker build check
-      run: docker build -f docker/Dockerfile .
+      run: docker build .

@@ -4,9 +4,14 @@
   "version": "3.0.0",
   "scripts": {
     "start": "npx astro dev",
-    "build": "npx astro build"
+    "build": "npx astro build",
+    "lint:styles": "npx stylelint 'src/styles/*'",
+    "lint": "npm run lint:styles"
   },
   "devDependencies": {
-    "astro": "^0.21.5"
+    "astro": "^0.21.5",
+    "stylelint": "^14.1.0",
+    "stylelint-config-standard": "^24.0.0",
+    "yaspeller": "^8.0.0"
   }
 }
