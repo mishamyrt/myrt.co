@@ -1,9 +1,7 @@
+import preact from '@astrojs/preact';
+
 export default {
-  renderers: [
-    '@astrojs/renderer-preact'
+  integrations: [
+    preact(),
   ],
-  buildOptions: {
-    sitemap: true,
-    site: 'https://myrt.co/',
-  },
 };
