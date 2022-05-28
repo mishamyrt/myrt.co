@@ -1,8 +1,18 @@
+:root {
+  color-scheme: dark;
+
+  --color-text: white;
+  --color-text-faded: rgb(255 255 255 / 70%);
+  --color-background: #0c0c0c;
+  --color-accent: #62c9ff;
+  --color-accent-background: rgb(153 223 255 / 20%);
+}
+
 body,
 html {
   margin: 0;
   padding: 0;
-  background-color: #0c0c0c;
+  background-color: var(--color-background);
   font-family:
     "SF UI Display",
     -apple-system,
@@ -18,11 +28,12 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   line-height: 24px;
-  color: white;
+  color: var(--color-text);
 }
 
 h1,
 h2 {
+  font-weight: 500;
   font-size: 18px;
   margin: 0.67em 0 8px;
 }
@@ -37,12 +48,16 @@ h2 {
 }
 
 p {
-  color: rgb(255 255 255 / 80%);
+  color: var(--color-text-faded);
   margin: 12px 0;
 }
 
 * {
   box-sizing: border-box;
+}
+
+.faded {
+  color: var(--color-text-faded);
 }
 
 #root {
@@ -62,7 +77,7 @@ p {
 
 a {
   text-decoration: none;
-  color: #62c9ff;
+  color: var(--color-accent);
   position: relative;
   background-color: transparent;
   padding: 4px;
@@ -73,13 +88,13 @@ a {
 
 a:hover {
   transition: background-color 0s;
-  background-color: rgb(153 223 255 / 20%);
+  background-color: var(--color-accent-background);
 }
 
 a::after {
   display: inline-block;
   content: " ";
-  background-image: url("../../public/assets/arrow.svg");
+  background-image: url("/assets/arrow.svg");
   width: 16px;
   height: 16px;
   position: relative;
@@ -112,7 +127,8 @@ a.__hidden:hover {
   position: relative;
 }
 
-.projects-dateContainer {
+.projects-dateContainer,
+.notes-yearContainer {
   position: absolute;
   transform: rotate(90deg);
   left: -14px;
@@ -121,42 +137,23 @@ a.__hidden:hover {
   font-size: 11px;
 }
 
-.projects-date {
+.projects-date,
+.notes-year {
   transform: rotate(180deg);
   display: block;
   letter-spacing: 1px;
-  opacity: 0.7;
+  color: var(--color-text-faded);
 }
 
 .notes {
-  &-block {
-    position: relative;
-    margin-top: 40px;
-  }
-
-  &-yearContainer {
-    position: absolute;
-    transform: rotate(90deg);
-    left: -14px;
-    top: 5px;
-    transform-origin: top left;
-    font-size: 11px;
-  }
-
-  &-year {
-    transform: rotate(180deg);
-    display: block;
-    letter-spacing: 1px;
-    opacity: 0.7;
-  }
-
   &-item {
     position: relative;
+    margin-bottom: 10px;
+  }
 
-    &.__not_ready {
-      opacity: 0.5;
-      pointer-events: none;
-    }
+  &-group {
+    position: relative;
+    margin-top: 40px;
   }
 
   &-date {
@@ -165,39 +162,18 @@ a.__hidden:hover {
     right: 0;
     font-size: 11px;
     letter-spacing: 1px;
-    opacity: 0.7;
+    color: var(--color-text-faded);
   }
 
   &-title {
     display: block;
-    color: white;
+    color: var(--color-text);
     width: 80%;
 
     &::after {
       display: none;
     }
   }
-}
-
-code {
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
-  background-color: #23292f;
-  padding: 2px;
-  border-radius: 2px;
-}
-
-pre {
-  background-color: #23292f;
-  padding: 15px;
-  width: calc(100% + 70px);
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  hyphens: none;
-  margin-left: -35px;
-  border-radius: 4px;
 }
 
 .blog {
