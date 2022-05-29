@@ -189,13 +189,13 @@ content img {
   border-radius: 4px;
 }
 
-@media all and (max-width: 1100px) {
+@media all and (max-width: 1200px) {
   #root {
     padding: 80px;
   }
 }
 
-@media all and (max-width: 950px) {
+@media all and (max-width: 1100px) {
   .links {
     position: relative;
     bottom: 0;
@@ -213,24 +213,30 @@ content img {
   }
 }
 
-@media all and (max-width: 740px) {
+@media all and (max-width: 800px) {
   #root {
     display: block;
   }
 }
 
-@media all and (max-width: 700px) {
+@media all and (max-width: 770px) {
   #root {
     padding: 43px 25px;
   }
 
   .projects-dateContainer,
-  .projects-date {
+  .notes-yearContainer,
+  .projects-date,
+  .notes-year, {
     transform: none;
     display: block;
     left: 0;
     top: 3px;
     position: relative;
+  }
+
+  .notes-yearContainer {
+    margin-bottom: 20px;
   }
 
   h2 {
