@@ -37,12 +37,8 @@ Deploy logic is implemented with ansible playbook.
 
 ## Built With
 
-[Astro](https://astro.build/) — Incredible builder
-
-## Versioning
-
-From version 3 onwards, the project has moved to a rolling release model. I used to use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/mishamyrt/myrt.co/tags).
+[Astro](https://astro.build/) — Incredible builder.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the GPL 3.0 - see the [LICENSE](LICENSE) file for details.
