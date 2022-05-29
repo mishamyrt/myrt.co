@@ -1,5 +1,2 @@
 node_modules
-.cache
 dist
-content/content.json
-src/articles
