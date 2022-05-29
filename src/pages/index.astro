@@ -2,10 +2,13 @@
 import Head from '../components/Head.astro';
 import NoteLinks from '../components/NoteLinks.astro';
 import Contacts from '../components/Contacts.astro';
-import { Experience } from '../components/Experience/index';
+import Experience from '../components/Experience.astro';
+// import { DateRange } from '../components/Experience.astro';
 import notes from '../notes.json'
+import '../styles/common.scss';
+
+const experienies = await Astro.glob('../experience/*.md');
 ---
-<!DOCTYPE html>
 <html lang="ru">
   <Head title="Миша" />
   <body>
@@ -29,7 +32,7 @@ import notes from '../notes.json'
           </p>
           <p>В данный момент работаю в <a href="https://otr.ru/">ОТР</a> тимлидом фронтенд–команды.</p>
           <Contacts />
-          <Experience />
+          <Experience items={experienies} />
           <NoteLinks notes={notes} />
         </div>
       </div>

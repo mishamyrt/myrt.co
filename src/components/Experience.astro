@@ -1,0 +1,45 @@
+---
+interface DateRange {
+  from: string
+  to: string
+}
+
+interface Props {
+	items: any[]
+}
+
+function parseDate(s: string): number {
+  const [month, year] = s
+    .split('.')
+    .map(i => parseInt(i, 10))
+  const date = new Date()
+  date.setFullYear(year, month)
+  return date.getTime()
+}
+
+function sortDesc (a: any, b: any): number {
+  return parseDate(b.frontmatter.from) - parseDate(a.frontmatter.from)
+}
+
+const items = (Astro.props as Props).items
+  .sort(sortDesc)
+  .map(i => ({
+    ...i,
+    date: `${i.frontmatter.from}${i.frontmatter.to ? ' – ' + i.frontmatter.to : ''}`
+  }))
+
+
+---
+<h2>Опыт</h2>
+<div class="projects">
+  {items.map(async i => (
+    <div class="projects-item">
+      <div class="projects-dateContainer">
+          <span class="projects-date">
+            {i.date}
+          </span>
+      </div>
+      <i.Content />
+  </div>
+  ))}
+</div>
