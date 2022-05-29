@@ -72,6 +72,7 @@ function createGroups(notes: Note[]): NoteGroup[] {
 
 const groups = createGroups(Astro.props.notes)
 ---
+<h2>Заметки <span class="faded">в Notion</span></h2>
 <div class="notes">
   {groups.map(({ year, notes }) => (
     <div class="notes-group">

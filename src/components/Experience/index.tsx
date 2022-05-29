@@ -1,7 +1,9 @@
-import { h } from 'preact';
+import { h, Fragment } from 'preact';
 
 export function Experience() {
     return (
+      <Fragment>
+        <h2>Опыт</h2>
         <div className="projects">
             <div className="projects-item">
                 <div className="projects-dateContainer">
@@ -83,5 +85,6 @@ export function Experience() {
                 <p>Писал на Node.JS, C#, Java, PHP. Настраивал Nginx и Apache. В ходе создания проектов осознал, что нуждаюсь в легко расширяемом универсальном движке и разработал <a href="https://github.com/mishamyrt/iznanka">Изнанку</a>.</p>
             </div>
         </div>
+      </Fragment>
     )
 }
