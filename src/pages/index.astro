@@ -1,28 +1,25 @@
 ---
-import MainHead from '../components/Head/MainHead.astro';
-// import { NoteList, mapNotes } from '../components/NoteList.tsx';
+import MainHead from '../components/MainHead.astro';
+import NoteLinks from '../components/NoteLinks.astro';
 import { Experience } from '../components/Experience/index';
-
-// let notes = Astro.fetchContent('./note/*.md');
-// notes = mapNotes(notes)
+import notes from '../notes.json'
 ---
 
 <html>
   <head>
-    <MainHead />
+    <MainHead title="Миша" />
   </head>
   <body>
     <div id="root">
         <div class="content">
             <div class="content-wrapper">
                 <img class="hero-avatar" src="/assets/avatar@2x.png" />
-                <h1>Привет! Приятно познакомиться. Меня зовут Миша Хрустик, я — программист и дизайнер из
-                    Санкт–Петербурга.
+                <h1>Привет! Приятно познакомиться. Меня зовут Миша Хрустик, я — программист и дизайнер. В данный момент живу в Самаре.
                 </h1>
                 <p>Самоучка с восьмилетним опытом. Помог большому количеству компаний с разработкой, рекламой и
                     дизайном.
                     Cоздаю
-                    крутые штуки в вебе и на мобильных устройствах.</p>
+                    крутые штуки в вебе, на мобильных и встраиваемых устройствах.</p>
                 <p>Специализируюсь на разработке понятных и интуитивных интерфейсов, оптимизации производительности
                     приложений и
                     автоматизации процессов.</p>
@@ -34,19 +31,7 @@ import { Experience } from '../components/Experience/index';
                 <h2>Опыт</h2>
                 <Experience />
                 <h2>Заметки <span class="faded">в Notion</span></h2>
-                <div class="notes">
-                  <div class="notes-group">
-                    <div class="notes-yearContainer">
-                      <span class="notes-year">2022</span>
-                    </div>
-                    <div class="notes-item">
-                      <a href="https://mishamyrt.notion.site/CodeceptJS-ac2ee2717bc64805abec694cd25461c3">
-                        CodeceptJS — это круто
-                      </a>
-                      <span class="notes-date">18.01</span>
-                    </div>
-                  </div>
-                </div>
+                <NoteLinks notes={notes} />
               </div>
 
         </div>

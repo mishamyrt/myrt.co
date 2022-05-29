@@ -1,0 +1,89 @@
+---
+interface Note {
+  date: string
+  url: string
+  title: string
+}
+
+interface ParsedNote extends Omit<Note, 'date'> {
+  date: Date
+}
+
+interface NoteGroup {
+  year: number
+  notes: ParsedNote[]
+}
+
+interface Props {
+  notes: Note[]
+}
+
+function parseDate(s: string): Date {
+  const date = new Date()
+  const [day, month, year] = s
+    .split('.')
+    .map(i => parseInt(i))
+  date.setFullYear(year, month - 1, day)
+  return date
+}
+
+/**
+ * Parses notes date and sorts
+ */
+function parseNotes(notes: Note[]): ParsedNote[] {
+  return notes
+    .map(i => ({
+      ...i,
+      date: parseDate(i.date)
+    }))
+    .sort((a, b) => b.date.getTime() - a.date.getTime())
+}
+
+function createGroupsMap(notes: ParsedNote[]): Record<number, ParsedNote[]> {
+  const groupsMap = {}
+  for (const note of notes) {
+    const year = note.date.getFullYear()
+    if (year in groupsMap === false) {
+      groupsMap[year] = []
+    }
+    const date = [note.date.getDate(), note.date.getMonth() + 1]
+      .map(i => i.toString().padStart(2, '0'))
+      .join('.')
+      groupsMap[year].push({
+      ...note,
+      date
+    })
+  }
+  return groupsMap
+}
+
+function createGroups(notes: Note[]): NoteGroup[] {
+  const parsedNotes = parseNotes(notes)
+  const groupsMap = createGroupsMap(parsedNotes)
+  const groups: NoteGroup[] = Object
+    .entries(groupsMap)
+    .map(([year, notes]) => ({
+      year: parseInt(year),
+      notes
+    }))
+    .sort((a, b) => b.year - a.year)
+  return groups
+}
+
+const groups = createGroups(Astro.props.notes)
+---
+<div class="notes">
+  {groups.map(({ year, notes }) => (
+    <div class="notes-group">
+      <div class="notes-yearContainer">
+        <span class="notes-year">{year}</span>
+      </div>
+      {notes.map(i => (
+        <div class="notes-item">
+          <a href={i.url}>{i.title}</a>
+          <span class="notes-date">{i.date}</span>
+        </div>
+      ))}
+    </div>
+  ))}
+</div>
