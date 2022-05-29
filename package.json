@@ -19,6 +19,6 @@
     "sass": "^1.52.1",
     "stylelint": "^14.1.0",
     "stylelint-config-standard": "^24.0.0",
-    "yaspeller": "^8.0.0"
+    "yaspeller": "^8.0.1"
   }
 }
