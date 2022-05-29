@@ -15,8 +15,8 @@ jobs:
     - name: Build check
       run: npm run build
 
-    - name: Codestyle check
-      run: npm run lint
+    - name: Spell check
+      run: npm run spell-check
 
     - name: Docker build check
       run: docker build .
