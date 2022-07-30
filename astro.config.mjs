@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config'
-import typograf from './scripts/typograf.integration.mjs'
+import typograf from 'astro-typograf-integration'
 
 export default defineConfig({
   site: 'https://myrt.co',
