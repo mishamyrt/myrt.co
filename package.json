@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "astro": "^1.0.0-rc.3",
-    "astro-typograf-integration": "^1.0.1",
+    "astro-typograf": "^1.0.1",
     "sass": "^1.54.0",
     "stylelint": "^14.1.0",
     "stylelint-config-standard": "^24.0.0",
