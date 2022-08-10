@@ -10,7 +10,7 @@
     "start:docker": "docker run --name myrt-app -d -p 80:80 -p 443:443 myrt-co:latest",
     "stop:docker": "docker stop myrt-app || true && docker rm -f myrt-app || true",
     "lint:styles": "npx stylelint 'src/styles/*'",
-    "spell-check": "npx yaspeller src/experience/ src/components/Hero.astro",
+    "spell-check": "npx yaspeller src/content/",
     "lint": "npm run lint:styles"
   },
   "devDependencies": {
