@@ -38,6 +38,7 @@ html {
   -webkit-font-smoothing: antialiased;
   line-height: 24px;
   color: var(--color-text);
+  transition: background-color .3s linear, color .3s linear;
 }
 
 h1,
