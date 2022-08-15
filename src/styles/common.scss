@@ -1,11 +1,20 @@
 :root {
-  color-scheme: dark;
+  --color-text: #333;
+  --color-text-faded: rgb(51 51 51 / 70%);
+  --color-background: white;
+  --color-accent: #ff5621;
+  --color-accent-background: rgb(255 86 33 / 17%);
+}
 
-  --color-text: white;
-  --color-text-faded: rgb(255 255 255 / 70%);
-  --color-background: #0c0c0c;
-  --color-accent: #ffe373;
-  --color-accent-background: rgb(255 244 153 / 18%);
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --color-text: white;
+    --color-text-faded: rgb(255 255 255 / 70%);
+    --color-background: #0c0c0c;
+    --color-accent: #ffe373;
+    --color-accent-background: rgb(255 244 153 / 18%);
+  }
 }
 
 body,
@@ -70,33 +79,29 @@ p {
 }
 
 a {
+  display: inline-flex;
   text-decoration: none;
   color: var(--color-accent);
+  border-bottom: 2px solid var(--color-accent-background);
   position: relative;
-  background-color: transparent;
-  padding: 4px;
-  border-radius: 2px;
-  margin: 0 -4px;
   transition: background-color 0.15s ease-out;
 }
 
-a:hover {
+a::after {
+  content: " ";
+  background-color: transparent;
+  transition: background-color 0.15s ease-out;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  left: -2px;
+  top: -2px;
+  border-radius: 2px;
+  position: absolute;
+}
+
+a:hover::after {
   transition: background-color 0s;
   background-color: var(--color-accent-background);
-}
-
-a::after {
-  display: inline-block;
-  content: " ";
-  background-image: url("/assets/arrow.svg");
-  width: 16px;
-  height: 16px;
-  position: relative;
-  top: 3px;
-}
-
-a.__hidden::after {
-  display: none;
 }
 
 a.__hidden:hover {
