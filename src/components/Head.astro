@@ -12,4 +12,19 @@ const { title } = Astro.props as Props;
   <title>{title}</title>
   <meta name="theme-color" content="#0c0c0c">
   <link rel="icon" type="image/png" href="/assets/avatar@2x.png">
+  <script>
+    function listenTheme() {
+      const themeNode = document.querySelector('meta[name="theme-color"]')
+      window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', function (e) {
+          const isDark = e.matches
+          themeNode.setAttribute('content', isDark
+            ? '#0c0c0c'
+            : '#ffffff'
+          )
+        })
+    }
+    document.addEventListener('DOMContentLoaded', listenTheme)
+  </script>
 </head>
