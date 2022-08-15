@@ -61,7 +61,7 @@ p {
 }
 
 #root {
-  padding: 120px;
+  padding: 120px 120px 59px;
   min-height: calc(100vh - 240px);
 }
 
@@ -184,7 +184,7 @@ content img {
 
 @media all and (max-width: 1200px) {
   #root {
-    padding: 80px;
+    padding: 80px 80px 59px;
   }
 }
 
