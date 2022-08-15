@@ -1,14 +1,35 @@
 ---
 const content = await Astro.glob('../content/hello.md')
 ---
-<img class="hero-avatar" src="/assets/avatar@2x.png" />
+<div class="hero-avatar">
+  <img class="hero-img __blurry" src="/assets/avatar@2x.png" />
+  <img class="hero-img" src="/assets/avatar@2x.png" />
+</div>
 {content.map(async i => <i.Content />)}
 
 <style lang="scss">
-
 .hero-avatar {
+  position: relative;
   margin-bottom: 24px;
+  height: 60px;
+}
+
+.hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 60px;
   height: 60px;
+
+  &.__blurry {
+    filter:
+      blur(32px)
+      brightness(2.6)
+      saturate(2);
+
+    @media (prefers-color-scheme: dark) {
+      opacity: 0.4;
+    }
+  }
 }
 </style>
