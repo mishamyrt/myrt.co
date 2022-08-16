@@ -9,6 +9,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
+
     --color-text: rgb(226 227 220);
     --color-text-faded: rgb(226 227 220 / 70%);
     --color-background: rgb(17 18 16);
@@ -38,7 +39,9 @@ html {
   -webkit-font-smoothing: antialiased;
   line-height: 24px;
   color: var(--color-text);
-  transition: background-color .3s linear, color .3s linear;
+  transition:
+    background-color 0.3s linear,
+    color 0.3s linear;
 }
 
 h1,
