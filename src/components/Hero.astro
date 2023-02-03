@@ -1,4 +1,6 @@
 ---
+import SunEmoji from "./SunEmoji.astro";
+
 const content = await Astro.glob('../content/hello.md')
 ---
 <div class="hero-avatar">
@@ -6,8 +8,12 @@ const content = await Astro.glob('../content/hello.md')
   <img class="hero-img" src="/assets/avatar@2x.png" />
 </div>
 {content.map(async i => <i.Content />)}
+<p>
+    Живу в Армавире <SunEmoji />
+</p>
 
 <style lang="scss">
+
 .hero-avatar {
   position: relative;
   margin-bottom: 24px;

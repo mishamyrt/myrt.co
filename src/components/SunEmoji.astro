@@ -1,0 +1,48 @@
+<span class="sun-container">
+  ☀️
+</span>
+
+<script>
+  const video = document.createElement('video')
+  video.muted = true
+  video.className = 'sun-animated'
+  video.autoplay = true
+  video.playbackRate = 2
+  video.loop = true
+  video.src= '/assets/sun-animoji.webm'
+  const container = document.querySelector('.sun-container')
+  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function updateSun() {
+    const shouldAnimate = !mediaQuery.matches
+    if (shouldAnimate) {
+      container.innerHTML = ''
+      container.appendChild(video)
+      video.playbackRate = 2
+    } else {
+      container.innerHTML = '☀️'
+    }
+  }
+
+  mediaQuery.addEventListener('change', updateSun);
+  updateSun()
+</script>
+
+<style>
+.sun-container {
+  display: inline;
+  height: 18px;
+  width: 18px;
+  overflow: hidden;
+}
+
+:global(.sun-animated) {
+  opacity: 0.9;
+  width: 18px;
+  position: relative;
+  top: 4px;
+  left: -1px;
+  background: transparent;
+}
+
+</style>
