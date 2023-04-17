@@ -7,7 +7,7 @@ import Hero from '../components/Hero.astro';
 import notes from '../notes.json'
 import '../styles/common.scss';
 
-const experienies = await Astro.glob('../content/experience/*.md');
+const experience = await Astro.glob('../content/experience/*.md');
 ---
 <html lang="ru">
   <Head title="Миша" />
@@ -17,7 +17,7 @@ const experienies = await Astro.glob('../content/experience/*.md');
         <div class="content-wrapper">
           <Hero />
           <Contacts />
-          <Experience items={experienies} />
+          <Experience items={experience} />
           <NoteLinks notes={notes} />
         </div>
       </div>

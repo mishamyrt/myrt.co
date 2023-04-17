@@ -14,8 +14,8 @@
     "lint": "npm run lint:styles"
   },
   "devDependencies": {
-    "astro": "^1.0.0-rc.8",
-    "astro-typograf": "^1.1.0",
+    "astro": "^2.3.0",
+    "astro-typograf": "^2.0.0-rc.1",
     "sass": "^1.54.0",
     "stylelint": "^14.1.0",
     "stylelint-config-standard": "^24.0.0",
