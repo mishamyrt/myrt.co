@@ -1,8 +1,8 @@
 {
-        email misha@myrt.co
+  email misha@myrt.co
 }
 
 myrt.co {
-        root * /data
-        file_server browse
+  root * /data
+  file_server browse
 }
