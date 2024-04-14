@@ -3,18 +3,19 @@
   "private": true,
   "version": "3.0.0",
   "scripts": {
-    "start": "astro dev",
+    "start": "pnpm dev",
     "build": "astro build",
+    "dev": "astro dev",
     "build:docker": "docker build -t myrt-co:latest .",
-    "prebuild:docker": "npm run build",
+    "prebuild:docker": "pnpm build",
     "start:docker": "docker run --name myrt-app -d -p 80:80 -p 443:443 myrt-co:latest",
     "stop:docker": "docker stop myrt-app || true && docker rm -f myrt-app || true",
     "lint:styles": "stylelint 'src/styles/*'",
     "spell-check": "cspell --show-suggestions --relative 'src/**/*.astro' 'src/**/*.md'",
-    "lint": "npm run lint:styles"
+    "lint": "pnpm lint:styles"
   },
   "devDependencies": {
-    "astro": "^2.3.0",
+    "astro": "^4.6.1",
     "astro-typograf": "^2.0.0-rc.1",
     "cspell": "^6.31.1",
     "cspell-dict-ru_ru": "^1.4.0",
