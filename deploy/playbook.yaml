@@ -1,0 +1,42 @@
+---
+- hosts: "{{ target }}"
+  name: Deploy myrt.co
+
+  tasks:
+    - name: Create temporary directory
+      tempfile:
+        state: directory
+        suffix: web
+      register: tempdir
+
+    - name: Copy image archive
+      retries: 3
+      delay: 1
+      synchronize:
+        rsync_timeout: 60
+        src: "../dist/myrt-co.docker.tar"
+        dest: "{{ tempdir.path }}/myrt-co.docker.tar"
+
+    - name: Load image from the tar file
+      community.docker.docker_image_load:
+        path: "{{ tempdir.path }}/myrt-co.docker.tar"
+
+    - name: Start container
+      docker_container:
+        image: "myrt-co:latest"
+        recreate: true
+        state: started
+        name: "myrt-co-{{ target }}"
+        ports:
+          - 80:80
+          - 443:443
+        # labels:
+        #   caddy: "{{ hostnames }}"
+        #   caddy.reverse_proxy: "{% raw %}{{upstreams 80}}{% endraw %}"
+        # networks:
+        #   - name: "caddy_proxy"
+
+    - name: Remove temporary directory
+      file:
+        path: "{{ tempdir.path }}"
+        state: absent
