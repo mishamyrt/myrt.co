@@ -1,0 +1,12 @@
+all:
+  hosts:
+    production:
+      hostnames: myrt.co
+    # preview:
+    #   hostnames: preview.myrt.co
+  vars:
+    ansible_host: myrt.co
+    ansible_user: runner
+    ansible_ssh_common_args: -o ControlMaster=auto -o ControlPersist=1200s
+    ansible_command_timeout: 30
+    ansible_ssh_retries: 3
