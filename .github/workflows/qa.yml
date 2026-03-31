@@ -4,28 +4,28 @@ on:
   - push
 
 env:
-  PNPM_VERSION: '8.13.1'
+  PNPM_VERSION: "10.33.0"
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v6
 
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v3
-      with:
-        version: ${{ env.PNPM_VERSION }}
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v5
+        with:
+          version: ${{ env.PNPM_VERSION }}
 
-    - name: Install dependencies
-      run: pnpm install
+      - name: Install dependencies
+        run: pnpm install
 
-    - name: Build check
-      run: pnpm build
+      - name: Build check
+        run: pnpm build
 
-    - name: Spell check
-      run: pnpm spell-check
+      - name: Spell check
+        run: pnpm spell-check
 
-    - name: Docker build check
-      run: docker build .
+      - name: Docker build check
+        run: docker build .

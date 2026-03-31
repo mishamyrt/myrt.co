@@ -2,8 +2,6 @@ all:
   hosts:
     production:
       hostnames: myrt.co
-    # preview:
-    #   hostnames: preview.myrt.co
   vars:
     ansible_host: myrt.co
     ansible_user: runner

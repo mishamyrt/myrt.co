@@ -30,11 +30,6 @@
         ports:
           - 80:80
           - 443:443
-        # labels:
-        #   caddy: "{{ hostnames }}"
-        #   caddy.reverse_proxy: "{% raw %}{{upstreams 80}}{% endraw %}"
-        # networks:
-        #   - name: "caddy_proxy"
 
     - name: Remove temporary directory
       file:
