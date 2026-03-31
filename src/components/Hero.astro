@@ -1,35 +1,39 @@
 ---
-const content = await Astro.glob('../static/hello.md')
+import type { AstroInstance } from "astro";
+
+const contentMatches: Record<string, AstroInstance> = import.meta.glob(
+  "../static/hello.md",
+  { eager: true },
+);
+const content = Object.values(contentMatches);
 ---
+
 <div class="hero-avatar">
   <img class="hero-img __blurry" src="/assets/avatar@2x.png" />
   <img class="hero-img" src="/assets/avatar@2x.png" />
 </div>
-{content.map(async i => <i.Content />)}
+{content.map((i) => <i.default />)}
 
 <style lang="scss">
-.hero-avatar {
-  position: relative;
-  margin-bottom: 24px;
-  height: 60px;
-}
+  .hero-avatar {
+    position: relative;
+    margin-bottom: 24px;
+    height: 60px;
+  }
 
-.hero-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60px;
-  height: 60px;
+  .hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
 
-  &.__blurry {
-    filter:
-      blur(32px)
-      brightness(2.6)
-      saturate(2);
+    &.__blurry {
+      filter: blur(32px) brightness(2.6) saturate(2);
 
-    @media (prefers-color-scheme: dark) {
-      opacity: 0.2;
+      @media (prefers-color-scheme: dark) {
+        opacity: 0.2;
+      }
     }
   }
-}
 </style>

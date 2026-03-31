@@ -1,31 +1,25 @@
 ---
 export interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props as Props;
 ---
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title}</title>
-  <meta name="theme-color" content="#0c0c0c">
-  <link rel="icon" type="image/png" href="/assets/avatar@2x.png">
-  <script>
-    function listenTheme() {
-      const themeMatch = window.matchMedia('(prefers-color-scheme: dark)')
-      const themeNode = document.querySelector('meta[name="theme-color"]')
 
-      function updateColor () {
-        themeNode.setAttribute('content', themeMatch.matches
-          ? '#0c0c0c'
-          : '#ffffff'
-        )
-      }
-      themeMatch.addEventListener('change', updateColor)
-      updateColor()
-    }
-    document.addEventListener('DOMContentLoaded', listenTheme)
-  </script>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta
+    name="theme-color"
+    media="(prefers-color-scheme: dark)"
+    content="#0c0c0c"
+  />
+  <meta
+    name="theme-color"
+    media="(prefers-color-scheme: light)"
+    content="#ffffff"
+  />
+  <link rel="icon" type="image/png" href="/assets/avatar@2x.png" />
 </head>

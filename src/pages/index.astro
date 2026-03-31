@@ -1,14 +1,18 @@
 ---
-import Head from '../components/Head.astro';
-import NoteLinks from '../components/NoteLinks.astro';
-import Contacts from '../components/Contacts.astro';
-import Experience from '../components/Experience.astro';
-import Hero from '../components/Hero.astro';
-import notes from '../notes.json'
-import '../styles/common.scss';
+import Head from "../components/Head.astro";
+import NoteLinks from "../components/NoteLinks.astro";
+import Contacts from "../components/Contacts.astro";
+import Experience from "../components/Experience.astro";
+import Hero from "../components/Hero.astro";
+import notes from "../notes.json";
+import "../styles/common.scss";
 
-const experience = await Astro.glob('../content/experience/*.md');
+const experienceMatches = import.meta.glob("../content/experience/*.md", {
+  eager: true,
+});
+const experience = Object.values(experienceMatches);
 ---
+
 <html lang="ru">
   <Head title="Миша" />
   <body>
