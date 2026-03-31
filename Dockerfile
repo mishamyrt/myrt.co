@@ -1,8 +1,8 @@
-ARG NODE_VERSION=21-alpine
-ARG PNPM_VERSION=8.13.1
-ARG CADDY_VERSION=2.7-alpine
+ARG NODE_VERSION=25-alpine
+ARG PNPM_VERSION=10.33.0
+ARG CADDY_VERSION=2.11-alpine
 
-FROM node:$NODE_VERSION as builder
+FROM node:$NODE_VERSION AS builder
 WORKDIR /build
 COPY src ./src
 COPY public ./public
