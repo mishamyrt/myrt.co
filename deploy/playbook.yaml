@@ -26,6 +26,7 @@
         image: "myrt-co:latest"
         recreate: true
         state: started
+        restart_policy: unless-stopped
         name: "myrt-co-{{ target }}"
         ports:
           - 80:80
