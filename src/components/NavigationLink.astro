@@ -1,0 +1,31 @@
+---
+import Typography from "./Typography.astro";
+
+export interface Props {
+  href: string;
+  children: any;
+}
+
+const { href } = Astro.props;
+
+const isActive = Astro.url.pathname === href;
+---
+
+<Typography
+  class:list={{
+    active: isActive,
+  }}
+  as="a"
+  href="/"
+  color={isActive ? "primary" : "secondary"}
+>
+  <slot />
+</Typography>
+
+<style>
+  a.typography.active {
+    font-weight: 600;
+    cursor: default;
+    text-decoration: none;
+  }
+</style>

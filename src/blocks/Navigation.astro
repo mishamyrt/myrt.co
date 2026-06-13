@@ -1,11 +1,13 @@
 ---
-import Typography from "../components/Typography.astro";
+import NavigationLink from "../components/NavigationLink.astro";
+
+const currentUrl = Astro.url.pathname;
 ---
 
 <nav>
-  <Typography as="a" href="/" color="primary">Опыт</Typography>
-  <Typography as="a" href="/" color="primary">Проекты</Typography>
-  <Typography as="a" href="/" color="primary">Блог</Typography>
+  <NavigationLink href="/">Опыт</NavigationLink>
+  <NavigationLink href="/projects">Проекты</NavigationLink>
+  <NavigationLink href="/blog/">Блог</NavigationLink>
 </nav>
 
 <style>
