@@ -1,0 +1,85 @@
+---
+interface Props {
+  step: number;
+}
+
+const { step } = Astro.props;
+---
+
+<div
+  class="fullscreen-grid"
+  data-fullscreen-grid
+  style={`--grid-step: ${step}px;`}
+  hidden
+>
+</div>
+
+<script>
+  const grid = document.querySelector(
+    "[data-fullscreen-grid]",
+  ) as HTMLElement | null;
+
+  if (grid) {
+    let offsetX = 0;
+    let offsetY = 0;
+
+    const updateHeight = () => {
+      grid.style.height = `${document.documentElement.scrollHeight}px`;
+    };
+
+    const updatePosition = () => {
+      grid.style.backgroundPosition = `${offsetX}px ${offsetY}px`;
+    };
+
+    document.addEventListener("keydown", (event) => {
+      if (event.ctrlKey && !event.metaKey && event.code === "KeyG") {
+        event.preventDefault();
+        grid.hidden = !grid.hidden;
+        updateHeight();
+        return;
+      }
+
+      if (grid.hidden) {
+        return;
+      }
+
+      if (event.key === "ArrowUp") {
+        event.preventDefault();
+        offsetY -= 1;
+      } else if (event.key === "ArrowDown") {
+        event.preventDefault();
+        offsetY += 1;
+      } else if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        offsetX -= 1;
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        offsetX += 1;
+      } else {
+        return;
+      }
+
+      updatePosition();
+    });
+
+    window.addEventListener("resize", updateHeight);
+  }
+</script>
+
+<style>
+  .fullscreen-grid {
+    --grid-line-color: rgb(255 0 0 / 18%);
+
+    position: absolute;
+    top: -1px;
+    left: 0;
+    z-index: 2147483647;
+    width: 100%;
+    min-height: 100vh;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+    background-size: var(--grid-step) var(--grid-step);
+  }
+</style>
