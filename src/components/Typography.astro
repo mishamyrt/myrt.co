@@ -1,0 +1,63 @@
+---
+export type Props<T extends TagName = "p"> = HTMLElementProps<T> & {
+  as?: T;
+  variant?: "text" | "heading";
+  children?: any;
+  color?: "inherit" | "primary" | "secondary" | "tertiary";
+  id?: string;
+  class?: string;
+};
+
+const {
+  as = "p",
+  variant = "text",
+  color = "inherit",
+  class: className,
+  id,
+  ...rest
+} = Astro.props;
+
+const Tag = as;
+---
+
+<Tag
+  id={id}
+  class:list={["typography", `variant-${variant}`, `color-${color}`, className]}
+  {...rest as any}><slot /></Tag
+>
+
+<style lang="scss">
+  .typography {
+    font-family: var(--typography-font-family-sans-serif);
+    font-variant-ligatures: common-ligatures;
+    font-feature-settings: "liga";
+    margin: 0;
+
+    &.variant-text {
+      font: var(--typography-text);
+      letter-spacing: var(--typography-text_spacing);
+    }
+
+    &.variant-text + p.variant-text {
+      margin-top: 1em;
+    }
+
+    &.variant-heading {
+      font: var(--typography-heading);
+      letter-spacing: var(--typography-heading_spacing);
+    }
+
+    &.color-inherit {
+      color: inherit;
+    }
+    &.color-primary {
+      color: var(--color-content-primary);
+    }
+    &.color-secondary {
+      color: var(--color-content-secondary);
+    }
+    &.color-tertiary {
+      color: var(--color-content-tertiary);
+    }
+  }
+</style>

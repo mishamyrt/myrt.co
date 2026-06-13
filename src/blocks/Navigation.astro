@@ -1,0 +1,18 @@
+---
+import Typography from "../components/Typography.astro";
+---
+
+<nav>
+  <Typography as="a" href="/" color="primary">Опыт</Typography>
+  <Typography as="a" href="/" color="primary">Проекты</Typography>
+  <Typography as="a" href="/" color="primary">Блог</Typography>
+</nav>
+
+<style>
+  nav {
+    max-width: var(--size-layout-content-narrow);
+    margin: 0 auto;
+    display: flex;
+    gap: 18px;
+  }
+</style>

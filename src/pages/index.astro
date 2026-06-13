@@ -1,11 +1,18 @@
 ---
-import Head from "../components/Head.astro";
-import NoteLinks from "../components/NoteLinks.astro";
-import Contacts from "../components/Contacts.astro";
-import Experience from "../components/Experience.astro";
-import Hero from "../components/Hero.astro";
-import notes from "../notes.json";
-import "../styles/common.scss";
+import Layout from "../layouts/Layout.astro";
+import Hero from "../blocks/Hero.astro";
+import Experience from "../blocks/Experience.astro";
+
+function parseDate(s: string): number {
+  const [month, year] = s.split(".").map((i) => parseInt(i, 10));
+  const date = new Date();
+  date.setFullYear(year, month);
+  return date.getTime();
+}
+
+function sortDesc(a: any, b: any): number {
+  return parseDate(b.frontmatter.from) - parseDate(a.frontmatter.from);
+}
 
 const experienceMatches = import.meta.glob("../content/experience/*.md", {
   eager: true,
@@ -13,18 +20,7 @@ const experienceMatches = import.meta.glob("../content/experience/*.md", {
 const experience = Object.values(experienceMatches);
 ---
 
-<html lang="ru">
-  <Head title="Миша" />
-  <body>
-    <div id="root">
-      <div class="content">
-        <div class="content-wrapper">
-          <Hero />
-          <Contacts />
-          <Experience items={experience} />
-          <NoteLinks notes={notes} />
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+<Layout title="Миша Хрустик">
+  <Hero />
+  <Experience items={experience} />
+</Layout>

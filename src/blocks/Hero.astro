@@ -1,0 +1,35 @@
+---
+import Typography from "../components/Typography.astro";
+---
+
+<div class="hero">
+  <img class="hero-avatar" src="/avatar@2x.jpg" />
+  <Typography as="h1" color="primary">
+    Привет! Меня зовут Миша Хрустик, я разработчик и дизайнер.
+  </Typography>
+  <Typography color="secondary">
+    Руковожу кроссфункциональными командами. Выстраиваю процессы так, что задачи
+    перестают перемещаться между спринтами. Участвую в найме, онбординге
+    и развитии инженеров.
+  </Typography>
+  <Typography color="secondary">
+    Занимаюсь консультациями по разработке и проектным проведением
+    собеседований. Пишите мне в телеграм или на почту.
+  </Typography>
+</div>
+
+<style>
+  .hero {
+    max-width: var(--size-layout-content-narrow);
+    margin: 0 auto;
+    position: relative;
+  }
+  .hero-avatar {
+    width: 68px;
+    height: 68px;
+    position: absolute;
+    left: calc(-68px - var(--space-layout-aside));
+    top: calc(-68px / 3);
+    border-radius: 50%;
+  }
+</style>

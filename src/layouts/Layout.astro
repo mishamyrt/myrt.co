@@ -1,0 +1,47 @@
+---
+import "inter-ui/inter.css";
+import Navigation from "../blocks/Navigation.astro";
+
+const siteUrl = "https://myrt.co";
+
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={siteUrl} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Navigation />
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+  @import "../styles/main.scss";
+
+  body,
+  html {
+    background-color: var(--color-background);
+  }
+
+  body {
+    padding: 46px 0;
+  }
+
+  main {
+    padding-top: 48px;
+  }
+</style>
