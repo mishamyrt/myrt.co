@@ -1,5 +1,5 @@
-ARG NODE_VERSION=25-alpine
-ARG PNPM_VERSION=10.33.0
+ARG NODE_VERSION=26-alpine
+ARG PNPM_VERSION=11.6.0
 ARG CADDY_VERSION=2.11-alpine
 
 FROM node:$NODE_VERSION AS builder
@@ -7,7 +7,7 @@ WORKDIR /build
 COPY src ./src
 COPY public ./public
 COPY \
-  package.json pnpm-lock.yaml \
+  package.json pnpm-lock.yaml pnpm-workspace.yaml \
   tsconfig.json astro.config.mjs \
   ./
 RUN npm install -g pnpm@$PNPM_VERSION
