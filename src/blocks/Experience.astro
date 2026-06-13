@@ -37,7 +37,7 @@ const items = Astro.props.items.toSorted(sortDesc).map((i) => ({
 
 <style lang="scss">
   .experience {
-    margin-top: 48px;
+    margin-top: 46px;
   }
 
   .experience-item {
@@ -49,7 +49,7 @@ const items = Astro.props.items.toSorted(sortDesc).map((i) => ({
   .experience-dateContainer {
     font: var(--typography-caption);
     letter-spacing: var(--typography-caption_spacing);
-    transform: rotate(-90deg) translateX(calc(-100% - 44px));
+    transform: rotate(-90deg) translateX(calc(-100% - 42px));
     transform-origin: left;
     color: var(--color-content-tertiary);
     position: absolute;
@@ -73,7 +73,7 @@ const items = Astro.props.items.toSorted(sortDesc).map((i) => ({
       font: var(--typography-text);
       letter-spacing: var(--typography-text_spacing);
       color: var(--color-content-secondary);
-      margin: 9px 0 0;
+      margin: calc(1em + 1px) 0 0;
     }
 
     :global(p + p) {
