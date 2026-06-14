@@ -5,7 +5,7 @@ import fontSubset from "./integrations/astro-subset.mjs";
 export default defineConfig({
   site: "https://myrt.co/",
   integrations: [
-    typograf(),
+    // typograf(),
     fontSubset([
       {
         // Source font file.
