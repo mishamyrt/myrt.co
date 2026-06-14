@@ -76,6 +76,10 @@ const items = Astro.props.items.toSorted(sortDesc).map((i) => ({
       margin: calc(1em + 1px) 0 0;
     }
 
+    :global(p a) {
+      color: var(--color-content-secondary);
+    }
+
     :global(p + p) {
       margin-top: 1em;
     }
