@@ -1,0 +1,41 @@
+---
+import { parse } from "yaml";
+import { readFile } from "node:fs/promises";
+import { type CollectionEntry, getCollection } from "astro:content";
+
+import { PROJECTS_FILE } from "../content.config";
+import Layout from "../layouts/Layout.astro";
+import Typography from "../components/Typography.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+const rawProjects = await readFile(PROJECTS_FILE, "utf8").then(parse);
+
+function projectIndex(id: string) {
+  return rawProjects.findIndex((p: CollectionEntry<"projects">) => p.id === id);
+}
+
+const projects = (await getCollection("projects")).toSorted(
+  (a, b) => projectIndex(a.id) - projectIndex(b.id),
+);
+---
+
+<Layout title="Проекты Миши Хрустика">
+  <Typography color="secondary" class="heading">
+    Создаю инструменты, которые делают мою работу за компьютером комфортнее.
+    Делюсь ими на <a href="https://github.com/mishamyrt">GitHub</a>.
+  </Typography>
+  <div class="projects">
+    {projects.map((project) => <ProjectCard data={project} />)}
+  </div>
+</Layout>
+
+<style lang="scss">
+  .heading {
+    max-width: var(--size-layout-content-narrow);
+    margin: 0 auto;
+  }
+
+  .projects {
+    margin-top: 64px;
+  }
+</style>

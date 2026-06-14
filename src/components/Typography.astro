@@ -1,7 +1,7 @@
 ---
 export type Props<T extends TagName = "p"> = HTMLElementProps<T> & {
   as?: T;
-  variant?: "text" | "heading";
+  variant?: "text" | "text-accent" | "heading" | "caption";
   children?: any;
   color?: "inherit" | "primary" | "secondary" | "tertiary";
   id?: string;
@@ -33,18 +33,33 @@ const Tag = as;
     font-feature-settings: "liga";
     margin: 0;
 
+    & :global(a) {
+      color: inherit;
+    }
+
     &.variant-text {
       font: var(--typography-text);
       letter-spacing: var(--typography-text_spacing);
     }
 
-    &.variant-text + p.variant-text {
+    &.variant-text-accent {
+      font: var(--typography-text-accent);
+      letter-spacing: var(--typography-text_spacing);
+    }
+
+    & + p.variant-text,
+    & + p.variant-text {
       margin-top: 1em;
     }
 
     &.variant-heading {
       font: var(--typography-heading);
       letter-spacing: var(--typography-heading_spacing);
+    }
+
+    &.variant-caption {
+      font: var(--typography-caption);
+      letter-spacing: var(--typography-caption_spacing);
     }
 
     &.color-inherit {

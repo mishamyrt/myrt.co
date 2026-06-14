@@ -1,7 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../blocks/Hero.astro";
-import Experience from "../blocks/Experience.astro";
+import Typography from "../components/Typography.astro";
+import Experience from "../components/Experience.astro";
+import { getCollection } from "astro:content";
+
+const experience = await getCollection("experience");
 
 function parseDate(s: string): number {
   const [month, year] = s.split(".").map((i) => parseInt(i, 10));
@@ -10,17 +13,52 @@ function parseDate(s: string): number {
   return date.getTime();
 }
 
-function sortDesc(a: any, b: any): number {
-  return parseDate(b.frontmatter.from) - parseDate(a.frontmatter.from);
-}
-
-const experienceMatches = import.meta.glob("../content/experience/*.md", {
-  eager: true,
-});
-const experience = Object.values(experienceMatches);
+const places = experience.toSorted(
+  (a, b) => parseDate(b.data.from) - parseDate(a.data.from),
+);
 ---
 
 <Layout title="Миша Хрустик">
-  <Hero />
-  <Experience items={experience} />
+  <div class="hero">
+    <img
+      class="hero-avatar"
+      src="/avatar@2x.jpg"
+      alt="Фотография Миши Хрустика"
+    />
+    <Typography variant="text-accent" as="h1" color="primary">
+      Привет! Меня зовут Миша Хрустик, я разработчик и дизайнер.
+    </Typography>
+    <Typography color="secondary">
+      Руковожу кроссфункциональными командами. Выстраиваю процессы так,
+      что задачи перестают переезжать между спринтами. Участвую в найме,
+      онбординге и развитии инженеров.
+    </Typography>
+    <Typography color="secondary">
+      Занимаюсь консультациями по разработке и проектным проведением
+      собеседований. Пишите мне в телеграм или на почту.
+    </Typography>
+  </div>
+  <div class="experienceContainer">
+    {places.map((place) => <Experience place={place} />)}
+  </div>
 </Layout>
+
+<style>
+  .hero {
+    max-width: var(--size-layout-content-narrow);
+    margin: 0 auto;
+    position: relative;
+  }
+  .hero-avatar {
+    width: 68px;
+    height: 68px;
+    position: absolute;
+    left: calc(-68px - var(--space-layout-aside));
+    top: calc(-68px / 3);
+    border-radius: 50%;
+  }
+
+  .experienceContainer {
+    margin-top: 46px;
+  }
+</style>

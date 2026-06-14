@@ -1,0 +1,51 @@
+---
+import Typography from "./Typography.astro";
+
+type NavigationTarget = {
+  title: string;
+  href: string;
+};
+
+const targets: NavigationTarget[] = [
+  { title: "Опыт", href: "/" },
+  { title: "Проекты", href: "/projects" },
+  { title: "Блог", href: "/blog/" },
+];
+
+const state = targets.map((target) => ({
+  ...target,
+  active: Astro.url.pathname === target.href,
+}));
+---
+
+<nav>
+  {
+    state.map(({ title, href, active }) => (
+      <Typography
+        class:list={{
+          active,
+        }}
+        as="a"
+        href={href}
+        variant={active ? "text-accent" : "text"}
+        color={active ? "primary" : "secondary"}
+      >
+        {title}
+      </Typography>
+    ))
+  }
+</nav>
+
+<style>
+  nav {
+    max-width: var(--size-layout-content-narrow);
+    margin: 0 auto;
+    display: flex;
+    gap: 18px;
+  }
+
+  a.active {
+    cursor: default;
+    text-decoration: none;
+  }
+</style>

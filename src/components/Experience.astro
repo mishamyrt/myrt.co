@@ -1,0 +1,73 @@
+---
+import { type CollectionEntry, render } from "astro:content";
+import Typography from "./Typography.astro";
+
+interface Props {
+  place: CollectionEntry<"experience">;
+}
+
+function formatPeriod(from: string, to?: string): string {
+  if (!to) {
+    return from;
+  }
+  return `${from} – ${to}`;
+}
+
+const { place } = Astro.props as Props;
+
+const period = formatPeriod(place.data.from, place.data.to);
+const { Content } = await render(place);
+---
+
+<div class="experience">
+  <div class="experience-period">
+    <Typography variant="caption" color="tertiary">{period}</Typography>
+  </div>
+  <article>
+    <Content />
+  </article>
+</div>
+
+<style lang="scss">
+  .experience {
+    max-width: var(--size-layout-content-narrow);
+    margin: 38px auto 0;
+    position: relative;
+  }
+
+  .experience-period {
+    transform: rotate(-90deg) translateX(calc(-100% - 42px));
+    transform-origin: left;
+    position: absolute;
+    top: 0;
+    left: calc((var(--space-layout-aside) * -1) - 4px);
+  }
+
+  article {
+    :global(h3) {
+      font: var(--typography-heading);
+      letter-spacing: var(--typography-heading_spacing);
+      color: var(--color-content-primary);
+      margin: 0;
+    }
+
+    :global(h3 a) {
+      color: var(--color-content-primary);
+    }
+
+    :global(p) {
+      font: var(--typography-text);
+      letter-spacing: var(--typography-text_spacing);
+      color: var(--color-content-secondary);
+      margin: calc(1em + 1px) 0 0;
+    }
+
+    :global(p a) {
+      color: var(--color-content-secondary);
+    }
+
+    :global(p + p) {
+      margin-top: 1em;
+    }
+  }
+</style>

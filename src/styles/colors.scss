@@ -4,3 +4,12 @@
   --color-content-secondary: rgba(255, 255, 255, 0.65);
   --color-content-tertiary: rgba(255, 255, 255, 0.4);
 }
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-background: #fafafa;
+    --color-content-primary: rgba(0, 0, 0, 0.97);
+    --color-content-secondary: rgba(0, 0, 0, 0.65);
+    --color-content-tertiary: rgba(0, 0, 0, 0.4);
+  }
+}

@@ -1,0 +1,83 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Typography from './Typography.astro';
+
+interface Props {
+  data: CollectionEntry<"projects">;
+}
+
+const project = Astro.props.data.data;
+const hasAdditionalInfo = project.period || project.stack;
+const isFinished = Boolean(project.period && project.period.end)
+---
+
+<article class="project">
+  <a class="project-image" href={project.link}>
+    <img class:list={{
+      rounded: project.rounded
+    }} src={`/projects/${project.img}`} alt={project.name} />
+  </a>
+  <div class="project-description">
+    <Typography variant="heading" color="primary" as="h2">
+      <a href={project.link}>{project.name}</a>
+    </Typography>
+    <Typography color="secondary">{project.description}</Typography>
+    {hasAdditionalInfo && (
+      <dl>
+        {project.period && (
+          isFinished ? (
+            <dt>Период</dt>
+            <dd>{project.period.start} — {project.period.end}</dd>
+          ) : (
+            <dt>Начало</dt>
+            <dd>{project.period.start}</dd>
+          )
+        )}
+        {project.stack && (
+          <dt>Стек</dt>
+          <dd>{project.stack}</dd>
+        )}
+      </dl>
+    )}
+  </div>
+</article>
+
+<style lang="scss">
+.project {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+
+  &-image {
+    width: 100%;
+    max-width: 560px;
+  }
+
+  img {
+    max-width: 560px;
+    box-shadow: 0 8px 24px -3px rgb(0 0 0 / 10%);
+
+    &.rounded {
+      border-radius: 10px;
+    }
+  }
+
+  & + & {
+    margin-top: 56px;
+  }
+}
+
+dl {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  font: var(--typography-text);
+  letter-spacing: var(--typography-text_spacing);
+  color: var(--color-content-tertiary);
+  margin: 1em 0 0;
+}
+
+dd {
+  margin: 0;
+}
+</style>

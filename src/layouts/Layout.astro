@@ -1,7 +1,7 @@
 ---
-import "inter-ui/inter.css";
-import Navigation from "../blocks/Navigation.astro";
-import FullscreenGrid from "../components/FullscreenGrid.astro";
+import Navigation from "../components/Navigation.astro";
+import DebugGrid from "../components/DebugGrid.astro";
+import "../styles/main.scss";
 
 const siteUrl = "https://myrt.co";
 
@@ -24,16 +24,14 @@ const { title } = Astro.props;
   </head>
   <body>
     <Navigation />
-    <FullscreenGrid step={8} />
+    <DebugGrid step={8} />
     <main>
       <slot />
     </main>
   </body>
 </html>
 
-<style>
-  @import "../styles/main.scss";
-
+<style is:global>
   body,
   html {
     background-color: var(--color-background);

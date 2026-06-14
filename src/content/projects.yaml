@@ -1,0 +1,102 @@
+---
+- id: "lockdock"
+  link: "https://www.raycast.com/mishamyrt/lockdock"
+  img: "lockdock@2x.webp"
+  name: "Lockdock"
+  stack: Rust, C, TypeScript
+  description: |
+    Расширение Raycast для закрепления дока на выбранном экране и блокировки его случайного перемещения.
+  period:
+    start: Май 2026
+
+- id: "nanomiddleclick"
+  link: "https://github.com/mishamyrt/nanomiddleclick"
+  img: "nanomiddleclick@2x.png"
+  rounded: true
+  name: "nanomiddleclick"
+  stack: Rust
+  description: |
+    Ультракомпактное фоновое приложение для эмуляции нажатия колёсика при касании трекапада тремя пальцами
+    или клике в середину Magic Mouse.
+  period:
+    start: Апрель 2026
+
+- id: "repomop"
+  name: "repomop"
+  link: "https://github.com/mishamyrt/repomop"
+  img: "repomop@2x.webp"
+  description: |
+    Приложение для терминала, которое удаляет артефакты сборки и зависимости в неиспользуемых проектах.
+  stack: Rust, Ratatui
+  period:
+    start: Февраль 2026
+
+- id: "yamumi"
+  name: "Yamumi"
+  link: "https://yamumi.myrt.co"
+  img: "yamumi@2x.webp"
+  rounded: true
+  description: |
+    Мини-плеер Яндекс Музыки для тех, кто занят делом.
+    Отображается поверх всех окон и остаётся на месте при смене рабочей области.
+  stack: Swift, SwiftUI
+  period:
+    start: Январь 2026
+
+- id: "lidoff"
+  link: "https://github.com/mishamyrt/lidoff"
+  img: "lidoff@2x.png"
+  rounded: true
+  name: "lidoff"
+  stack: Rust, C
+  description: |
+    Фоновое приложение, которое добавляет макбуку полузакрытое состояние крышки:
+    гаснут все экраны и предотвращается уход в спящий режим.
+  period:
+    start: Январь 2026
+
+- id: "commitfmt"
+  link: "https://github.com/mishamyrt/commitfmt"
+  img: "commitfmt@2x.png"
+  rounded: true
+  name: "commitfmt"
+  stack: Rust
+  description: |
+    Форматтер и линтер сообщений коммитов. Сверхбыстрая замена для commitlint, выполняющая проверку в 18 раз быстрее.
+  period:
+    start: Март 2025
+
+- id: "nuga"
+  link: "https://github.com/mishamyrt/nuga-app"
+  img: "nuga@2x.webp"
+  name: "Nuga"
+  stack: Go, Wails, Svelte, Effector
+  description: |
+    Приложения для настройки подсветки и макросов клавиатур NuPhy Halo75, Halo65, Halo96.
+  period:
+    start: Июнь 2023
+    end: Май 2024
+
+- id: "lilex"
+  link: "https://lilex.myrt.co"
+  img: "lilex@2x.webp"
+  rounded: true
+  stack: Glyphs
+  name: "Lilex"
+  description: |
+    Программистский вариативный шрифт с кодовыми лигатурами. Сделан на основе IBM Plex Mono.
+    Поддерживает кириллицу, латиницу и греческий алфавит.
+  period:
+    start: Октябрь 2019
+
+- id: "honeymate"
+  link: "https://github.com/mishamyrt/honeymate"
+  img: "honeymate@2x.png"
+  rounded: true
+  name: "Honeymate"
+  stack: TypeScript
+  description: |
+    Библиотека для координации загрузки и создания анимаций появления блоков c простым API.
+    Анимации на этом сайте сделаны с её помощью.
+  period:
+    start: Июль 2017
