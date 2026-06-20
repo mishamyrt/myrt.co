@@ -15,7 +15,7 @@
     "lint": "pnpm lint:styles"
   },
   "devDependencies": {
-    "astro": "6.1.2",
+    "astro": "6.4.6",
     "astro-typograf": "3.2.1",
     "cspell": "9.7.0",
     "cspell-dict-ru_ru": "1.4.0",
