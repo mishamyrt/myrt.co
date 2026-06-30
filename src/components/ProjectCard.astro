@@ -12,12 +12,12 @@ const isFinished = Boolean(project.period && project.period.end)
 ---
 
 <article class="project">
-  <a class="project-image" href={project.link}>
+  <a class="project-image honey" data-hold="200" data-effect="slide" data-left="32px" href={project.link}>
     <img class:list={{
       rounded: project.rounded
     }} src={`/projects/${project.img}`} alt={project.name} />
   </a>
-  <div class="project-description">
+  <div class="project-description honey" data-effect="slide" data-right="32px">
     <Typography variant="heading" color="primary" as="h2">
       <a href={project.link}>{project.name}</a>
     </Typography>

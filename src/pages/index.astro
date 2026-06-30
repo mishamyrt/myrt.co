@@ -21,22 +21,28 @@ const places = experience.toSorted(
 <Layout title="Миша Хрустик">
   <div class="hero">
     <img
-      class="hero-avatar"
+      class="hero-avatar honey"
+      data-effect="slide"
+      data-hold="700"
+      data-duration="600"
+      data-left="32px"
       src="/avatar@2x.jpg"
       alt="Фотография Миши Хрустика"
     />
-    <Typography variant="text-accent" as="h1" color="primary">
-      Привет! Меня зовут Миша Хрустик, я разработчик и дизайнер.
-    </Typography>
-    <Typography color="secondary">
-      Руковожу кроссфункциональными командами. Выстраиваю процессы так,
-      что задачи перестают переезжать между спринтами. Участвую в найме,
-      онбординге и развитии инженеров.
-    </Typography>
-    <Typography color="secondary">
-      Занимаюсь консультациями по разработке и проектным проведением
-      собеседований. Пишите мне в телеграм или на почту.
-    </Typography>
+    <div class="honey" data-effect="slide" data-up="32px">
+      <Typography variant="text-accent" as="h1" color="primary">
+        Привет! Меня зовут Миша Хрустик, я разработчик и дизайнер.
+      </Typography>
+      <Typography color="secondary">
+        Руковожу кроссфункциональными командами. Выстраиваю процессы так,
+        что задачи перестают переезжать между спринтами. Участвую в найме,
+        онбординге и развитии инженеров.
+      </Typography>
+      <Typography color="secondary">
+        Занимаюсь консультациями по разработке и проектным проведением
+        собеседований. Пишите мне в телеграм или на почту.
+      </Typography>
+    </div>
   </div>
   <div class="experienceContainer">
     {places.map((place) => <Experience place={place} />)}
