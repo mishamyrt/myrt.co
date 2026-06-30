@@ -55,6 +55,7 @@ const places = experience.toSorted(
     margin: 0 auto;
     position: relative;
   }
+
   .hero-avatar {
     width: 68px;
     height: 68px;
@@ -66,5 +67,11 @@ const places = experience.toSorted(
 
   .experienceContainer {
     margin-top: 46px;
+  }
+
+  @media (max-width: 800px) {
+    .hero-avatar {
+      display: none;
+    }
   }
 </style>
