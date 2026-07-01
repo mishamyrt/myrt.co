@@ -28,6 +28,124 @@ const { Content } = await render(place);
   </article>
 </div>
 
+<script>
+  const nda = document.querySelector(".experience .nda") as HTMLElement | null;
+
+  if (nda) {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const resistance = 5;
+    const stiffness = 0.4;
+    const damping = 0.72;
+
+    let pointerId: number | null = null;
+    let startX = 0;
+    let startY = 0;
+    let originX = 0;
+    let originY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let velocityX = 0;
+    let velocityY = 0;
+    let frame = 0;
+
+    const pull = (delta: number) =>
+      (delta * resistance) / (Math.abs(delta) + resistance);
+
+    const setPosition = (x: number, y: number) => {
+      currentX = x;
+      currentY = y;
+      nda.style.setProperty("--nda-x", `${x}px`);
+      nda.style.setProperty("--nda-y", `${y}px`);
+    };
+
+    const stopReturn = () => {
+      if (frame) {
+        cancelAnimationFrame(frame);
+        frame = 0;
+      }
+    };
+
+    const returnToPlace = () => {
+      velocityX += -currentX * stiffness;
+      velocityY += -currentY * stiffness;
+      velocityX *= damping;
+      velocityY *= damping;
+
+      const nextX = currentX + velocityX;
+      const nextY = currentY + velocityY;
+
+      if (
+        Math.abs(nextX) < 0.1 &&
+        Math.abs(nextY) < 0.1 &&
+        Math.abs(velocityX) < 0.1 &&
+        Math.abs(velocityY) < 0.1
+      ) {
+        setPosition(0, 0);
+        frame = 0;
+        return;
+      }
+
+      setPosition(nextX, nextY);
+      frame = requestAnimationFrame(returnToPlace);
+    };
+
+    nda.addEventListener("pointerdown", (event) => {
+      if (event.button !== 0) {
+        return;
+      }
+
+      stopReturn();
+      pointerId = event.pointerId;
+      startX = event.clientX;
+      startY = event.clientY;
+      originX = currentX;
+      originY = currentY;
+      velocityX = 0;
+      velocityY = 0;
+      nda.classList.add("is-dragging");
+      nda.setPointerCapture(pointerId);
+    });
+
+    nda.addEventListener("pointermove", (event) => {
+      if (event.pointerId !== pointerId) {
+        return;
+      }
+
+      event.preventDefault();
+      setPosition(
+        originX + pull(event.clientX - startX),
+        originY + pull(event.clientY - startY),
+      );
+    });
+
+    const finishDrag = (event: PointerEvent) => {
+      if (event.pointerId !== pointerId) {
+        return;
+      }
+
+      pointerId = null;
+      nda.classList.remove("is-dragging");
+
+      if (nda.hasPointerCapture(event.pointerId)) {
+        nda.releasePointerCapture(event.pointerId);
+      }
+
+      if (reduceMotion) {
+        setPosition(0, 0);
+        return;
+      }
+
+      stopReturn();
+      frame = requestAnimationFrame(returnToPlace);
+    };
+
+    nda.addEventListener("pointerup", finishDrag);
+    nda.addEventListener("pointercancel", finishDrag);
+  }
+</script>
+
 <style lang="scss">
   .experience {
     max-width: var(--size-layout-content-narrow);
@@ -69,6 +187,26 @@ const { Content } = await render(place);
     :global(p + p) {
       margin-top: 1em;
     }
+  }
+
+  .experience :global(.nda) {
+    --nda-x: 0px;
+    --nda-y: 0px;
+
+    box-shadow: 0px 4px 17px -6px rgb(0 0 0 / 34%);
+    border-radius: 5px;
+    padding: 2px 6px;
+    cursor: grab;
+    border: 1px dashed var(--color-content-tertiary);
+    transform: translate3d(var(--nda-x), var(--nda-y), 0);
+    display: inline-block;
+    touch-action: none;
+    user-select: none;
+    will-change: transform;
+  }
+
+  .experience :global(.nda.is-dragging) {
+    cursor: grabbing;
   }
 
   @media (max-width: 700px) {
