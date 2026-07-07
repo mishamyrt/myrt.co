@@ -4,6 +4,7 @@ import { z } from "astro/zod";
 
 export const EXPERIENCE_DIR = "./src/content/experience";
 export const PROJECTS_FILE = "./src/content/projects.yaml";
+export const BLOG_DIR = "./src/content/blog";
 
 const experience = defineCollection({
   loader: glob({ base: EXPERIENCE_DIR, pattern: "**/*.md" }),
@@ -31,7 +32,19 @@ const projects = defineCollection({
   }),
 });
 
+const blog = defineCollection({
+  loader: glob({ base: BLOG_DIR, pattern: "**/*.md" }),
+  schema: z.object({
+    title: z.string(),
+    publishedAt: z.string(),
+    updatedAt: z.optional(z.string()),
+    continuous: z.optional(z.boolean()),
+    tags: z.array(z.string()),
+  }),
+});
+
 export const collections = {
   experience,
   projects,
+  blog,
 };

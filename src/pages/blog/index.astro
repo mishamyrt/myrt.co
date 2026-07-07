@@ -1,0 +1,126 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Typography from "../../components/Typography.astro";
+import Experience from "../../components/Experience.astro";
+import { getCollection } from "astro:content";
+import { parseFullDate } from "../../utils/date";
+
+const CONTINUOUS = "∞";
+
+const articles = await getCollection("blog");
+
+const articlesMap = articles.reduce(
+  (acc, article) => {
+    if (article.data.continuous) {
+      if (!acc[CONTINUOUS]) {
+        acc[CONTINUOUS] = [];
+      }
+      acc[CONTINUOUS].push(article);
+      return acc;
+    }
+    const year = parseFullDate(article.data.publishedAt).getFullYear();
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+    acc[year].push(article);
+    return acc;
+  },
+  {} as Record<string, typeof articles>,
+);
+
+const articlesByYear = Object.entries(articlesMap).sort((a, b) => {
+  if (a[0] === CONTINUOUS) {
+    return -1;
+  }
+  if (b[0] === CONTINUOUS) {
+    return 1;
+  }
+  return parseInt(b[0], 10) - parseInt(a[0], 10);
+});
+---
+
+<Layout title="Блог Миши Хрустика">
+  <Typography color="secondary" class="heading honey" data-effect="slide">
+    Пишу о дизайне, технологиях, кофе и всём, что меня волнует.
+  </Typography>
+  <div class="blog">
+    {
+      articlesByYear.map(([year, articles]) => (
+        <div class="blog-yearArticles">
+          <span
+            class:list={["blog-year", year === CONTINUOUS && "__continuous"]}
+          >
+            {year}
+          </span>
+          <div class="blog-articles">
+            {articles.map((article) => (
+              <Typography as="a" href={`/blog/${article.id}`}>
+                {article.data.title}
+              </Typography>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Layout>
+
+<style>
+  .heading {
+    max-width: var(--size-layout-content-narrow);
+    margin: 0 auto;
+  }
+
+  .blog {
+    margin-top: 48px;
+  }
+
+  .blog-yearArticles {
+    max-width: 575px;
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+  }
+
+  .blog-articles {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+
+  .blog-year {
+    font-family: var(--typography-font-family-sans-serif);
+    font-size: 28px;
+    color: var(--color-content-tertiary);
+    font-weight: 600;
+    text-align: right;
+    width: 85px;
+    position: absolute;
+    left: calc((85px + 32px) * -1);
+    top: -1px;
+
+    &.__continuous {
+      top: -2px;
+    }
+  }
+
+  @media screen and (max-width: 850px) {
+    .blog-yearArticles {
+      flex-direction: column;
+    }
+
+    .blog-year,
+    .blog-year.__continuous {
+      position: relative;
+      top: -1px;
+      left: 0;
+      width: unset;
+      text-align: left;
+      margin-bottom: 6px;
+    }
+
+    .blog-articles {
+      margin-bottom: 32px;
+    }
+  }
+</style>
