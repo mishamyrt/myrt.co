@@ -12,8 +12,15 @@
     var(--typography-font-family-sans-serif);
   --typography-text_spacing: -0.45px;
 
-  --typography-heading: 600 21px/25px var(--typography-font-family-sans-serif);
+  --typography-heading: 600 21px/24px var(--typography-font-family-sans-serif);
   --typography-heading_spacing: -0.38px;
+
+  --typography-heading-l: 600 32px/40px var(--typography-font-family-sans-serif);
+  --typography-heading-l_spacing: -0.9px;
+
+  --typography-heading-xl: 600 44px/48px
+    var(--typography-font-family-sans-serif);
+  --typography-heading-xl_spacing: -1.24px;
 
   --typography-caption: 400 12px/16px var(--typography-font-family-sans-serif);
   --typography-caption_spacing: -0.15px;
