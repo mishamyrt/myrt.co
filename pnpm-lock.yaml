@@ -14,6 +14,9 @@ importers:
       '@types/node':
         specifier: ^25.9.3
         version: 25.9.3
+      honeymate:
+        specifier: ^5.2.2
+        version: 5.2.2
       image-size:
         specifier: ^2.0.2
         version: 2.0.2
@@ -1745,6 +1748,9 @@ packages:
 
   hast-util-whitespace@3.0.0:
     resolution: {integrity: sha512-88JUN06ipLwsnv+dVn+OIYOvAuvBMy/Qoi6O7mQHxdPXpjy+Cd6xRkWwux7DKO+4sYILtLBRIKgsdpS2gQc7qw==}
+
+  honeymate@5.2.2:
+    resolution: {integrity: sha512-nEC2wfxF5epZLw51QaRbJ8hV4hJMtCGaIoFQqYpU7MSn/f2Fn+x+cIv35tJc/R4ClGwf8E0DBo7SGLA8BdN74g==}
 
   hookified@1.15.1:
     resolution: {integrity: sha512-MvG/clsADq1GPM2KGo2nyfaWVyn9naPiXrqIe4jYjXNZQt238kWyOGrsyc/DmRAQ+Re6yeo6yX/yoNCG5KAEVg==}
@@ -4147,6 +4153,8 @@ snapshots:
   hast-util-whitespace@3.0.0:
     dependencies:
       '@types/hast': 3.0.4
+
+  honeymate@5.2.2: {}
 
   hookified@1.15.1: {}
 

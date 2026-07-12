@@ -31,6 +31,7 @@
   "dependencies": {
     "@ibm/plex-serif": "^2.0.0",
     "@types/node": "^25.9.3",
+    "honeymate": "^5.2.2",
     "image-size": "^2.0.2",
     "inter-ui": "^4.1.1",
     "lilex-font": "^2.7.0",
