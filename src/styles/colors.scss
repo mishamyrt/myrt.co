@@ -1,15 +1,23 @@
 :root {
-  --color-background: #121212;
+  --color-background-primary: #121212;
+   --color-background-secondary: #1e1e1e;
   --color-content-primary: rgba(255, 255, 255, 0.97);
   --color-content-secondary: rgba(255, 255, 255, 0.65);
   --color-content-tertiary: rgba(255, 255, 255, 0.4);
+  --color-link-underline: rgba(255, 255, 255, 0.03);
+  --color-link_hover: rgb(255,54,0);
+  --color-link-underline_hover: rgba(255, 54, 0, 0.15);
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --color-background: #fafafa;
+    --color-background-primary: #fafafa;
+    --color-background-secondary: #f2f2f2;
     --color-content-primary: rgba(0, 0, 0, 0.97);
-    --color-content-secondary: rgba(0, 0, 0, 0.65);
+    --color-content-secondary: rgba(0, 0, 0, 0.8);
     --color-content-tertiary: rgba(0, 0, 0, 0.4);
+    --color-link-underline: rgba(0, 0, 0, 0.2);
+    --color-link-underline_hover: rgba(255, 54, 0, 0.25);
+    --color-link_hover: rgb(227, 0, 22);
   }
 }

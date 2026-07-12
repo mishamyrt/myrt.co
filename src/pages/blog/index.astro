@@ -3,7 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Typography from "../../components/Typography.astro";
 import Experience from "../../components/Experience.astro";
 import { getCollection } from "astro:content";
-import { parseFullDate } from "../../utils/date";
+import { formatShortDate, parseFullDate } from "../../utils/date";
 
 const CONTINUOUS = "∞";
 
@@ -54,9 +54,26 @@ const articlesByYear = Object.entries(articlesMap).sort((a, b) => {
           </span>
           <div class="blog-articles">
             {articles.map((article) => (
-              <Typography as="a" href={`/blog/${article.id}`}>
-                {article.data.title}
-              </Typography>
+              <div>
+                <Typography
+                  variant="text-m"
+                  color="primary"
+                  as="a"
+                  href={`/blog/${article.id}`}
+                >
+                  {article.data.title}
+                </Typography>
+                {year !== CONTINUOUS && (
+                  <Typography
+                    class="blog-articleDate"
+                    as="span"
+                    variant="text-m"
+                    color="tertiary"
+                  >
+                    {formatShortDate(parseFullDate(article.data.publishedAt))}
+                  </Typography>
+                )}
+              </div>
             ))}
           </div>
         </div>
@@ -65,62 +82,71 @@ const articlesByYear = Object.entries(articlesMap).sort((a, b) => {
   </div>
 </Layout>
 
-<style>
+<style lang="scss">
+  @use "../../styles/typography.scss";
+
   .heading {
     max-width: var(--size-layout-content-narrow);
-    margin: 0 auto;
   }
 
   .blog {
-    margin-top: 48px;
+    margin-top: 36px;
   }
 
   .blog-yearArticles {
-    max-width: 575px;
-    margin: 0 auto;
+    max-width: var(--size-layout-content-narrow);
     display: flex;
     position: relative;
+    margin-top: var(--space-m);
   }
 
   .blog-articles {
     display: flex;
     flex-direction: column;
-    margin-bottom: 24px;
+    gap: 9px;
+  }
+
+  .blog-articleDate {
+    margin-left: 1em;
   }
 
   .blog-year {
-    font-family: var(--typography-font-family-sans-serif);
-    font-size: 28px;
+    @include typography.heading-s;
     color: var(--color-content-tertiary);
-    font-weight: 600;
     text-align: right;
     width: 85px;
     position: absolute;
     left: calc((85px + 32px) * -1);
-    top: -1px;
+    top: 7px;
 
     &.__continuous {
-      top: -2px;
+      top: 5px;
     }
   }
 
   @media screen and (max-width: 850px) {
     .blog-yearArticles {
       flex-direction: column;
+      margin-top: 0;
+    }
+
+    .blog-yearArticles + .blog-yearArticles {
+      margin-top: 27px;
     }
 
     .blog-year,
     .blog-year.__continuous {
+      @include typography.heading-m;
       position: relative;
-      top: -1px;
       left: 0;
-      width: unset;
+      top: 0;
       text-align: left;
-      margin-bottom: 6px;
+      width: unset;
+      margin-bottom: var(--space-s);
     }
 
     .blog-articles {
-      margin-bottom: 32px;
+      margin-bottom: 0px;
     }
   }
 </style>

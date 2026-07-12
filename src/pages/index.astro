@@ -30,8 +30,8 @@ const places = experience.toSorted(
       alt="Фотография Миши Хрустика"
     />
     <div class="honey" data-effect="slide" data-up="32px">
-      <Typography variant="text-accent" as="h1" color="primary">
-        Привет! Меня зовут Миша Хрустик, я разработчик и дизайнер.
+      <Typography variant="heading-l" as="h1" color="primary">
+        Миша Хрустик,<br />тимлид
       </Typography>
       <Typography color="secondary">
         Руковожу кроссфункциональными командами. Выстраиваю процессы так,
@@ -52,26 +52,31 @@ const places = experience.toSorted(
 <style>
   .hero {
     max-width: var(--size-layout-content-narrow);
-    margin: 0 auto;
     position: relative;
   }
 
   .hero-avatar {
-    width: 68px;
-    height: 68px;
+    --avatar-size: 54px;
+
+    width: var(--avatar-size);
+    height: var(--avatar-size);
     position: absolute;
-    left: calc(-68px - var(--space-layout-aside));
-    top: calc(-68px / 3);
+    left: calc((var(--avatar-size) * -1) - var(--space-layout-aside));
+    top: calc((var(--avatar-size) * -1) / 9);
     border-radius: 50%;
   }
 
   .experienceContainer {
-    margin-top: 46px;
+    margin-top: 42px;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 873px) {
     .hero-avatar {
       display: none;
+    }
+
+    .experienceContainer {
+      margin-top: 69px;
     }
   }
 </style>

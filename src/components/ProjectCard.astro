@@ -18,7 +18,7 @@ const isFinished = Boolean(project.period && project.period.end)
     }} src={`/projects/${project.img}`} alt={project.name} />
   </a>
   <div class="project-description honey" data-effect="slide" data-right="32px">
-    <Typography variant="heading" color="primary" as="h2">
+    <Typography class="project-title" variant="heading-m" color="primary" as="h2">
       <a href={project.link}>{project.name}</a>
     </Typography>
     <Typography color="secondary">{project.description}</Typography>
@@ -45,13 +45,18 @@ const isFinished = Boolean(project.period && project.period.end)
 <style lang="scss">
 .project {
   max-width: 1000px;
-  margin: 0 auto;
   display: flex;
-  gap: 40px;
+  flex-direction: row-reverse;
+  gap: 36px;
 
   &-image {
     width: 100%;
     max-width: 560px;
+  }
+
+  &-description {
+    position: relative;
+    top: -5px;
   }
 
   img {
@@ -64,17 +69,17 @@ const isFinished = Boolean(project.period && project.period.end)
   }
 
   & + & {
-    margin-top: 56px;
+    margin-top: 51px;
   }
 }
 
 dl {
   display: grid;
   grid-template-columns: 80px 1fr;
-  font: var(--typography-text);
-  letter-spacing: var(--typography-text_spacing);
-  color: var(--color-content-tertiary);
-  margin: 1em 0 0;
+  font: var(--typography-text-s);
+  letter-spacing: var(--typography-text-s_spacing);
+  color: var(--color-content-secondary);
+  margin: 26px 0 0;
 }
 
 dd {

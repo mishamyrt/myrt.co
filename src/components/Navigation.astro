@@ -9,26 +9,28 @@ type NavigationTarget = {
 const targets: NavigationTarget[] = [
   { title: "Опыт", href: "/" },
   { title: "Проекты", href: "/projects" },
-  { title: "Блог", href: "/blog/" },
+  // { title: "Блог", href: "/blog/" },
 ];
 
 const state = targets.map((target) => ({
   ...target,
   active: Astro.url.pathname === target.href,
+  sublink: Astro.url.pathname.startsWith(target.href) && target.href !== "/",
 }));
 ---
 
 <nav>
   {
-    state.map(({ title, href, active }) => (
+    state.map(({ title, href, active, sublink }) => (
       <Typography
         class:list={{
           active,
+          sublink,
         }}
         as="a"
         href={href}
-        variant={active ? "text-accent" : "text"}
-        color={active ? "primary" : "secondary"}
+        variant="heading-xs"
+        color={active || sublink ? "primary" : "tertiary"}
       >
         {title}
       </Typography>
@@ -38,8 +40,6 @@ const state = targets.map((target) => ({
 
 <style>
   nav {
-    max-width: var(--size-layout-content-narrow);
-    margin: 0 auto;
     display: flex;
     gap: 18px;
   }
@@ -47,5 +47,10 @@ const state = targets.map((target) => ({
   a.active {
     cursor: default;
     text-decoration: none;
+    pointer-events: none;
+  }
+
+  a.sublink {
+    color: var(--color-text-primary);
   }
 </style>

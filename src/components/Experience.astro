@@ -21,167 +21,171 @@ const { Content } = await render(place);
 
 <div class="experience honey" data-hold="400">
   <div class="experience-period">
-    <Typography variant="caption" color="tertiary">{period}</Typography>
+    <Typography variant="text-s" color="secondary">{period}</Typography>
   </div>
   <article>
     <Content />
   </article>
+  <script>
+    const nda = document.querySelector(
+      ".experience .nda",
+    ) as HTMLElement | null;
+
+    if (nda) {
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      const resistance = 5;
+      const stiffness = 0.4;
+      const damping = 0.72;
+
+      let pointerId: number | null = null;
+      let startX = 0;
+      let startY = 0;
+      let originX = 0;
+      let originY = 0;
+      let currentX = 0;
+      let currentY = 0;
+      let velocityX = 0;
+      let velocityY = 0;
+      let frame = 0;
+
+      const pull = (delta: number) =>
+        (delta * resistance) / (Math.abs(delta) + resistance);
+
+      const setPosition = (x: number, y: number) => {
+        currentX = x;
+        currentY = y;
+        nda.style.setProperty("--nda-x", `${x}px`);
+        nda.style.setProperty("--nda-y", `${y}px`);
+      };
+
+      const stopReturn = () => {
+        if (frame) {
+          cancelAnimationFrame(frame);
+          frame = 0;
+        }
+      };
+
+      const returnToPlace = () => {
+        velocityX += -currentX * stiffness;
+        velocityY += -currentY * stiffness;
+        velocityX *= damping;
+        velocityY *= damping;
+
+        const nextX = currentX + velocityX;
+        const nextY = currentY + velocityY;
+
+        if (
+          Math.abs(nextX) < 0.1 &&
+          Math.abs(nextY) < 0.1 &&
+          Math.abs(velocityX) < 0.1 &&
+          Math.abs(velocityY) < 0.1
+        ) {
+          setPosition(0, 0);
+          frame = 0;
+          return;
+        }
+
+        setPosition(nextX, nextY);
+        frame = requestAnimationFrame(returnToPlace);
+      };
+
+      nda.addEventListener("pointerdown", (event) => {
+        if (event.button !== 0) {
+          return;
+        }
+
+        stopReturn();
+        pointerId = event.pointerId;
+        startX = event.clientX;
+        startY = event.clientY;
+        originX = currentX;
+        originY = currentY;
+        velocityX = 0;
+        velocityY = 0;
+        nda.classList.add("is-dragging");
+        nda.setPointerCapture(pointerId);
+      });
+
+      nda.addEventListener("pointermove", (event) => {
+        if (event.pointerId !== pointerId) {
+          return;
+        }
+
+        event.preventDefault();
+        setPosition(
+          originX + pull(event.clientX - startX),
+          originY + pull(event.clientY - startY),
+        );
+      });
+
+      const finishDrag = (event: PointerEvent) => {
+        if (event.pointerId !== pointerId) {
+          return;
+        }
+
+        pointerId = null;
+        nda.classList.remove("is-dragging");
+
+        if (nda.hasPointerCapture(event.pointerId)) {
+          nda.releasePointerCapture(event.pointerId);
+        }
+
+        if (reduceMotion) {
+          setPosition(0, 0);
+          return;
+        }
+
+        stopReturn();
+        frame = requestAnimationFrame(returnToPlace);
+      };
+
+      nda.addEventListener("pointerup", finishDrag);
+      nda.addEventListener("pointercancel", finishDrag);
+    }
+  </script>
 </div>
-
-<script>
-  const nda = document.querySelector(".experience .nda") as HTMLElement | null;
-
-  if (nda) {
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    const resistance = 5;
-    const stiffness = 0.4;
-    const damping = 0.72;
-
-    let pointerId: number | null = null;
-    let startX = 0;
-    let startY = 0;
-    let originX = 0;
-    let originY = 0;
-    let currentX = 0;
-    let currentY = 0;
-    let velocityX = 0;
-    let velocityY = 0;
-    let frame = 0;
-
-    const pull = (delta: number) =>
-      (delta * resistance) / (Math.abs(delta) + resistance);
-
-    const setPosition = (x: number, y: number) => {
-      currentX = x;
-      currentY = y;
-      nda.style.setProperty("--nda-x", `${x}px`);
-      nda.style.setProperty("--nda-y", `${y}px`);
-    };
-
-    const stopReturn = () => {
-      if (frame) {
-        cancelAnimationFrame(frame);
-        frame = 0;
-      }
-    };
-
-    const returnToPlace = () => {
-      velocityX += -currentX * stiffness;
-      velocityY += -currentY * stiffness;
-      velocityX *= damping;
-      velocityY *= damping;
-
-      const nextX = currentX + velocityX;
-      const nextY = currentY + velocityY;
-
-      if (
-        Math.abs(nextX) < 0.1 &&
-        Math.abs(nextY) < 0.1 &&
-        Math.abs(velocityX) < 0.1 &&
-        Math.abs(velocityY) < 0.1
-      ) {
-        setPosition(0, 0);
-        frame = 0;
-        return;
-      }
-
-      setPosition(nextX, nextY);
-      frame = requestAnimationFrame(returnToPlace);
-    };
-
-    nda.addEventListener("pointerdown", (event) => {
-      if (event.button !== 0) {
-        return;
-      }
-
-      stopReturn();
-      pointerId = event.pointerId;
-      startX = event.clientX;
-      startY = event.clientY;
-      originX = currentX;
-      originY = currentY;
-      velocityX = 0;
-      velocityY = 0;
-      nda.classList.add("is-dragging");
-      nda.setPointerCapture(pointerId);
-    });
-
-    nda.addEventListener("pointermove", (event) => {
-      if (event.pointerId !== pointerId) {
-        return;
-      }
-
-      event.preventDefault();
-      setPosition(
-        originX + pull(event.clientX - startX),
-        originY + pull(event.clientY - startY),
-      );
-    });
-
-    const finishDrag = (event: PointerEvent) => {
-      if (event.pointerId !== pointerId) {
-        return;
-      }
-
-      pointerId = null;
-      nda.classList.remove("is-dragging");
-
-      if (nda.hasPointerCapture(event.pointerId)) {
-        nda.releasePointerCapture(event.pointerId);
-      }
-
-      if (reduceMotion) {
-        setPosition(0, 0);
-        return;
-      }
-
-      stopReturn();
-      frame = requestAnimationFrame(returnToPlace);
-    };
-
-    nda.addEventListener("pointerup", finishDrag);
-    nda.addEventListener("pointercancel", finishDrag);
-  }
-</script>
 
 <style lang="scss">
   .experience {
     max-width: var(--size-layout-content-narrow);
-    margin: 38px auto 0;
     position: relative;
+  }
+
+  .experience + .experience {
+    margin-top: calc(var(--space-xl) + 6px);
   }
 
   .experience-period {
     transform: rotate(-90deg) translateX(calc(-100% - 42px));
     transform-origin: left;
     position: absolute;
-    top: 0;
+    top: 7px;
     left: calc((var(--space-layout-aside) * -1) - 4px);
   }
 
   article {
     :global(h3) {
-      font: var(--typography-heading);
-      letter-spacing: var(--typography-heading_spacing);
+      font: var(--typography-heading-m);
+      letter-spacing: var(--typography-heading-m_spacing);
       color: var(--color-content-primary);
-      margin: 0;
-    }
-
-    :global(h3 a) {
-      color: var(--color-content-primary);
-    }
-
-    :global(p) {
-      font: var(--typography-text);
-      letter-spacing: var(--typography-text_spacing);
-      color: var(--color-content-secondary);
-      margin: calc(1em + 1px) 0 0;
+      margin: 0 0 calc(var(--space-m) + 3px);
     }
 
     :global(p a) {
       color: var(--color-content-secondary);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 2px;
+      text-decoration-color: var(--color-link-underline);
+    }
+
+    :global(p) {
+      font: var(--typography-text-m);
+      letter-spacing: var(--typography-text-m_spacing);
+      color: var(--color-content-secondary);
+      margin: 0;
     }
 
     :global(p + p) {
@@ -196,6 +200,7 @@ const { Content } = await render(place);
     box-shadow: 0px 4px 17px -6px rgb(0 0 0 / 34%);
     border-radius: 5px;
     padding: 2px 6px;
+    margin: -3px 0;
     cursor: grab;
     border: 1px dashed var(--color-content-tertiary);
     transform: translate3d(var(--nda-x), var(--nda-y), 0);
@@ -209,15 +214,15 @@ const { Content } = await render(place);
     cursor: grabbing;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 873px) {
     .experience-period {
       transform: none;
       left: 0;
-      top: -32px;
+      top: -34px;
     }
 
-    .experience {
-      margin-top: 70px;
+    .experience + .experience {
+      margin-top: 69px;
     }
   }
 </style>

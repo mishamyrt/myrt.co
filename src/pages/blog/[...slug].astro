@@ -1,6 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Typography from "../../components/Typography.astro";
 import { getCollection, render } from "astro:content";
+import { formatCyrillicDate, parseFullDate } from "../../utils/date";
 
 export async function getStaticPaths() {
   const articles = await getCollection("blog");
@@ -11,6 +13,8 @@ export async function getStaticPaths() {
 }
 
 const { article } = Astro.props;
+const date = parseFullDate(article.data.publishedAt);
+const dateString = formatCyrillicDate(date);
 const { Content } = await render(article);
 ---
 
@@ -18,40 +22,155 @@ const { Content } = await render(article);
   <article>
     <h1>{article.data.title}</h1>
     <Content />
+    <time datetime="2026-07-10">
+      <Typography class="date" color="tertiary" variant="text-m">Опубликовано {dateString}</Typography>
+    </time>
   </article>
 </Layout>
 
 <style>
-  article {
-    font-family: var(--typography-font-family-sans-serif);
+  .date {
+    margin-top: var(--space-m);
+  }
 
-    :global(p) {
-      font: var(--typography-text);
-      letter-spacing: var(--typography-text_spacing);
-      max-width: var(--size-layout-content-narrow);
-      margin: 0 auto;
+  article {
+    font-family: var(--typography-font-family-serif);
+
+    .img-container {
+      margin: calc(var(--space-l) + 1px) 0 var(--space-l);
     }
 
-    :global(p + p) {
-      margin-top: 8px;
+    .img-caption {
+      font-family: var(--typography-text-s);
+      letter-spacing: var(--typography-text-s_spacing);
+      color: var(--color-content-tertiary);
+      max-width: var(--size-layout-content-narrow);
+      display: block;
+      margin-top: 2px;
+    }
+
+    :global(.img-wrapper) {
+      position: relative;
+      max-width: 100%;
+
+      :global(img) {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    :global(p) {
+      color: var(--color-content-secondary);
+      font: var(--typography-text-m);
+      letter-spacing: var(--typography-text-m_spacing);
+      max-width: var(--size-layout-content-narrow);
+      margin: var(--space-m) 0 0;
     }
 
     :global(h1) {
-      font: var(--typography-heading-xl);
-      letter-spacing: var(--typography-heading-xl_spacing);
-      margin: 0 auto 16px;
+      font: var(--typography-heading-l);
+      letter-spacing: var(--typography-heading-l_spacing);
+      margin: -1px 0 calc(var(--space-m) + 1px);
+      color: var(--color-content-primary);
       max-width: var(--size-layout-content-narrow);
     }
 
-    :global(h2),
-    :global(h3) {
-      font: var(--typography-heading);
-      letter-spacing: var(--typography-heading_spacing);
-      font-weight: 600;
-      margin: 24px auto 8px;
+    :global(h2) {
+      font: var(--typography-heading-m);
+      letter-spacing: var(--typography-heading-m_spacing);
+      margin: calc(var(--space-xl) - 3px) 0 calc(var(--space-s) + 3px);
       max-width: var(--size-layout-content-narrow);
-      position: relative;
-      top: -1px;
+      color: var(--color-content-primary);
     }
+
+    :global(pre + h2) {
+      margin-top: calc(var(--space-xl) - 1px);
+    }
+
+    :global(ul) {
+      margin: 0;
+      max-width: var(--size-layout-content-narrow);
+      list-style-type: none;
+    }
+
+    :global(li) {
+      color: var(--color-content-secondary);
+      font: var(--typography-text-m);
+      margin-top: var(--space-s);
+    }
+
+    :global(blockquote) {
+      padding-left: var(--space-xl);
+      max-width: var(--size-layout-content-narrow);
+      margin: var(--space-m) 0;
+    }
+
+    :global(a) {
+      color: var(--color-content-link);
+      text-decoration: none;
+    }
+
+    :global(a:hover) {
+      text-decoration: underline;
+    }
+
+    :global(a code) {
+      color: var(--color-content-link);
+    }
+
+  :global(code) {
+    font: var(--typography-code-m);
+    color: var(--color-content-primary);
+    background-color: var(--color-background-secondary);
+  }
+
+  :global(p code) {
+    position: relative;
+    background-color: var(--color-background-secondary);
+    padding: 2px 2px;
+    margin: -2px -2px;
+    border-radius: 3px;
+  }
+
+  :global(pre) {
+    font: var(--typography-code-m);
+    width: calc(var(--size-layout-content-narrow) + 40px);
+    margin: calc(var(--space-m) + 4px) 0px calc(var(--space-m) + 2px) -20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    background-color: var(--color-background-secondary) !important;
+  }
+
+  :global(table) {
+    font: var(--typography-text-m);
+    color: var(--color-content-secondary);
+    margin: var(--space-m) 0 0;
+    border-collapse: collapse;
+  }
+
+  :global(table + h2) {
+    margin-top: calc(var(--space-xl) - 12px);
+  }
+
+  :global(table .line) {
+    height: 27px;
+    display: inline-block;
+  }
+
+  :global(th) {
+    font: var(--typography-heading-s);
+    text-align: left;
+    padding: 0;
+    line-height: 27px;
+  }
+
+  :global(tr) {
+    line-height: 27px;
+  }
+
+  :global(th),
+  :global(td) {
+    padding: 0 var(--space-m) var(--space-s) 0;
   }
 </style>

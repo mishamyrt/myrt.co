@@ -1,9 +1,10 @@
 @use "./colors.scss";
 @use "./typography.scss";
+@use "./spacing.scss";
 
 :root {
-  --size-layout-content-narrow: 575px;
-  --space-layout-aside: 32px;
+  --size-layout-content-narrow: 720px;
+  --space-layout-aside: 36px;
 }
 
 html,
@@ -11,6 +12,7 @@ body {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+  scrollbar-gutter: stable;
 }
 
 * {
@@ -19,6 +21,17 @@ body {
 
 a {
   color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-skip-ink: all;
+  text-underline-offset: .175em;
+  text-decoration-color: var(--color-link-underline);
+  position: relative;
+}
+
+a:hover {
+  color: var(--color-link_hover);
+  text-decoration-color: var(--color-link-underline_hover);
 }
 
 .honey {

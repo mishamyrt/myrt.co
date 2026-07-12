@@ -21,3 +21,33 @@ export function parseShortDate(s: string): Date {
   date.setFullYear(year, month);
   return date;
 }
+
+const monthNames = [
+  "января",
+  "февраля",
+  "марта",
+  "апреля",
+  "мая",
+  "июня",
+  "июля",
+  "августа",
+  "сентября",
+  "октября",
+  "ноября",
+  "декабря",
+];
+
+export function formatCyrillicDate(date: Date): string {
+  const day = date.getDate();
+  const month = date.getMonth() - 1;
+  const year = date.getFullYear();
+
+  return `${day} ${monthNames[month]} ${year}`;
+}
+
+export function formatShortDate(date: Date): string {
+  const day = date.getDate();
+  const month = date.getMonth();
+
+  return `${day}.${month.toString().padStart(2, "0")}`;
+}

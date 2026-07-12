@@ -1,7 +1,10 @@
 ---
+type TextVariant = "text-s" | "text-m";
+type HeadingVariant = "heading-xs" | "heading-s" | "heading-m" | "heading-l";
+
 export type Props<T extends TagName = "p"> = HTMLElementProps<T> & {
   as?: T;
-  variant?: "text" | "text-accent" | "heading" | "caption";
+  variant?: TextVariant | HeadingVariant;
   children?: any;
   color?: "inherit" | "primary" | "secondary" | "tertiary";
   id?: string;
@@ -10,7 +13,7 @@ export type Props<T extends TagName = "p"> = HTMLElementProps<T> & {
 
 const {
   as = "p",
-  variant = "text",
+  variant = "text-m",
   color = "inherit",
   class: className,
   id,
@@ -37,30 +40,48 @@ const Tag = as;
       color: inherit;
     }
 
-    &.variant-text {
-      font: var(--typography-text);
-      letter-spacing: var(--typography-text_spacing);
+    &.variant {
+      &-text-s {
+        font: var(--typography-text-s);
+        letter-spacing: var(--typography-text-s_spacing);
+      }
+
+      &-text-m {
+        font: var(--typography-text-m);
+        letter-spacing: var(--typography-text-m_spacing);
+      }
+
+      &-text-m + &-text-m {
+        margin-top: var(--space-m);
+      }
+
+      &-heading-xs {
+        font: var(--typography-heading-xs);
+        letter-spacing: var(--typography-heading-xs_spacing);
+      }
+
+      &-heading-s {
+        font: var(--typography-heading-s);
+        letter-spacing: var(--typography-heading-s_spacing);
+      }
+
+      &-heading-m {
+        font: var(--typography-heading-m);
+        letter-spacing: var(--typography-heading-m_spacing);
+        margin: 0 0 calc(var(--space-m) + 3px);
+      }
+
+      &-heading-l {
+        font: var(--typography-heading-l);
+        letter-spacing: var(--typography-heading-l_spacing);
+        margin: -1px 0 calc(var(--space-m) + 1px);
+      }
     }
 
-    &.variant-text-accent {
-      font: var(--typography-text-accent);
-      letter-spacing: var(--typography-text_spacing);
-    }
-
-    & + p.variant-text,
+    /* & + p.variant-text,
     & + p.variant-text {
       margin-top: 1em;
-    }
-
-    &.variant-heading {
-      font: var(--typography-heading);
-      letter-spacing: var(--typography-heading_spacing);
-    }
-
-    &.variant-caption {
-      font: var(--typography-caption);
-      letter-spacing: var(--typography-caption_spacing);
-    }
+    } */
 
     &.color-inherit {
       color: inherit;
@@ -74,5 +95,11 @@ const Tag = as;
     &.color-tertiary {
       color: var(--color-content-tertiary);
     }
+  }
+
+  :global(a):hover.typography,
+  .typography :global(a):hover {
+    color: var(--color-link_hover);
+    text-decoration-color: var(--color-link-underline_hover);
   }
 </style>

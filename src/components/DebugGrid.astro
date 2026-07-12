@@ -20,8 +20,8 @@ const { step } = Astro.props;
   ) as HTMLElement | null;
 
   if (grid) {
-    let offsetX = 0;
-    let offsetY = 0;
+    let offsetX = -1;
+    let offsetY = 1;
 
     const updateHeight = () => {
       grid.style.height = `${document.documentElement.scrollHeight}px`;
@@ -63,6 +63,7 @@ const { step } = Astro.props;
     });
 
     window.addEventListener("resize", updateHeight);
+    updatePosition();
   }
 </script>
 

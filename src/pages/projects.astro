@@ -21,8 +21,8 @@ const projects = (await getCollection("projects")).toSorted(
 
 <Layout title="Проекты Миши Хрустика">
   <Typography color="secondary" class="heading honey" data-effect="slide">
-    Создаю инструменты, которые делают мою работу за компьютером комфортнее.
-    Делюсь ими на <a href="https://github.com/mishamyrt">GitHub</a>.
+    Создаю инструменты, которые делают мою работу за компьютером комфортнее.
+    Делюсь ими на <a href="https://github.com/mishamyrt">GitHub</a>.
   </Typography>
   <div class="projects">
     {projects.map((project) => <ProjectCard data={project} />)}
@@ -32,17 +32,16 @@ const projects = (await getCollection("projects")).toSorted(
 <style lang="scss">
   .heading {
     max-width: var(--size-layout-content-narrow);
-    margin: 0 auto;
   }
 
   .projects {
-    margin-top: 64px;
+    margin-top: 47px;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 873px) {
     .projects {
-      max-width: 575px;
-      margin: 50px auto 0;
+      max-width: var(--size-layout-content-narrow);
+      margin: 50px 0 0;
     }
   }
 </style>
