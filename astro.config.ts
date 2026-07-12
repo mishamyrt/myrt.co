@@ -4,6 +4,8 @@ import { imageCaption } from "./plugins/md-hast/imageCaption";
 import { imageSizeSetter } from "./plugins/md-hast/imageSize";
 import { honeymateLoader } from "./plugins/md-hast/imageHoneymate";
 
+import compressor from "astro-compressor";
+
 export default defineConfig({
   site: "https://myrt.co/",
   markdown: {
@@ -93,7 +95,5 @@ export default defineConfig({
       },
     },
   ],
-  integrations: [
-    // typograf(),
-  ],
+  integrations: [compressor()],
 });

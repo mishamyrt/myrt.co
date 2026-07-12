@@ -1,7 +1,24 @@
 {
-  email misha@myrt.co
+	email misha@myrt.co
+	admin off
 }
 
 myrt.co {
-  root * /data
+	root * /data
+
+	@revalidate path *.html /
+	header @revalidate Cache-Control "no-cache"
+
+	@immutable path_regexp \.[A-Za-z0-9_-]{8}\.(js|css|woff2|png|svg|jpg|webp)$
+
+	header {
+		-Server
+		X-Content-Type-Options nosniff
+	}
+
+	file_server {
+		precompressed br zstd gzip
+	}
+
+	try_files {path} {path}/ /index.html
 }
