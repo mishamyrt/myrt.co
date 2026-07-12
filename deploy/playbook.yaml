@@ -2,37 +2,32 @@
 - hosts: "{{ target }}"
   name: Deploy myrt.co
 
+  vars:
+    image_repository: ghcr.io/mishamyrt/myrt.co/site
+    image_tag: latest
+
   tasks:
-    - name: Create temporary directory
-      tempfile:
-        state: directory
-        suffix: web
-      register: tempdir
+    - name: Log in to GitHub Container Registry
+      when: registry_token is defined and registry_token | length > 0
+      community.docker.docker_login:
+        registry_url: ghcr.io
+        username: "{{ registry_username | default('mishamyrt') }}"
+        password: "{{ registry_token }}"
 
-    - name: Copy image archive
-      retries: 3
-      delay: 1
-      synchronize:
-        rsync_timeout: 60
-        src: "../dist/myrt-co.docker.tar"
-        dest: "{{ tempdir.path }}/myrt-co.docker.tar"
-
-    - name: Load image from the tar file
-      community.docker.docker_image_load:
-        path: "{{ tempdir.path }}/myrt-co.docker.tar"
+    - name: Pull image
+      community.docker.docker_image:
+        name: "{{ image_repository }}:{{ image_tag }}"
+        source: pull
+        force_source: true
 
     - name: Start container
-      docker_container:
-        image: "myrt-co:latest"
+      community.docker.docker_container:
+        image: "{{ image_repository }}:{{ image_tag }}"
         recreate: true
+        pull: false
         state: started
         restart_policy: unless-stopped
         name: "myrt-co-{{ target }}"
         ports:
           - 80:80
           - 443:443
-
-    - name: Remove temporary directory
-      file:
-        path: "{{ tempdir.path }}"
-        state: absent
