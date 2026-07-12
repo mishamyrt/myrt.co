@@ -1,9 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Typography from "../../components/Typography.astro";
-import Experience from "../../components/Experience.astro";
 import { getCollection } from "astro:content";
-import { formatShortDate, parseFullDate } from "../../utils/date";
+import { parseFullDate } from "../../utils/date";
 
 const CONTINUOUS = "∞";
 
@@ -11,6 +10,9 @@ const articles = await getCollection("blog");
 
 const articlesMap = articles.reduce(
   (acc, article) => {
+    if (!article.data.publishedAt) {
+      return acc;
+    }
     if (article.data.continuous) {
       if (!acc[CONTINUOUS]) {
         acc[CONTINUOUS] = [];
@@ -41,39 +43,35 @@ const articlesByYear = Object.entries(articlesMap).sort((a, b) => {
 
 <Layout title="Блог Миши Хрустика">
   <Typography color="secondary" class="heading honey" data-effect="slide">
-    Пишу о дизайне, технологиях, кофе и всём, что меня волнует.
+    Пишу о дизайне, технологиях, кофе и всём, что меня волнует. Пытаюсь
+    научиться писать регулярно.
   </Typography>
   <div class="blog">
     {
       articlesByYear.map(([year, articles]) => (
         <div class="blog-yearArticles">
-          <span
+          <Typography
+            variant="heading-m"
+            color="tertiary"
             class:list={["blog-year", year === CONTINUOUS && "__continuous"]}
           >
             {year}
-          </span>
+          </Typography>
           <div class="blog-articles">
             {articles.map((article) => (
-              <div>
+              <a class="blog-article" href={`/blog/${article.id}`}>
                 <Typography
-                  variant="text-m"
+                  class="blog-title"
+                  variant="heading-m"
                   color="primary"
-                  as="a"
-                  href={`/blog/${article.id}`}
+                  as="h3"
                 >
                   {article.data.title}
                 </Typography>
-                {year !== CONTINUOUS && (
-                  <Typography
-                    class="blog-articleDate"
-                    as="span"
-                    variant="text-m"
-                    color="tertiary"
-                  >
-                    {formatShortDate(parseFullDate(article.data.publishedAt))}
-                  </Typography>
-                )}
-              </div>
+                <Typography variant="text-m" color="secondary">
+                  {article.data.description}
+                </Typography>
+              </a>
             ))}
           </div>
         </div>
@@ -90,14 +88,22 @@ const articlesByYear = Object.entries(articlesMap).sort((a, b) => {
   }
 
   .blog {
-    margin-top: 36px;
+    margin-top: 42px;
+  }
+
+  .typography.blog-title {
+    margin-bottom: 3px;
   }
 
   .blog-yearArticles {
     max-width: var(--size-layout-content-narrow);
     display: flex;
     position: relative;
-    margin-top: var(--space-m);
+    margin-top: 24px;
+  }
+
+  .blog-article + .blog-article {
+    margin-top: 15px;
   }
 
   .blog-articles {
@@ -111,20 +117,26 @@ const articlesByYear = Object.entries(articlesMap).sort((a, b) => {
   }
 
   .blog-year {
-    @include typography.heading-s;
-    color: var(--color-content-tertiary);
     text-align: right;
     width: 85px;
     position: absolute;
     left: calc((85px + 32px) * -1);
-    top: 7px;
+    top: 1px;
 
     &.__continuous {
       top: 5px;
     }
   }
 
-  @media screen and (max-width: 850px) {
+  .blog-article {
+    text-decoration: none;
+
+    &:hover .blog-title {
+      color: var(--color-link_hover);
+    }
+  }
+
+  @media screen and (max-width: 873px) {
     .blog-yearArticles {
       flex-direction: column;
       margin-top: 0;
@@ -136,13 +148,11 @@ const articlesByYear = Object.entries(articlesMap).sort((a, b) => {
 
     .blog-year,
     .blog-year.__continuous {
-      @include typography.heading-m;
       position: relative;
       left: 0;
       top: 0;
       text-align: left;
       width: unset;
-      margin-bottom: var(--space-s);
     }
 
     .blog-articles {

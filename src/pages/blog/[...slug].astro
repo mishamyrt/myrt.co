@@ -13,8 +13,9 @@ export async function getStaticPaths() {
 }
 
 const { article } = Astro.props;
-const date = parseFullDate(article.data.publishedAt);
-const dateString = formatCyrillicDate(date);
+const date = article.data.publishedAt
+    ? formatCyrillicDate(parseFullDate(article.data.publishedAt))
+    : null;
 const { Content } = await render(article);
 ---
 
@@ -22,9 +23,11 @@ const { Content } = await render(article);
   <article>
     <h1>{article.data.title}</h1>
     <Content />
-    <time datetime="2026-07-10">
-      <Typography class="date" color="tertiary" variant="text-m">Опубликовано {dateString}</Typography>
-    </time>
+    {date && (
+      <time datetime="2026-07-10">
+        <Typography class="date" color="tertiary" variant="text-m">Опубликовано {date}</Typography>
+      </time>
+    )}
   </article>
 </Layout>
 
@@ -125,11 +128,13 @@ const { Content } = await render(article);
     background-color: var(--color-background-secondary);
   }
 
-  :global(p code) {
+  :global(p code),
+  :global(ul code),
+  :global(ol code) {
     position: relative;
     background-color: var(--color-background-secondary);
-    padding: 2px 2px;
-    margin: -2px -2px;
+    padding: 0 2px;
+    margin: 0 -2px;
     border-radius: 3px;
   }
 

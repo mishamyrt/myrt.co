@@ -1,6 +1,7 @@
 ---
 title: 'Кофейные места'
-publishedAt: '12.05.2024'
+description: "Постоянно обновляемый список мест, где я пил кофе"
+publishedAt: '12.05.2026'
 continuous: true
 tags: ['git']
 ---
