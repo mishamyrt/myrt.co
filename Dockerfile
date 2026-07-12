@@ -5,6 +5,7 @@ ARG CADDY_VERSION=2.11-alpine
 FROM node:$NODE_VERSION AS builder
 WORKDIR /build
 COPY src ./src
+COPY plugins ./plugins
 COPY public ./public
 COPY \
   package.json pnpm-lock.yaml pnpm-workspace.yaml \
