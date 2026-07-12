@@ -4,5 +4,4 @@
 
 myrt.co {
   root * /data
-  file_server browse
 }
