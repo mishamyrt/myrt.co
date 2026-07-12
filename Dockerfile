@@ -8,7 +8,7 @@ COPY src ./src
 COPY public ./public
 COPY \
   package.json pnpm-lock.yaml pnpm-workspace.yaml \
-  tsconfig.json astro.config.mjs \
+  tsconfig.json astro.config.ts \
   ./
 RUN npm install -g pnpm@$PNPM_VERSION
 RUN pnpm install --frozen-lockfile
