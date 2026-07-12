@@ -17,7 +17,6 @@
   "devDependencies": {
     "@astrojs/markdown-satteri": "^0.3.3",
     "astro": "7.0.7",
-    "astro-typograf": "3.3.0",
     "cspell": "10.0.1",
     "cspell-dict-ru_ru": "1.4.0",
     "postcss-scss": "4.0.9",
@@ -25,7 +24,6 @@
     "satteri": "^0.9.5",
     "stylelint": "17.13.0",
     "stylelint-config-standard": "40.0.0",
-    "subset-font": "^2.5.0",
     "typescript": "6.0.3"
   },
   "dependencies": {
