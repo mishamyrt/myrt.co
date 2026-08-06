@@ -131,7 +131,14 @@ const articlesByYear = Object.entries(articlesMap).sort((a, b) => {
   .blog-article {
     text-decoration: none;
 
+    .blog-title {
+      transition-duration: 0.2s;
+      transition-timing-function: ease-out;
+      transition-property: color;
+    }
+
     &:hover .blog-title {
+      transition-duration: 0s;
       color: var(--color-link_hover);
     }
   }

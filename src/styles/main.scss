@@ -27,9 +27,13 @@ a {
   text-underline-offset: .175em;
   text-decoration-color: var(--color-link-underline);
   position: relative;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+  transition-property: color, text-decoration-color;
 }
 
 a:hover {
+  transition-duration: 0s;
   color: var(--color-link_hover);
   text-decoration-color: var(--color-link-underline_hover);
 }
