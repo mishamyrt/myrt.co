@@ -26,11 +26,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Spell check
+        run: pnpm lint
+
       - name: Build check
         run: pnpm build
-
-      - name: Spell check
-        run: pnpm spell-check
 
       - name: Docker build check
         run: docker build .
