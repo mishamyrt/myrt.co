@@ -4,7 +4,7 @@ on:
   - push
 
 env:
-  PNPM_VERSION: "11.6.0"
+  PNPM_VERSION: "11.20.0"
   NODE_VERSION: "26.0.0"
 
 jobs:
