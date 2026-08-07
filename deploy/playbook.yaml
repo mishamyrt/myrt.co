@@ -5,6 +5,7 @@
   vars:
     image_repository: ghcr.io/mishamyrt/myrt.co/site
     image_tag: latest
+    caddy_data_volume: "myrt-co-{{ target }}-caddy-data"
 
   tasks:
     - name: Log in to GitHub Container Registry
@@ -20,6 +21,11 @@
         source: pull
         force_source: true
 
+    - name: Create Caddy data volume
+      community.docker.docker_volume:
+        name: "{{ caddy_data_volume }}"
+        state: present
+
     - name: Start container
       community.docker.docker_container:
         image: "{{ image_repository }}:{{ image_tag }}"
@@ -31,3 +37,5 @@
         ports:
           - 80:80
           - 443:443
+        volumes:
+          - "{{ caddy_data_volume }}:/data/caddy"
