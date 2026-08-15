@@ -49,7 +49,7 @@ const articlesByYear = Object.entries(articlesMap).sort((a, b) => {
     Пишу о дизайне, технологиях, кофе и всём, что меня волнует. Пытаюсь
     научиться писать регулярно.
   </Typography>
-  <div class="blog">
+  <div class="blog honey" data-effect="slide" data-hold="200" data-down="50px">
     {
       articlesByYear.map(([year, articles]) => (
         <div class="blog-yearArticles">
