@@ -6,12 +6,15 @@ import DebugGrid from "../components/DebugGrid.astro";
 import "../styles/main.scss";
 
 const siteUrl = "https://myrt.co";
+const defaultImage = "/userpic-large@2x.jpg";
 
 export interface Props {
   title: string;
+  description?: string;
+  image?: string;
 }
 
-const { title } = Astro.props;
+const { title, description, image } = Astro.props;
 ---
 
 <!doctype html>
@@ -24,6 +27,14 @@ const { title } = Astro.props;
     <Font cssVariable="--typography-font-family-sans-serif" />
     <Font cssVariable="--typography-font-family-serif" />
     <Font cssVariable="--typography-font-family-monospace" />
+    {description && (
+      <meta name="description" content={description} />
+      <meta name="og:description" content={description} />
+    )}
+    <meta property="og:image" content={image ?? defaultImage} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
   </head>
   <body>

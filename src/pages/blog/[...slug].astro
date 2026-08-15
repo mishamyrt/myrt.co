@@ -16,12 +16,13 @@ const { article } = Astro.props;
 const date = article.data.publishedAt
     ? formatCyrillicDate(parseFullDate(article.data.publishedAt))
     : null;
+const { title, description } = article.data
 const { Content } = await render(article);
 ---
 
-<Layout title={article.data.title}>
+<Layout title={title} description={description}>
   <article>
-    <h1>{article.data.title}</h1>
+    <h1>{title}</h1>
     <Content />
     {date && (
       <time datetime="2026-07-10">
