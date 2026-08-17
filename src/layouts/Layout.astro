@@ -6,6 +6,7 @@ import DebugGrid from "../components/DebugGrid.astro";
 import "../styles/main.scss";
 
 const siteUrl = "https://myrt.co";
+const pageUrl = `${siteUrl}${Astro.url.pathname}`
 const defaultImage = "/userpic-large@2x.jpg";
 
 export interface Props {
@@ -23,7 +24,7 @@ const { title, description, image } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/jpg" href="/avatar@2x.jpg" />
-    <link rel="canonical" href={siteUrl} />
+    <link rel="canonical" href={pageUrl} />
     <Font cssVariable="--typography-font-family-sans-serif" />
     <Font cssVariable="--typography-font-family-serif" />
     <Font cssVariable="--typography-font-family-monospace" />
