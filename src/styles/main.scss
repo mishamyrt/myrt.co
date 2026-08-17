@@ -32,7 +32,8 @@ a {
   transition-property: color, text-decoration-color;
 }
 
-a:hover {
+a:hover,
+.hover{
   transition-duration: 0s;
   color: var(--color-link_hover);
   text-decoration-color: var(--color-link-underline_hover);

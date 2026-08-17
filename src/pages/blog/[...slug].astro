@@ -14,9 +14,9 @@ export async function getStaticPaths() {
 
 const { article } = Astro.props;
 const date = article.data.publishedAt
-    ? formatCyrillicDate(parseFullDate(article.data.publishedAt))
-    : null;
-const { title, description } = article.data
+  ? formatCyrillicDate(parseFullDate(article.data.publishedAt))
+  : null;
+const { title, description } = article.data;
 const { Content } = await render(article);
 ---
 
@@ -24,15 +24,19 @@ const { Content } = await render(article);
   <article>
     <h1>{title}</h1>
     <Content />
-    {date && (
-      <time datetime="2026-07-10">
-        <Typography class="date" color="tertiary" variant="text-m">Опубликовано {date}</Typography>
-      </time>
-    )}
+    {
+      date && (
+        <time datetime="2026-07-10">
+          <Typography class="date" color="tertiary" variant="text-m">
+            Опубликовано {date}
+          </Typography>
+        </time>
+      )
+    }
   </article>
 </Layout>
 
-<style>
+<style lang="scss">
   .date {
     margin-top: var(--space-m);
   }
@@ -72,13 +76,14 @@ const { Content } = await render(article);
       margin: var(--space-m) 0 0;
     }
 
-    :global(p a) {
+    :global(a) {
       text-decoration: underline;
       text-decoration-thickness: 1px;
       text-underline-offset: 0.175em;
       text-decoration-color: var(--color-link-underline);
 
-      &:hover {
+      &:hover,
+      &.hover {
         color: var(--color-link_hover);
         text-decoration-color: var(--color-link-underline_hover);
       }
@@ -143,10 +148,10 @@ const { Content } = await render(article);
 
     :global(a) {
       color: var(--color-content-link);
-      text-decoration: none;
     }
 
-    :global(a:hover) {
+    :global(a:hover),
+    :global(a.hover) {
       text-decoration: underline;
     }
 
@@ -154,72 +159,73 @@ const { Content } = await render(article);
       color: var(--color-content-link);
     }
 
-  :global(code) {
-    font: var(--typography-code-m);
-    color: var(--color-content-primary);
-    background-color: var(--color-background-secondary);
-  }
+    :global(code) {
+      font: var(--typography-code-m);
+      color: var(--color-content-primary);
+      background-color: var(--color-background-secondary);
+    }
 
-  :global(p code),
-  :global(ul code),
-  :global(ol code) {
-    position: relative;
-    color: var(--color-content-secondary);
-    background-color: var(--color-background-secondary);
-    padding: 0 2px;
-    margin: 0;
-    border-radius: 3px;
-    line-height: 1;
-  }
+    :global(p code),
+    :global(ul code),
+    :global(ol code) {
+      position: relative;
+      color: var(--color-content-secondary);
+      background-color: var(--color-background-secondary);
+      padding: 0 2px;
+      margin: 0;
+      border-radius: 3px;
+      line-height: 1;
+    }
 
-  :global(pre) {
-    font: var(--typography-code-m);
-    width: calc(var(--size-layout-content-narrow) + 40px);
-    margin: calc(var(--space-m) + 4px) 0px calc(var(--space-m) + 2px) -20px;
-    padding: 15px 20px;
-    border-radius: 8px;
-    background-color: var(--color-background-secondary) !important;
-  }
+    :global(pre) {
+      font: var(--typography-code-m);
+      width: calc(var(--size-layout-content-narrow) + 40px);
+      margin: calc(var(--space-m) + 4px) 0px calc(var(--space-m) + 2px) -20px;
+      padding: 15px 20px;
+      border-radius: 8px;
+      background-color: var(--color-background-secondary) !important;
+    }
 
-  :global(table) {
-    font: var(--typography-text-m);
-    color: var(--color-content-secondary);
-    margin: var(--space-m) 0 0;
-    border-collapse: collapse;
-    max-width: var(--size-layout-content-narrow);
-  }
+    :global(table) {
+      font: var(--typography-text-m);
+      color: var(--color-content-secondary);
+      margin: var(--space-m) 0 0;
+      border-collapse: collapse;
+      max-width: var(--size-layout-content-narrow);
+    }
 
-  :global(table + h2) {
-    margin-top: calc(var(--space-xl) - 12px);
-  }
+    :global(table + h2) {
+      margin-top: calc(var(--space-xl) - 12px);
+    }
 
-  :global(table .line) {
-    height: 27px;
-    display: inline-block;
-  }
+    :global(table .line) {
+      height: 27px;
+      display: inline-block;
+    }
 
-  :global(th) {
-    font: var(--typography-heading-s);
-    color: var(--color-content-primary);
-    text-align: left;
-    padding: 0;
-    line-height: 27px;
-  }
+    :global(th) {
+      font: var(--typography-heading-s);
+      color: var(--color-content-primary);
+      text-align: left;
+      padding: 0;
+      line-height: 27px;
+    }
 
-  :global(tr) {
-    line-height: 27px;
-    vertical-align: top;
-  }
+    :global(tr) {
+      line-height: 27px;
+      vertical-align: top;
+    }
 
-  :global(th),
-  :global(td) {
-    padding: 0 var(--space-m) var(--space-s) 0;
-  }
+    :global(th),
+    :global(td) {
+      padding: 0 var(--space-m) var(--space-s) 0;
+    }
 
-  :global(td code) {
-    background: none;
-    font: var(--typography-code-s);
-    color: var(--color-content-secondary);
+    :global(td code) {
+      background: none;
+      font: var(--typography-code-s);
+      color: var(--color-content-secondary);
+    }
   }
 
   @media (max-width: 873px) {
@@ -233,7 +239,8 @@ const { Content } = await render(article);
       table-layout: fixed;
     }
 
-    :global(td), :global(th) {
+    :global(td),
+    :global(th) {
       vertical-align: top;
     }
   }

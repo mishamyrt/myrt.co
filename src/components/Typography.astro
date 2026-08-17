@@ -78,11 +78,6 @@ const Tag = as;
       }
     }
 
-    /* & + p.variant-text,
-    & + p.variant-text {
-      margin-top: 1em;
-    } */
-
     &.color-inherit {
       color: inherit;
     }
@@ -98,7 +93,9 @@ const Tag = as;
   }
 
   :global(a):hover.typography.typography,
-  .typography :global(a):hover {
+  :global(a).hover.typography.typography,
+  .typography :global(a):hover,
+  .typography :global(a).hover {
     color: var(--color-link_hover);
     text-decoration-color: var(--color-link-underline_hover);
   }

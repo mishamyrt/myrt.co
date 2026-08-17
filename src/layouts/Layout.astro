@@ -51,6 +51,9 @@ const { title, description, image } = Astro.props;
 
 <script>
   import "honeymate";
+  import { attachHover } from '../scripts/doubleHover'
+
+  attachHover('hover');
 </script>
 
 <style is:global>
