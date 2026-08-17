@@ -61,7 +61,6 @@ const isFinished = Boolean(project.period && project.period.end)
 
   img {
     max-width: 560px;
-    box-shadow: 0 8px 24px -3px rgb(0 0 0 / 10%);
 
     &.rounded {
       border-radius: 10px;
@@ -84,6 +83,12 @@ dl {
 
 dd {
   margin: 0;
+}
+
+@media (prefers-color-scheme: light) {
+  .project img {
+    filter: drop-shadow(0px 8px 24px rgb(0 0 0 / 10%));
+  }
 }
 
 @media (max-width: 1050px) {
