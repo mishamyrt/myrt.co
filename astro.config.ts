@@ -6,6 +6,8 @@ import { honeymateLoader } from "./plugins/md-hast/imageHoneymate";
 
 import compressor from "astro-compressor";
 
+import sitemap from "@astrojs/sitemap";
+
 export default defineConfig({
   site: "https://myrt.co/",
   markdown: {
@@ -95,5 +97,5 @@ export default defineConfig({
       },
     },
   ],
-  integrations: [compressor()],
+  integrations: [compressor(), sitemap()],
 });
