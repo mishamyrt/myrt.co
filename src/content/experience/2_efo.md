@@ -3,7 +3,7 @@ from: '05.2016'
 to: '09.2016'
 ---
 
-### Fullstack-разработчик в <span class="caps">[ЭФО](https://efo.ru/)</span>
+## Fullstack-разработчик в <span class="caps">[ЭФО](https://efo.ru/)</span>
 
 Спроектировал и разработал конфигурируемый поисковик по продуктам компании на PHP с Laravel.
 

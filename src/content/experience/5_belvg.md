@@ -3,7 +3,7 @@ from: '06.2018'
 to: '02.2019'
 ---
 
-### Fullstack-разработчик в [BelVG](https://belvg.com/)
+## Fullstack-разработчик в [BelVG](https://belvg.com/)
 
 Провёл миграцию французского интернет-магазина с Prestashop 1.6 на 1.7 (переписал ~80% фронтенда). Внедрил свою библиотеку [honeymate](https://github.com/mishamyrt/honeymate) для оркестрации анимаций.
 

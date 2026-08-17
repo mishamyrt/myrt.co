@@ -3,7 +3,7 @@ from: '09.2016'
 to: '05.2017'
 ---
 
-### Fullstack-разработчик и дизайнер в <span class="caps">[CMT](https://cmtscience.ru/)</span>
+## Fullstack-разработчик и дизайнер в <span class="caps">[CMT](https://cmtscience.ru/)</span>
 
 Оформил, разработал и запустил сайт онлайн–медиа на <span class="caps">PHP</span> (~200 RPS) с кастомной CMS для команды редакторов. Написал первую версию редакционной политики.
 
