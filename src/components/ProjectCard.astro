@@ -105,4 +105,11 @@ dd {
     max-width: 575px;
   }
 }
+
+@supports (corner-shape:superellipse(1.6)) {
+  .project img.rounded {
+    border-radius: 16px;
+    corner-shape: superellipse(1.6);
+  }
+}
 </style>
