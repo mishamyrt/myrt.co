@@ -5,6 +5,7 @@ ARG CADDY_VERSION=2.11.4
 FROM node:$NODE_VERSION-alpine AS builder
 WORKDIR /build
 COPY src ./src
+COPY scripts ./scripts
 COPY plugins ./plugins
 COPY public ./public
 COPY \
