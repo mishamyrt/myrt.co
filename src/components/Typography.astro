@@ -1,6 +1,7 @@
 ---
 type TextVariant = "text-s" | "text-m";
-type HeadingVariant = "heading-xs" | "heading-s" | "heading-m" | "heading-l";
+type HeadingVariant =
+  "heading-2xs" | "heading-xs" | "heading-s" | "heading-m" | "heading-l";
 
 export type Props<T extends TagName = "p"> = HTMLElementProps<T> & {
   as?: T;
@@ -53,6 +54,11 @@ const Tag = as;
 
       &-text-m + &-text-m {
         margin-top: var(--space-m);
+      }
+
+      &-heading-2xs {
+        font: var(--typography-heading-2xs);
+        letter-spacing: var(--typography-heading-2xs_spacing);
       }
 
       &-heading-xs {

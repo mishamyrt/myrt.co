@@ -1,0 +1,69 @@
+---
+import { parse } from "yaml";
+import { readFile } from "node:fs/promises";
+import { getCollection } from "astro:content";
+
+import { PROJECTS_FILE } from "../../content.config";
+
+import Layout from "../../layouts/Layout.astro";
+import Typography from "../../components/Typography.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { defineTranslations } from "../../utils/i18n/defineTranslations";
+import { localizedStaticPaths } from "../../utils/i18n/staticPaths";
+
+export function getStaticPaths() {
+  return localizedStaticPaths();
+}
+
+const { locale } = Astro.props;
+
+const t = defineTranslations({
+  ru: {
+    title: "Проекты Миши Хрустика",
+    description: "Инструменты, которые делают работу комфортнее",
+    intro:
+      "Создаю инструменты, которые делают мою работу за компьютером комфортнее. Делюсь ими на",
+  },
+  en: {
+    title: "Projects by Mikhael Khrustik",
+    description: "Tools that make work more comfortable",
+    intro: "I build tools that make my work more comfortable and share them on",
+  },
+})[locale];
+
+const rawProjects = await readFile(PROJECTS_FILE, "utf8").then(parse);
+
+function projectIndex(id: string) {
+  return rawProjects.findIndex((project: { id: string }) => project.id === id);
+}
+
+const projects = (await getCollection("projects")).toSorted(
+  (a, b) => projectIndex(a.id) - projectIndex(b.id),
+);
+---
+
+<Layout title={t.title} description={t.description} locale={locale}>
+  <Typography color="secondary" class="heading honey" data-effect="slide">
+    {t.intro}{" "}<a href="https://github.com/mishamyrt">GitHub</a>.
+  </Typography>
+  <div class="projects">
+    {projects.map((project) => <ProjectCard data={project} locale={locale} />)}
+  </div>
+</Layout>
+
+<style lang="scss">
+  .heading {
+    max-width: var(--size-layout-content-narrow);
+  }
+
+  .projects {
+    margin-top: 47px;
+  }
+
+  @media (max-width: 873px) {
+    .projects {
+      max-width: var(--size-layout-content-narrow);
+      margin: 50px 0 0;
+    }
+  }
+</style>

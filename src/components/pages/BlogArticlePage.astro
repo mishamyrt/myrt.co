@@ -1,34 +1,53 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Typography from "../../components/Typography.astro";
-import { getCollection, render } from "astro:content";
-import { formatCyrillicDate, parseFullDate } from "../../utils/date";
+import { type CollectionEntry, render } from "astro:content";
 
-export async function getStaticPaths() {
-  const articles = await getCollection("blog");
-  return articles.map((article) => ({
-    params: { slug: article.id },
-    props: { article },
-  }));
+import Layout from "../../layouts/Layout.astro";
+import Typography from "../Typography.astro";
+import { defineTranslations } from "../../utils/i18n/defineTranslations";
+import { alternateLocale, type Locale } from "../../utils/i18n/locales";
+import { localizedPath } from "../../utils/i18n/paths";
+import { formatFullDate, parseFullDate } from "../../utils/date";
+
+interface Props {
+  article: CollectionEntry<"blog">;
+  locale: Locale;
+  alternateUrl?: string;
 }
 
-const { article } = Astro.props;
-const date = article.data.publishedAt
-  ? formatCyrillicDate(parseFullDate(article.data.publishedAt))
+const { article, locale, alternateUrl } = Astro.props;
+const otherLocale = alternateLocale(locale);
+const publishedDate = article.data.publishedAt
+  ? parseFullDate(article.data.publishedAt)
   : null;
+const date = publishedDate ? formatFullDate(publishedDate, locale) : null;
 const { title, description } = article.data;
 const { Content } = await render(article);
+
+const t = defineTranslations({
+  ru: {
+    published: "Опубликовано",
+  },
+  en: {
+    published: "Published",
+  },
+})[locale];
 ---
 
-<Layout title={title} description={description}>
+<Layout
+  title={title}
+  description={description}
+  locale={locale}
+  alternateUrl={alternateUrl}
+  languageSwitchUrl={alternateUrl ?? localizedPath(otherLocale, "/blog/")}
+>
   <article>
     <h1>{title}</h1>
     <Content />
     {
-      date && (
-        <time datetime="2026-07-10">
+      date && publishedDate && (
+        <time datetime={publishedDate.toISOString().slice(0, 10)}>
           <Typography class="date" color="tertiary" variant="text-m">
-            Опубликовано {date}
+            {t.published} {date}
           </Typography>
         </time>
       )

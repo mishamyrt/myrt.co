@@ -7,9 +7,7 @@ function dateSegments(s: string): number[] {
  */
 export function parseFullDate(s: string): Date {
   const [day, month, year] = dateSegments(s);
-  const date = new Date();
-  date.setFullYear(year, month, day);
-  return date;
+  return new Date(year, month - 1, day);
 }
 
 /**
@@ -17,32 +15,29 @@ export function parseFullDate(s: string): Date {
  */
 export function parseShortDate(s: string): Date {
   const [month, year] = dateSegments(s);
-  const date = new Date();
-  date.setFullYear(year, month);
-  return date;
+  return new Date(year, month - 1, 1);
 }
 
-const monthNames = [
-  "января",
-  "февраля",
-  "марта",
-  "апреля",
-  "мая",
-  "июня",
-  "июля",
-  "августа",
-  "сентября",
-  "октября",
-  "ноября",
-  "декабря",
-];
+export function formatFullDate(date: Date, locale: string): string {
+  return new Intl.DateTimeFormat(locale, {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  })
+    .format(date)
+    .replace(" г.", "");
+}
 
-export function formatCyrillicDate(date: Date): string {
-  const day = date.getDate();
-  const month = date.getMonth() - 1;
-  const year = date.getFullYear();
+export function formatMonthYear(value: string, locale: string): string {
+  const [year, month] = value.split("-").map((part) => parseInt(part, 10));
+  const formatted = new Intl.DateTimeFormat(locale, {
+    month: "long",
+    year: "numeric",
+  })
+    .format(new Date(year, month - 1, 1))
+    .replace(" г.", "");
 
-  return `${day} ${monthNames[month]} ${year}`;
+  return formatted.charAt(0).toUpperCase() + formatted.slice(1);
 }
 
 export function formatShortDate(date: Date): string {

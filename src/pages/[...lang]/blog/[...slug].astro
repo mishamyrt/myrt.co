@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+
+import BlogArticlePage from "../../../components/pages/BlogArticlePage.astro";
+import { alternateLocale } from "../../../utils/i18n/locales";
+import {
+  articlePath,
+  contentLocale,
+  contentSlug,
+} from "../../../utils/i18n/paths";
+import { localePathParam } from "../../../utils/i18n/staticPaths";
+
+export async function getStaticPaths() {
+  const articles = await getCollection("blog");
+
+  return articles.map((article) => {
+    const locale = contentLocale(article.id);
+    const otherLocale = alternateLocale(locale);
+    const counterpart = article.data.translationKey
+      ? articles.find(
+          (candidate) =>
+            contentLocale(candidate.id) === otherLocale &&
+            candidate.data.translationKey === article.data.translationKey,
+        )
+      : undefined;
+
+    return {
+      params: {
+        lang: localePathParam(locale),
+        slug: contentSlug(article.id),
+      },
+      props: {
+        article,
+        locale,
+        alternateUrl: counterpart
+          ? articlePath(otherLocale, contentSlug(counterpart.id))
+          : undefined,
+      },
+    };
+  });
+}
+
+const { article, locale, alternateUrl } = Astro.props;
+---
+
+<BlogArticlePage
+  article={article}
+  locale={locale}
+  alternateUrl={alternateUrl}
+/>

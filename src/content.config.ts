@@ -21,7 +21,14 @@ const projects = defineCollection({
     img: z.string(),
     rounded: z.optional(z.boolean()),
     link: z.string(),
-    description: z.string(),
+    content: z.object({
+      ru: z.object({
+        description: z.string(),
+      }),
+      en: z.object({
+        description: z.string(),
+      }),
+    }),
     stack: z.optional(z.string()),
     period: z.optional(
       z.object({
@@ -40,6 +47,7 @@ const blog = defineCollection({
     publishedAt: z.optional(z.string()),
     updatedAt: z.optional(z.string()),
     continuous: z.optional(z.boolean()),
+    translationKey: z.optional(z.string()),
     tags: z.array(z.string()),
   }),
 });

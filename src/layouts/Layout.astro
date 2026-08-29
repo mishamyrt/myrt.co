@@ -1,30 +1,54 @@
 ---
 import { Font } from "astro:assets";
-
 import Navigation from "../components/Navigation.astro";
 import DebugGrid from "../components/DebugGrid.astro";
+import { alternateLocale, type Locale } from "../utils/i18n/locales";
+import { universalPath } from "../utils/i18n/paths";
 import "../styles/main.scss";
-
-const siteUrl = "https://myrt.co";
-const pageUrl = `${siteUrl}${Astro.url.pathname}`
-const defaultImage = "/userpic-large@2x.jpg";
+import { localizedPath } from "../utils/i18n/paths";
 
 export interface Props {
   title: string;
   description?: string;
   image?: string;
+  locale: Locale;
 }
 
-const { title, description, image } = Astro.props;
+const siteUrl = "https://myrt.co";
+const defaultImage = "/userpic-large@2x.jpg";
+const openGraphLocales: Record<Locale, string> = {
+  ru: "ru_RU",
+  en: "en_US",
+};
+
+const pathname = universalPath(Astro.url.pathname);
+const pageUrl = `${siteUrl}${pathname}`;
+
+const {
+  title,
+  description,
+  image,
+  locale
+} = Astro.props;
+
+const otherLocale = alternateLocale(locale);
+const alternateUrl = localizedPath(otherLocale, pathname);
+const absoluteAlternateUrl = `${siteUrl}${alternateUrl}`
 ---
 
 <!doctype html>
-<html lang="ru">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/jpg" href="/avatar@2x.jpg" />
     <link rel="canonical" href={pageUrl} />
+    <link rel="alternate" hreflang={locale} href={pageUrl} />
+    <link
+      rel="alternate"
+      hreflang={otherLocale}
+      href={absoluteAlternateUrl}
+    />
     <Font cssVariable="--typography-font-family-sans-serif" />
     <Font cssVariable="--typography-font-family-serif" />
     <Font cssVariable="--typography-font-family-monospace" />
@@ -34,13 +58,17 @@ const { title, description, image } = Astro.props;
     )}
     <meta property="og:image" content={image ?? defaultImage} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:locale" content={openGraphLocales[locale]} />
+    <meta
+      property="og:locale:alternate"
+      content={openGraphLocales[otherLocale]}
+    />
     <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
   </head>
   <body>
     <div class="content">
-      <Navigation />
+      <Navigation locale={locale} languageSwitchUrl={'asd'} />
       <DebugGrid step={9} />
       <main>
         <slot />

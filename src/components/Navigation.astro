@@ -1,44 +1,126 @@
 ---
 import Typography from "./Typography.astro";
+import { defineTranslations } from "../utils/i18n/defineTranslations";
+import { localizedPath, universalPath } from "../utils/i18n/paths";
+import type { Locale } from "../utils/i18n/locales";
+
+interface Props {
+  locale: Locale;
+  languageSwitchUrl: string;
+}
 
 type NavigationTarget = {
   title: string;
   href: string;
 };
 
+const { locale, languageSwitchUrl } = Astro.props;
+
+const t = defineTranslations({
+  ru: {
+    experience: "Опыт",
+    projects: "Проекты",
+    blog: "Блог",
+  },
+  en: {
+    experience: "Experience",
+    projects: "Projects",
+    blog: "Blog",
+  },
+})[locale];
+
 const targets: NavigationTarget[] = [
-  { title: "Опыт", href: "/" },
-  { title: "Проекты", href: "/projects/" },
-  { title: "Блог", href: "/blog/" },
+  { title: t.experience, href: localizedPath(locale, "/") },
+  { title: t.projects, href: localizedPath(locale, "/projects/") },
+  { title: t.blog, href: localizedPath(locale, "/blog/") },
+];
+
+const pathname = universalPath(Astro.url.pathname);
+const localeTargets: NavigationTarget[] = [
+  { title: "РУ", href: localizedPath("ru", pathname) },
+  { title: "EN", href: localizedPath("en", pathname) },
 ];
 
 const state = targets.map((target) => ({
   ...target,
   active: Astro.url.pathname === target.href,
-  sublink: Astro.url.pathname.startsWith(target.href) && target.href !== "/",
+  sublink:
+    target.href === localizedPath(locale, "/blog/") &&
+    Astro.url.pathname.startsWith(target.href),
+}));
+
+const localeState = localeTargets.map((target) => ({
+  ...target,
+  active: Astro.url.pathname === target.href,
 }));
 ---
 
-<nav>
-  {
-    state.map(({ title, href, active, sublink }) => (
-      <Typography
-        class:list={{
-          active,
-          sublink,
-        }}
-        as="a"
-        href={href}
-        variant="heading-xs"
-        color={active || sublink ? "primary" : "tertiary"}
-      >
-        {title}
-      </Typography>
-    ))
-  }
-</nav>
+<div class="navigation">
+  <nav>
+    {
+      state.map(({ title, href, active, sublink }) => (
+        <Typography
+          class:list={{
+            active,
+            sublink,
+          }}
+          as="a"
+          href={href}
+          variant="heading-xs"
+          color={active || sublink ? "primary" : "tertiary"}
+        >
+          {title}
+        </Typography>
+      ))
+    }
+  </nav>
+  <div class="locale">
+    {
+      localeState.map(({ title, href, active }) => (
+        <Typography
+          class:list={{
+            active,
+          }}
+          as="a"
+          href={href}
+          variant="heading-2xs"
+          color={active ? "primary" : "tertiary"}
+        >
+          {title}
+        </Typography>
+      ))
+    }
+  </div>
+</div>
 
-<style>
+<style lang="scss">
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    max-width: var(--size-layout-content-narrow);
+  }
+
+  .locale {
+    display: flex;
+
+    :global(a) {
+      text-decoration: none;
+    }
+
+    :global(a:first-child::after) {
+      content: "";
+      display: inline-block;
+      width: 1px;
+      height: 8px;
+      background-color: var(--color-content-tertiary);
+      margin-left: 8px;
+    }
+
+    :global(a:last-child) {
+      padding-left: 8px;
+    }
+  }
+
   nav {
     display: flex;
     gap: 18px;
@@ -52,5 +134,9 @@ const state = targets.map((target) => ({
 
   a.sublink {
     color: var(--color-text-primary);
+  }
+
+  a.language {
+    margin-left: 6px;
   }
 </style>

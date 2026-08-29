@@ -1,0 +1,204 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from "../../../layouts/Layout.astro";
+import Typography from "../../../components/Typography.astro";
+import { defineTranslations } from "../../../utils/i18n/defineTranslations";
+import {
+  articlePath,
+  contentLocale,
+  contentSlug,
+} from "../../../utils/i18n/paths";
+import { parseFullDate } from "../../../utils/date";
+import { localizedStaticPaths } from "../../../utils/i18n/staticPaths";
+
+export function getStaticPaths() {
+  return localizedStaticPaths();
+}
+
+const CONTINUOUS = "∞";
+
+const { locale } = Astro.props;
+
+const t = defineTranslations({
+  ru: {
+    title: "Блог Миши Хрустика",
+    description: "Блог о дизайне, технологиях и жизни.",
+    intro:
+      "Пишу о дизайне, технологиях, кофе и всём, что меня волнует. Пытаюсь научиться писать регулярно.",
+    empty: "Пока здесь нет опубликованных статей.",
+  },
+  en: {
+    title: "Mikhael Khrustik’s blog",
+    description: "A blog about design, technology, and life.",
+    intro:
+      "I write about design, technology, coffee, and whatever else is on my mind. I am trying to make it a regular habit.",
+    empty: "There are no published articles here yet.",
+  },
+})[locale];
+
+const articles = (await getCollection("blog")).filter(
+  (article) => contentLocale(article.id) === locale,
+);
+
+const articlesMap = articles.reduce(
+  (acc, article) => {
+    if (!article.data.publishedAt) {
+      return acc;
+    }
+    if (article.data.continuous) {
+      if (!acc[CONTINUOUS]) {
+        acc[CONTINUOUS] = [];
+      }
+      acc[CONTINUOUS].push(article);
+      return acc;
+    }
+    const year = parseFullDate(article.data.publishedAt).getFullYear();
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+    acc[year].push(article);
+    return acc;
+  },
+  {} as Record<string, typeof articles>,
+);
+
+const articlesByYear = Object.entries(articlesMap).sort((a, b) => {
+  if (a[0] === CONTINUOUS) {
+    return -1;
+  }
+  if (b[0] === CONTINUOUS) {
+    return 1;
+  }
+  return parseInt(b[0], 10) - parseInt(a[0], 10);
+});
+---
+
+<Layout title={t.title} description={t.description} locale={locale}>
+  <Typography color="secondary" class="heading honey" data-effect="slide">
+    {t.intro}
+  </Typography>
+  <div class="blog honey" data-effect="slide" data-hold="200" data-down="50px">
+    {
+      articlesByYear.length === 0 ? (
+        <Typography color="tertiary">{t.empty}</Typography>
+      ) : (
+        articlesByYear.map(([year, yearArticles]) => (
+          <div class="blog-yearArticles">
+            <Typography
+              variant="heading-m"
+              color="tertiary"
+              class:list={["blog-year", year === CONTINUOUS && "__continuous"]}
+            >
+              {year}
+            </Typography>
+            <div class="blog-articles">
+              {yearArticles.map((article) => (
+                <a
+                  class="blog-article"
+                  href={articlePath(locale, contentSlug(article.id))}
+                >
+                  <Typography
+                    class="blog-title"
+                    variant="heading-m"
+                    color="primary"
+                    as="h3"
+                  >
+                    {article.data.title}
+                  </Typography>
+                  <Typography variant="text-m" color="secondary">
+                    {article.data.description}
+                  </Typography>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      )
+    }
+  </div>
+</Layout>
+
+<style lang="scss">
+  @use "../../../styles/typography.scss";
+
+  .heading {
+    max-width: var(--size-layout-content-narrow);
+  }
+
+  .blog {
+    margin-top: 42px;
+  }
+
+  .typography.blog-title {
+    margin-bottom: 3px;
+  }
+
+  .blog-yearArticles {
+    max-width: var(--size-layout-content-narrow);
+    display: flex;
+    position: relative;
+    margin-top: 24px;
+  }
+
+  .blog-article + .blog-article {
+    margin-top: 15px;
+  }
+
+  .blog-articles {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .blog-year {
+    text-align: right;
+    width: 85px;
+    position: absolute;
+    left: calc((85px + 32px) * -1);
+    top: 1px;
+
+    &.__continuous {
+      top: 5px;
+    }
+  }
+
+  .blog-article {
+    text-decoration: none;
+
+    .blog-title {
+      transition-duration: 0.2s;
+      transition-timing-function: ease-out;
+      transition-property: color;
+    }
+
+    &:hover .blog-title {
+      transition-duration: 0s;
+      color: var(--color-link_hover);
+    }
+  }
+
+  @media screen and (max-width: 873px) {
+    .blog-yearArticles {
+      flex-direction: column;
+      margin-top: 0;
+    }
+
+    .blog-yearArticles + .blog-yearArticles {
+      margin-top: 27px;
+    }
+
+    .blog-year,
+    .blog-year.__continuous {
+      position: relative;
+      left: 0;
+      top: 0;
+      text-align: left;
+      width: unset;
+    }
+
+    .blog-articles {
+      margin-bottom: 0;
+    }
+  }
+</style>

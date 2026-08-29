@@ -1,0 +1,119 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from "../../layouts/Layout.astro";
+import Typography from "../../components/Typography.astro";
+import Experience from "../../components/Experience.astro";
+import { defineTranslations } from "../../utils/i18n/defineTranslations";
+import { contentLocale } from "../../utils/i18n/paths";
+import { parseShortDate } from "../../utils/date";
+import { localizedStaticPaths } from "../../utils/i18n/staticPaths";
+
+export function getStaticPaths() {
+  return localizedStaticPaths();
+}
+
+const { locale } = Astro.props;
+
+const t = defineTranslations({
+  ru: {
+    title: "Миша Хрустик",
+    description:
+      "Тимлид с 12 годами опыта, который помогает командам решать проблемы",
+    imageAlt: "Фотография Миши Хрустика",
+    headingName: "Миша Хрустик,",
+    headingRole: "тимлид",
+    intro:
+      "Руковожу кроссфункциональными командами. Выстраиваю процессы так, что задачи перестают переезжать между спринтами. Участвую в найме, онбординге и развитии инженеров.",
+    consulting:
+      "Занимаюсь консультациями по разработке и проектным проведением собеседований. Пишите мне в",
+    telegram: "телеграм",
+    or: "или на",
+    email: "почту",
+  },
+  en: {
+    title: "Mikhael Khrustik",
+    description:
+      "A team lead with 12 years of experience helping teams solve problems",
+    imageAlt: "Photo of Mikhael Khrustik",
+    headingName: "Mikhael Khrustik,",
+    headingRole: "team lead",
+    intro:
+      "I lead cross-functional teams and build processes that keep tasks from rolling over between sprints. I take part in hiring, onboarding, and engineers’ professional growth.",
+    consulting:
+      "I consult on software development and conduct technical interviews for projects. Message me on",
+    telegram: "Telegram",
+    or: "or by",
+    email: "email",
+  },
+})[locale];
+
+const experience = (await getCollection("experience")).filter(
+  (place) => contentLocale(place.id) === locale,
+);
+const places = experience.toSorted(
+  (a, b) =>
+    parseShortDate(b.data.from).getTime() -
+    parseShortDate(a.data.from).getTime(),
+);
+---
+
+<Layout title={t.title} description={t.description} locale={locale}>
+  <div class="hero">
+    <img
+      class="hero-avatar honey"
+      data-effect="slide"
+      data-hold="700"
+      data-duration="600"
+      data-left="32px"
+      src="/avatar@2x.jpg"
+      alt={t.imageAlt}
+    />
+    <div class="honey" data-effect="slide" data-up="32px">
+      <Typography variant="heading-l" as="h1" color="primary">
+        {t.headingName}<br />{t.headingRole}
+      </Typography>
+      <Typography color="secondary">{t.intro}</Typography>
+      <Typography color="secondary">
+        {t.consulting}{" "}<a href="https://t.me/mishamyrt">{t.telegram}</a>{
+          " "
+        }{t.or}{" "}<a href="mailto:misha@myrt.co">{t.email}</a>.
+      </Typography>
+    </div>
+  </div>
+  <div class="experienceContainer">
+    {places.map((place) => <Experience place={place} />)}
+  </div>
+</Layout>
+
+<style>
+  .hero {
+    max-width: var(--size-layout-content-narrow);
+    position: relative;
+  }
+
+  .hero-avatar {
+    --avatar-size: 54px;
+
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    position: absolute;
+    left: calc((var(--avatar-size) * -1) - var(--space-layout-aside));
+    top: calc((var(--avatar-size) * -1) / 9);
+    border-radius: 50%;
+  }
+
+  .experienceContainer {
+    margin-top: 42px;
+  }
+
+  @media (max-width: 873px) {
+    .hero-avatar {
+      display: none;
+    }
+
+    .experienceContainer {
+      margin-top: 69px;
+    }
+  }
+</style>

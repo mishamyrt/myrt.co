@@ -4,10 +4,15 @@
   img: "lockdock@2x.webp"
   name: "Lockdock"
   stack: Rust, C, TypeScript
-  description: |
-    Расширение Raycast для закрепления дока на выбранном экране и блокировки его случайного перемещения.
+  content:
+    ru:
+      description: |
+        Расширение Raycast для закрепления дока на выбранном экране и блокировки его случайного перемещения.
+    en:
+      description: |
+        A Raycast extension that pins the Dock to a selected display and prevents it from moving accidentally.
   period:
-    start: Май 2026
+    start: "2026-05"
 
 - id: "nanomiddleclick"
   link: "https://github.com/mishamyrt/nanomiddleclick"
@@ -15,33 +20,50 @@
   rounded: true
   name: "nanomiddleclick"
   stack: Rust
-  description: |
-    Ультракомпактное фоновое приложение для эмуляции нажатия колёсика при касании трекапада тремя пальцами
-    или клике в середину Magic Mouse.
+  content:
+    ru:
+      description: |
+        Ультракомпактное фоновое приложение для эмуляции нажатия колёсика при касании трекапада тремя пальцами
+        или клике в середину Magic Mouse.
+    en:
+      description: |
+        An ultra-compact background app that emulates a middle click when you touch the trackpad with three fingers
+        or click the center of a Magic Mouse.
   period:
-    start: Апрель 2026
+    start: "2026-04"
 
 - id: "repomop"
   name: "repomop"
   link: "https://github.com/mishamyrt/repomop"
   img: "repomop@2x.webp"
-  description: |
-    Приложение для терминала, которое удаляет артефакты сборки и зависимости в неиспользуемых проектах.
+  content:
+    ru:
+      description: |
+        Приложение для терминала, которое удаляет артефакты сборки и зависимости в неиспользуемых проектах.
+    en:
+      description: |
+        A terminal app that removes build artifacts and dependencies from inactive projects.
   stack: Rust, Ratatui
   period:
-    start: Февраль 2026
+    start: "2026-02"
 
 - id: "yamumi"
   name: "Yamumi"
   link: "https://yamumi.myrt.co"
   img: "yamumi@2x.webp"
   rounded: true
-  description: |
-    Мини-плеер Яндекс Музыки для тех, кто занят делом.
-    Отображается поверх всех окон и остаётся на месте при смене рабочей области.
+  content:
+    ru:
+      description: |
+        Мини-плеер Яндекс Музыки для тех, кто занят делом.
+        Отображается поверх всех окон и остаётся на месте при смене рабочей области.
+    en:
+      description: |
+        A compact Yandex Music player for people who want to stay focused.
+        It floats above other windows and remains in place when you switch workspaces.
   stack: Swift, SwiftUI
   period:
-    start: Январь 2026
+    start: "2026-01"
 
 - id: "lidoff"
   link: "https://github.com/mishamyrt/lidoff"
@@ -49,11 +71,17 @@
   rounded: true
   name: "lidoff"
   stack: Rust, C
-  description: |
-    Фоновое приложение, которое добавляет макбуку полузакрытое состояние крышки:
-    гаснут все экраны и предотвращается уход в спящий режим.
+  content:
+    ru:
+      description: |
+        Фоновое приложение, которое добавляет макбуку полузакрытое состояние крышки:
+        гаснут все экраны и предотвращается уход в спящий режим.
+    en:
+      description: |
+        A background app that adds a half-closed lid state to a MacBook:
+        all displays turn off while the computer is prevented from going to sleep.
   period:
-    start: Январь 2026
+    start: "2026-01"
 
 - id: "commitfmt"
   link: "https://github.com/mishamyrt/commitfmt"
@@ -61,21 +89,31 @@
   rounded: true
   name: "commitfmt"
   stack: Rust
-  description: |
-    Форматтер и линтер сообщений коммитов. Сверхбыстрая замена для commitlint, выполняющая проверку в 18 раз быстрее.
+  content:
+    ru:
+      description: |
+        Форматтер и линтер сообщений коммитов. Сверхбыстрая замена для commitlint, выполняющая проверку в 18 раз быстрее.
+    en:
+      description: |
+        A formatter and linter for commit messages. A high-speed commitlint replacement that runs checks 18 times faster.
   period:
-    start: Март 2025
+    start: "2025-03"
 
 - id: "nuga"
   link: "https://github.com/mishamyrt/nuga-app"
   img: "nuga@2x.webp"
   name: "Nuga"
   stack: Go, Wails, Svelte, Effector
-  description: |
-    Приложения для настройки подсветки и макросов клавиатур NuPhy Halo75, Halo65, Halo96.
+  content:
+    ru:
+      description: |
+        Приложения для настройки подсветки и макросов клавиатур NuPhy Halo75, Halo65, Halo96.
+    en:
+      description: |
+        An app for configuring lighting and macros on NuPhy Halo75, Halo65, and Halo96 keyboards.
   period:
-    start: Июнь 2023
-    end: Май 2024
+    start: "2023-06"
+    end: "2024-05"
 
 - id: "lilex"
   link: "https://lilex.myrt.co"
@@ -83,11 +121,17 @@
   rounded: true
   stack: Glyphs
   name: "Lilex"
-  description: |
-    Программистский вариативный шрифт с кодовыми лигатурами. Сделан на основе IBM Plex Mono.
-    Поддерживает кириллицу, латиницу и греческий алфавит.
+  content:
+    ru:
+      description: |
+        Программистский вариативный шрифт с кодовыми лигатурами. Сделан на основе IBM Plex Mono.
+        Поддерживает кириллицу, латиницу и греческий алфавит.
+    en:
+      description: |
+        A variable programming font with coding ligatures, based on IBM Plex Mono.
+        It supports Cyrillic, Latin, and Greek scripts.
   period:
-    start: Октябрь 2019
+    start: "2019-10"
 
 - id: "honeymate"
   link: "https://github.com/mishamyrt/honeymate"
@@ -95,8 +139,14 @@
   rounded: true
   name: "Honeymate"
   stack: TypeScript
-  description: |
-    Библиотека для координации загрузки и создания анимаций появления блоков c простым API.
-    Анимации на этом сайте сделаны с её помощью.
+  content:
+    ru:
+      description: |
+        Библиотека для координации загрузки и создания анимаций появления блоков c простым API.
+        Анимации на этом сайте сделаны с её помощью.
+    en:
+      description: |
+        A library with a simple API for coordinating page loading and reveal animations.
+        It powers the animations on this website.
   period:
-    start: Июль 2017
+    start: "2017-07"
