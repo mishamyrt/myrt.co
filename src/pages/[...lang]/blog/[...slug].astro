@@ -63,7 +63,9 @@ const t = defineTranslations({
       date && publishedDate && (
         <time datetime={publishedDate.toISOString().slice(0, 10)}>
           <Typography class="date" color="tertiary" variant="text-m">
-            {t.published} {date}
+            {t.published}
+            <span> </span>
+            {date}
           </Typography>
         </time>
       )
