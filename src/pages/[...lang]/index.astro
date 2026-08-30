@@ -4,10 +4,12 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Typography from "../../components/Typography.astro";
 import Experience from "../../components/Experience.astro";
-import { defineTranslations } from "../../utils/i18n/defineTranslations";
-import { contentLocale } from "../../utils/i18n/paths";
+import {
+  defineTranslations,
+  localizedStaticPaths,
+  getCollectionByLocale,
+} from "../../utils/i18n";
 import { parseShortDate } from "../../utils/date";
-import { localizedStaticPaths } from "../../utils/i18n/staticPaths";
 
 export function getStaticPaths() {
   return localizedStaticPaths();
@@ -48,9 +50,7 @@ const t = defineTranslations({
   },
 })[locale];
 
-const experience = (await getCollection("experience")).filter(
-  (place) => contentLocale(place.id) === locale,
-);
+const experience = await getCollectionByLocale("experience", locale);
 const places = experience.toSorted(
   (a, b) =>
     parseShortDate(b.data.from).getTime() -

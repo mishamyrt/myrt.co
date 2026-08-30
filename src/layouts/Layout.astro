@@ -2,16 +2,15 @@
 import { Font } from "astro:assets";
 import Navigation from "../components/Navigation.astro";
 import DebugGrid from "../components/DebugGrid.astro";
-import { alternateLocale, type Locale } from "../utils/i18n/locales";
-import { universalPath } from "../utils/i18n/paths";
+import { type Locale, globalPath, localizedPath } from "../utils/i18n";
 import "../styles/main.scss";
-import { localizedPath } from "../utils/i18n/paths";
 
 export interface Props {
   title: string;
   description?: string;
   image?: string;
   locale: Locale;
+  showLocaleSwitcher?: boolean;
 }
 
 const siteUrl = "https://myrt.co";
@@ -21,17 +20,18 @@ const openGraphLocales: Record<Locale, string> = {
   en: "en_US",
 };
 
-const pathname = universalPath(Astro.url.pathname);
+const pathname = globalPath(Astro.url.pathname);
 const pageUrl = `${siteUrl}${pathname}`;
 
 const {
   title,
   description,
   image,
-  locale
+  locale,
+  showLocaleSwitcher,
 } = Astro.props;
 
-const otherLocale = alternateLocale(locale);
+const otherLocale = locale === "ru" ? "en" : "ru";
 const alternateUrl = localizedPath(otherLocale, pathname);
 const absoluteAlternateUrl = `${siteUrl}${alternateUrl}`
 ---
@@ -68,7 +68,7 @@ const absoluteAlternateUrl = `${siteUrl}${alternateUrl}`
   </head>
   <body>
     <div class="content">
-      <Navigation locale={locale} languageSwitchUrl={'asd'} />
+      <Navigation locale={locale} showLocaleSwitcher={showLocaleSwitcher} />
       <DebugGrid step={9} />
       <main>
         <slot />

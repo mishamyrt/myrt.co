@@ -21,13 +21,9 @@ const projects = defineCollection({
     img: z.string(),
     rounded: z.optional(z.boolean()),
     link: z.string(),
-    content: z.object({
-      ru: z.object({
-        description: z.string(),
-      }),
-      en: z.object({
-        description: z.string(),
-      }),
+    description: z.object({
+      ru: z.string(),
+      en: z.string(),
     }),
     stack: z.optional(z.string()),
     period: z.optional(

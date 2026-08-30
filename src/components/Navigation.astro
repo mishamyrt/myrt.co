@@ -1,12 +1,11 @@
 ---
 import Typography from "./Typography.astro";
 import { defineTranslations } from "../utils/i18n/defineTranslations";
-import { localizedPath, universalPath } from "../utils/i18n/paths";
-import type { Locale } from "../utils/i18n/locales";
+import { type Locale, localizedPath, globalPath } from "../utils/i18n";
 
 interface Props {
   locale: Locale;
-  languageSwitchUrl: string;
+  showLocaleSwitcher?: boolean;
 }
 
 type NavigationTarget = {
@@ -14,7 +13,7 @@ type NavigationTarget = {
   href: string;
 };
 
-const { locale, languageSwitchUrl } = Astro.props;
+const { locale, showLocaleSwitcher = true } = Astro.props;
 
 const t = defineTranslations({
   ru: {
@@ -35,7 +34,7 @@ const targets: NavigationTarget[] = [
   { title: t.blog, href: localizedPath(locale, "/blog/") },
 ];
 
-const pathname = universalPath(Astro.url.pathname);
+const pathname = globalPath(Astro.url.pathname);
 const localeTargets: NavigationTarget[] = [
   { title: "РУ", href: localizedPath("ru", pathname) },
   { title: "EN", href: localizedPath("en", pathname) },
@@ -76,19 +75,20 @@ const localeState = localeTargets.map((target) => ({
   </nav>
   <div class="locale">
     {
-      localeState.map(({ title, href, active }) => (
-        <Typography
-          class:list={{
-            active,
-          }}
-          as="a"
-          href={href}
-          variant="heading-2xs"
-          color={active ? "primary" : "tertiary"}
-        >
-          {title}
-        </Typography>
-      ))
+      showLocaleSwitcher &&
+        localeState.map(({ title, href, active }) => (
+          <Typography
+            class:list={{
+              active,
+            }}
+            as="a"
+            href={href}
+            variant="heading-2xs"
+            color={active ? "primary" : "tertiary"}
+          >
+            {title}
+          </Typography>
+        ))
     }
   </div>
 </div>

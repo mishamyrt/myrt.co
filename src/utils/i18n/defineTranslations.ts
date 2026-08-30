@@ -10,6 +10,9 @@ type Translations<T> = {
   [Language in Exclude<Locale, "ru">]: StringShape<T>;
 };
 
+/**
+ * Component translation helper
+ */
 export function defineTranslations<
   const Source extends Record<string, string>,
 >(translations: Translations<Source>): Translations<Source> {

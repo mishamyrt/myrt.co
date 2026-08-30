@@ -1,16 +1,13 @@
 ---
-import { getCollection } from "astro:content";
-
 import Layout from "../../../layouts/Layout.astro";
 import Typography from "../../../components/Typography.astro";
-import { defineTranslations } from "../../../utils/i18n/defineTranslations";
-import {
-  articlePath,
-  contentLocale,
-  contentSlug,
-} from "../../../utils/i18n/paths";
 import { parseFullDate } from "../../../utils/date";
-import { localizedStaticPaths } from "../../../utils/i18n/staticPaths";
+import {
+  defineTranslations,
+  getCollectionByLocale,
+  localizedStaticPaths,
+  globalSlug,
+} from "../../../utils/i18n";
 
 export function getStaticPaths() {
   return localizedStaticPaths();
@@ -37,8 +34,15 @@ const t = defineTranslations({
   },
 })[locale];
 
-const articles = (await getCollection("blog")).filter(
-  (article) => contentLocale(article.id) === locale,
+const localePrefix = locale === "ru" ? "" : `/${locale}`;
+const articles = (await getCollectionByLocale("blog", locale)).map(
+  (article) => ({
+    ...article,
+    data: {
+      ...article.data,
+      href: `${localePrefix}/blog/${globalSlug(article.id)}/`,
+    },
+  }),
 );
 
 const articlesMap = articles.reduce(
@@ -94,10 +98,7 @@ const articlesByYear = Object.entries(articlesMap).sort((a, b) => {
             </Typography>
             <div class="blog-articles">
               {yearArticles.map((article) => (
-                <a
-                  class="blog-article"
-                  href={articlePath(locale, contentSlug(article.id))}
-                >
+                <a class="blog-article" href={article.data.href}>
                   <Typography
                     class="blog-title"
                     variant="heading-m"

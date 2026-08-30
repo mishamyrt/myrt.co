@@ -8,8 +8,7 @@ import { PROJECTS_FILE } from "../../content.config";
 import Layout from "../../layouts/Layout.astro";
 import Typography from "../../components/Typography.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
-import { defineTranslations } from "../../utils/i18n/defineTranslations";
-import { localizedStaticPaths } from "../../utils/i18n/staticPaths";
+import { defineTranslations, localizedStaticPaths } from "../../utils/i18n";
 
 export function getStaticPaths() {
   return localizedStaticPaths();
