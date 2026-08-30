@@ -1,15 +1,13 @@
 ---
-import { getCollection } from "astro:content";
-
-import Layout from "../../layouts/Layout.astro";
-import Typography from "../../components/Typography.astro";
-import Experience from "../../components/Experience.astro";
+import Layout from "$layouts/Layout.astro";
+import Typography from "$components/Typography.astro";
+import Experience from "$components/Experience.astro";
 import {
   defineTranslations,
   localizedStaticPaths,
   getCollectionByLocale,
-} from "../../utils/i18n";
-import { parseShortDate } from "../../utils/date";
+} from "$utils/i18n";
+import { parseShortDate } from "$utils/date";
 
 export function getStaticPaths() {
   return localizedStaticPaths();
@@ -26,7 +24,7 @@ const t = defineTranslations({
     headingName: "Миша Хрустик,",
     headingRole: "тимлид",
     intro:
-      "Руковожу кроссфункциональными командами. Выстраиваю процессы так, что задачи перестают переезжать между спринтами. Участвую в найме, онбординге и развитии инженеров.",
+      "Руковожу кроссфункциональными командами. Выстраиваю процессы так, что задачи перестают переезжать между спринтами. Участвую в найме, онбординге и развитии инженеров.",
     consulting:
       "Занимаюсь консультациями по разработке и проектным проведением собеседований. Пишите мне в",
     telegram: "телеграм",
@@ -41,11 +39,11 @@ const t = defineTranslations({
     headingName: "Mikhael Khrustik,",
     headingRole: "team lead",
     intro:
-      "I lead cross-functional teams and build processes that keep tasks from rolling over between sprints. I take part in hiring, onboarding, and engineers’ professional growth.",
+      "I lead cross-functional teams and build processes that keep tasks from rolling over between sprints. I take part in hiring, onboarding, and engineers’ professional growth.",
     consulting:
-      "I consult on software development and conduct technical interviews for projects. Message me on",
+      "I consult on software development and conduct technical interviews for projects. Message me on",
     telegram: "Telegram",
-    or: "or by",
+    or: "or by",
     email: "email",
   },
 })[locale];
@@ -75,9 +73,9 @@ const places = experience.toSorted(
       </Typography>
       <Typography color="secondary">{t.intro}</Typography>
       <Typography color="secondary">
-        {t.consulting}{" "}<a href="https://t.me/mishamyrt">{t.telegram}</a>{
+        {t.consulting}{" "}<a href="https://t.me/mishamyrt">{t.telegram}</a>{
           " "
-        }{t.or}{" "}<a href="mailto:misha@myrt.co">{t.email}</a>.
+        }{t.or}{" "}<a href="mailto:misha@myrt.co">{t.email}</a>.
       </Typography>
     </div>
   </div>

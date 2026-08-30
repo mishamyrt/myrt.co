@@ -1,13 +1,13 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
-import Typography from "../../../components/Typography.astro";
-import { parseFullDate } from "../../../utils/date";
+import Layout from "$layouts/Layout.astro";
+import Typography from "$components/Typography.astro";
+import { parseFullDate } from "$utils/date";
 import {
   defineTranslations,
   getCollectionByLocale,
   localizedStaticPaths,
   globalSlug,
-} from "../../../utils/i18n";
+} from "$utils/i18n";
 
 export function getStaticPaths() {
   return localizedStaticPaths();

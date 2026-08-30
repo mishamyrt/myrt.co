@@ -2,13 +2,11 @@
 import { parse } from "yaml";
 import { readFile } from "node:fs/promises";
 import { getCollection } from "astro:content";
-
+import Layout from "$layouts/Layout.astro";
+import Typography from "$components/Typography.astro";
+import ProjectCard from "$components/ProjectCard.astro";
+import { defineTranslations, localizedStaticPaths } from "$utils/i18n";
 import { PROJECTS_FILE } from "../../content.config";
-
-import Layout from "../../layouts/Layout.astro";
-import Typography from "../../components/Typography.astro";
-import ProjectCard from "../../components/ProjectCard.astro";
-import { defineTranslations, localizedStaticPaths } from "../../utils/i18n";
 
 export function getStaticPaths() {
   return localizedStaticPaths();
@@ -21,12 +19,12 @@ const t = defineTranslations({
     title: "Проекты Миши Хрустика",
     description: "Инструменты, которые делают работу комфортнее",
     intro:
-      "Создаю инструменты, которые делают мою работу за компьютером комфортнее. Делюсь ими на",
+      "Создаю инструменты, которые делают мою работу комфортнее. Делюсь ими на",
   },
   en: {
     title: "Projects by Mikhael Khrustik",
     description: "Tools that make work more comfortable",
-    intro: "I build tools that make my work more comfortable and share them on",
+    intro: "I build tools that make my work more comfortable and share them on",
   },
 })[locale];
 
@@ -43,7 +41,7 @@ const projects = (await getCollection("projects")).toSorted(
 
 <Layout title={t.title} description={t.description} locale={locale}>
   <Typography color="secondary" class="heading honey" data-effect="slide">
-    {t.intro}{" "}<a href="https://github.com/mishamyrt">GitHub</a>.
+    {t.intro}{" "}<a href="https://github.com/mishamyrt">GitHub</a>.
   </Typography>
   <div class="projects">
     {projects.map((project) => <ProjectCard data={project} locale={locale} />)}

@@ -1,15 +1,15 @@
 ---
 import { getCollection, render } from "astro:content";
 
-import Layout from "../../../layouts/Layout.astro";
-import Typography from "../../../components/Typography.astro";
-import { formatFullDate, parseFullDate } from "../../../utils/date";
+import Layout from "$layouts/Layout.astro";
+import Typography from "$components/Typography.astro";
+import { formatFullDate, parseFullDate } from "$utils/date";
 import {
   defineTranslations,
   contentLocale,
   globalSlug,
   defaultLocale,
-} from "../../../utils/i18n";
+} from "$utils/i18n";
 
 export async function getStaticPaths() {
   const articles = await getCollection("blog");

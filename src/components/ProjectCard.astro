@@ -1,9 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import Typography from './Typography.astro';
-import { defineTranslations } from '../utils/i18n/defineTranslations';
-import type { Locale } from '../utils/i18n/locales';
-import { formatMonthYear } from '../utils/date';
+import { defineTranslations, type Locale } from '$utils/i18n';
+import { formatMonthYear } from '$utils/date';
 
 interface Props {
   data: CollectionEntry<"projects">;
