@@ -5,6 +5,7 @@ import { parse, stringify } from "yaml";
 
 const repositoryRoot = process.cwd();
 const experienceDirectory = join(repositoryRoot, "src/content/experience");
+const russianExperienceDirectory = join(experienceDirectory, "ru");
 const englishExperienceDirectory = join(experienceDirectory, "en");
 const projectsFile = join(repositoryRoot, "src/content/projects.yaml");
 const lockFile = join(repositoryRoot, "src/content/translations.lock.yaml");
@@ -45,7 +46,7 @@ const expectedLock = {
   },
 };
 
-const russianExperience = await markdownFiles(experienceDirectory);
+const russianExperience = await markdownFiles(russianExperienceDirectory);
 const englishExperience = await markdownFiles(englishExperienceDirectory);
 const russianSet = new Set(russianExperience);
 const englishSet = new Set(englishExperience);
@@ -56,7 +57,7 @@ for (const file of russianExperience) {
     continue;
   }
 
-  const russianMarkdown = await readFile(join(experienceDirectory, file), "utf8");
+  const russianMarkdown = await readFile(join(russianExperienceDirectory, file), "utf8");
   const englishMarkdown = await readFile(
     join(englishExperienceDirectory, file),
     "utf8",
@@ -92,14 +93,14 @@ for (const project of projects) {
   projectIds.add(project.id);
 
   for (const locale of ["ru", "en"]) {
-    if (!project.content?.[locale]?.description?.trim()) {
-      errors.push(`Project ${project.id} is missing content.${locale}.description`);
+    if (!project.description?.[locale]?.trim()) {
+      errors.push(`Project ${project.id} is missing description.${locale}`);
     }
   }
 
-  if (project.content?.ru) {
+  if (project.description?.ru) {
     expectedLock.en.projects[project.id] = sourceHash(
-      JSON.stringify(project.content.ru),
+      JSON.stringify(project.description.ru),
     );
   }
 }
