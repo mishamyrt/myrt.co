@@ -9,6 +9,7 @@
     "dev": "astro dev",
     "check:content": "node scripts/check-content.mjs",
     "content:ack": "node scripts/check-content.mjs --update",
+    "typograf": "node scripts/typograf.mjs",
     "build:docker": "docker build -t myrt-co:latest .",
     "prebuild:docker": "pnpm build",
     "start:docker": "docker run --name myrt-app -d -p 80:80 -p 443:443 myrt-co:latest",
@@ -20,12 +21,16 @@
   "devDependencies": {
     "@astrojs/markdown-satteri": "0.3.8",
     "astro": "7.2.9",
+    "mdast-util-from-markdown": "2.0.3",
+    "mdast-util-gfm": "3.1.0",
+    "micromark-extension-gfm": "3.0.0",
     "postcss-scss": "4.0.9",
     "sass": "1.103.1",
     "satteri": "0.10.5",
     "stylelint": "17.14.1",
     "stylelint-config-standard": "40.0.0",
-    "typescript": "7.0.2"
+    "typescript": "7.0.2",
+    "typograf": "7.8.0"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

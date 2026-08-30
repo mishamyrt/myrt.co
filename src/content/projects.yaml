@@ -8,7 +8,7 @@
     ru: |
       Расширение Raycast для закрепления дока на выбранном экране и блокировки его случайного перемещения.
     en: |
-      A Raycast extension that pins the Dock to a selected display and prevents it from moving accidentally.
+      A Raycast extension that pins the Dock to a selected display and prevents it from moving accidentally.
   period:
     start: "2026-05"
 
@@ -23,8 +23,8 @@
       Ультракомпактное фоновое приложение для эмуляции нажатия колёсика при касании трекапада тремя пальцами
       или клике в середину Magic Mouse.
     en: |
-      An ultra-compact background app that emulates a middle click when you touch the trackpad with three fingers
-      or click the center of a Magic Mouse.
+      An ultra-compact background app that emulates a middle click when you touch the trackpad with three fingers
+      or click the center of a Magic Mouse.
   period:
     start: "2026-04"
 
@@ -36,7 +36,7 @@
     ru: |
       Приложение для терминала, которое удаляет артефакты сборки и зависимости в неиспользуемых проектах.
     en: |
-      A terminal app that removes build artifacts and dependencies from inactive projects.
+      A terminal app that removes build artifacts and dependencies from inactive projects.
   stack: Rust, Ratatui
   period:
     start: "2026-02"
@@ -51,8 +51,8 @@
       Мини-плеер Яндекс Музыки для тех, кто занят делом.
       Отображается поверх всех окон и остаётся на месте при смене рабочей области.
     en: |
-      A compact Yandex Music player for people who want to stay focused.
-      It floats above other windows and remains in place when you switch workspaces.
+      A compact Yandex Music player for people who want to stay focused.
+      It floats above other windows and remains in place when you switch workspaces.
   stack: Swift, SwiftUI
   period:
     start: "2026-01"
@@ -68,8 +68,8 @@
       Фоновое приложение, которое добавляет макбуку полузакрытое состояние крышки:
       гаснут все экраны и предотвращается уход в спящий режим.
     en: |
-      A background app that adds a half-closed lid state to a MacBook:
-      all displays turn off while the computer is prevented from going to sleep.
+      A background app that adds a half-closed lid state to a MacBook:
+      all displays turn off while the computer is prevented from going to sleep.
   period:
     start: "2026-01"
 
@@ -83,7 +83,7 @@
     ru: |
       Форматтер и линтер сообщений коммитов. Сверхбыстрая замена для commitlint, выполняющая проверку в 18 раз быстрее.
     en: |
-      A formatter and linter for commit messages. A high-speed commitlint replacement that runs checks 18 times faster.
+      A formatter and linter for commit messages. A high-speed commitlint replacement that runs checks 18 times faster.
   period:
     start: "2025-03"
 
@@ -96,7 +96,7 @@
     ru: |
       Приложения для настройки подсветки и макросов клавиатур NuPhy Halo75, Halo65, Halo96.
     en: |
-      An app for configuring lighting and macros on NuPhy Halo75, Halo65, and Halo96 keyboards.
+      An app for configuring lighting and macros on NuPhy Halo75, Halo65, and Halo96 keyboards.
   period:
     start: "2023-06"
     end: "2024-05"
@@ -112,8 +112,8 @@
       Программистский вариативный шрифт с кодовыми лигатурами. Сделан на основе IBM Plex Mono.
       Поддерживает кириллицу, латиницу и греческий алфавит.
     en: |
-      A variable programming font with coding ligatures, based on IBM Plex Mono.
-      It supports Cyrillic, Latin, and Greek scripts.
+      A variable programming font with coding ligatures, based on IBM Plex Mono.
+      It supports Cyrillic, Latin, and Greek scripts.
   period:
     start: "2019-10"
 
@@ -128,7 +128,7 @@
       Библиотека для координации загрузки и создания анимаций появления блоков c простым API.
       Анимации на этом сайте сделаны с её помощью.
     en: |
-      A library with a simple API for coordinating page loading and reveal animations.
-      It powers the animations on this website.
+      A library with a simple API for coordinating page loading and reveal animations.
+      It powers the animations on this website.
   period:
     start: "2017-07"
