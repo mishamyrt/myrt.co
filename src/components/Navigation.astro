@@ -107,21 +107,40 @@ const localeState = localeTargets.map((target) => ({
   .locale {
     display: flex;
 
-    :global(a) {
+    a {
       text-decoration: none;
     }
 
-    :global(a:first-child::after) {
+    a:not(.active):first-child::after,
+    a:not(.active):last-child::before {
       content: "";
       display: inline-block;
       width: 1px;
       height: 8px;
-      background-color: var(--color-content-tertiary);
+      background-color: var(--color-link-underline);
+      transition: background-color 0.2s ease-out;
+    }
+
+    a:not(.active):first-child::after {
       margin-left: 8px;
     }
 
-    :global(a:last-child) {
-      padding-left: 8px;
+    a:not(.active):last-child::before {
+      margin-right: 8px;
+    }
+
+    a.active:first-child {
+      margin-right: 8px;
+    }
+
+    a.active:last-child {
+      margin-left: 8px;
+    }
+
+    a:not(.active):hover::after,
+    a:not(.active):hover::before {
+      background-color: var(--color-link_hover);
+      transition-duration: 0s;
     }
   }
 
