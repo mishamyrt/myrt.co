@@ -16,6 +16,10 @@ body {
   scrollbar-gutter: stable;
 }
 
+::selection {
+  background-color: var(--color-background-selection);
+}
+
 * {
   box-sizing: border-box;
 }

@@ -1,6 +1,7 @@
 :root {
   --color-background-primary: #121212;
-   --color-background-secondary: #1e1e1e;
+  --color-background-secondary: #1e1e1e;
+  --color-background-selection: rgb(8 152 208 / 33%);
   --color-content-primary: rgb(255 255 255 / 97%);
   --color-content-secondary: rgb(255 255 255 / 74%);
   --color-content-tertiary: rgb(255 255 255 / 50%);
@@ -13,6 +14,7 @@
   :root {
     --color-background-primary: #fafafa;
     --color-background-secondary: #f2f2f2;
+    --color-background-selection: rgb(28 201 255 / 22%);
     --color-content-primary: rgb(0 0 0 / 97%);
     --color-content-secondary: rgb(0 0 0 / 80%);
     --color-content-tertiary: rgb(0 0 0 / 54%);
