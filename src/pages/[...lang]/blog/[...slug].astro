@@ -92,11 +92,11 @@ const t = defineTranslations({
   article {
     font-family: var(--typography-font-family-serif);
 
-    .img-container {
+    :global(.img-container) {
       margin: calc(var(--space-l) + 1px) 0 var(--space-l);
     }
 
-    .img-caption {
+    :global(.img-caption) {
       font-family: var(--typography-text-s);
       letter-spacing: var(--typography-text-s_spacing);
       color: var(--color-content-tertiary);
