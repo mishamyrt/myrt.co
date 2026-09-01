@@ -43,9 +43,11 @@ const { Content } = await render(article);
 const t = defineTranslations({
   ru: {
     published: "Опубликовано",
+    updated: "Обновлено",
   },
   en: {
     published: "Published",
+    updated: "Updated",
   },
 })[locale];
 ---
@@ -66,6 +68,15 @@ const t = defineTranslations({
             {t.published}
             <span> </span>
             {date}
+            {article.data.updatedAt && (
+              <>
+                ,
+                <br />
+                {t.updated}
+                <span> </span>
+                {formatFullDate(parseFullDate(article.data.updatedAt), locale)}
+              </>
+            )}
           </Typography>
         </time>
       )
