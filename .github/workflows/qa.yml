@@ -31,6 +31,10 @@ jobs:
 
       - name: Build check
         run: pnpm build
+        env:
+          GITHUB_TOKEN: ${{ secrets.CONTRIBUTIONS_TOKEN || github.token }}
 
       - name: Docker build check
-        run: docker build .
+        run: docker build --secret id=github_token,env=GITHUB_TOKEN .
+        env:
+          GITHUB_TOKEN: ${{ secrets.CONTRIBUTIONS_TOKEN || github.token }}

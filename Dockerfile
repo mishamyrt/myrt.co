@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:1
+
 ARG NODE_VERSION=26
 ARG PNPM_VERSION=11.25.0
 ARG CADDY_VERSION=2.11.4
@@ -14,7 +16,11 @@ COPY \
   ./
 RUN npm install -g pnpm@$PNPM_VERSION
 RUN pnpm install --frozen-lockfile
-RUN pnpm build
+RUN --mount=type=secret,id=github_token,required=false \
+  if [ -f /run/secrets/github_token ]; then \
+    export GITHUB_TOKEN="$(cat /run/secrets/github_token)"; \
+  fi; \
+  pnpm build
 
 FROM caddy:$CADDY_VERSION-alpine
 COPY --from=builder /build/dist /data

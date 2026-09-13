@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+  schedule:
+    - cron: "17 3 * * *"
 
 env:
   IMAGE: ghcr.io/mishamyrt/myrt.co/site
@@ -44,6 +46,8 @@ jobs:
           tags: |
             ${{ env.IMAGE }}:latest
             ${{ env.IMAGE }}:${{ steps.tag.outputs.date }}
+          secrets: |
+            github_token=${{ secrets.CONTRIBUTIONS_TOKEN || github.token }}
 
       - name: Run deploy playbook
         uses: dawidd6/action-ansible-playbook@v9

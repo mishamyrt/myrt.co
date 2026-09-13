@@ -5,6 +5,7 @@ import { getCollection } from "astro:content";
 import Layout from "$layouts/Layout.astro";
 import Typography from "$components/Typography.astro";
 import ProjectCard from "$components/ProjectCard.astro";
+import GitHubContributions from "$components/GitHubContributions.astro";
 import { defineTranslations, localizedStaticPaths } from "$utils/i18n";
 import { PROJECTS_FILE } from "../../content.config";
 
@@ -41,10 +42,15 @@ const projects = (await getCollection("projects")).toSorted(
 
 <Layout title={t.title} description={t.description} locale={locale}>
   <Typography color="secondary" class="heading honey" data-effect="slide">
-    {t.intro}{" "}<a href="https://github.com/mishamyrt">GitHub</a>.
+    {t.intro}
+    {" "}
+    <a href="https://github.com/mishamyrt">GitHub</a>.
   </Typography>
+  <GitHubContributions username="mishamyrt" locale={locale} />
   <div class="projects">
-    {projects.map((project) => <ProjectCard data={project} locale={locale} />)}
+    {projects.map((project) => (
+      <ProjectCard data={project} locale={locale} />
+    ))}
   </div>
 </Layout>
 
@@ -54,13 +60,12 @@ const projects = (await getCollection("projects")).toSorted(
   }
 
   .projects {
-    margin-top: 47px;
+    margin-top: 34px;
   }
 
   @media (max-width: 873px) {
     .projects {
       max-width: var(--size-layout-content-narrow);
-      margin: 50px 0 0;
     }
   }
 </style>
