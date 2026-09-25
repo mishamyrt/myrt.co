@@ -87,6 +87,20 @@
   period:
     start: "2025-03"
 
+- id: "runon"
+  link: "https://github.com/mishamyrt/runon"
+  img: "runon@2x.webp"
+  name: "RunOn"
+  rounded: true
+  stack: Rust
+  description:
+    ru: |
+      Фоновый демон для запуска команд на системные события, таких как подключение монитора, аудиоустройства или выход из спящего режима
+    en: |
+      A background daemon for running commands in response to system events, such as connecting a monitor or audio device, or waking from sleep.
+  period:
+    start: "2023-06"
+
 - id: "nuga"
   link: "https://github.com/mishamyrt/nuga-app"
   img: "nuga@2x.webp"
