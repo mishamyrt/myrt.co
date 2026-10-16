@@ -23,17 +23,11 @@ const openGraphLocales: Record<Locale, string> = {
 const pathname = globalPath(Astro.url.pathname);
 const pageUrl = `${siteUrl}${pathname}`;
 
-const {
-  title,
-  description,
-  image,
-  locale,
-  showLocaleSwitcher,
-} = Astro.props;
+const { title, description, image, locale, showLocaleSwitcher } = Astro.props;
 
 const otherLocale = locale === "ru" ? "en" : "ru";
 const alternateUrl = localizedPath(otherLocale, pathname);
-const absoluteAlternateUrl = `${siteUrl}${alternateUrl}`
+const absoluteAlternateUrl = `${siteUrl}${alternateUrl}`;
 ---
 
 <!doctype html>
@@ -44,17 +38,15 @@ const absoluteAlternateUrl = `${siteUrl}${alternateUrl}`
     <link rel="icon" type="image/jpg" href="/avatar@2x.jpg" />
     <link rel="canonical" href={pageUrl} />
     <link rel="alternate" hreflang={locale} href={pageUrl} />
-    <link
-      rel="alternate"
-      hreflang={otherLocale}
-      href={absoluteAlternateUrl}
-    />
+    <link rel="alternate" hreflang={otherLocale} href={absoluteAlternateUrl} />
     <Font cssVariable="--typography-font-family-sans-serif" />
     <Font cssVariable="--typography-font-family-serif" />
     <Font cssVariable="--typography-font-family-monospace" />
     {description && (
-      <meta name="description" content={description} />
-      <meta name="og:description" content={description} />
+      <>
+        <meta name="description" content={description} />
+        <meta name="og:description" content={description} />
+      </>
     )}
     <meta property="og:image" content={image ?? defaultImage} />
     <meta property="og:type" content="website" />
@@ -79,9 +71,9 @@ const absoluteAlternateUrl = `${siteUrl}${alternateUrl}`
 
 <script>
   import "honeymate";
-  import { attachHover } from '../scripts/doubleHover'
+  import { attachHover } from "../scripts/doubleHover";
 
-  attachHover('hover');
+  attachHover("hover");
 </script>
 
 <style is:global>
@@ -104,6 +96,10 @@ const absoluteAlternateUrl = `${siteUrl}${alternateUrl}`
 
   main {
     padding: 39px 0;
+  }
+
+  @view-transition {
+    navigation: auto;
   }
 
   @media (max-width: 873px) {

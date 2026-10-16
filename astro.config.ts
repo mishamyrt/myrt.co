@@ -58,26 +58,12 @@ export default defineConfig({
       },
     },
     {
-      provider: fontProviders.local(),
-      name: "Inter",
+      provider: fontProviders.npm({remote: false}),
+      name: "Golos Text",
       cssVariable: "--typography-font-family-sans-serif",
       options: {
-        variants: [
-          {
-            src: [
-              "./node_modules/inter-ui/web/Inter-SemiBold.woff2",
-            ],
-            weight: "600",
-            style: "normal",
-          },
-          {
-            src: [
-              "./node_modules/inter-ui/web/Inter-Regular.woff2",
-            ],
-            weight: "400",
-            style: "normal",
-          },
-        ],
+        package: '@fontsource/golos-text',
+        file: '500.css'
       },
     },
     {

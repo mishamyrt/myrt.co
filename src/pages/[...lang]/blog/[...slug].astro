@@ -61,26 +61,24 @@ const t = defineTranslations({
   <article>
     <h1>{title}</h1>
     <Content />
-    {
-      date && publishedDate && (
-        <time datetime={publishedDate.toISOString().slice(0, 10)}>
-          <Typography class="date" color="tertiary" variant="text-m">
-            {t.published}
-            <span> </span>
-            {date}
-            {article.data.updatedAt && (
-              <>
-                ,
-                <br />
-                {t.updated}
-                <span> </span>
-                {formatFullDate(parseFullDate(article.data.updatedAt), locale)}
-              </>
-            )}
-          </Typography>
-        </time>
-      )
-    }
+    {date && publishedDate && (
+      <time datetime={publishedDate.toISOString().slice(0, 10)}>
+        <Typography class="date" color="tertiary" variant="text-m">
+          {t.published}
+          <span> </span>
+          {date}
+          {article.data.updatedAt && (
+            <>
+              ,
+              <br />
+              {t.updated}
+              <span> </span>
+              {formatFullDate(parseFullDate(article.data.updatedAt), locale)}
+            </>
+          )}
+        </Typography>
+      </time>
+    )}
   </article>
 </Layout>
 
@@ -140,7 +138,7 @@ const t = defineTranslations({
     :global(h1) {
       font: var(--typography-heading-l);
       letter-spacing: var(--typography-heading-l_spacing);
-      margin: -1px 0 calc(var(--space-m) + 1px) -1px;
+      margin: -2px 0 calc(var(--space-m) + 2px) -1px;
       color: var(--color-content-primary);
       max-width: var(--size-layout-content-narrow);
     }

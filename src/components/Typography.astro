@@ -27,8 +27,10 @@ const Tag = as;
 <Tag
   id={id}
   class:list={["typography", `variant-${variant}`, `color-${color}`, className]}
-  {...rest as any}><slot /></Tag
+  {...(rest as any)}
 >
+  <slot />
+</Tag>
 
 <style lang="scss">
   .typography {
@@ -80,7 +82,7 @@ const Tag = as;
       &-heading-l {
         font: var(--typography-heading-l);
         letter-spacing: var(--typography-heading-l_spacing);
-        margin: -1px 0 calc(var(--space-m) + 1px) -1px;
+        margin: -2px 0 calc(var(--space-m) + 2px) -1px;
       }
     }
 

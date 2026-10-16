@@ -1,6 +1,7 @@
 ---
 import Layout from "$layouts/Layout.astro";
 import Typography from "$components/Typography.astro";
+import InfinitySign from "$components/InfinitySign.astro";
 import { parseFullDate } from "$utils/date";
 import {
   defineTranslations,
@@ -83,40 +84,40 @@ const articlesByYear = Object.entries(articlesMap).sort((a, b) => {
     {t.intro}
   </Typography>
   <div class="blog honey" data-effect="slide" data-hold="200" data-down="50px">
-    {
-      articlesByYear.length === 0 ? (
-        <Typography color="tertiary">{t.empty}</Typography>
-      ) : (
-        articlesByYear.map(([year, yearArticles]) => (
-          <div class="blog-yearArticles">
-            <Typography
-              variant="heading-m"
-              color="tertiary"
-              class:list={["blog-year", year === CONTINUOUS && "__continuous"]}
-            >
+    {articlesByYear.length === 0 ? (
+      <Typography color="tertiary">{t.empty}</Typography>
+    ) : (
+      articlesByYear.map(([year, yearArticles]) => (
+        <div class="blog-yearArticles">
+          {year === CONTINUOUS ? (
+            <div class="blog-year __continuous">
+              <InfinitySign />
+            </div>
+          ) : (
+            <Typography variant="heading-m" color="tertiary" class="blog-year">
               {year}
             </Typography>
-            <div class="blog-articles">
-              {yearArticles.map((article) => (
-                <a class="blog-article" href={article.data.href}>
-                  <Typography
-                    class="blog-title"
-                    variant="heading-m"
-                    color="primary"
-                    as="h3"
-                  >
-                    {article.data.title}
-                  </Typography>
-                  <Typography variant="text-m" color="secondary">
-                    {article.data.description}
-                  </Typography>
-                </a>
-              ))}
-            </div>
+          )}
+          <div class="blog-articles">
+            {yearArticles.map((article) => (
+              <a class="blog-article" href={article.data.href}>
+                <Typography
+                  class="blog-title"
+                  variant="heading-m"
+                  color="primary"
+                  as="h3"
+                >
+                  {article.data.title}
+                </Typography>
+                <Typography variant="text-m" color="secondary">
+                  {article.data.description}
+                </Typography>
+              </a>
+            ))}
           </div>
-        ))
-      )
-    }
+        </div>
+      ))
+    )}
   </div>
 </Layout>
 
@@ -160,7 +161,10 @@ const articlesByYear = Object.entries(articlesMap).sort((a, b) => {
     top: 1px;
 
     &.__continuous {
-      top: 5px;
+      top: 7px;
+      fill: var(--color-content-tertiary);
+      height: 18px;
+      margin-bottom: var(--space-m);
     }
   }
 
