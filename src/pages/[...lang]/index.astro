@@ -69,24 +69,30 @@ const places = experience.toSorted(
     />
     <div class="honey" data-effect="slide" data-up="32px">
       <Typography variant="heading-l" as="h1" color="primary">
-        {t.headingName}<br />{t.headingRole}
+        {t.headingName}
+        <br />
+        {t.headingRole}
       </Typography>
       <Typography color="secondary">{t.intro}</Typography>
       <Typography color="secondary">
-        {t.consulting}{" "}<a href="https://t.me/mishamyrt">{t.telegram}</a>{
-          " "
-        }{t.or}{" "}<a href="mailto:misha@myrt.co">{t.email}</a>.
+        {t.consulting}
+        {" "}
+        <a href="https://t.me/mishamyrt">{t.telegram}</a> {t.or}
+        {" "}
+        <a href="mailto:misha@myrt.co">{t.email}</a>.
       </Typography>
     </div>
   </div>
   <div class="experienceContainer">
-    {places.map((place) => <Experience place={place} />)}
+    {places.map((place) => (
+      <Experience place={place} />
+    ))}
   </div>
 </Layout>
 
 <style>
   .hero {
-    max-width: var(--size-layout-content-narrow);
+    max-width: var(--layout-content-narrow);
     position: relative;
   }
 

@@ -98,7 +98,7 @@ const t = defineTranslations({
       font-family: var(--typography-text-s);
       letter-spacing: var(--typography-text-s_spacing);
       color: var(--color-content-tertiary);
-      max-width: var(--size-layout-content-narrow);
+      max-width: var(--layout-content-narrow);
       display: block;
       margin-top: 2px;
     }
@@ -118,7 +118,7 @@ const t = defineTranslations({
       color: var(--color-content-secondary);
       font: var(--typography-text-m);
       letter-spacing: var(--typography-text-m_spacing);
-      max-width: var(--size-layout-content-narrow);
+      max-width: var(--layout-content-narrow);
       margin: var(--space-m) 0 0;
     }
 
@@ -140,14 +140,14 @@ const t = defineTranslations({
       letter-spacing: var(--typography-heading-l_spacing);
       margin: -2px 0 calc(var(--space-m) + 2px) -1px;
       color: var(--color-content-primary);
-      max-width: var(--size-layout-content-narrow);
+      max-width: var(--layout-content-narrow);
     }
 
     :global(h2) {
       font: var(--typography-heading-m);
       letter-spacing: var(--typography-heading-m_spacing);
       margin: calc(var(--space-xl) - 3px) 0 calc(var(--space-s) + 3px);
-      max-width: var(--size-layout-content-narrow);
+      max-width: var(--layout-content-narrow);
       color: var(--color-content-primary);
     }
 
@@ -172,7 +172,7 @@ const t = defineTranslations({
     :global(ul),
     :global(ol) {
       margin: 0;
-      max-width: calc(var(--size-layout-content-narrow) - var(--space-l));
+      max-width: calc(var(--layout-content-narrow) - var(--space-l));
       padding-left: var(--space-l);
     }
 
@@ -188,7 +188,7 @@ const t = defineTranslations({
 
     :global(blockquote) {
       padding-left: var(--space-xl);
-      max-width: var(--size-layout-content-narrow);
+      max-width: var(--layout-content-narrow);
       margin: var(--space-m) 0;
     }
 
@@ -225,7 +225,7 @@ const t = defineTranslations({
 
     :global(pre) {
       font: var(--typography-code-m);
-      width: calc(var(--size-layout-content-narrow) + 40px);
+      width: calc(var(--layout-content-narrow) + 40px);
       margin: calc(var(--space-m) + 4px) 0px calc(var(--space-m) + 2px) -20px;
       padding: 15px 20px;
       border-radius: 8px;
@@ -237,7 +237,7 @@ const t = defineTranslations({
       color: var(--color-content-secondary);
       margin: var(--space-m) 0 0;
       border-collapse: collapse;
-      max-width: var(--size-layout-content-narrow);
+      max-width: var(--layout-content-narrow);
     }
 
     :global(table + h2) {
@@ -277,7 +277,7 @@ const t = defineTranslations({
   @media (max-width: 873px) {
     :global(pre) {
       margin-left: 0;
-      max-width: var(--size-layout-content-narrow);
+      max-width: var(--layout-content-narrow);
       width: 100%;
     }
 

@@ -3,8 +3,9 @@
 @use "./spacing.scss";
 
 :root {
-  --size-layout-content-narrow: 720px;
-  --size-layout-content-wide: 1000px;
+  --layout-content-narrow: 720px;
+  --layout-content-wide: 1000px;
+  --layout-padding-min: 117px;
   --space-layout-aside: 36px;
 }
 

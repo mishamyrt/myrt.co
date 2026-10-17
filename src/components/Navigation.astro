@@ -60,40 +60,36 @@ const localeState = localeTargets.map((target) => ({
 
 <div class="navigation">
   <nav>
-    {
-      state.map(({ title, href, active, sublink }) => (
+    {state.map(({ title, href, active, sublink }) => (
+      <Typography
+        class:list={{
+          active,
+          sublink,
+        }}
+        as="a"
+        href={href}
+        variant="heading-xs"
+        color={active || sublink ? "primary" : "tertiary"}
+      >
+        {title}
+      </Typography>
+    ))}
+  </nav>
+  <div class="locale">
+    {showLocaleSwitcher &&
+      localeState.map(({ title, href, active }) => (
         <Typography
           class:list={{
             active,
-            sublink,
           }}
           as="a"
           href={href}
-          variant="heading-xs"
-          color={active || sublink ? "primary" : "tertiary"}
+          variant="heading-2xs"
+          color={active ? "primary" : "tertiary"}
         >
           {title}
         </Typography>
-      ))
-    }
-  </nav>
-  <div class="locale">
-    {
-      showLocaleSwitcher &&
-        localeState.map(({ title, href, active }) => (
-          <Typography
-            class:list={{
-              active,
-            }}
-            as="a"
-            href={href}
-            variant="heading-2xs"
-            color={active ? "primary" : "tertiary"}
-          >
-            {title}
-          </Typography>
-        ))
-    }
+      ))}
   </div>
 </div>
 
@@ -101,7 +97,7 @@ const localeState = localeTargets.map((target) => ({
   .navigation {
     display: flex;
     justify-content: space-between;
-    max-width: var(--size-layout-content-narrow);
+    max-width: var(--layout-content-narrow);
   }
 
   .locale {

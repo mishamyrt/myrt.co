@@ -61,7 +61,7 @@ const absoluteAlternateUrl = `${siteUrl}${alternateUrl}`;
   <body>
     <div class="content">
       <Navigation locale={locale} showLocaleSwitcher={showLocaleSwitcher} />
-      <DebugGrid step={9} />
+      <DebugGrid stepBase={9} />
       <main>
         <slot />
       </main>
@@ -80,8 +80,6 @@ const absoluteAlternateUrl = `${siteUrl}${alternateUrl}`;
   body,
   html {
     background-color: var(--color-background-primary);
-
-    --layout-padding-min: 117px;
   }
 
   body {

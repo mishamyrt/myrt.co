@@ -21,7 +21,9 @@ const { Content } = await render(place);
 
 <div class="experience honey" data-hold="400">
   <div class="experience-period">
-    <Typography variant="text-s" color="secondary">{period}</Typography>
+    <Typography variant="text-s" color="secondary">
+      {period}
+    </Typography>
   </div>
   <article>
     <Content />
@@ -149,7 +151,7 @@ const { Content } = await render(place);
 
 <style lang="scss">
   .experience {
-    max-width: var(--size-layout-content-narrow);
+    max-width: var(--layout-content-narrow);
     position: relative;
   }
 
