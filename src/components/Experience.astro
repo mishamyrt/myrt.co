@@ -188,7 +188,7 @@ const { Content } = await render(place);
   }
 
   .experience + .experience {
-    margin-top: calc(var(--space-xl) + 6px);
+    margin-top: calc(var(--layout-grid-base) * 6);
   }
 
   .experience-period {
@@ -222,5 +222,15 @@ const { Content } = await render(place);
 
   .experience :global(.nda.is-dragging) {
     cursor: grabbing;
+  }
+
+  @media (max-width: 480) {
+    .experience-period {
+      top: calc(var(--layout-grid-base) * -2);
+      margin-bottom: calc(var(--layout-grid-base) * -1);
+      left: 0;
+      transform: unset;
+      position: relative;
+    }
   }
 </style>

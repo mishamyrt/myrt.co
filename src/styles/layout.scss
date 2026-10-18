@@ -3,7 +3,8 @@
   --layout-content-narrow: calc(var(--layout-grid-base) * 80);
   --layout-content-wide: calc(var(--layout-grid-base) * 110);
   --layout-padding-min: calc(var(--layout-grid-base) * 13);
-  --layout-padding-mobile: calc(var(--layout-grid-base) * 3);
+  --layout-padding-tablet: calc(var(--layout-grid-base) * 4);
+  --layout-padding-mobile: var(--layout-grid-base);
 
   --space-s: var(--layout-grid-base);
   --space-m: calc(var(--layout-grid-base) * 2);
