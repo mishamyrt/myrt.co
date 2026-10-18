@@ -94,10 +94,11 @@ const places = experience.toSorted(
   .hero {
     max-width: var(--layout-content-narrow);
     position: relative;
+    margin-top: var(--space-s);
   }
 
   .hero-avatar {
-    --avatar-size: 54px;
+    --avatar-size: calc(var(--layout-grid-base) * 6);
 
     width: var(--avatar-size);
     height: var(--avatar-size);
@@ -108,16 +109,12 @@ const places = experience.toSorted(
   }
 
   .experienceContainer {
-    margin-top: 42px;
+    margin-top: calc(var(--layout-grid-base) * 6);
   }
 
   @media (max-width: 873px) {
     .hero-avatar {
       display: none;
-    }
-
-    .experienceContainer {
-      margin-top: 69px;
     }
   }
 </style>

@@ -46,3 +46,10 @@ export function formatShortDate(date: Date): string {
 
   return `${day}.${month.toString().padStart(2, "0")}`;
 }
+
+export function formatPeriod(from: string, to?: string): string {
+  if (!to) {
+    return from;
+  }
+  return `${from} – ${to}`;
+}

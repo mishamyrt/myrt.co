@@ -19,7 +19,7 @@
 
   --typography-heading-xs_base: 14px;
   --typography-heading-xs:
-    500 var(--typography-heading-xs_base) / 1.285
+    500 var(--typography-heading-xs_base) / 18px
     var(--typography-font-family-sans-serif);
   --typography-heading-xs_spacing: -1.785%;
 
@@ -35,9 +35,9 @@
     var(--typography-font-family-sans-serif);
   --typography-heading-m_spacing: -1.814%;
 
-  --typography-heading-l_base: 46px;
+  --typography-heading-l_base: 45px;
   --typography-heading-l:
-    500 var(--typography-heading-l_base) / 0.978
+    500 var(--typography-heading-l_base) / 1
     var(--typography-font-family-sans-serif);
   --typography-heading-l_spacing: -2.804%;
 
@@ -54,8 +54,13 @@
 
   --typography-code-s_base: 15px;
   --typography-code-s:
-    400 var(--typography-code-s_base) / 1.2
+    400 var(--typography-code-s_base) / 1.5
     var(--typography-font-family-monospace);
+}
+
+@mixin text-s() {
+  font: var(--typography-text-s);
+  letter-spacing: var(--typography-text-s_spacing);
 }
 
 @mixin text-m() {

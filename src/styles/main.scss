@@ -41,9 +41,3 @@ a:hover,
 .honey {
   opacity: 0;
 }
-
-@property --inline-size-s {
-  syntax: "<length-percentage>";
-  inherits: true;
-  initial-value: 100vi;
-}

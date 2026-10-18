@@ -1,8 +1,8 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import Typography from './Typography.astro';
-import { defineTranslations, type Locale } from '$utils/i18n';
-import { formatMonthYear } from '$utils/date';
+import type { CollectionEntry } from "astro:content";
+import Typography from "./Typography.astro";
+import { defineTranslations, type Locale } from "$utils/i18n";
+import { formatMonthYear, formatPeriod } from "$utils/date";
 
 interface Props {
   data: CollectionEntry<"projects">;
@@ -11,129 +11,141 @@ interface Props {
 
 const { data, locale } = Astro.props;
 const project = data.data;
-const hasAdditionalInfo = project.period || project.stack;
-const isFinished = Boolean(project.period && project.period.end)
-
-const t = defineTranslations({
-  ru: {
-    period: "Период",
-    start: "Начало",
-    stack: "Стек",
-  },
-  en: {
-    period: "Period",
-    start: "Started",
-    stack: "Stack",
-  },
-})[locale];
+const period = formatPeriod(project.period.from, project.period.to);
 ---
 
 <article class="project">
-  <a class="project-image honey" data-hold="400" data-effect="slide" data-right="32px" href={project.link}>
-    <img class:list={{
-      rounded: project.rounded
-    }} src={`/projects/${project.img}`} alt={project.name} />
+  <a
+    class="project-image honey"
+    data-hold="400"
+    data-effect="slide"
+    data-right="32px"
+    href={project.link}
+  >
+    <img
+      class:list={{
+        rounded: project.rounded,
+      }}
+      src={`/projects/${project.img}`}
+      alt={project.name}
+    />
   </a>
-  <div class="project-description honey" data-hold="200" data-up="32px">
-    <Typography class="project-title" variant="heading-m" color="primary" as="h2">
+  <div class="honey" data-hold="200" data-up="32px">
+    <Typography
+      class="project-title"
+      variant="heading-m"
+      color="primary"
+      as="h2"
+    >
       <a href={project.link}>{project.name}</a>
     </Typography>
-    <Typography color="secondary">
-      {project.description[locale]}
-    </Typography>
-    {hasAdditionalInfo && (
-      <dl>
-        {project.period && (
-          isFinished ? (
-            <dt>{t.period}</dt>
-            <dd>
-              {formatMonthYear(project.period.start, locale)}{" — "}{formatMonthYear(
-                project.period.end!,
-                locale,
-              )}
-            </dd>
-          ) : (
-            <dt>{t.start}</dt>
-            <dd>{formatMonthYear(project.period.start, locale)}</dd>
-          )
-        )}
-        {project.stack && (
-          <dt>{t.stack}</dt>
-          <dd>{project.stack}</dd>
-        )}
-      </dl>
-    )}
+    <div class="project-info">
+      <span class="project-period">
+        <Typography variant="text-s" color="secondary">
+          {period}
+        </Typography>
+      </span>
+      <Typography
+        class="project-description"
+        variant="text-m"
+        color="secondary"
+      >
+        {project.description[locale]}
+      </Typography>
+    </div>
+    <div class="project-stack">
+      <Typography variant="text-s" color="secondary">
+        {project.stack}
+      </Typography>
+    </div>
   </div>
 </article>
 
 <style lang="scss">
-.project {
-  max-width: 1000px;
-  display: flex;
-  flex-direction: row-reverse;
-  gap: 36px;
+  @use "../styles/typography" as typography;
 
-  &-image {
-    width: 100%;
-    max-width: 560px;
-  }
-
-  &-description {
-    position: relative;
-    top: -5px;
-  }
-
-  img {
-    max-width: 560px;
-
-    &.rounded {
-      border-radius: 10px;
-    }
-  }
-
-  & + & {
-    margin-top: 51px;
-  }
-}
-
-dl {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  font: var(--typography-text-s);
-  letter-spacing: var(--typography-text-s_spacing);
-  color: var(--color-content-secondary);
-  margin: 26px 0 0;
-}
-
-dd {
-  margin: 0;
-}
-
-@media (prefers-color-scheme: light) {
-  .project img {
-    filter: drop-shadow(0px 8px 24px rgb(0 0 0 / 10%));
-  }
-}
-
-@media (max-width: 1050px) {
   .project {
-    flex-direction: column;
-    gap: 24px;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 36px;
+
+    &-info {
+      position: relative;
+    }
+
+    &-period {
+      @include typography.text-s;
+      transform: rotate(-90deg) translateX(-100%);
+      transform-origin: left;
+      position: absolute;
+      top: 1px;
+      left: calc((var(--space-layout-aside) * -1) - 0.25em);
+    }
+
+    &-image {
+      width: 100%;
+      max-width: 560px;
+      line-height: var(--layout-grid-base);
+      position: relative;
+      top: calc(var(--layout-grid-base) * 0.77 * -1);
+    }
+
+    &-stack {
+      margin-top: var(--space-l);
+    }
 
     img {
-      width: 100%;
+      max-width: 560px;
+
+      &.rounded {
+        border-radius: 10px;
+      }
+    }
+
+    & + & {
+      margin-top: calc(var(--layout-grid-base) * 6);
     }
   }
 
-  p {
-    max-width: 575px;
+  @media (prefers-color-scheme: light) {
+    .project img {
+      filter: drop-shadow(0px 8px 24px rgb(0 0 0 / 10%));
+    }
   }
-}
 
-@supports (corner-shape:superellipse(1.6)) {
-  .project img.rounded {
-    border-radius: 16px;
-    corner-shape: superellipse(1.6);
+  @media (max-width: 1050px) {
+    .project {
+      flex-direction: column;
+      gap: 24px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    p {
+      max-width: 575px;
+    }
   }
-}
+
+  @supports (corner-shape: superellipse(1.6)) {
+    .project img.rounded {
+      border-radius: 16px;
+      corner-shape: superellipse(1.6);
+    }
+  }
+
+  @media (max-width: 480) {
+    .project-period {
+      top: calc(var(--layout-grid-base) * -2);
+      left: 0;
+      transform: unset;
+      position: relative;
+    }
+
+    .project-image {
+      top: 0;
+    }
+  }
 </style>

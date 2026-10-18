@@ -29,8 +29,8 @@ const projects = defineCollection({
     stack: z.optional(z.string()),
     period: z.optional(
       z.object({
-        start: z.string(),
-        end: z.optional(z.string()),
+        from: z.string(),
+        to: z.optional(z.string()),
       }),
     ),
   }),

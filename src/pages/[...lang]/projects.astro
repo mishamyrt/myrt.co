@@ -5,7 +5,7 @@ import { getCollection } from "astro:content";
 import Layout from "$layouts/Layout.astro";
 import Typography from "$components/Typography.astro";
 import ProjectCard from "$components/ProjectCard.astro";
-import GitHubContributions from "$components/GitHubContributions.astro";
+import { parseShortDate } from "$utils/date";
 import { defineTranslations, localizedStaticPaths } from "$utils/i18n";
 import { PROJECTS_FILE } from "../../content.config";
 
@@ -35,18 +35,22 @@ function projectIndex(id: string) {
   return rawProjects.findIndex((project: { id: string }) => project.id === id);
 }
 
-const projects = (await getCollection("projects")).toSorted(
-  (a, b) => projectIndex(a.id) - projectIndex(b.id),
-);
+const projects = (await getCollection("projects")).toSorted((a, b) => {
+  return (
+    parseShortDate(b.data.period.from).getTime() -
+    parseShortDate(a.data.period.from).getTime()
+  );
+});
 ---
 
 <Layout title={t.title} description={t.description} locale={locale}>
-  <Typography color="secondary" class="heading honey" data-effect="slide">
-    {t.intro}
-    {" "}
-    <a href="https://github.com/mishamyrt">GitHub</a>.
-  </Typography>
-  <GitHubContributions username="mishamyrt" locale={locale} />
+  <div>
+    <Typography color="secondary" class="heading honey" data-effect="slide">
+      {t.intro}
+      {" "}
+      <a href="https://github.com/mishamyrt">GitHub</a>.
+    </Typography>
+  </div>
   <div class="projects">
     {projects.map((project) => (
       <ProjectCard data={project} locale={locale} />
@@ -60,7 +64,7 @@ const projects = (await getCollection("projects")).toSorted(
   }
 
   .projects {
-    margin-top: 34px;
+    margin-top: calc(var(--layout-grid-base) * 6);
   }
 
   @media (max-width: 873px) {

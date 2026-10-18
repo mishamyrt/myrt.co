@@ -83,7 +83,7 @@ const absoluteAlternateUrl = `${siteUrl}${alternateUrl}`;
   }
 
   body {
-    padding: 31px calc(var(--layout-grid-base) * 2);
+    padding: calc(var(--layout-grid-base) * 4) calc(var(--layout-grid-base) * 2);
   }
 
   .content {
@@ -93,7 +93,7 @@ const absoluteAlternateUrl = `${siteUrl}${alternateUrl}`;
   }
 
   main {
-    padding: calc(var(--layout-grid-base) * 4) 0;
+    padding: calc(var(--layout-grid-base) * 5) 0;
   }
 
   @view-transition {
@@ -114,7 +114,8 @@ const absoluteAlternateUrl = `${siteUrl}${alternateUrl}`;
 
   @media (max-width: 610px) {
     body {
-      padding: 22px 18px;
+      padding: calc(var(--layout-grid-base) * 3)
+        calc(var(--layout-grid-base) * 2);
     }
   }
 </style>
