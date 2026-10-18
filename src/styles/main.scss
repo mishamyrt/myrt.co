@@ -1,13 +1,6 @@
 @use "./colors.scss";
 @use "./typography.scss";
-@use "./spacing.scss";
-
-:root {
-  --layout-content-narrow: 720px;
-  --layout-content-wide: 1000px;
-  --layout-padding-min: 117px;
-  --space-layout-aside: 36px;
-}
+@use "./layout.scss";
 
 html,
 body {
@@ -47,4 +40,10 @@ a:hover,
 
 .honey {
   opacity: 0;
+}
+
+@property --inline-size-s {
+  syntax: "<length-percentage>";
+  inherits: true;
+  initial-value: 100vi;
 }

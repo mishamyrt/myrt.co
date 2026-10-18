@@ -1,9 +1,8 @@
 ---
+title: 'Freelancer'
 from: '04.2013'
 to: '05.2016'
 ---
-
-## Freelancer
 
 Handled the full development cycle: product planning, design, programming, publishing, and maintenance.
 

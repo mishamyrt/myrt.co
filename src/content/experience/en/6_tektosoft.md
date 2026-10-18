@@ -1,9 +1,8 @@
 ---
+title: 'Tech lead at [Tektosoft](https://tektosoft.ru/)'
 from: '02.2019'
 to: '10.2020'
 ---
-
-## Tech lead at [Tektosoft](https://tektosoft.ru/)
 
 Led frontend development across the company: selected the technology stack, made architectural decisions, and conducted code reviews. Introduced CI/CD into the company’s development process.
 

@@ -1,9 +1,8 @@
 ---
+title: 'Team lead at [OTR](https://otr.ru/)'
 from: '10.2020'
 to: '08.2022'
 ---
-
-## Team lead at [OTR](https://otr.ru/)
 
 Led a frontend team of 5 within a product team of approximately 60 people and hired 3 developers.
 Redesigned the development process to stop burnout: improved communication between business and engineering, introduced code review and one-on-one meetings, and reduced overtime by 81%.

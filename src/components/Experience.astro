@@ -1,5 +1,7 @@
 ---
 import { type CollectionEntry, render } from "astro:content";
+import { satteriHeadingIdsPlugin } from "@astrojs/markdown-satteri";
+import { markdownToHtml } from "satteri";
 import Typography from "./Typography.astro";
 
 interface Props {
@@ -16,22 +18,29 @@ function formatPeriod(from: string, to?: string): string {
 const { place } = Astro.props as Props;
 
 const period = formatPeriod(place.data.from, place.data.to);
+const { html: title } = markdownToHtml(`${place.data.title}`, {
+  hastPlugins: [satteriHeadingIdsPlugin()],
+  features: { smartPunctuation: true },
+});
 const { Content } = await render(place);
 ---
 
 <div class="experience honey" data-hold="400">
-  <div class="experience-period">
-    <Typography variant="text-s" color="secondary">
-      {period}
-    </Typography>
-  </div>
   <article>
-    <Content />
+    <Typography class="experience-title" as="h2" variant="heading-m">
+      <Fragment set:html={title} />
+    </Typography>
+    <div class="experience-description">
+      <div class="experience-period">
+        <Typography variant="text-s" color="secondary">
+          {period}
+        </Typography>
+      </div>
+      <Content />
+    </div>
   </article>
   <script>
-    const nda = document.querySelector(
-      ".experience .nda",
-    ) as HTMLElement | null;
+    const nda = document.querySelector<HTMLElement>(".experience .nda");
 
     if (nda) {
       const reduceMotion = window.matchMedia(
@@ -150,31 +159,14 @@ const { Content } = await render(place);
 </div>
 
 <style lang="scss">
+  @use "../styles/typography" as typography;
+
   .experience {
     max-width: var(--layout-content-narrow);
+  }
+
+  .experience-description {
     position: relative;
-  }
-
-  .experience + .experience {
-    margin-top: calc(var(--space-xl) + 6px);
-  }
-
-  .experience-period {
-    transform: rotate(-90deg) translateX(calc(-100% - 42px));
-    transform-origin: left;
-    position: absolute;
-    top: 7px;
-    left: calc((var(--space-layout-aside) * -1) - 4px);
-  }
-
-  article {
-    :global(h3),
-    :global(h2) {
-      font: var(--typography-heading-m);
-      letter-spacing: var(--typography-heading-m_spacing);
-      color: var(--color-content-primary);
-      margin: 0 0 calc(var(--space-m) + 3px);
-    }
 
     :global(p a) {
       color: var(--color-content-secondary);
@@ -185,8 +177,7 @@ const { Content } = await render(place);
     }
 
     :global(p) {
-      font: var(--typography-text-m);
-      letter-spacing: var(--typography-text-m_spacing);
+      @include typography.text-m;
       color: var(--color-content-secondary);
       margin: 0;
     }
@@ -194,6 +185,22 @@ const { Content } = await render(place);
     :global(p + p) {
       margin-top: 1em;
     }
+  }
+
+  .experience + .experience {
+    margin-top: calc(var(--space-xl) + 6px);
+  }
+
+  .experience-period {
+    transform: rotate(-90deg) translateX(-100%);
+    transform-origin: left;
+    position: absolute;
+    top: 1px;
+    left: calc((var(--space-layout-aside) * -1) - 4px);
+  }
+
+  .experience-title :global(p) {
+    margin: 0;
   }
 
   .experience :global(.nda) {
@@ -215,17 +222,5 @@ const { Content } = await render(place);
 
   .experience :global(.nda.is-dragging) {
     cursor: grabbing;
-  }
-
-  @media (max-width: 873px) {
-    .experience-period {
-      transform: none;
-      left: 0;
-      top: -34px;
-    }
-
-    .experience + .experience {
-      margin-top: 69px;
-    }
   }
 </style>

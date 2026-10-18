@@ -1,9 +1,8 @@
 ---
+title: 'Tech lead at <span class="nda">Protected by NDA</span>'
 from: '11.2025'
 to: '03.2026'
 ---
-
-## Tech lead at <span class="nda">Protected by NDA</span>
 
 Designed and deployed an automated citizen request processing platform for a municipality, consisting of 6 Go services and an on-premise GPU cluster.
 

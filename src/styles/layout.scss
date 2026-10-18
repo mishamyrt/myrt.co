@@ -1,0 +1,19 @@
+:root {
+  --layout-grid-base: 9px;
+  --layout-content-narrow: calc(var(--layout-grid-base) * 80);
+  --layout-content-wide: calc(var(--layout-grid-base) * 110);
+  --layout-padding-min: calc(var(--layout-grid-base) * 13);
+  --layout-padding-mobile: calc(var(--layout-grid-base) * 3);
+
+  --space-s: var(--layout-grid-base);
+  --space-m: calc(var(--layout-grid-base) * 2);
+  --space-l: calc(var(--layout-grid-base) * 3);
+  --space-xl: calc(var(--layout-grid-base) * 4);
+  --space-layout-aside: var(--space-xl);
+}
+
+@media (max-width: 873px) {
+  :root {
+    --space-layout-aside: var(--space-l);
+  }
+}

@@ -58,7 +58,7 @@
     var(--typography-font-family-monospace);
 }
 
-@mixin typography-text-m() {
+@mixin text-m() {
   font: var(--typography-text-m);
   letter-spacing: var(--typography-text-m_spacing);
 }

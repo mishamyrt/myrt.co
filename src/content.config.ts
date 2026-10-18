@@ -9,6 +9,7 @@ export const BLOG_DIR = "./src/content/blog";
 const experience = defineCollection({
   loader: glob({ base: EXPERIENCE_DIR, pattern: "**/*.md" }),
   schema: z.object({
+    title: z.string(),
     from: z.string(),
     to: z.optional(z.string()),
   }),

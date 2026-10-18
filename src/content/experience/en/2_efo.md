@@ -1,9 +1,8 @@
 ---
+title: 'Full-stack developer at <span class="caps">[EFO](https://efo.ru/)</span>'
 from: '05.2016'
 to: '09.2016'
 ---
-
-## Full-stack developer at <span class="caps">[EFO](https://efo.ru/)</span>
 
 Designed and built a configurable product search engine with PHP and Laravel.
 

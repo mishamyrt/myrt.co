@@ -1,9 +1,8 @@
 ---
+title: 'Team lead and tech lead at [Digital Biz Factory](https://dbfhub.com)'
 from: '11.2022'
 to: '10.2025'
 ---
-
-## Team lead and tech lead at [Digital Biz Factory](https://dbfhub.com)
 
 Built and led a team of 9 people—4 backend developers, 2 frontend developers, 2 QA engineers, and an analyst—while developing an employee grading system. Took the project from stagnation to launch in 9 months. Established Definition of Done and Definition of Ready, regular Scrum ceremonies, code review, and sprint demos.
 
