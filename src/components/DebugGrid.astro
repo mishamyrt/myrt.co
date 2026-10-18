@@ -1,18 +1,17 @@
 ---
 interface Props {
-  step: number;
+  stepBase: number;
 }
 
-const { step } = Astro.props;
+const { stepBase } = Astro.props;
 ---
 
 <div
   class="fullscreen-grid"
   data-fullscreen-grid
-  style={`--grid-step: ${step}px;`}
+  style={`--grid-step-base: ${stepBase}px;`}
   hidden
->
-</div>
+></div>
 
 <script>
   const grid = document.querySelector(
@@ -67,9 +66,10 @@ const { step } = Astro.props;
   }
 </script>
 
-<style>
+<style lang="scss">
   .fullscreen-grid {
     --grid-line-color: rgb(255 0 0 / 18%);
+    --grid-step: var(--grid-step-base);
 
     position: absolute;
     top: -1px;
@@ -79,8 +79,20 @@ const { step } = Astro.props;
     min-height: 100vh;
     pointer-events: none;
     background-image:
-      linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+      linear-gradient(
+        to right,
+        var(--grid-line-color) 0.5px,
+        transparent 0.5px
+      ),
+      linear-gradient(
+        to bottom,
+        var(--grid-line-color) 0.5px,
+        transparent 0.5px
+      );
     background-size: var(--grid-step) var(--grid-step);
+
+    @media screen and (min-width: 1280px) {
+      --grid-step: calc(var(--grid-step-base) * 1.5);
+    }
   }
 </style>
