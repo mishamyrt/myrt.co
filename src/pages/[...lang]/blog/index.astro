@@ -94,9 +94,7 @@ const articlesByYear = Object.entries(articlesMap).sort((a, b) => {
               <InfinitySign />
             </div>
           ) : (
-            <Typography variant="heading-m" color="tertiary" class="blog-year">
-              {year}
-            </Typography>
+            <span class="blog-year">{year}</span>
           )}
           <div class="blog-articles">
             {yearArticles.map((article) => (
@@ -129,42 +127,50 @@ const articlesByYear = Object.entries(articlesMap).sort((a, b) => {
   }
 
   .blog {
-    margin-top: 42px;
+    margin-top: calc(var(--layout-grid-base) * 6);
   }
 
   .typography.blog-title {
-    margin-bottom: 3px;
+    margin-bottom: 0.2em;
   }
 
   .blog-yearArticles {
     max-width: var(--layout-content-narrow);
     display: flex;
     position: relative;
-    margin-top: 24px;
+    margin-top: var(--space-xl);
   }
 
   .blog-article + .blog-article {
-    margin-top: 15px;
+    margin-top: var(--space-l);
   }
 
   .blog-articles {
     display: flex;
     flex-direction: column;
-    gap: 9px;
+    gap: var(--space-s);
   }
 
   .blog-year {
+    @include typography.heading-m;
+    color: var(--color-content-tertiary);
     text-align: right;
-    width: 85px;
+    width: 3em;
     position: absolute;
-    left: calc((85px + 32px) * -1);
-    top: 1px;
+    left: calc((3em + (var(--layout-grid-base) * 4)) * -1);
+    top: -0.37em;
 
     &.__continuous {
-      top: 7px;
       fill: var(--color-content-tertiary);
-      height: 18px;
-      margin-bottom: var(--space-m);
+      display: flex;
+      align-items: start;
+      justify-content: end;
+      top: -0.1em;
+
+      svg {
+        width: 29px;
+        height: 14px;
+      }
     }
   }
 
@@ -184,26 +190,35 @@ const articlesByYear = Object.entries(articlesMap).sort((a, b) => {
   }
 
   @media screen and (max-width: 873px) {
-    .blog-yearArticles {
-      flex-direction: column;
-      margin-top: 0;
-    }
-
-    .blog-yearArticles + .blog-yearArticles {
-      margin-top: 27px;
-    }
-
     .blog-year,
     .blog-year.__continuous {
-      position: relative;
-      left: 0;
-      top: 0;
+      @include typography.heading-s;
+      transform: rotate(-90deg) translateX(-100%);
+      transform-origin: 0;
+      position: absolute;
+      top: calc(var(--space-m) * -1);
+      left: calc(var(--space-layout-aside) * -1 - 0.25em);
+
+      svg {
+        transform: scale(0.7);
+      }
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .blog-year,
+    .blog-year.__continuous {
+      @include typography.heading-xs;
+      transform: unset;
+      left: unset;
+      top: -48px;
+      justify-content: start;
       text-align: left;
-      width: unset;
     }
 
-    .blog-articles {
-      margin-bottom: 0;
+    .blog-yearArticles {
+      flex-direction: column;
+      margin-top: calc(var(--layout-grid-base) * 9);
     }
   }
 </style>

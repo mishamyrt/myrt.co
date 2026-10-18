@@ -73,6 +73,11 @@
   letter-spacing: var(--typography-heading-s_spacing);
 }
 
+@mixin heading-xs() {
+  font: var(--typography-heading-xs);
+  letter-spacing: var(--typography-heading-xs_spacing);
+}
+
 @mixin heading-m() {
   font: var(--typography-heading-m);
   letter-spacing: var(--typography-heading-m_spacing);

@@ -193,6 +193,7 @@ const { Content } = await render(place);
 
   .experience-period {
     @include typography.text-s;
+    color: var(--color-content-tertiary);
     transform: rotate(-90deg) translateX(-100%);
     transform-origin: left;
     position: absolute;
@@ -202,6 +203,7 @@ const { Content } = await render(place);
 
   .experience-title :global(p) {
     margin: 0;
+    color: var(--color-content-primary);
   }
 
   .experience :global(.nda) {
