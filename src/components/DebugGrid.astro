@@ -1,15 +1,15 @@
 ---
 interface Props {
-  stepBase: number;
+  stepBaseVar: string;
 }
 
-const { stepBase } = Astro.props;
+const { stepBaseVar } = Astro.props;
 ---
 
 <div
   class="fullscreen-grid"
   data-fullscreen-grid
-  style={`--grid-step-base: ${stepBase}px;`}
+  style={`--grid-step-base: var(${stepBaseVar});`}
   hidden
 ></div>
 

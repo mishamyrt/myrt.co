@@ -58,6 +58,19 @@
     var(--typography-font-family-monospace);
 }
 
+@media (min-width: 1318px) {
+  :root {
+    --typography-text-s_base: calc(var(--layout-grid-base) * 1.33);
+    --typography-text-m_base: calc(var(--layout-grid-base) * 2);
+    --typography-heading-s_base: calc(var(--layout-grid-base) * 2);
+    --typography-heading-m_base: calc(var(--layout-grid-base) * 3);
+    --typography-heading-l_base: calc(var(--layout-grid-base) * 5);
+    --typography-caption_base: calc(var(--layout-grid-base) * 1.33);
+    --typography-code-m_base: calc(var(--layout-grid-base) * 2);
+    --typography-code-s_base: calc(var(--layout-grid-base) * 1.66);
+  }
+}
+
 @mixin text-s() {
   font: var(--typography-text-s);
   letter-spacing: var(--typography-text-s_spacing);

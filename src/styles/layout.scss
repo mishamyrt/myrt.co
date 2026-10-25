@@ -1,5 +1,18 @@
 :root {
-  --layout-grid-base: 9px;
+  --layout-grid-base_min: 9;
+  --layout-grid-base_max: 12.5;
+  --layout-grid-base_max_resolution: 1920;
+  --layout-grid-base_min_resolution: 1318;
+  --layout-grid-base: clamp(
+    calc(var(--layout-grid-base_min) * 1px),
+    calc(
+      (var(--layout-grid-base_min) * 1px) +
+      (100vw - (var(--layout-grid-base_min_resolution) * 1px)) *
+      (var(--layout-grid-base_max) - var(--layout-grid-base_min))
+      / (var(--layout-grid-base_max_resolution) - var(--layout-grid-base_min_resolution))
+    ),
+    calc(var(--layout-grid-base_max) * 1px)
+  );
   --layout-content-narrow: calc(var(--layout-grid-base) * 80);
   --layout-content-wide: calc(var(--layout-grid-base) * 110);
   --layout-padding-min: calc(var(--layout-grid-base) * 13);

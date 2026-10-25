@@ -65,7 +65,7 @@ const period = formatPeriod(project.period.from, project.period.to);
   @use "../styles/typography" as typography;
 
   .project {
-    max-width: 1000px;
+    max-width: var(--layout-content-wide);
     display: flex;
     flex-direction: row-reverse;
     gap: 36px;

@@ -61,7 +61,7 @@ const absoluteAlternateUrl = `${siteUrl}${alternateUrl}`;
   <body>
     <div class="content">
       <Navigation locale={locale} showLocaleSwitcher={showLocaleSwitcher} />
-      <DebugGrid stepBase={9} />
+      <DebugGrid stepBaseVar="--layout-grid-base" />
       <main>
         <slot />
       </main>
