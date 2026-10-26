@@ -119,7 +119,7 @@
   link: "https://lilex.myrt.co"
   img: "lilex@2x.webp"
   rounded: true
-  stack: Glyphs
+  stack: Glyphs, OpenType Features, Python
   name: "Lilex"
   description:
     ru: |
