@@ -21,7 +21,7 @@
   "devDependencies": {
     "@astrojs/markdown-satteri": "0.4.0",
     "@web-alchemy/fonttools": "1.4.0",
-    "astro": "7.2.10",
+    "astro": "7.3.3",
     "mdast-util-from-markdown": "2.0.3",
     "mdast-util-gfm": "3.1.0",
     "micromark-extension-gfm": "3.0.0",
