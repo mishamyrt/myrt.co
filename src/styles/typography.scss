@@ -2,7 +2,7 @@
   --typography-text-s_base: calc(var(--layout-grid-base) * 1.33); // 14px
   --typography-text-s:
     400 var(--typography-text-s_base) / 1.25
-    var(--typography-font-family-serif);
+    var(--typography-font-family-sans-serif);
   --typography-text-s_spacing: -0.667%;
 
   --typography-text-m_base: calc(var(--layout-grid-base) * 2); // 18px
@@ -19,31 +19,31 @@
 
   --typography-heading-xs_base: 14px; // fixed size
   --typography-heading-xs:
-    500 var(--typography-heading-xs_base) / 18px
+    550 var(--typography-heading-xs_base) / 18px
     var(--typography-font-family-sans-serif);
   --typography-heading-xs_spacing: -1.785%;
 
   --typography-heading-s_base: calc(var(--layout-grid-base) * 2); // 18px
   --typography-heading-s:
-    500 var(--typography-heading-s_base) / 1
+    550 var(--typography-heading-s_base) / 1
     var(--typography-font-family-sans-serif);
   --typography-heading-s_spacing: -1.833%;
 
   --typography-heading-m_base: calc(var(--layout-grid-base) * 3); // 27px
   --typography-heading-m:
-    500 var(--typography-heading-m_base) / 1
+    550 var(--typography-heading-m_base) / 1
     var(--typography-font-family-sans-serif);
   --typography-heading-m_spacing: -1.814%;
 
   --typography-heading-l_base: calc(var(--layout-grid-base) * 5); // 45px
   --typography-heading-l:
-    500 var(--typography-heading-l_base) / 1
+    550 var(--typography-heading-l_base) / 1
     var(--typography-font-family-sans-serif);
   --typography-heading-l_spacing: -2.804%;
 
   --typography-caption_base: calc(var(--layout-grid-base) * 1.33); // 12px
   --typography-caption:
-    500 var(--typography-caption_base) / 1.33
+    550 var(--typography-caption_base) / 1.33
     var(--typography-font-family-sans-serif);
   --typography-caption_spacing: -1.25%;
 

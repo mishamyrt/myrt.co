@@ -58,12 +58,11 @@ export default defineConfig({
       },
     },
     {
-      provider: fontProviders.npm({remote: false}),
-      name: "Golos Text",
+      provider: fontProviders.npm(),
+      name: "Golos Text Variable",
       cssVariable: "--typography-font-family-sans-serif",
       options: {
-        package: '@fontsource/golos-text',
-        file: '500.css'
+        package: '@fontsource-variable/golos-text',
       },
     },
     {
