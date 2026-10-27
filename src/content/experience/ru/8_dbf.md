@@ -1,5 +1,5 @@
 ---
-title: 'Тимлид и техлид в [Digital Biz Factory](https://dbfhub.com)'
+title: 'Тимлид и техлид в [«Диджитал Биз Фэктори»](https://dbfhub.com)'
 from: '11.2022'
 to: '10.2025'
 ---

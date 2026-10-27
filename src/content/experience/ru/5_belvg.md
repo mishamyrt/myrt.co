@@ -1,5 +1,5 @@
 ---
-title: 'Fullstack-разработчик в [BelVG](https://belvg.com/)'
+title: 'Фуллстек-разработчик в [«Белвиджи»](https://belvg.com/)'
 from: '06.2018'
 to: '02.2019'
 ---

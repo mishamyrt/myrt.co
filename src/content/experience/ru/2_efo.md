@@ -1,5 +1,5 @@
 ---
-title: 'Fullstack-разработчик в <span class="caps">[ЭФО](https://efo.ru/)</span>'
+title: 'Фуллстек-разработчик в <span class="caps">[ЭФО](https://efo.ru/)</span>'
 from: '05.2016'
 to: '09.2016'
 ---

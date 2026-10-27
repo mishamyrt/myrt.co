@@ -1,5 +1,5 @@
 ---
-title: 'Тимлид в [AurumIT](https://aurumit-tech.ru)'
+title: 'Тимлид в [«Аурум айти»](https://aurumit-tech.ru)'
 from: '06.2026'
 ---
 

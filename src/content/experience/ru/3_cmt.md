@@ -1,5 +1,5 @@
 ---
-title: 'Fullstack-разработчик и дизайнер в <span class="caps">[CMT](https://cmtscience.ru/)</span>'
+title: 'Фуллстек-разработчик и дизайнер в <span class="caps">[CMT](https://cmtscience.ru/)</span>'
 from: '09.2016'
 to: '05.2017'
 ---

@@ -1,5 +1,5 @@
 ---
-title: 'Техлид в [Тектософт](https://tektosoft.ru/)'
+title: 'Техлид в [«Тектософт»](https://tektosoft.ru/)'
 from: '02.2019'
 to: '10.2020'
 ---
