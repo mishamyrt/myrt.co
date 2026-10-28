@@ -1,8 +1,8 @@
 :root {
   --layout-grid-base_min: 9;
   --layout-grid-base_max: 11.5;
-  --layout-grid-base_max_resolution: 1920;
-  --layout-grid-base_min_resolution: 1318;
+  --layout-grid-base_max_resolution: 1440;
+  --layout-grid-base_min_resolution: 990;
   --layout-grid-base: clamp(
     calc(var(--layout-grid-base_min) * 1px),
     calc(
