@@ -224,9 +224,13 @@ const t = defineTranslations({
     }
 
     :global(pre) {
+      white-space: pre-wrap;
       font: var(--typography-code-m);
-      width: calc(var(--layout-content-narrow) + 40px);
-      margin: calc(var(--space-m) + 4px) 0px calc(var(--space-m) + 2px) -20px;
+      max-width: calc(
+        var(--layout-content-narrow) + (var(--layout-grid-base) * 4)
+      );
+      margin: calc(var(--space-m)) 0px calc(var(--space-m))
+        calc((var(--layout-grid-base) * -2));
       padding: 15px 20px;
       border-radius: 8px;
       background-color: var(--color-background-secondary) !important;
@@ -272,22 +276,23 @@ const t = defineTranslations({
       font: var(--typography-code-s);
       color: var(--color-content-secondary);
     }
-  }
 
-  @media (max-width: 873px) {
-    :global(pre) {
-      margin-left: 0;
-      max-width: var(--layout-content-narrow);
-      width: 100%;
+    @media (max-width: 873px) {
+      :global(table) {
+        table-layout: fixed;
+      }
+
+      :global(td),
+      :global(th) {
+        vertical-align: top;
+      }
     }
 
-    :global(table) {
-      table-layout: fixed;
-    }
-
-    :global(td),
-    :global(th) {
-      vertical-align: top;
+    @media (max-width: 480) {
+      :global(pre) {
+        width: calc(100% + (var(--layout-grid-base) * 4));
+        border-radius: 0;
+      }
     }
   }
 </style>
