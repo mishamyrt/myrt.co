@@ -3,6 +3,7 @@ import { satteri } from '@astrojs/markdown-satteri';
 import { imageCaption } from "./plugins/md-hast/imageCaption";
 import { imageSizeSetter } from "./plugins/md-hast/imageSize";
 import { honeymateLoader } from "./plugins/md-hast/imageHoneymate";
+import { wrapEmoji } from "./plugins/md-hast/emoji";
 
 import compressor from "astro-compressor";
 
@@ -21,7 +22,8 @@ export default defineConfig({
             publicPath: 'public',
             wrapperClass: 'img-wrapper'
           }),
-          honeymateLoader()
+          honeymateLoader(),
+          wrapEmoji()
         ],
         features: { directive: true },
       }),

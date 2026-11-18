@@ -35,7 +35,7 @@ export const imageSizeSetter = ({ publicPath, wrapperClass }: ImgSizeOptions) =>
           type: "element",
           tagName: "div",
           properties: {
-            className: wrapperClass,
+            className: [wrapperClass ?? ''],
             style: `width: ${width}px; aspect-ratio: ${width}/${height};`
           },
           children: [

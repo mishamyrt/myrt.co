@@ -41,7 +41,7 @@ export const imageCaption = ({ containerClass, captionClass }: ImgCaptionOptions
           type: "element",
           tagName: "div",
           properties: {
-            className: containerClass
+            className: [containerClass]
           },
           children: [
             imgNode,
@@ -49,7 +49,7 @@ export const imageCaption = ({ containerClass, captionClass }: ImgCaptionOptions
               type: "element",
               tagName: "span",
               properties: {
-                className: captionClass
+                className: [captionClass]
               },
               children: [
                 { type: "text", value: caption }
