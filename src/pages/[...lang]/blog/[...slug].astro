@@ -62,8 +62,8 @@ const t = defineTranslations({
     <h1>{title}</h1>
     <Content />
     {date && publishedDate && (
-      <time datetime={publishedDate.toISOString().slice(0, 10)}>
-        <Typography class="date" color="tertiary" variant="text-m">
+      <time class="date" datetime={publishedDate.toISOString().slice(0, 10)}>
+        <Typography color="tertiary" variant="text-m">
           {t.published}
           <span> </span>
           {date}
@@ -85,6 +85,7 @@ const t = defineTranslations({
 <style lang="scss">
   .date {
     margin-top: var(--space-m);
+    display: block;
   }
 
   article {
